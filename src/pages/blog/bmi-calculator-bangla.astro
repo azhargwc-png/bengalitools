@@ -4,8 +4,8 @@ import AdSlot from '../../components/AdSlot.astro';
 ---
 
 <ToolLayout
-  title="বিএমআই ক্যালকুলেটর বাংলা — অনলাইনে বিনামূল্যে | BanglaTools"
-  description="বিনামূল্যে বাংলা BMI ক্যালকুলেটর। উচ্চতা ও ওজন দিয়ে আপনার BMI বের করুন। WHO গাইডলাইন সহ।"
+  title="বিএমআই ক্যালকুলেটর বাংলা | BanglaTools"
+  description="বিনামূল্যে বাংলা BMI ক্যালকুলেটর — উচ্চতা ও ওজন দিয়ে তাৎক্ষণিক ফলাফল পান। WHO গাইডলাইন, BMI চার্ট ও স্বাস্থ্য পরামর্শ সহ সম্পূর্ণ গাইড।"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → বিএমআই ক্যালকুলেটর বাংলা
@@ -77,6 +77,35 @@ import AdSlot from '../../components/AdSlot.astro';
       </div>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-3">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="বিএমআই কত হলে স্বাস্থ্যকর?" data-en="What BMI is considered healthy?">বিএমআই কত হলে স্বাস্থ্যকর?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="WHO অনুযায়ী ১৮.৫ থেকে ২৪.৯ এর মধ্যে BMI স্বাস্থ্যকর। ১৮.৫-এর কম মানে কম ওজন, ২৫-২৯.৯ মানে অতিরিক্ত ওজন এবং ৩০ বা তার বেশি মানে স্থূলতা।" data-en="According to WHO, a BMI between 18.5 and 24.9 is healthy. Below 18.5 is underweight, 25-29.9 is overweight and 30 or above is obese.">WHO অনুযায়ী ১৮.৫ থেকে ২৪.৯ এর মধ্যে BMI স্বাস্থ্যকর। ১৮.৫-এর কম মানে কম ওজন, ২৫-২৯.৯ মানে অতিরিক্ত ওজন এবং ৩০ বা তার বেশি মানে স্থূলতা।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="BMI বের করার সূত্র কী?" data-en="What is the BMI formula?">BMI বের করার সূত্র কী?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="BMI = ওজন (কেজি) ÷ উচ্চতা (মিটার)²। যেমন, ৭০ কেজি ওজন ও ১.৭০ মিটার উচ্চতায় BMI = ৭০ ÷ (১.৭০)² = ২৪.২। এই ক্যালকুলেটর স্বয়ংক্রিয়ভাবে হিসাব করে দেয়।" data-en="BMI = weight (kg) ÷ height (m)². Example: 70 kg and 1.70 m height → BMI = 70 ÷ (1.70)² = 24.2. This calculator computes it automatically.">BMI = ওজন (কেজি) ÷ উচ্চতা (মিটার)²। যেমন, ৭০ কেজি ওজন ও ১.৭০ মিটার উচ্চতায় BMI = ৭০ ÷ (১.৭০)² = ২৪.২। এই ক্যালকুলেটর স্বয়ংক্রিয়ভাবে হিসাব করে দেয়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="মহিলা ও পুরুষের BMI কি আলাদা?" data-en="Is BMI different for men and women?">মহিলা ও পুরুষের BMI কি আলাদা?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="BMI সূত্র ও স্বাস্থ্যকর পরিসর নারী-পুরুষের জন্য একই। তবে একই BMI-তে নারীর শরীরে চর্বির পরিমাণ সাধারণত পুরুষের চেয়ে বেশি থাকে, যা স্বাভাবিক।" data-en="The BMI formula and healthy range are the same for men and women. However, women typically have more body fat at the same BMI compared to men, which is normal.">BMI সূত্র ও স্বাস্থ্যকর পরিসর নারী-পুরুষের জন্য একই। তবে একই BMI-তে নারীর শরীরে চর্বির পরিমাণ সাধারণত পুরুষের চেয়ে বেশি থাকে, যা স্বাভাবিক।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="শিশুদের BMI কীভাবে মাপা হয়?" data-en="How is BMI measured for children?">শিশুদের BMI কীভাবে মাপা হয়?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="শিশুদের BMI একই সূত্রে হিসাব করা হয় কিন্তু বয়স ও লিঙ্গ অনুযায়ী আলাদা চার্টে মূল্যায়ন করা হয়। প্রাপ্তবয়স্কদের ১৮.৫-২৪.৯ সীমা শিশুদের ক্ষেত্রে প্রযোজ্য নয়।" data-en="Children's BMI uses the same formula but is assessed on age and gender-specific charts. The adult threshold of 18.5-24.9 does not apply to children.">শিশুদের BMI একই সূত্রে হিসাব করা হয় কিন্তু বয়স ও লিঙ্গ অনুযায়ী আলাদা চার্টে মূল্যায়ন করা হয়। প্রাপ্তবয়স্কদের ১৮.৫-২৪.৯ সীমা শিশুদের ক্ষেত্রে প্রযোজ্য নয়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="BMI কি সবসময় সঠিক?" data-en="Is BMI always accurate?">BMI কি সবসময় সঠিক?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="BMI একটি সাধারণ পরিমাপ, সবসময় নির্ভুল নয়। অ্যাথলেট বা মাংসপেশি বেশি এমন মানুষের BMI বেশি হতে পারে তবুও তারা সুস্থ। সম্পূর্ণ স্বাস্থ্য মূল্যায়নের জন্য ডাক্তারের পরামর্শ নিন।" data-en="BMI is a general measure and not always accurate. Athletes or muscular people may have a high BMI yet still be healthy. For a complete health assessment, consult a doctor.">BMI একটি সাধারণ পরিমাপ, সবসময় নির্ভুল নয়। অ্যাথলেট বা মাংসপেশি বেশি এমন মানুষের BMI বেশি হতে পারে তবুও তারা সুস্থ। সম্পূর্ণ স্বাস্থ্য মূল্যায়নের জন্য ডাক্তারের পরামর্শ নিন।</span></p>
+      </details>
+    </div>
+  </section>
 
   <div class="mt-8 text-center">
     <a href="/health/bmi-calculator" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">

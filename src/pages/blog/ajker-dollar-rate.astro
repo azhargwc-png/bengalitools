@@ -4,8 +4,8 @@ import AdSlot from '../../components/AdSlot.astro';
 ---
 
 <ToolLayout
-  title="আজকের ডলারের রেট — লাইভ USD থেকে INR রেট | BanglaTools"
-  description="আজকের ডলারের রেট জানুন। লাইভ USD থেকে INR বিনিময় হার। ডলার থেকে টাকা কনভার্ট করুন।"
+  title="আজকের ডলারের রেট — USD থেকে INR | BanglaTools"
+  description="আজকের লাইভ ডলার রেট জানুন। USD থেকে INR বিনিময় হার প্রতিদিন আপডেট হয়। রেমিট্যান্স টিপস, রূপান্তর টেবিল ও সেরা রেটে টাকা পাঠানোর গাইড।"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → আজকের ডলারের রেট
@@ -92,6 +92,35 @@ import AdSlot from '../../components/AdSlot.astro';
       <p class="text-xs text-gray-500 mt-1">* Approximate values. Use the live converter above for the accurate rate.</p>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-3">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="আজকে ১ ডলার কত রুপি?" data-en="How many rupees is 1 dollar today?">আজকে ১ ডলার কত রুপি?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="বর্তমানে ১ USD প্রায় ₹৮৩–৮৫ INR। সঠিক লাইভ রেটের জন্য উপরের কনভার্টার ব্যবহার করুন, কারণ হার প্রতিদিন পরিবর্তন হয়।" data-en="Currently 1 USD is approximately ₹83–85 INR. Use the live converter above for the exact rate, as it changes daily.">বর্তমানে ১ USD প্রায় ₹৮৩–৮৫ INR। সঠিক লাইভ রেটের জন্য উপরের কনভার্টার ব্যবহার করুন, কারণ হার প্রতিদিন পরিবর্তন হয়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ডলার থেকে রুপি কনভার্ট করার সূত্র কী?" data-en="What is the formula to convert dollars to rupees?">ডলার থেকে রুপি কনভার্ট করার সূত্র কী?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="INR = USD × বর্তমান বিনিময় হার। উদাহরণ: ৫০০ ডলার × ₹৮৩ = ₹৪১,৫০০।" data-en="INR = USD × current exchange rate. Example: 500 dollars × ₹83 = ₹41,500.">INR = USD × বর্তমান বিনিময় হার। উদাহরণ: ৫০০ ডলার × ₹৮৩ = ₹৪১,৫০০।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ডলার রেট কেন প্রতিদিন বদলায়?" data-en="Why does the dollar rate change every day?">ডলার রেট কেন প্রতিদিন বদলায়?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="ভারতের বৈদেশিক বাণিজ্য, মুদ্রাস্ফীতি, RBI-এর সিদ্ধান্ত, আন্তর্জাতিক তেলের দাম এবং বৈশ্বিক অর্থনৈতিক পরিস্থিতি USD/INR রেটকে প্রভাবিত করে।" data-en="India's foreign trade, inflation, RBI decisions, international oil prices and global economic conditions all affect the USD/INR rate.">ভারতের বৈদেশিক বাণিজ্য, মুদ্রাস্ফীতি, RBI-এর সিদ্ধান্ত, আন্তর্জাতিক তেলের দাম এবং বৈশ্বিক অর্থনৈতিক পরিস্থিতি USD/INR রেটকে প্রভাবিত করে।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="প্রবাসী থেকে টাকা পাঠাতে সেরা অ্যাপ কোনটি?" data-en="Which is the best app to send money from abroad?">প্রবাসী থেকে টাকা পাঠাতে সেরা অ্যাপ কোনটি?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="Wise (ট্রান্সফারওয়াইজ) সাধারণত সেরা রেট দেয়। Remitly, Western Union ও ব্যাংক ট্রান্সফারও জনপ্রিয়। সর্বদা ফি সহ মোট খরচ তুলনা করুন।" data-en="Wise (TransferWise) generally offers the best rate. Remitly, Western Union and bank transfers are also popular. Always compare total cost including fees.">Wise (ট্রান্সফারওয়াইজ) সাধারণত সেরা রেট দেয়। Remitly, Western Union ও ব্যাংক ট্রান্সফারও জনপ্রিয়। সর্বদা ফি সহ মোট খরচ তুলনা করুন।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ব্যাংক রেট ও মার্কেট রেটের মধ্যে পার্থক্য কী?" data-en="What is the difference between bank rate and market rate?">ব্যাংক রেট ও মার্কেট রেটের মধ্যে পার্থক্য কী?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="ব্যাংক সাধারণত বাজার রেটের চেয়ে ১–২% কম রেট দেয় এবং ট্রান্সফার ফি নেয়। অনলাইন রেমিট্যান্স অ্যাপে প্রায়ই বাজার রেটের কাছাকাছি পাওয়া যায়।" data-en="Banks typically give 1–2% below market rate and charge transfer fees. Online remittance apps often offer rates much closer to the market rate.">ব্যাংক সাধারণত বাজার রেটের চেয়ে ১–২% কম রেট দেয় এবং ট্রান্সফার ফি নেয়। অনলাইন রেমিট্যান্স অ্যাপে প্রায়ই বাজার রেটের কাছাকাছি পাওয়া যায়।</span></p>
+      </details>
+    </div>
+  </section>
 
   <div class="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
     <a href="/currency/usd-to-inr" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">

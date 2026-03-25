@@ -4,8 +4,8 @@ import AdSlot from '../../components/AdSlot.astro';
 ---
 
 <ToolLayout
-  title="আদর্শ ওজন কত হওয়া উচিত — উচ্চতা অনুযায়ী ওজন | BanglaTools"
-  description="আদর্শ ওজন কত হওয়া উচিত জানুন। উচ্চতা অনুযায়ী আদর্শ ওজনের চার্ট ও ক্যালকুলেটর।"
+  title="আদর্শ ওজন কত হওয়া উচিত | BanglaTools"
+  description="উচ্চতা অনুযায়ী আদর্শ ওজন কত হওয়া উচিত জানুন। নারী ও পুরুষের আলাদা ওজন চার্ট, আদর্শ ওজন ক্যালকুলেটর ও ওজন নিয়ন্ত্রণের ব্যবহারিক পরামর্শ।"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → আদর্শ ওজন কত হওয়া উচিত
@@ -87,6 +87,35 @@ import AdSlot from '../../components/AdSlot.astro';
       </ul>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-3">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="৫ ফুট ৪ ইঞ্চি উচ্চতায় আদর্শ ওজন কত?" data-en="What is the ideal weight for 5 feet 4 inches height?">৫ ফুট ৪ ইঞ্চি উচ্চতায় আদর্শ ওজন কত?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="৫'৪'' = ১৬২.৫ সেমি। BMI ১৮.৫–২৪.৯ অনুযায়ী আদর্শ ওজন = ৪৮.৮ থেকে ৬৫.৭ কেজি।" data-en="5'4'' = 162.5 cm. Ideal weight based on BMI 18.5–24.9 = 48.8 to 65.7 kg.">৫'৪'' = ১৬২.৫ সেমি। BMI ১৮.৫–২৪.৯ অনুযায়ী আদর্শ ওজন = ৪৮.৮ থেকে ৬৫.৭ কেজি।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="নারী ও পুরুষের আদর্শ ওজন কি আলাদা?" data-en="Is the ideal weight different for men and women?">নারী ও পুরুষের আদর্শ ওজন কি আলাদা?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="হ্যাঁ, কিছুটা আলাদা। পুরুষের পেশি ভর বেশি হওয়ায় একই উচ্চতায় পুরুষের আদর্শ ওজন সাধারণত ২–৫ কেজি বেশি হয়।" data-en="Yes, slightly different. Men have higher muscle mass, so at the same height their ideal weight is typically 2–5 kg more than women.">হ্যাঁ, কিছুটা আলাদা। পুরুষের পেশি ভর বেশি হওয়ায় একই উচ্চতায় পুরুষের আদর্শ ওজন সাধারণত ২–৫ কেজি বেশি হয়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="BMI দিয়ে আদর্শ ওজন হিসাব হয় কীভাবে?" data-en="How is ideal weight calculated using BMI?">BMI দিয়ে আদর্শ ওজন হিসাব হয় কীভাবে?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="আদর্শ ওজন (কেজি) = BMI × উচ্চতা (মিটার)²। স্বাস্থ্যকর BMI ১৮.৫–২৪.৯ ধরে হিসাব করলে একটি পরিসীমা পাওয়া যায়।" data-en="Ideal weight (kg) = BMI × height (m)². Using the healthy BMI range of 18.5–24.9 gives a weight range.">আদর্শ ওজন (কেজি) = BMI × উচ্চতা (মিটার)²। স্বাস্থ্যকর BMI ১৮.৫–২৪.৯ ধরে হিসাব করলে একটি পরিসীমা পাওয়া যায়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ওজন বেশি হলে কী কী সমস্যা হতে পারে?" data-en="What problems can occur if weight is too high?">ওজন বেশি হলে কী কী সমস্যা হতে পারে?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="অতিরিক্ত ওজনে ডায়াবেটিস, উচ্চ রক্তচাপ, হৃদরোগ, হাঁটু ব্যথা এবং ঘুমের সমস্যা হতে পারে। আদর্শ ওজন বজায় রাখা এই ঝুঁকি কমায়।" data-en="Excess weight can lead to diabetes, high blood pressure, heart disease, knee pain and sleep problems. Maintaining ideal weight reduces these risks.">অতিরিক্ত ওজনে ডায়াবেটিস, উচ্চ রক্তচাপ, হৃদরোগ, হাঁটু ব্যথা এবং ঘুমের সমস্যা হতে পারে। আদর্শ ওজন বজায় রাখা এই ঝুঁকি কমায়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="শিশুদের আদর্শ ওজন কীভাবে মাপা হয়?" data-en="How is ideal weight measured for children?">শিশুদের আদর্শ ওজন কীভাবে মাপা হয়?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="শিশুদের জন্য WHO এর গ্রোথ চার্ট ব্যবহার করা হয়। বয়স ও লিঙ্গ অনুযায়ী ওজন-উচ্চতার অনুপাত দেখা হয়। শিশু বিশেষজ্ঞের সাথে পরামর্শ করুন।" data-en="WHO growth charts are used for children. Weight-for-height ratios are assessed by age and gender. Consult a pediatrician for individual assessment.">শিশুদের জন্য WHO এর গ্রোথ চার্ট ব্যবহার করা হয়। বয়স ও লিঙ্গ অনুযায়ী ওজন-উচ্চতার অনুপাত দেখা হয়। শিশু বিশেষজ্ঞের সাথে পরামর্শ করুন।</span></p>
+      </details>
+    </div>
+  </section>
 
   <div class="mt-8 text-center">
     <a href="/health/ideal-weight" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
