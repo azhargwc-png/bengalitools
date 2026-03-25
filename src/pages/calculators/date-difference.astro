@@ -53,7 +53,7 @@ import AdSlot from '../../components/AdSlot.astro';
 
     <!-- Result -->
     <div id="diff-result" class="hidden">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
         <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
           <p id="diff-years" class="text-3xl font-bold text-teal-700">0</p>
           <p class="text-sm text-gray-600 mt-1"><span data-bn="বছর" data-en="Years">বছর</span></p>
@@ -71,6 +71,10 @@ import AdSlot from '../../components/AdSlot.astro';
           <p class="text-sm text-gray-600 mt-1"><span data-bn="দিন (মোট)" data-en="Days (total)">দিন (মোট)</span></p>
         </div>
       </div>
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center mb-3">
+        <p id="diff-hours" class="text-3xl font-bold text-teal-700">0</p>
+        <p class="text-sm text-gray-600 mt-1"><span data-bn="ঘণ্টা (মোট)" data-en="Hours (total)">ঘণ্টা (মোট)</span></p>
+      </div>
       <div class="bg-white rounded-xl p-4 border border-gray-200 text-sm text-gray-700 space-y-1">
         <p id="diff-summary"></p>
         <p id="diff-business-days" class="text-gray-500"></p>
@@ -80,6 +84,11 @@ import AdSlot from '../../components/AdSlot.astro';
     <div id="diff-error" class="hidden bg-red-50 border border-red-200 rounded-xl p-3 text-red-700 text-sm">
       <span data-bn="শেষের তারিখ শুরুর তারিখের পরে হতে হবে।" data-en="End date must be after start date.">শেষের তারিখ শুরুর তারিখের পরে হতে হবে।</span>
     </div>
+
+    <!-- Reset button -->
+    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm">
+      <span data-bn="পরিষ্কার করুন" data-en="Clear">পরিষ্কার করুন</span> ✕
+    </button>
   </div>
 
   <!-- How to use -->
@@ -307,10 +316,12 @@ import AdSlot from '../../components/AdSlot.astro';
       months += 12;
     }
 
+    const totalHours = totalDays * 24;
     document.getElementById('diff-years')!.textContent = String(years);
     document.getElementById('diff-months')!.textContent = String(months);
     document.getElementById('diff-weeks')!.textContent = String(totalWeeks);
     document.getElementById('diff-days')!.textContent = String(totalDays);
+    document.getElementById('diff-hours')!.textContent = totalHours.toLocaleString();
 
     document.getElementById('diff-summary')!.textContent =
       `${years} বছর ${months} মাস ${days} দিন / ${years} years ${months} months ${days} days`;
@@ -322,4 +333,14 @@ import AdSlot from '../../components/AdSlot.astro';
 
   startInput.addEventListener('change', calculate);
   endInput.addEventListener('change', calculate);
+
+  function resetTool() {
+    startInput.value = '';
+    endInput.value = '';
+    document.getElementById('start-weekday')!.textContent = '';
+    document.getElementById('end-weekday')!.textContent = '';
+    diffResult.classList.add('hidden');
+    diffError.classList.add('hidden');
+  }
+  (window as any).resetTool = resetTool;
 </script>

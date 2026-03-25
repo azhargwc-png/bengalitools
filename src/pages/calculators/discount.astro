@@ -112,6 +112,10 @@ import AdSlot from '../../components/AdSlot.astro';
       </div>
     </div>
 
+    <!-- Reset button -->
+    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm">
+      <span data-bn="পরিষ্কার করুন" data-en="Clear">পরিষ্কার করুন</span> ✕
+    </button>
   </div>
 
   <!-- How to use -->
@@ -367,4 +371,14 @@ import AdSlot from '../../components/AdSlot.astro';
   }
   m2original.addEventListener('input', calcMode2);
   m2sale.addEventListener('input', calcMode2);
+
+  function resetTool() {
+    m1price.value = '';
+    m1discount.value = '';
+    m1result.classList.add('hidden');
+    m2original.value = '';
+    m2sale.value = '';
+    m2result.classList.add('hidden');
+  }
+  (window as any).resetTool = resetTool;
 </script>
