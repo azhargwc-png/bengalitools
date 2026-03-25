@@ -1,0 +1,244 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="আজকের রূপার দাম — Silver Price Today India | BanglaTools"
+  description="আজকের ভারতে রূপার দাম। প্রতি গ্রাম ও কেজিতে লাইভ রেট। আন্তর্জাতিক বাজার অনুযায়ী।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="আজকের রূপার দাম — ভারত" data-en="Silver Price Today India">আজকের রূপার দাম — ভারত</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আন্তর্জাতিক বাজার অনুযায়ী আজকের রূপার দাম — প্রতি গ্রাম ও কেজিতে" data-en="Today's silver price based on international market — per gram and per kg">আন্তর্জাতিক বাজার অনুযায়ী আজকের রূপার দাম — প্রতি গ্রাম ও কেজিতে</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <!-- Live Price Display -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Status bar -->
+    <div class="flex items-center justify-between mb-5 flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <span id="price-change-badge" class="px-3 py-1 rounded-full text-sm font-semibold hidden"></span>
+        <span id="load-status" class="text-gray-500 text-sm">
+          <span data-bn="লোড হচ্ছে..." data-en="Loading...">লোড হচ্ছে...</span>
+        </span>
+      </div>
+      <p class="text-xs text-gray-500">
+        <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
+        <span id="last-updated">—</span>
+      </p>
+    </div>
+
+    <!-- Price Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+      <!-- Per gram -->
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+        <p class="text-sm font-medium text-slate-700 mb-1">
+          <span data-bn="রূপার দাম (প্রতি গ্রাম)" data-en="Silver Price (per gram)">রূপার দাম (প্রতি গ্রাম)</span>
+        </p>
+        <p id="price-per-gram" class="text-2xl font-bold text-slate-600">—</p>
+      </div>
+      <!-- Per 10g -->
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+        <p class="text-sm font-medium text-slate-700 mb-1">
+          <span data-bn="রূপার দাম (প্রতি ১০ গ্রাম)" data-en="Silver Price (per 10 grams)">রূপার দাম (প্রতি ১০ গ্রাম)</span>
+        </p>
+        <p id="price-per-10g" class="text-2xl font-bold text-slate-600">—</p>
+      </div>
+      <!-- Per 100g -->
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+        <p class="text-sm font-medium text-slate-700 mb-1">
+          <span data-bn="রূপার দাম (প্রতি ১০০ গ্রাম)" data-en="Silver Price (per 100 grams)">রূপার দাম (প্রতি ১০০ গ্রাম)</span>
+        </p>
+        <p id="price-per-100g" class="text-2xl font-bold text-slate-600">—</p>
+      </div>
+      <!-- USD per oz for reference -->
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+        <p class="text-sm font-medium text-slate-700 mb-1">
+          <span data-bn="আন্তর্জাতিক দাম (প্রতি ট্রয় আউন্স)" data-en="International Price (per troy oz)">আন্তর্জাতিক দাম (প্রতি ট্রয় আউন্স)</span>
+        </p>
+        <p id="price-per-oz-usd" class="text-2xl font-bold text-slate-600">—</p>
+      </div>
+    </div>
+
+    <!-- Per kg highlight -->
+    <div class="bg-teal-50 rounded-xl p-4 border border-teal-300">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-bold text-teal-800">
+            <span data-bn="রূপার দাম (প্রতি কেজি)" data-en="Silver Price (per kilogram)">রূপার দাম (প্রতি কেজি)</span>
+          </p>
+          <p class="text-sm text-teal-600 mt-0.5">
+            <span data-bn="পাইকারি ও বিনিয়োগের জন্য" data-en="For wholesale and investment purposes">পাইকারি ও বিনিয়োগের জন্য</span>
+          </p>
+        </div>
+        <p id="price-per-kg" class="text-2xl font-bold text-teal-700">—</p>
+      </div>
+    </div>
+
+    <!-- Error message -->
+    <div id="error-msg" class="hidden mt-4 bg-red-50 rounded-xl p-4 border border-red-200">
+      <p class="text-red-700 text-sm">
+        <span data-bn="দাম লোড করা যায়নি। পরে আবার চেষ্টা করুন।" data-en="Could not load prices. Please try again later.">দাম লোড করা যায়নি। পরে আবার চেষ্টা করুন।</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে পড়বেন" data-en="How to Read This">কীভাবে পড়বেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">১.</span><span data-bn="পেজ লোড হলেই আন্তর্জাতিক বাজার থেকে রূপার দাম আনা হয়" data-en="Silver prices are fetched from international markets when the page loads">পেজ লোড হলেই আন্তর্জাতিক বাজার থেকে রূপার দাম আনা হয়</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">২.</span><span data-bn="USD/INR বিনিময় হার দিয়ে রুপিতে রূপান্তর করা হয়" data-en="Prices are converted to INR using the live USD/INR exchange rate">USD/INR বিনিময় হার দিয়ে রুপিতে রূপান্তর করা হয়</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">৩.</span><span data-bn="প্রতি গ্রাম, ১০ গ্রাম, ১০০ গ্রাম ও কেজিতে আলাদাভাবে দেখানো হয়" data-en="Prices shown per gram, per 10g, per 100g and per kilogram">প্রতি গ্রাম, ১০ গ্রাম, ১০০ গ্রাম ও কেজিতে আলাদাভাবে দেখানো হয়</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">৪.</span><span data-bn="সবুজ মানে দাম বেড়েছে, লাল মানে কমেছে" data-en="Green means price is up, red means price is down">সবুজ মানে দাম বেড়েছে, লাল মানে কমেছে</span></li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই পেজ সম্পর্কে" data-en="About This Page">এই পেজ সম্পর্কে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed space-y-3">
+      <p data-lang-bn>
+        রূপার দাম ভারতে গহনা শিল্প ও বিনিয়োগ বাজারে গুরুত্বপূর্ণ ভূমিকা রাখে। সোনার তুলনায় রূপা অনেক সস্তা হওয়ায় এটি সাধারণ মানুষের নাগালের মধ্যে। এই পেজে আন্তর্জাতিক বাজারের স্পট প্রাইস থেকে রূপান্তরিত আজকের রূপার দাম দেখানো হয়। রূপা শুধু গহনায় নয়, ইলেকট্রনিক্স, সোলার প্যানেল ও শিল্পে ব্যাপকভাবে ব্যবহার হয়। বিনিয়োগের জন্য রূপার কয়েন ও বার কেনা জনপ্রিয়। এখানে দেখানো দাম সরাসরি কমোডিটি বাজার থেকে নেওয়া — স্থানীয় দোকানে ট্যাক্স ও মেকিং চার্জ যোগ হবে।
+      </p>
+      <p data-lang-en style="display:none">
+        Silver plays an important role in India's jewellery industry and investment market. Silver is much more affordable than gold, making it accessible to ordinary households. This page shows today's silver price converted from international market spot prices. Silver is used not only in jewellery but also extensively in electronics, solar panels and industrial applications. Buying silver coins and bars is a popular investment method. The prices shown here are based on the international spot price converted to INR. Local shop prices will be higher due to taxes, making charges and dealer margins. Silver prices tend to be more volatile than gold prices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ হিসাব" data-en="Worked Examples">উদাহরণ হিসাব</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ১: রূপার গহনা — ৫০ গ্রামের নেকলেস" data-en="Example 1: Silver jewellery — 50 gram necklace">উদাহরণ ১: রূপার গহনা — ৫০ গ্রামের নেকলেস</span></p>
+        <p class="text-gray-700 mt-2 text-sm"><span data-bn="যদি আজকের রূপার দাম ৯০ টাকা/গ্রাম হয়, তাহলে ৫০ গ্রামের নেকলেসের কাঁচামালের দাম = ৫০ × ৯০ = ₹৪,৫০০। মেকিং চার্জ ও জিএসটি আলাদা।" data-en="If today's silver price is ₹90/gram, then 50 grams of silver costs = 50 × ₹90 = ₹4,500 for raw material. Making charges and GST are added separately.">যদি আজকের রূপার দাম ৯০ টাকা/গ্রাম হয়, তাহলে ৫০ গ্রামের নেকলেসের কাঁচামালের দাম = ৫০ × ৯০ = ₹৪,৫০০। মেকিং চার্জ ও জিএসটি আলাদা।</span></p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ২: রূপার বার বিনিয়োগ — ১ কেজি বার" data-en="Example 2: Silver bar investment — 1 kg bar">উদাহরণ ২: রূপার বার বিনিয়োগ — ১ কেজি বার</span></p>
+        <p class="text-gray-700 mt-2 text-sm"><span data-bn="যদি আজকের রূপার দাম ₹৯০,০০০/কেজি হয়, তাহলে ১ কেজির বার কিনতে মোটামুটি ₹৯০,০০০-৯৫,০০০ লাগবে (ডিলার মার্জিন সহ)। রূপার বার বিনিয়োগে জনপ্রিয় কারণ দাম সোনার চেয়ে অনেক কম।" data-en="If today's silver price is ₹90,000/kg, a 1 kg bar will cost approximately ₹90,000-95,000 (including dealer margin). Silver bars are popular for investment because the price is much lower than gold.">যদি আজকের রূপার দাম ₹৯০,০০০/কেজি হয়, তাহলে ১ কেজির বার কিনতে মোটামুটি ₹৯০,০০০-৯৫,০০০ লাগবে (ডিলার মার্জিন সহ)। রূপার বার বিনিয়োগে জনপ্রিয় কারণ দাম সোনার চেয়ে অনেক কম।</span></p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ৩: রূপার কয়েন উপহার — ১০ গ্রামের কয়েন" data-en="Example 3: Silver coin as gift — 10 gram coin">উদাহরণ ৩: রূপার কয়েন উপহার — ১০ গ্রামের কয়েন</span></p>
+        <p class="text-gray-700 mt-2 text-sm"><span data-bn="যদি আজকের রূপার দাম ৯০ টাকা/গ্রাম হয়, তাহলে ১০ গ্রামের কয়েনের মূল্য = ১০ × ৯০ = ₹৯০০। উৎসব বা বিয়েতে রূপার কয়েন উপহার দেওয়া বাংলায় প্রচলিত।" data-en="If today's silver price is ₹90/gram, a 10 gram coin is worth = 10 × ₹90 = ₹900. Gifting silver coins at festivals or weddings is a popular tradition in Bengal.">যদি আজকের রূপার দাম ৯০ টাকা/গ্রাম হয়, তাহলে ১০ গ্রামের কয়েনের মূল্য = ১০ × ৯০ = ₹৯০০। উৎসব বা বিয়েতে রূপার কয়েন উপহার দেওয়া বাংলায় প্রচলিত।</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="রূপার গুণমান কীভাবে বোঝা যায়?" data-en="How do you determine the quality of silver?">রূপার গুণমান কীভাবে বোঝা যায়?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="রূপার গুণমান হলমার্ক দিয়ে চেনা যায়। ৯৯৯ মানে ৯৯.৯% বিশুদ্ধ (ফাইন সিলভার), ৯২৫ মানে স্টার্লিং সিলভার (৯২.৫% বিশুদ্ধ), এবং ৮০০ মানে ৮০% বিশুদ্ধ। গহনায় সাধারণত ৯২৫ স্টার্লিং সিলভার ব্যবহার হয়।" data-en="Silver quality is identified by hallmarks. 999 means 99.9% pure (fine silver), 925 means sterling silver (92.5% pure), and 800 means 80% pure. Jewellery usually uses 925 sterling silver.">রূপার গুণমান হলমার্ক দিয়ে চেনা যায়। ৯৯৯ মানে ৯৯.৯% বিশুদ্ধ (ফাইন সিলভার), ৯২৫ মানে স্টার্লিং সিলভার (৯২.৫% বিশুদ্ধ), এবং ৮০০ মানে ৮০% বিশুদ্ধ। গহনায় সাধারণত ৯২৫ স্টার্লিং সিলভার ব্যবহার হয়।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="এখানে দেখানো দাম কি দোকানের দামের সাথে মিলবে?" data-en="Will the price here match shop prices?">এখানে দেখানো দাম কি দোকানের দামের সাথে মিলবে?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="এখানে আন্তর্জাতিক স্পট প্রাইস দেখানো হয়। স্থানীয় দোকানে ৩% জিএসটি, মেকিং চার্জ ও ডিলারের মার্জিন যোগ হয়, তাই দোকানের দাম কিছুটা বেশি হবে।" data-en="This shows the international spot price. Local shops add 3% GST, making charges and dealer margin, so shop prices will be somewhat higher.">এখানে আন্তর্জাতিক স্পট প্রাইস দেখানো হয়। স্থানীয় দোকানে ৩% জিএসটি, মেকিং চার্জ ও ডিলারের মার্জিন যোগ হয়, তাই দোকানের দাম কিছুটা বেশি হবে।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="রূপা কি সোনার চেয়ে ভালো বিনিয়োগ?" data-en="Is silver a better investment than gold?">রূপা কি সোনার চেয়ে ভালো বিনিয়োগ?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="রূপা সোনার চেয়ে বেশি ওঠানামা করে — তাই বেশি ঝুঁকি কিন্তু বেশি সুযোগও আছে। রূপার শিল্পক্ষেত্রে চাহিদা বাড়ছে (সোলার, ইলেকট্রনিক্স)। ছোট বিনিয়োগের জন্য রূপা সাশ্রয়ী কারণ দাম সোনার চেয়ে অনেক কম।" data-en="Silver is more volatile than gold — higher risk but also more upside potential. Silver has growing industrial demand (solar, electronics). Silver is affordable for small investments because its price is much lower than gold.">রূপা সোনার চেয়ে বেশি ওঠানামা করে — তাই বেশি ঝুঁকি কিন্তু বেশি সুযোগও আছে। রূপার শিল্পক্ষেত্রে চাহিদা বাড়ছে (সোলার, ইলেকট্রনিক্স)। ছোট বিনিয়োগের জন্য রূপা সাশ্রয়ী কারণ দাম সোনার চেয়ে অনেক কম।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="রূপার দাম প্রতিদিন কতটা বদলায়?" data-en="How much does silver price change daily?">রূপার দাম প্রতিদিন কতটা বদলায়?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="রূপার দাম সোনার তুলনায় অনেক বেশি ওঠানামা করে। একদিনে ২-৩% পরিবর্তন স্বাভাবিক, কখনও কখনও ৫-১০% পর্যন্তও হতে পারে। এটি আন্তর্জাতিক বাজারের প্রবণতা, ডলারের মূল্য ও শিল্প চাহিদার উপর নির্ভর করে।" data-en="Silver prices are much more volatile than gold. A daily change of 2-3% is normal, sometimes reaching 5-10%. This depends on international market trends, the value of the dollar and industrial demand.">রূপার দাম সোনার তুলনায় অনেক বেশি ওঠানামা করে। একদিনে ২-৩% পরিবর্তন স্বাভাবিক, কখনও কখনও ৫-১০% পর্যন্তও হতে পারে। এটি আন্তর্জাতিক বাজারের প্রবণতা, ডলারের মূল্য ও শিল্প চাহিদার উপর নির্ভর করে।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ভারতে রূপা কেনার সেরা উপায় কোনটি?" data-en="What is the best way to buy silver in India?">ভারতে রূপা কেনার সেরা উপায় কোনটি?</span></summary>
+        <p class="mt-3 text-gray-700 text-sm"><span data-bn="বিনিয়োগের জন্য হলমার্কযুক্ত রূপার কয়েন বা বার কিনুন। ডিজিটাল সিলভারও একটি বিকল্প — অ্যাপের মাধ্যমে অল্প টাকায় কেনা যায়। গহনায় কিনলে ৯২৫ স্টার্লিং সিলভার দেখুন এবং হলমার্ক যাচাই করুন।" data-en="For investment, buy hallmarked silver coins or bars. Digital silver is also an option — you can buy small amounts through apps. For jewellery, look for 925 sterling silver and verify the hallmark.">বিনিয়োগের জন্য হলমার্কযুক্ত রূপার কয়েন বা বার কিনুন। ডিজিটাল সিলভারও একটি বিকল্প — অ্যাপের মাধ্যমে অল্প টাকায় কেনা যায়। গহনায় কিনলে ৯২৫ স্টার্লিং সিলভার দেখুন এবং হলমার্ক যাচাই করুন।</span></p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    { url: "/india/gold-price", nameBn: "আজকের সোনার দাম", nameEn: "Gold Price Today", descBn: "ভারতে আজকের সোনার দাম", descEn: "Today's gold price in India", icon: "🥇" },
+    { url: "/currency/usd-to-inr", nameBn: "ডলার থেকে রুপি", nameEn: "USD to INR", descBn: "আজকের ডলার রেট", descEn: "Live dollar exchange rate", icon: "💵" },
+    { url: "/india/gst-calculator", nameBn: "জিএসটি ক্যালকুলেটর", nameEn: "GST Calculator", descBn: "গহনা কেনায় জিএসটি হিসাব করুন", descEn: "Calculate GST on jewellery", icon: "🧾" }
+  ]} />
+</ToolLayout>
+
+<script is:inline>
+var TROY_OZ_TO_GRAMS = 31.1035;
+
+function fmtINR(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function setStatus(text, isError) {
+  var el = document.getElementById('load-status');
+  if (el) el.textContent = text;
+  if (isError) {
+    document.getElementById('error-msg').classList.remove('hidden');
+  }
+}
+
+function showChange(ch, chp) {
+  var badge = document.getElementById('price-change-badge');
+  if (!badge) return;
+  badge.classList.remove('hidden');
+  if (ch >= 0) {
+    badge.textContent = '▲ $' + ch.toFixed(2) + ' (' + chp.toFixed(2) + '%)';
+    badge.className = 'px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800';
+  } else {
+    badge.textContent = '▼ $' + Math.abs(ch).toFixed(2) + ' (' + Math.abs(chp).toFixed(2) + '%)';
+    badge.className = 'px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-800';
+  }
+}
+
+async function loadSilverPrice() {
+  try {
+    var silverRes = await fetch('https://api.gold-api.com/price/XAG');
+    if (!silverRes.ok) throw new Error('silver api error');
+    var silverData = await silverRes.json();
+
+    var fxRes = await fetch('https://api.frankfurter.app/latest?from=USD&to=INR');
+    if (!fxRes.ok) throw new Error('fx api error');
+    var fxData = await fxRes.json();
+
+    var usdInr = fxData.rates.INR;
+    var pricePerOzUSD = silverData.price;
+    var pricePerGramUSD = pricePerOzUSD / TROY_OZ_TO_GRAMS;
+    var pricePerGramINR = pricePerGramUSD * usdInr;
+
+    document.getElementById('price-per-gram').textContent = fmtINR(pricePerGramINR);
+    document.getElementById('price-per-10g').textContent = fmtINR(pricePerGramINR * 10);
+    document.getElementById('price-per-100g').textContent = fmtINR(pricePerGramINR * 100);
+    document.getElementById('price-per-kg').textContent = fmtINR(pricePerGramINR * 1000);
+    document.getElementById('price-per-oz-usd').textContent = '$' + pricePerOzUSD.toFixed(2);
+
+    if (silverData.ch !== undefined && silverData.chp !== undefined) {
+      showChange(silverData.ch, silverData.chp);
+    }
+
+    var now = new Date();
+    document.getElementById('last-updated').textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+    var lang = (typeof getLang === 'function') ? getLang() : 'bn';
+    setStatus(lang === 'bn' ? 'লাইভ রেট — আন্তর্জাতিক বাজার' : 'Live rate — International market', false);
+
+  } catch (e) {
+    var lang = (typeof getLang === 'function') ? getLang() : 'bn';
+    setStatus(lang === 'bn' ? 'লোড করা যায়নি' : 'Could not load', true);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadSilverPrice);
+</script>

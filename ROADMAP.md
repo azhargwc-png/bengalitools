@@ -90,6 +90,8 @@
 | Bengali calendar | বাংলা তারিখ | /india/bengali-calendar | [x] | [x] | [ ] |
 | Number to Bengali | সংখ্যা বাংলায় | /india/number-to-bengali | [x] | [x] | [ ] |
 | Salary to hourly | বেতন ক্যালকুলেটর | /india/salary-to-hourly | [x] | [x] | [ ] |
+| Gold price today | আজকের সোনার দাম | /india/gold-price | [x] | [x] | [ ] |
+| Silver price today | আজকের রূপার দাম | /india/silver-price | [x] | [x] | [ ] |
 
 ---
 
@@ -227,7 +229,7 @@ Add ideas here as they come — never lose an idea
 - [ ] Rickshaw/auto fare estimator
 - [ ] Bengali recipe nutrition calculator
 - [ ] School grade percentage calculator
-- [ ] Gold price calculator (grams to price)
+- [x] Gold price calculator — built at /india/gold-price
 - [ ] Electricity bill estimator
 - [ ] Mobile data calculator
 - [ ] Currency trend chart (7 days, 30 days)
