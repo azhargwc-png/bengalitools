@@ -1,0 +1,136 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+---
+
+<ToolLayout
+  title="যোগাযোগ করুন | BanglaTools"
+  description="BanglaTools-এর সাথে যোগাযোগ করুন। আপনার প্রশ্ন, পরামর্শ বা সমস্যা জানান।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="যোগাযোগ করুন" data-en="Contact Us">যোগাযোগ করুন</span>
+  </h1>
+  <p class="text-gray-600 mb-8 text-lg">
+    <span data-bn="আমাদের কাছে যেকোনো প্রশ্ন, পরামর্শ বা নতুন টুলের সুপারিশ পাঠান" data-en="Send us your questions, suggestions or tool requests">আমাদের কাছে যেকোনো প্রশ্ন, পরামর্শ বা নতুন টুলের সুপারিশ পাঠান</span>
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Contact Form -->
+    <div class="md:col-span-2">
+      <form id="contact-form" class="space-y-5 bg-gray-50 rounded-2xl p-6 border border-gray-200">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="আপনার নাম *" data-en="Your Name *">আপনার নাম *</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+            placeholder="নাম লিখুন"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="ইমেইল ঠিকানা *" data-en="Email Address *">ইমেইল ঠিকানা *</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+            placeholder="email@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="বিষয়" data-en="Subject">বিষয়</span>
+          </label>
+          <select
+            id="subject"
+            name="subject"
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px] bg-white"
+          >
+            <option value="" data-bn="বিষয় নির্বাচন করুন" data-en="Select a subject">বিষয় নির্বাচন করুন</option>
+            <option value="suggestion" data-bn="নতুন টুলের পরামর্শ" data-en="New tool suggestion">নতুন টুলের পরামর্শ</option>
+            <option value="bug" data-bn="বাগ রিপোর্ট" data-en="Bug report">বাগ রিপোর্ট</option>
+            <option value="feedback" data-bn="সাধারণ মন্তব্য" data-en="General feedback">সাধারণ মন্তব্য</option>
+            <option value="other" data-bn="অন্যান্য" data-en="Other">অন্যান্য</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="বার্তা *" data-en="Message *">বার্তা *</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows="5"
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none resize-none"
+            placeholder="আপনার বার্তা এখানে লিখুন..."
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors min-h-[44px] text-lg"
+        >
+          <span data-bn="বার্তা পাঠান" data-en="Send Message">বার্তা পাঠান</span>
+        </button>
+
+        <div id="form-success" class="hidden bg-green-50 border border-green-300 rounded-xl p-4 text-green-800 text-center">
+          <span data-bn="আপনার বার্তা পাঠানো হয়েছে। ধন্যবাদ!" data-en="Your message has been sent. Thank you!">আপনার বার্তা পাঠানো হয়েছে। ধন্যবাদ!</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- Info sidebar -->
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-5 border border-teal-200">
+        <h2 class="font-bold text-teal-800 mb-2">
+          <span data-bn="আমাদের লক্ষ্য" data-en="Our Goal">আমাদের লক্ষ্য</span>
+        </h2>
+        <p class="text-sm text-gray-700" data-bn="বাংলা ভাষায় সেরা বিনামূল্যে টুলস তৈরি করা।" data-en="Building the best free tools in Bengali.">বাংলা ভাষায় সেরা বিনামূল্যে টুলস তৈরি করা।</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h2 class="font-bold text-gray-900 mb-2">
+          <span data-bn="সাহায্য করুন" data-en="Help Us Improve">সাহায্য করুন</span>
+        </h2>
+        <p class="text-sm text-gray-700" data-lang-bn>আপনার কাছে নতুন টুলের কোনো আইডিয়া থাকলে আমাদের জানান। আমরা সবচেয়ে চাহিদার টুলসগুলো প্রথমে তৈরি করি।</p>
+        <p class="text-sm text-gray-700" data-lang-en style="display:none">If you have ideas for new tools, let us know. We prioritise building the tools that users request most.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+        <h2 class="font-bold text-gray-900 mb-3">
+          <span data-bn="দরকারী লিঙ্ক" data-en="Useful Links">দরকারী লিঙ্ক</span>
+        </h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about" class="text-teal-700 hover:underline" data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</a></li>
+          <li><a href="/privacy-policy" class="text-teal-700 hover:underline" data-bn="গোপনীয়তা নীতি" data-en="Privacy Policy">গোপনীয়তা নীতি</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ToolLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('form-success');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (success) {
+      success.classList.remove('hidden');
+      form.reset();
+      // Re-apply language after reset
+      if (typeof window.applyLang === 'function') {
+        window.applyLang(window.getLang());
+      }
+    }
+  });
+</script>

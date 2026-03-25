@@ -1,0 +1,243 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { foods } from '../../data/foods.js';
+
+// Group foods by category
+const categoryOrder = ['staple', 'fish', 'egg', 'meat', 'veg', 'dairy', 'sweet', 'snack', 'main', 'beverage', 'fruit', 'vegetable', 'indian', 'international'];
+
+const categoryLabels = {
+  staple: { bn: 'ভাত, রুটি ও প্রধান খাবার', en: 'Rice, Bread & Staples' },
+  fish: { bn: 'মাছের রান্না', en: 'Fish Dishes' },
+  egg: { bn: 'ডিমের রান্না', en: 'Egg Dishes' },
+  meat: { bn: 'মাংসের রান্না', en: 'Meat Dishes' },
+  veg: { bn: 'সবজির রান্না', en: 'Vegetable Dishes' },
+  dairy: { bn: 'দুগ্ধজাত খাবার', en: 'Dairy Products' },
+  sweet: { bn: 'বাংলা মিষ্টি', en: 'Bengali Sweets' },
+  snack: { bn: 'বাংলা স্ন্যাকস', en: 'Bengali Snacks' },
+  main: { bn: 'মূল খাবার', en: 'Main Courses' },
+  beverage: { bn: 'পানীয়', en: 'Beverages' },
+  fruit: { bn: 'ফল', en: 'Fruits' },
+  vegetable: { bn: 'কাঁচা সবজি', en: 'Raw Vegetables' },
+  indian: { bn: 'ভারতীয় খাবার', en: 'Indian Foods' },
+  international: { bn: 'আন্তর্জাতিক খাবার', en: 'International Foods' },
+};
+
+const grouped = categoryOrder.reduce((acc, cat) => {
+  const items = foods.filter(f => f.category === cat);
+  if (items.length > 0) acc[cat] = items;
+  return acc;
+}, {});
+---
+
+<ToolLayout
+  title="বাংলা খাবারের ক্যালরি চার্ট | BanglaTools"
+  description="সমস্ত বাংলা খাবারের ক্যালরি চার্ট। ১০০ গ্রামে ও সাধারণ পরিমাণে ক্যালরি।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="বাংলা খাবারের ক্যালরি চার্ট" data-en="Bengali Food Calorie Chart">বাংলা খাবারের ক্যালরি চার্ট</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="১২০+ বাংলা খাবারের সম্পূর্ণ ক্যালরি তালিকা" data-en="Complete calorie reference for 120+ Bengali foods">১২০+ বাংলা খাবারের সম্পূর্ণ ক্যালরি তালিকা</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Print button + intro -->
+  <div class="flex items-center justify-between mb-6">
+    <p class="text-sm text-gray-500">
+      <span data-bn="ক্যাটাগরি অনুযায়ী সাজানো সম্পূর্ণ ক্যালরি চার্ট" data-en="Complete calorie chart organised by category">ক্যাটাগরি অনুযায়ী সাজানো সম্পূর্ণ ক্যালরি চার্ট</span>
+    </p>
+    <button onclick="window.print()" class="px-4 py-2 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition-all flex items-center gap-2 print:hidden">
+      <span>🖨️</span>
+      <span data-bn="প্রিন্ট করুন" data-en="Print">প্রিন্ট করুন</span>
+    </button>
+  </div>
+
+  <!-- Introduction text -->
+  <div class="bg-teal-50 border border-teal-200 rounded-2xl p-5 mb-8 text-gray-700 leading-relaxed">
+    <p data-lang-bn class="mb-3">
+      বাংলা খাবারের ক্যালরি জানা স্বাস্থ্যকর জীবনযাপনের একটি গুরুত্বপূর্ণ অংশ। আমাদের দৈনন্দিন খাদ্যতালিকায় ভাত, ডাল, মাছ, সবজি থেকে শুরু করে মিষ্টি, স্ন্যাকস পর্যন্ত বিভিন্ন ধরনের খাবার থাকে। প্রতিটি খাবারের ক্যালরির পরিমাণ জানলে আমরা সুষম খাদ্য পরিকল্পনা করতে পারি এবং ওজন নিয়ন্ত্রণে রাখতে পারি।
+    </p>
+    <p data-lang-bn>
+      বাংলাদেশ ও পশ্চিমবঙ্গের ঐতিহ্যবাহী খাবারগুলো সাধারণত চাল, ডাল, মাছ ও সবজিনির্ভর — যা পুষ্টিগুণে সমৃদ্ধ। ইলিশ মাছে ওমেগা-৩, সবুজ শাকসবজিতে আয়রন ও ভিটামিন, এবং দইয়ে প্রোবায়োটিক থাকে। এই চার্টে ১২০টিরও বেশি খাবারের ক্যালরি প্রতি ১০০ গ্রামে এবং সাধারণ পরিবেশনের পরিমাণে দেওয়া হয়েছে।
+    </p>
+    <p data-lang-en style="display:none">
+      Knowing the calorie content of Bengali foods is an important part of healthy living. Our daily diet includes everything from rice, dal and fish to sweets, snacks and fruits. Understanding calorie counts allows us to plan balanced meals and maintain a healthy weight. Traditional Bengali and Indian foods are generally rich in nutrients — hilsa fish is high in omega-3, green vegetables are rich in iron and vitamins, and yoghurt contains beneficial probiotics. This chart provides calorie data for over 120 foods, showing both calories per 100g and per typical serving size.
+    </p>
+  </div>
+
+  <!-- Food table by category -->
+  <div class="space-y-8 mb-8" id="food-chart">
+    {categoryOrder.map(cat => {
+      const items = grouped[cat];
+      if (!items || items.length === 0) return null;
+      const label = categoryLabels[cat];
+      return (
+        <div class="food-category-section">
+          <h2 class="text-lg font-bold text-teal-700 mb-3 flex items-center gap-2">
+            <span class="w-2 h-6 bg-teal-500 rounded-full inline-block"></span>
+            <span data-bn={label.bn} data-en={label.en}>{label.bn}</span>
+            <span class="text-sm font-normal text-gray-400">/ {label.en}</span>
+          </h2>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr class="bg-teal-600 text-white">
+                  <th class="text-left px-4 py-3 font-semibold">
+                    <span data-bn="খাবারের নাম" data-en="Food Name">খাবারের নাম</span>
+                  </th>
+                  <th class="text-left px-4 py-3 font-semibold hidden sm:table-cell">
+                    <span data-bn="ইংরেজি নাম" data-en="English Name">ইংরেজি নাম</span>
+                  </th>
+                  <th class="text-right px-4 py-3 font-semibold whitespace-nowrap">
+                    <span data-bn="প্রতি ১০০g" data-en="Per 100g">প্রতি ১০০g</span>
+                  </th>
+                  <th class="text-right px-4 py-3 font-semibold whitespace-nowrap hidden sm:table-cell">
+                    <span data-bn="পরিবেশন" data-en="Serving">পরিবেশন</span>
+                  </th>
+                  <th class="text-right px-4 py-3 font-semibold whitespace-nowrap">
+                    <span data-bn="পরিবেশনে ক্যালরি" data-en="Serving Cal">পরিবেশনে ক্যালরি</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((food, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td class="px-4 py-3 font-semibold text-gray-900">{food.bn}</td>
+                    <td class="px-4 py-3 text-gray-500 hidden sm:table-cell">{food.en}</td>
+                    <td class="px-4 py-3 text-right font-bold text-teal-700">{food.calories}</td>
+                    <td class="px-4 py-3 text-right text-gray-400 hidden sm:table-cell">{food.serving}g</td>
+                    <td class="px-4 py-3 text-right font-semibold text-gray-700">{food.servingCal}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Notes -->
+  <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 mb-8 text-sm text-gray-700">
+    <p class="font-semibold text-yellow-800 mb-2">
+      <span data-bn="গুরুত্বপূর্ণ নোট" data-en="Important Note">গুরুত্বপূর্ণ নোট</span>
+    </p>
+    <ul class="space-y-1 list-disc list-inside">
+      <li><span data-bn="ক্যালরির মান গড় — রান্নার পদ্ধতির উপর ভিত্তি করে ভিন্ন হতে পারে" data-en="Calorie values are averages — may vary based on cooking method">ক্যালরির মান গড় — রান্নার পদ্ধতির উপর ভিত্তি করে ভিন্ন হতে পারে</span></li>
+      <li><span data-bn="চিকিৎসাগত পরামর্শের জন্য নিবন্ধিত পুষ্টিবিদের সাথে যোগাযোগ করুন" data-en="Consult a registered nutritionist for medical dietary advice">চিকিৎসাগত পরামর্শের জন্য নিবন্ধিত পুষ্টিবিদের সাথে যোগাযোগ করুন</span></li>
+      <li><span data-bn="তথ্যসূত্র: ICMR, NIN ও USDA ডেটাবেজ" data-en="Sources: ICMR, NIN and USDA databases">তথ্যসূত্র: ICMR, NIN ও USDA ডেটাবেজ</span></li>
+    </ul>
+  </div>
+
+  <!-- About Bengali food and calories section -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="বাংলা খাবার ও ক্যালরি সম্পর্কে" data-en="About Bengali Food and Calories">বাংলা খাবার ও ক্যালরি সম্পর্কে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed space-y-4">
+      <p data-lang-bn>
+        বাংলা রান্নার বৈচিত্র্য অসাধারণ। পশ্চিমবঙ্গ ও বাংলাদেশের ঐতিহ্যবাহী খাবার মূলত চালভিত্তিক — সাদা ভাত, খিচুড়ি, পান্তাভাত আমাদের দৈনন্দিন জীবনের অংশ। এর সাথে ডাল, বিভিন্ন ধরনের মাছ, সবজির তরকারি, ডিম ও মাংস মিলিয়ে তৈরি হয় সুষম বাংলা থালা।
+      </p>
+      <p data-lang-bn>
+        ইলিশ, রুই, কাতলা — এই মাছগুলো বাংলার খাদ্য সংস্কৃতির অবিচ্ছেদ্য অংশ। ইলিশ মাছে প্রচুর ওমেগা-৩ ফ্যাটি অ্যাসিড থাকে যা হৃদরোগের ঝুঁকি কমায়। শীতকালে পিঠাপুলি, বিশেষত চিতই, ভাপা ও পাটিশাপটা — এগুলো বাংলার ঐতিহ্যবাহী মিষ্টি খাবার। রসগোল্লা, সন্দেশ, মিষ্টি দই — এই মিষ্টিগুলো বাংলার পরিচয়।
+      </p>
+      <p data-lang-en style="display:none">
+        Bengali cuisine is extraordinarily diverse. Traditional foods from West Bengal and Bangladesh are primarily rice-based — plain rice, khichuri and panta bhat are everyday staples. Combined with dal, various fish preparations, vegetable dishes, eggs and meat, these form the balanced Bengali thali. Hilsa, rohu and katla are integral to Bengali food culture. Hilsa is particularly rich in omega-3 fatty acids, which help reduce the risk of heart disease. Seasonal sweets like pitha (rice cakes) during winter, and year-round desserts like rasgolla, sandesh and mishti doi, are iconic symbols of Bengali culture and identity.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বাংলা খাবারে কি সাধারণত বেশি ক্যালরি থাকে?" data-en="Do Bengali foods generally have high calories?">বাংলা খাবারে কি সাধারণত বেশি ক্যালরি থাকে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না, ভাত-ডাল-মাছ-সবজির ঐতিহ্যবাহী বাংলা খাবার সাধারণত সুষম ও কম ক্যালরির। তবে পরোটা, বিরিয়ানি, মিষ্টি ও ভাজাপোড়া খাবারে তুলনামূলক বেশি ক্যালরি থাকে।" data-en="No, traditional Bengali rice-dal-fish-vegetable meals are generally balanced and moderate in calories. However, parathas, biryani, sweets and fried foods are relatively higher in calories.">না, ভাত-ডাল-মাছ-সবজির ঐতিহ্যবাহী বাংলা খাবার সাধারণত সুষম ও কম ক্যালরির। তবে পরোটা, বিরিয়ানি, মিষ্টি ও ভাজাপোড়া খাবারে তুলনামূলক বেশি ক্যালরি থাকে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কোন বাংলা খাবারে সবচেয়ে কম ক্যালরি?" data-en="Which Bengali food has the fewest calories?">কোন বাংলা খাবারে সবচেয়ে কম ক্যালরি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ফুচকা (পানিপুরি) প্রতি পরিবেশনে মাত্র ২১ ক্যালরি! এছাড়া তরমুজ (৩০ kcal/100g), শসা (১৬ kcal/100g), টমেটো (১৮ kcal/100g) খুবই কম ক্যালরির।" data-en="Fuchka (pani puri) has only 21 calories per serving! Watermelon (30 kcal/100g), cucumber (16 kcal/100g) and tomato (18 kcal/100g) are also very low calorie.">ফুচকা (পানিপুরি) প্রতি পরিবেশনে মাত্র ২১ ক্যালরি! এছাড়া তরমুজ (৩০ kcal/100g), শসা (১৬ kcal/100g), টমেটো (১৮ kcal/100g) খুবই কম ক্যালরির।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ওজন কমাতে বাংলা খাদ্যতালিকায় কোন খাবার রাখব?" data-en="Which Bengali foods are good for weight loss?">ওজন কমাতে বাংলা খাদ্যতালিকায় কোন খাবার রাখব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সিদ্ধ মাছ, শাক ভাজা, পালং শাক, ডাল, সবজির তরকারি ও দই কম ক্যালরি ও পুষ্টিগুণে ভরপুর। ভাত পরিমিত পরিমাণে রাখুন এবং ভাজাপোড়া এড়িয়ে চলুন।" data-en="Steamed fish, stir-fried greens, spinach, dal, vegetable dishes and yoghurt are low calorie and highly nutritious. Eat rice in moderation and avoid fried foods.">সিদ্ধ মাছ, শাক ভাজা, পালং শাক, ডাল, সবজির তরকারি ও দই কম ক্যালরি ও পুষ্টিগুণে ভরপুর। ভাত পরিমিত পরিমাণে রাখুন এবং ভাজাপোড়া এড়িয়ে চলুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পান্তা ভাতে কি সাদা ভাতের চেয়ে কম ক্যালরি?" data-en="Does panta bhat (fermented rice) have fewer calories than plain rice?">পান্তা ভাতে কি সাদা ভাতের চেয়ে কম ক্যালরি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, পান্তা ভাতে প্রতি ১০০g মাত্র ৭৩ ক্যালরি, যেখানে সাদা ভাতে ১৩০ ক্যালরি। গাঁজানো প্রক্রিয়ায় পুষ্টিগুণও বাড়ে।" data-en="Yes, panta bhat has only 73 calories per 100g compared to 130 for plain cooked rice. The fermentation process also enhances its nutritional value.">হ্যাঁ, পান্তা ভাতে প্রতি ১০০g মাত্র ৭৩ ক্যালরি, যেখানে সাদা ভাতে ১৩০ ক্যালরি। গাঁজানো প্রক্রিয়ায় পুষ্টিগুণও বাড়ে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="নারকেল নাড়ুতে কত ক্যালরি?" data-en="How many calories in coconut ladoo?">নারকেল নাড়ুতে কত ক্যালরি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="নারকেল নাড়ু প্রতি ১০০g = ৩৯০ kcal। একটি নারকেল নাড়ু (৩০g) = প্রায় ১১৭ kcal। নারকেলের উচ্চ চর্বির কারণে ক্যালরি বেশি।" data-en="Coconut ladoo: 390 kcal per 100g. One coconut ladoo (30g) = approx 117 kcal. The high fat content of coconut accounts for the higher calorie count.">নারকেল নাড়ু প্রতি ১০০g = ৩৯০ kcal। একটি নারকেল নাড়ু (৩০g) = প্রায় ১১৭ kcal। নারকেলের উচ্চ চর্বির কারণে ক্যালরি বেশি।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/food/calorie-lookup",
+      nameBn: "খাবারের ক্যালরি লুকআপ",
+      nameEn: "Food Calorie Lookup",
+      descBn: "বাংলা খাবারের ক্যালরি সার্চ করুন",
+      descEn: "Search Bengali food calories",
+      icon: "🔍"
+    },
+    {
+      url: "/food/recipe-calculator",
+      nameBn: "রেসিপি ক্যালরি ক্যালকুলেটর",
+      nameEn: "Recipe Calorie Calculator",
+      descBn: "রেসিপির মোট ক্যালরি হিসাব করুন",
+      descEn: "Calculate total calories for a recipe",
+      icon: "🍳"
+    },
+    {
+      url: "/health/calorie-calculator",
+      nameBn: "ক্যালরি ক্যালকুলেটর",
+      nameEn: "Calorie Calculator",
+      descBn: "দৈনিক ক্যালরির চাহিদা জানুন",
+      descEn: "Find your daily calorie needs",
+      icon: "🔥"
+    }
+  ]} />
+</ToolLayout>
+
+<style>
+  @media print {
+    .print\:hidden { display: none !important; }
+    body { font-size: 11px; }
+    table { break-inside: avoid; }
+    .food-category-section { break-inside: avoid; }
+  }
+</style>

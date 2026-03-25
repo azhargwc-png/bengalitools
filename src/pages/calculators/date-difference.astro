@@ -1,0 +1,325 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="দুই তারিখের মধ্যে কত দিন | BanglaTools"
+  description="দুটি তারিখের মধ্যে পার্থক্য বের করুন। বছর, মাস, সপ্তাহ ও দিনে দেখুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="দুই তারিখের মধ্যে কত দিন" data-en="Date Difference Calculator">দুই তারিখের মধ্যে কত দিন</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="দুটি তারিখের মধ্যে পার্থক্য বছর, মাস, সপ্তাহ ও দিনে জানুন" data-en="Find the difference between two dates in years, months, weeks and days">দুটি তারিখের মধ্যে পার্থক্য বছর, মাস, সপ্তাহ ও দিনে জানুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <label class="block text-sm font-medium text-gray-700" for="start-date">
+            <span data-bn="শুরুর তারিখ" data-en="Start Date">শুরুর তারিখ</span>
+          </label>
+          <button id="btn-today" class="text-xs text-teal-600 font-semibold hover:underline">
+            <span data-bn="আজ থেকে" data-en="From Today">আজ থেকে</span>
+          </button>
+        </div>
+        <input
+          type="date"
+          id="start-date"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+        <p id="start-weekday" class="text-xs text-teal-600 mt-1 font-medium"></p>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="end-date">
+          <span data-bn="শেষের তারিখ" data-en="End Date">শেষের তারিখ</span>
+        </label>
+        <input
+          type="date"
+          id="end-date"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+        <p id="end-weekday" class="text-xs text-teal-600 mt-1 font-medium"></p>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="diff-result" class="hidden">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="diff-years" class="text-3xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1"><span data-bn="বছর" data-en="Years">বছর</span></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="diff-months" class="text-3xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1"><span data-bn="মাস" data-en="Months">মাস</span></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="diff-weeks" class="text-3xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1"><span data-bn="সপ্তাহ" data-en="Weeks">সপ্তাহ</span></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="diff-days" class="text-3xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1"><span data-bn="দিন (মোট)" data-en="Days (total)">দিন (মোট)</span></p>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl p-4 border border-gray-200 text-sm text-gray-700 space-y-1">
+        <p id="diff-summary"></p>
+        <p id="diff-business-days" class="text-gray-500"></p>
+      </div>
+    </div>
+
+    <div id="diff-error" class="hidden bg-red-50 border border-red-200 rounded-xl p-3 text-red-700 text-sm">
+      <span data-bn="শেষের তারিখ শুরুর তারিখের পরে হতে হবে।" data-en="End date must be after start date.">শেষের তারিখ শুরুর তারিখের পরে হতে হবে।</span>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="শুরুর তারিখ বেছে নিন — 'আজ থেকে' বাটনে ক্লিক করলে আজকের তারিখ বসে যাবে" data-en="Select start date — click 'From Today' to set today's date automatically">শুরুর তারিখ বেছে নিন — 'আজ থেকে' বাটনে ক্লিক করলে আজকের তারিখ বসে যাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="শেষের তারিখ বেছে নিন" data-en="Select the end date">শেষের তারিখ বেছে নিন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="বছর, মাস, সপ্তাহ ও মোট দিন স্বয়ংক্রিয়ভাবে দেখাবে। প্রতিটি তারিখের বারও দেখাবে।" data-en="Years, months, weeks and total days appear automatically, along with the day of the week for each date.">বছর, মাস, সপ্তাহ ও মোট দিন স্বয়ংক্রিয়ভাবে দেখাবে। প্রতিটি তারিখের বারও দেখাবে।</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই তারিখ পার্থক্য ক্যালকুলেটরটি দুটি তারিখের মধ্যে ব্যবধান বছর, মাস, সপ্তাহ এবং মোট দিনে প্রকাশ করে। শুধু দিন নয় — প্রতিটি তারিখ কোন বার (সোমবার, মঙ্গলবার ইত্যাদি) সেটাও দেখায়। 'আজ থেকে' বাটনটি স্বয়ংক্রিয়ভাবে আজকের তারিখ শুরুর তারিখে বসিয়ে দেয় — যা ডেডলাইন বা বিশেষ দিন গণনার জন্য দরকারি। পরীক্ষার আগে কতদিন বাকি, বিবাহবার্ষিকী কত দিন পরে, চুক্তির মেয়াদ কত — এইসব প্রশ্নের উত্তর দ্রুত পাওয়া যাবে। লিপ ইয়ার সঠিকভাবে হিসাবে ধরা হয়।
+      </p>
+      <p data-lang-en style="display:none">
+        This date difference calculator shows the gap between two dates expressed in years, months, weeks, and total days. It also tells you what day of the week each date falls on. The "From Today" button pre-fills the start date with today's date, which is handy for countdowns to exams, anniversaries, contract expiry dates, and other deadlines. Leap years are handled correctly. The tool is useful for project planning, age verification, loan duration calculation, and any situation where you need an accurate count of calendar days between two dates.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: স্বাধীনতা দিবস থেকে নববর্ষ" data-en="Example 1: Independence Day to New Year">উদাহরণ ১: স্বাধীনতা দিবস থেকে নববর্ষ</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="শুরু: ১৫ আগস্ট ২০২৫, শেষ: ১ জানুয়ারি ২০২৬" data-en="Start: 15 Aug 2025, End: 1 Jan 2026">শুরু: ১৫ আগস্ট ২০২৫, শেষ: ১ জানুয়ারি ২০২৬</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="পার্থক্য: ০ বছর ৪ মাস ১৭ দিন = মোট ১৩৯ দিন" data-en="Difference: 0 years 4 months 17 days = 139 total days">পার্থক্য: ০ বছর ৪ মাস ১৭ দিন = মোট ১৩৯ দিন</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: চুক্তির মেয়াদ" data-en="Example 2: Contract duration">উদাহরণ ২: চুক্তির মেয়াদ</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="শুরু: ১ জানুয়ারি ২০২৪, শেষ: ৩১ ডিসেম্বর ২০২৪" data-en="Start: 1 Jan 2024, End: 31 Dec 2024">শুরু: ১ জানুয়ারি ২০২৪, শেষ: ৩১ ডিসেম্বর ২০২৪</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="পার্থক্য: ১১ মাস ৩০ দিন = মোট ৩৬৫ দিন (লিপ ইয়ার)" data-en="Difference: 11 months 30 days = 365 total days (leap year)">পার্থক্য: ১১ মাস ৩০ দিন = মোট ৩৬৫ দিন (লিপ ইয়ার)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: পরীক্ষার আগে কতদিন বাকি" data-en="Example 3: Days left before exam">উদাহরণ ৩: পরীক্ষার আগে কতদিন বাকি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="শুরু: আজকের তারিখ, শেষ: পরীক্ষার তারিখ" data-en="Start: today's date, End: exam date">'আজ থেকে' বাটন দিয়ে শুরু, শেষে পরীক্ষার তারিখ দিন</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="মোট দিন, সপ্তাহ ও বার সঙ্গে সঙ্গে দেখাবে" data-en="Total days, weeks and weekday shown instantly">মোট দিন, সপ্তাহ ও বার সঙ্গে সঙ্গে দেখাবে</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="দুটি তারিখের মধ্যে দিন সংখ্যা কীভাবে গণনা করব?" data-en="How to count days between two dates?">দুটি তারিখের মধ্যে দিন সংখ্যা কীভাবে গণনা করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="দুটি তারিখকে মিলিসেকেন্ডে রূপান্তর করে বিয়োগ করুন, তারপর ৮৬৪০০০০০ (এক দিনের মিলিসেকেন্ড) দিয়ে ভাগ করুন। এই টুল স্বয়ংক্রিয়ভাবে সেটি করে।" data-en="Convert both dates to milliseconds, subtract, then divide by 86,400,000 (milliseconds per day). This tool does it automatically.">দুটি তারিখকে মিলিসেকেন্ডে রূপান্তর করে বিয়োগ করুন, তারপর ৮৬৪০০০০০ (এক দিনের মিলিসেকেন্ড) দিয়ে ভাগ করুন। এই টুল স্বয়ংক্রিয়ভাবে সেটি করে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="লিপ ইয়ার কি সঠিকভাবে হিসাব হয়?" data-en="Are leap years calculated correctly?">লিপ ইয়ার কি সঠিকভাবে হিসাব হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, JavaScript-এর Date অবজেক্ট লিপ ইয়ার স্বয়ংক্রিয়ভাবে সঠিকভাবে সামলায়।" data-en="Yes, JavaScript's Date object handles leap years automatically and correctly.">হ্যাঁ, JavaScript-এর Date অবজেক্ট লিপ ইয়ার স্বয়ংক্রিয়ভাবে সঠিকভাবে সামলায়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কোন তারিখ কোন বারে পড়েছিল জানতে পারব?" data-en="Can I find what day of the week a date falls on?">কোন তারিখ কোন বারে পড়েছিল জানতে পারব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, এই টুলটি শুরু ও শেষ উভয় তারিখের বার (সোমবার, মঙ্গলবার ইত্যাদি) স্বয়ংক্রিয়ভাবে দেখায়।" data-en="Yes, this tool automatically shows the day of the week for both the start and end dates.">হ্যাঁ, এই টুলটি শুরু ও শেষ উভয় তারিখের বার (সোমবার, মঙ্গলবার ইত্যাদি) স্বয়ংক্রিয়ভাবে দেখায়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ভিসার মেয়াদ বা পাসপোর্টের বৈধতা হিসাব করতে পারব?" data-en="Can I calculate visa expiry or passport validity?">ভিসার মেয়াদ বা পাসপোর্টের বৈধতা হিসাব করতে পারব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, ইস্যু তারিখ শুরুতে ও মেয়াদ শেষের তারিখ শেষে দিলে মোট বৈধতার দিন সংখ্যা পাবেন।" data-en="Yes, enter the issue date as start and expiry date as end to find the total validity in days.">হ্যাঁ, ইস্যু তারিখ শুরুতে ও মেয়াদ শেষের তারিখ শেষে দিলে মোট বৈধতার দিন সংখ্যা পাবেন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আজ থেকে ১০০ দিন পরে কোন তারিখ?" data-en="What date is 100 days from today?">আজ থেকে ১০০ দিন পরে কোন তারিখ?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="'আজ থেকে' বাটনে ক্লিক করে শুরুর তারিখ সেট করুন। তারপর শেষের তারিখ বাড়িয়ে দেখুন কোন তারিখে মোট দিন ১০০ হয়।" data-en="Click 'From Today' to set the start date, then adjust the end date until the total days show 100.">  'আজ থেকে' বাটনে ক্লিক করে শুরুর তারিখ সেট করুন। তারপর শেষের তারিখ বাড়িয়ে দেখুন কোন তারিখে মোট দিন ১০০ হয়।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/health/age-calculator",
+      nameBn: "বয়স ক্যালকুলেটর",
+      nameEn: "Age Calculator",
+      descBn: "জন্মতারিখ থেকে সঠিক বয়স বের করুন",
+      descEn: "Calculate exact age from date of birth",
+      icon: "🎂"
+    },
+    {
+      url: "/india/bengali-calendar",
+      nameBn: "বাংলা ক্যালেন্ডার",
+      nameEn: "Bengali Calendar",
+      descBn: "বাংলা তারিখ ও ক্যালেন্ডার",
+      descEn: "Bengali date and calendar",
+      icon: "🗓️"
+    },
+    {
+      url: "/calculators/speed",
+      nameBn: "গতি ক্যালকুলেটর",
+      nameEn: "Speed Calculator",
+      descBn: "গতি, দূরত্ব ও সময় হিসাব করুন",
+      descEn: "Calculate speed, distance and time",
+      icon: "🚀"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const startInput = document.getElementById('start-date') as HTMLInputElement;
+  const endInput = document.getElementById('end-date') as HTMLInputElement;
+  const btnToday = document.getElementById('btn-today')!;
+  const diffResult = document.getElementById('diff-result')!;
+  const diffError = document.getElementById('diff-error')!;
+
+  const weekdaysBn = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
+  const weekdaysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  const today = new Date();
+  btnToday.addEventListener('click', () => {
+    startInput.value = today.toISOString().split('T')[0];
+    calculate();
+  });
+
+  function getWeekdayLabel(dateStr: string): string {
+    if (!dateStr) return '';
+    const d = new Date(dateStr + 'T00:00:00');
+    const idx = d.getDay();
+    return weekdaysBn[idx] + ' / ' + weekdaysEn[idx];
+  }
+
+  function calculate() {
+    const startVal = startInput.value;
+    const endVal = endInput.value;
+
+    document.getElementById('start-weekday')!.textContent = getWeekdayLabel(startVal);
+    document.getElementById('end-weekday')!.textContent = getWeekdayLabel(endVal);
+
+    if (!startVal || !endVal) {
+      diffResult.classList.add('hidden');
+      diffError.classList.add('hidden');
+      return;
+    }
+
+    const start = new Date(startVal + 'T00:00:00');
+    const end = new Date(endVal + 'T00:00:00');
+
+    if (end <= start) {
+      diffResult.classList.add('hidden');
+      diffError.classList.remove('hidden');
+      return;
+    }
+
+    diffError.classList.add('hidden');
+
+    // Total days
+    const totalDays = Math.floor((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+    const totalWeeks = Math.floor(totalDays / 7);
+
+    // Years, months, remaining days
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    let days = end.getDate() - start.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonthEnd = new Date(end.getFullYear(), end.getMonth(), 0);
+      days += prevMonthEnd.getDate();
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    document.getElementById('diff-years')!.textContent = String(years);
+    document.getElementById('diff-months')!.textContent = String(months);
+    document.getElementById('diff-weeks')!.textContent = String(totalWeeks);
+    document.getElementById('diff-days')!.textContent = String(totalDays);
+
+    document.getElementById('diff-summary')!.textContent =
+      `${years} বছর ${months} মাস ${days} দিন / ${years} years ${months} months ${days} days`;
+    document.getElementById('diff-business-days')!.textContent =
+      `মোট ${totalDays} দিন = ${totalWeeks} সপ্তাহ + ${totalDays % 7} দিন / Total ${totalDays} days = ${totalWeeks} weeks + ${totalDays % 7} days`;
+
+    diffResult.classList.remove('hidden');
+  }
+
+  startInput.addEventListener('change', calculate);
+  endInput.addEventListener('change', calculate);
+</script>

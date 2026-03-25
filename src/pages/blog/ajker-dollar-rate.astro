@@ -1,0 +1,134 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="আজকের ডলারের রেট — লাইভ USD থেকে INR রেট | BanglaTools"
+  description="আজকের ডলারের রেট জানুন। লাইভ USD থেকে INR বিনিময় হার। ডলার থেকে টাকা কনভার্ট করুন।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → আজকের ডলারের রেট
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="আজকের ডলারের রেট — লাইভ USD থেকে INR রেট" data-en="Today's Dollar Rate — Live USD to INR">আজকের ডলারের রেট — লাইভ USD থেকে INR রেট</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <!-- Live rate display -->
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="font-bold text-teal-800">
+        <span data-bn="আজকের লাইভ রেট" data-en="Today's Live Rate">আজকের লাইভ রেট</span>
+      </h2>
+      <span id="live-badge" class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Live</span>
+    </div>
+    <div id="rate-display" class="text-3xl font-bold text-teal-900 mb-1">লোড হচ্ছে...</div>
+    <div id="updated-at" class="text-xs text-gray-500 mb-4"></div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="ডলার (USD)" data-en="USD">ডলার (USD)</span></label>
+        <input type="number" id="usd-in" placeholder="100" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" />
+      </div>
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="রুপি (INR)" data-en="INR">রুপি (INR)</span></label>
+        <input type="number" id="inr-out" placeholder="..." class="w-full px-3 py-2 border-2 border-teal-300 bg-teal-50 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" readonly />
+      </div>
+    </div>
+    <p class="text-center mt-2">
+      <a href="/currency/usd-to-inr" class="text-sm text-teal-700 hover:underline">
+        <span data-bn="→ সম্পূর্ণ কারেন্সি কনভার্টার দেখুন" data-en="→ See full currency converter">→ সম্পূর্ণ কারেন্সি কনভার্টার দেখুন</span>
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ডলার থেকে ভারতীয় রুপি — কীভাবে হিসাব হয়?</h2>
+      <p>USD থেকে INR বিনিময় হার প্রতিদিন পরিবর্তন হয়। এটি নির্ভর করে ভারতের আমদানি-রপ্তানি, রিজার্ভ ব্যাংকের নীতি, আন্তর্জাতিক বাজারের পরিস্থিতি এবং মুদ্রাস্ফীতির উপর। আমাদের কনভার্টারটি frankfurter.app API ব্যবহার করে সর্বশেষ রেট দেখায়।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">উদাহরণ রূপান্তর</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">USD</th><th class="p-3">আনুমানিক INR (₹৮৩/ডলার হলে)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">$১০০</td><td class="p-3 text-center font-bold">₹৮,৩০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">$৫০০</td><td class="p-3 text-center font-bold">₹৪১,৫০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">$১,০০০</td><td class="p-3 text-center font-bold">₹৮৩,০০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">$৫,০০০</td><td class="p-3 text-center font-bold">₹৪,১৫,০০০</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">* আনুমানিক মান। সঠিক রেটের জন্য উপরের লাইভ কনভার্টার ব্যবহার করুন।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">প্রবাসী বাঙালিদের জন্য তথ্য</h2>
+      <p>যুক্তরাষ্ট্রে বসবাসরত বাঙালিরা ডলারে উপার্জন করেন এবং পরিবারকে টাকা পাঠান। সেরা বিনিময় হার পেতে:</p>
+      <ul class="space-y-1 mt-2">
+        <li>• ব্যাংক ট্রান্সফারের চেয়ে রেমিট্যান্স অ্যাপে (Wise, Remitly) ভালো রেট পাওয়া যায়।</li>
+        <li>• বড় অংক একসাথে পাঠালে ফি কম লাগে।</li>
+        <li>• সকালে রেট চেক করুন — বাজার খোলার সময় হার বদলায়।</li>
+      </ul>
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">USD to INR — How is the exchange rate determined?</h2>
+      <p>The USD to INR exchange rate changes every day. It depends on India's imports and exports, Reserve Bank policy, international market conditions, and inflation. Our converter uses the frankfurter.app API to show the latest rates.</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Quick conversion examples</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">USD</th><th class="p-3">Approx. INR (at ₹83/dollar)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">$100</td><td class="p-3 text-center font-bold">₹8,300</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">$500</td><td class="p-3 text-center font-bold">₹41,500</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">$1,000</td><td class="p-3 text-center font-bold">₹83,000</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">$5,000</td><td class="p-3 text-center font-bold">₹4,15,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">* Approximate values. Use the live converter above for the accurate rate.</p>
+    </div>
+  </div>
+
+  <div class="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+    <a href="/currency/usd-to-inr" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="লাইভ USD to INR কনভার্টার →" data-en="Live USD to INR Converter →">লাইভ USD to INR কনভার্টার →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+var usdToInrRate = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+  var usdEl = document.getElementById('usd-in');
+  var inrEl = document.getElementById('inr-out');
+  var rateDisplay = document.getElementById('rate-display');
+  var updatedAt = document.getElementById('updated-at');
+
+  fetch('https://api.frankfurter.app/latest?from=USD&to=INR')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      usdToInrRate = data.rates.INR;
+      rateDisplay.textContent = '1 USD = ₹' + usdToInrRate.toFixed(2);
+      updatedAt.textContent = 'আপডেট: ' + data.date;
+      if (usdEl.value) {
+        inrEl.value = (parseFloat(usdEl.value) * usdToInrRate).toFixed(2);
+      }
+    })
+    .catch(function() {
+      rateDisplay.textContent = 'রেট লোড করা যায়নি';
+    });
+
+  usdEl.addEventListener('input', function() {
+    if (!usdToInrRate) return;
+    var v = parseFloat(usdEl.value);
+    inrEl.value = isNaN(v) ? '' : (v * usdToInrRate).toFixed(2);
+  });
+});
+</script>

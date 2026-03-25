@@ -1,0 +1,300 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="ফুট থেকে মিটার কনভার্টার | BanglaTools"
+  description="ফুট থেকে মিটার বা মিটার থেকে ফুট রূপান্তর করুন। বাড়ির সাইজ ও উচ্চতা পরিমাপ করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="ফুট থেকে মিটার কনভার্টার" data-en="feet to meters Converter">ফুট থেকে মিটার কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তাৎক্ষণিকভাবে ফুট ও মিটারের মধ্যে রূপান্তর করুন" data-en="Instantly convert between feet and meters">তাৎক্ষণিকভাবে ফুট ও মিটারের মধ্যে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Simple feet input -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="feet-input">
+          <span data-bn="ফুট (feet)" data-en="Feet">ফুট (feet)</span>
+        </label>
+        <input
+          type="number"
+          id="feet-input"
+          placeholder="যেমন: 5.5"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="meters-input">
+          <span data-bn="মিটার (meters)" data-en="Meters">মিটার (meters)</span>
+        </label>
+        <input
+          type="number"
+          id="meters-input"
+          placeholder="যেমন: 1.68"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+    <!-- Feet + inches input -->
+    <div class="border-t border-gray-200 pt-4">
+      <p class="text-sm font-medium text-gray-600 mb-2">
+        <span data-bn="অথবা ফুট ও ইঞ্চি আলাদাভাবে লিখুন:" data-en="Or enter feet and inches separately:">অথবা ফুট ও ইঞ্চি আলাদাভাবে লিখুন:</span>
+      </p>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs text-gray-600 mb-1" for="ft-part">
+            <span data-bn="ফুট" data-en="Feet">ফুট</span>
+          </label>
+          <input
+            type="number"
+            id="ft-part"
+            placeholder="5"
+            min="0"
+            step="1"
+            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[44px]"
+          />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-600 mb-1" for="in-part">
+            <span data-bn="ইঞ্চি" data-en="Inches">ইঞ্চি</span>
+          </label>
+          <input
+            type="number"
+            id="in-part"
+            placeholder="6"
+            min="0"
+            max="11"
+            step="any"
+            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[44px]"
+          />
+        </div>
+      </div>
+      <div id="ft-in-result" class="mt-2 text-sm text-amber-700 font-medium bg-amber-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+    </div>
+    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="ফুট ঘরে পরিমাপ লিখুন, মিটার তাৎক্ষণিকভাবে দেখাবে" data-en="Enter feet — meters appear instantly">ফুট ঘরে পরিমাপ লিখুন, মিটার তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="মিটার ঘরে লিখলে ফুটে রূপান্তর হবে" data-en="Enter meters to convert to feet">মিটার ঘরে লিখলে ফুটে রূপান্তর হবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="নিচের বক্সে ফুট ও ইঞ্চি আলাদাভাবে লিখে মিটার বের করুন (যেমন: ৫ ফুট ৬ ইঞ্চি)" data-en="Use the feet + inches boxes for height like 5 feet 6 inches">নিচের বক্সে ফুট ও ইঞ্চি আলাদাভাবে লিখে মিটার বের করুন (যেমন: ৫ ফুট ৬ ইঞ্চি)</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        ফুট থেকে মিটার কনভার্টার দিয়ে বাড়ির ঘরের সাইজ, উচ্চতা বা যেকোনো দৈর্ঘ্য সহজে রূপান্তর করা যায়। বাংলাদেশে জমি ও বাড়ির সাইজ প্রায়ই ফুটে বলা হয়, কিন্তু আন্তর্জাতিক নির্মাণ ও স্থাপত্যে মিটার ব্যবহার হয়। একজন মানুষের উচ্চতা ৫ ফুট ৬ ইঞ্চি মানে ১.৬৭৬ মিটার। একটি ১০ ফুট × ১২ ফুটের ঘর মানে ৩.০৫ মিটার × ৩.৬৬ মিটার। ১ ফুট সমান ০.৩০৪৮ মিটার। এই কনভার্টারে আলাদাভাবে ফুট ও ইঞ্চি লেখারও সুবিধা আছে, যা উচ্চতা মাপার জন্য খুবই কাজের। এটি বিনামূল্যে এবং মোবাইলেও সুন্দরভাবে কাজ করে।
+      </p>
+      <p data-lang-en style="display:none">
+        The feet to meters converter makes it easy to convert room sizes, building heights, and personal height measurements. In Bangladesh, room dimensions and land plots are commonly described in feet, while international architecture and engineering use meters. One foot equals exactly 0.3048 meters. A person who is 5 feet 6 inches tall is 1.6764 meters. A room that is 10 feet by 12 feet equals 3.05 meters by 3.66 meters. This tool supports both simple feet input and a separate feet plus inches input box, which is perfect for converting heights like 5'10" or 6'2". No login is required and the tool works smoothly on both mobile and desktop devices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" একজন ব্যক্তির উচ্চতা ৫.৫ ফুট" data-en=" Person's height 5.5 feet"> একজন ব্যক্তির উচ্চতা ৫.৫ ফুট</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫.৫ ফুট" data-en="Input: 5.5 feet">ইনপুট: ৫.৫ ফুট</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ১.৬৮ মিটার" data-en="Result: 1.68 meters">ফলাফল: ১.৬৮ মিটার</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" ঘরের দৈর্ঘ্য ১০ ফুট" data-en=" Room length 10 feet"> ঘরের দৈর্ঘ্য ১০ ফুট</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০ ফুট" data-en="Input: 10 feet">ইনপুট: ১০ ফুট</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৩.০৫ মিটার" data-en="Result: 3.05 meters">ফলাফল: ৩.০৫ মিটার</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" একটি বিল্ডিংয়ের উচ্চতা ১০০ ফুট" data-en=" Building height 100 feet"> একটি বিল্ডিংয়ের উচ্চতা ১০০ ফুট</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০ ফুট" data-en="Input: 100 feet">ইনপুট: ১০০ ফুট</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৩০.৪৮ মিটার" data-en="Result: 30.48 meters">ফলাফল: ৩০.৪৮ মিটার</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ ফুট সমান কত মিটার?" data-en="How many meters is 1 foot?">১ ফুট সমান কত মিটার?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ ফুট সমান ০.৩০৪৮ মিটার। এটি একটি নির্দিষ্ট রূপান্তর হার — ঠিক ১ ফুট = ০.৩০৪৮ মিটার।" data-en="1 foot equals exactly 0.3048 meters. This is a fixed conversion — 1 foot = 0.3048 meters.">১ ফুট সমান ০.৩০৪৮ মিটার। এটি একটি নির্দিষ্ট রূপান্তর হার — ঠিক ১ ফুট = ০.৩০৪৮ মিটার।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ মিটার সমান কত ফুট?" data-en="How many feet is 1 meter?">১ মিটার সমান কত ফুট?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ মিটার সমান ৩.২৮০৮৪ ফুট। অর্থাৎ ১ মিটার প্রায় সাড়ে তিন ফুটের কাছাকাছি।" data-en="1 meter equals 3.28084 feet. So 1 meter is approximately 3 feet 3 and a third inches.">১ মিটার সমান ৩.২৮০৮৪ ফুট। অর্থাৎ ১ মিটার প্রায় সাড়ে তিন ফুটের কাছাকাছি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="৫ ফুট ৬ ইঞ্চি মানে কত মিটার?" data-en="What is 5 feet 6 inches in meters?">৫ ফুট ৬ ইঞ্চি মানে কত মিটার?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৫ ফুট ৬ ইঞ্চি মানে ১.৬৭৬ মিটার। হিসাব: (৫ × ১২ + ৬) = ৬৬ ইঞ্চি × ০.০২৫৪ = ১.৬৭৬৪ মিটার।" data-en="5 feet 6 inches equals 1.6764 meters. Calculation: (5 × 12 + 6) = 66 inches × 0.0254 = 1.6764 meters.">৫ ফুট ৬ ইঞ্চি মানে ১.৬৭৬ মিটার। হিসাব: (৫ × ১২ + ৬) = ৬৬ ইঞ্চি × ০.০২৫৪ = ১.৬৭৬৪ মিটার।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ঘরের সাইজ ফুটে থেকে মিটারে কীভাবে বের করবো?" data-en="How do I convert room size from feet to meters?">ঘরের সাইজ ফুটে থেকে মিটারে কীভাবে বের করবো?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="প্রতিটি পরিমাপ আলাদাভাবে রূপান্তর করুন। যেমন ১০ ফুট × ১২ ফুট ঘর: ১০ × ০.৩০৪৮ = ৩.০৫ মিটার, ১২ × ০.৩০৪৮ = ৩.৬৬ মিটার। তাই ঘরটি ৩.০৫ মিটার × ৩.৬৬ মিটার।" data-en="Convert each measurement separately. For a 10 ft × 12 ft room: 10 × 0.3048 = 3.05 m, 12 × 0.3048 = 3.66 m. So the room is 3.05 m × 3.66 m.">প্রতিটি পরিমাপ আলাদাভাবে রূপান্তর করুন। যেমন ১০ ফুট × ১২ ফুট ঘর: ১০ × ০.৩০৪৮ = ৩.০৫ মিটার, ১২ × ০.৩০৪৮ = ৩.৬৬ মিটার। তাই ঘরটি ৩.০৫ মিটার × ৩.৬৬ মিটার।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বাংলাদেশে ফুট না মিটার কোনটি বেশি ব্যবহার হয়?" data-en="Is feet or meters more commonly used in Bangladesh?">বাংলাদেশে ফুট না মিটার কোনটি বেশি ব্যবহার হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="বাংলাদেশে বাড়ি ও জমির পরিমাপে ফুট বেশি ব্যবহার হয়। তবে বৈজ্ঞানিক ও আন্তর্জাতিক কাজে মিটার ব্যবহার হয়। নির্মাণকাজে ফুট-ইঞ্চি এবং প্রকৌশলে মিটার প্রচলিত।" data-en="In Bangladesh, feet are more commonly used for housing and land measurements in everyday life. However, meters are used in scientific work and international contexts. Construction uses feet and inches, while engineering plans use meters.">বাংলাদেশে বাড়ি ও জমির পরিমাপে ফুট বেশি ব্যবহার হয়। তবে বৈজ্ঞানিক ও আন্তর্জাতিক কাজে মিটার ব্যবহার হয়। নির্মাণকাজে ফুট-ইঞ্চি এবং প্রকৌশলে মিটার প্রচলিত।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/cm-to-inches",
+      nameBn: "সেন্টিমিটার থেকে ইঞ্চি",
+      nameEn: "cm to inches",
+      descBn: "উচ্চতা ও দৈর্ঘ্য রূপান্তর করুন",
+      descEn: "Convert height and length",
+      icon: "📏"
+    },
+    {
+      url: "/converters/kg-to-lbs",
+      nameBn: "কেজি থেকে পাউন্ড",
+      nameEn: "kg to lbs",
+      descBn: "ওজন রূপান্তর করুন",
+      descEn: "Convert weight units",
+      icon: "⚖️"
+    },
+    {
+      url: "/calculators/speed",
+      nameBn: "গতি ক্যালকুলেটর",
+      nameEn: "Speed Calculator",
+      descBn: "গতি, দূরত্ব ও সময় হিসাব করুন",
+      descEn: "Calculate speed, distance and time",
+      icon: "🚗"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const feetInput = document.getElementById('feet-input') as HTMLInputElement;
+  const metersInput = document.getElementById('meters-input') as HTMLInputElement;
+  const ftPart = document.getElementById('ft-part') as HTMLInputElement;
+  const inPart = document.getElementById('in-part') as HTMLInputElement;
+  const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
+  const ftInResult = document.getElementById('ft-in-result') as HTMLElement;
+
+  feetInput?.addEventListener('input', () => {
+    const feet = parseFloat(feetInput.value);
+    if (!isNaN(feet) && feet >= 0) {
+      const meters = feet * 0.3048;
+      metersInput.value = meters.toFixed(4);
+      formulaDisplay.textContent = `${feet} ft × 0.3048 = ${meters.toFixed(4)} m`;
+    } else {
+      metersInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+
+  metersInput?.addEventListener('input', () => {
+    const meters = parseFloat(metersInput.value);
+    if (!isNaN(meters) && meters >= 0) {
+      const feet = meters / 0.3048;
+      feetInput.value = feet.toFixed(4);
+      formulaDisplay.textContent = `${meters} m ÷ 0.3048 = ${feet.toFixed(4)} ft`;
+    } else {
+      feetInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+
+  function updateFtIn() {
+    const ft = parseFloat(ftPart.value) || 0;
+    const inches = parseFloat(inPart.value) || 0;
+    if (ft > 0 || inches > 0) {
+      const totalInches = (ft * 12) + inches;
+      const meters = totalInches * 0.0254;
+      ftInResult.textContent = `${ft}' ${inches}" = ${meters.toFixed(4)} meters`;
+    } else {
+      ftInResult.textContent = '';
+    }
+  }
+
+  ftPart?.addEventListener('input', updateFtIn);
+  inPart?.addEventListener('input', updateFtIn);
+</script>

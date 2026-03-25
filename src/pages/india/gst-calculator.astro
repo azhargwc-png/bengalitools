@@ -1,0 +1,288 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="জিএসটি ক্যালকুলেটর — GST Calculator India | BanglaTools"
+  description="জিএসটি যোগ করুন বা বাদ দিন। ৫%, ১২%, ১৮%, ২৮% সব রেটে। বিনামূল্যে জিএসটি হিসাব করুন।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="জিএসটি ক্যালকুলেটর" data-en="GST Calculator India">জিএসটি ক্যালকুলেটর</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="জিএসটি যোগ করুন বা বাদ দিন — ভারতের সব জিএসটি স্ল্যাব সহ" data-en="Add or remove GST — with all Indian GST slabs">জিএসটি যোগ করুন বা বাদ দিন — ভারতের সব জিএসটি স্ল্যাব সহ</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Mode Toggle -->
+    <div class="flex gap-2 mb-6">
+      <button
+        id="btn-add"
+        onclick="setMode('add')"
+        class="flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-teal-700 text-white"
+      >
+        <span data-bn="জিএসটি যোগ করুন" data-en="Add GST">জিএসটি যোগ করুন</span>
+      </button>
+      <button
+        id="btn-remove"
+        onclick="setMode('remove')"
+        class="flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300"
+      >
+        <span data-bn="জিএসটি বাদ দিন" data-en="Remove GST">জিএসটি বাদ দিন</span>
+      </button>
+    </div>
+
+    <div class="space-y-4">
+      <!-- Price Input -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="price-input">
+          <span id="price-label" data-bn="জিএসটির আগের দাম (₹)" data-en="Price before GST (₹)">জিএসটির আগের দাম (₹)</span>
+        </label>
+        <input
+          type="number"
+          id="price-input"
+          placeholder="যেমন: 1000"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+
+      <!-- GST Rate -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          <span data-bn="জিএসটি হার নির্বাচন করুন" data-en="Select GST Rate">জিএসটি হার নির্বাচন করুন</span>
+        </label>
+        <div class="grid grid-cols-4 gap-2">
+          {['5', '12', '18', '28'].map((rate) => (
+            <button
+              class="gst-rate-btn py-3 rounded-xl font-bold text-lg border-2 border-gray-300 bg-white hover:border-teal-500 transition-colors"
+              data-rate={rate}
+              onclick={`selectRate(${rate})`}
+            >
+              {rate}%
+            </button>
+          ))}
+        </div>
+        <div class="mt-2 flex items-center gap-2">
+          <span class="text-sm text-gray-600" data-bn="অথবা লিখুন:" data-en="Or enter:">অথবা লিখুন:</span>
+          <input
+            type="number"
+            id="custom-rate"
+            placeholder="যেমন: 3"
+            min="0"
+            max="100"
+            step="any"
+            oninput="selectCustomRate()"
+            class="w-28 px-3 py-2 border-2 border-gray-300 rounded-lg text-sm focus:border-teal-500 focus:outline-none"
+          />
+          <span class="text-sm text-gray-600">%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="gst-results" class="mt-6 hidden space-y-3">
+      <div class="bg-white rounded-xl p-4 border border-gray-200 flex justify-between items-center">
+        <span class="text-gray-700" data-bn="মূল দাম" data-en="Original Price">মূল দাম</span>
+        <span id="result-original" class="text-xl font-bold text-gray-900"></span>
+      </div>
+      <div class="bg-white rounded-xl p-4 border border-gray-200 flex justify-between items-center">
+        <span class="text-gray-700" data-bn="জিএসটি পরিমাণ" data-en="GST Amount">জিএসটি পরিমাণ</span>
+        <span id="result-gst" class="text-xl font-bold text-teal-700"></span>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-300 flex justify-between items-center">
+        <span class="font-bold text-teal-800" id="total-label" data-bn="জিএসটি সহ মোট দাম" data-en="Total Price with GST">জিএসটি সহ মোট দাম</span>
+        <span id="result-total" class="text-2xl font-bold text-teal-700"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">১.</span><span data-bn="মোড নির্বাচন করুন — জিএসটি যোগ বা বাদ" data-en="Select mode — add or remove GST">মোড নির্বাচন করুন — জিএসটি যোগ বা বাদ</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">২.</span><span data-bn="পণ্যের দাম লিখুন" data-en="Enter the product price">পণ্যের দাম লিখুন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">৩.</span><span data-bn="জিএসটি হার নির্বাচন করুন (৫%, ১২%, ১৮%, ২৮%)" data-en="Select GST rate (5%, 12%, 18%, 28%)">জিএসটি হার নির্বাচন করুন (৫%, ১২%, ১৮%, ২৮%)</span></li>
+      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">৪.</span><span data-bn="ফলাফল তাৎক্ষণিকভাবে দেখুন" data-en="See the result instantly">ফলাফল তাৎক্ষণিকভাবে দেখুন</span></li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        জিএসটি ক্যালকুলেটর ব্যবহার করে আপনি দুইভাবে হিসাব করতে পারবেন। প্রথমত, কোনো পণ্যের দামে জিএসটি যোগ করে মোট দাম বের করতে পারবেন। দ্বিতীয়ত, যদি ইতোমধ্যে জিএসটি সহ দাম জানা থাকে, তাহলে মূল দাম এবং জিএসটির পরিমাণ আলাদাভাবে বের করতে পারবেন। ভারতে চারটি প্রধান জিএসটি স্ল্যাব রয়েছে: ৫%, ১২%, ১৮% এবং ২৮%। খাদ্যপণ্যে সাধারণত ৫% বা শূন্য, ইলেকট্রনিক্সে ১৮%, এবং বিলাসবহুল পণ্যে ২৮% জিএসটি প্রযোজ্য।
+      </p>
+      <p data-lang-en style="display:none">
+        The GST Calculator helps you in two ways. First, you can add GST to a base price to find the total amount. Second, if you already know the GST-inclusive price, you can work backwards to find the original price and the GST component separately. India has four main GST slabs: 5%, 12%, 18%, and 28%. Essential food items typically attract 5% or zero GST, electronics attract 18%, and luxury goods attract 28%. This tool is useful for business invoicing, shopping comparisons, and tax record-keeping.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ১: মোবাইল ফোন (১৮% জিএসটি)" data-en="Example 1: Mobile phone (18% GST)">উদাহরণ ১: মোবাইল ফোন (১৮% জিএসটি)</span></p>
+        <p class="text-gray-700 mt-1"><span data-bn="মূল দাম: ₹১০,০০০ | জিএসটি (১৮%): ₹১,৮০০ | মোট: ₹১১,৮০০" data-en="Base price: ₹10,000 | GST (18%): ₹1,800 | Total: ₹11,800">মূল দাম: ₹১০,০০০ | জিএসটি (১৮%): ₹১,৮০০ | মোট: ₹১১,৮০০</span></p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ২: রেস্তোরাঁ খাবার (৫% জিএসটি)" data-en="Example 2: Restaurant food (5% GST)">উদাহরণ ২: রেস্তোরাঁ খাবার (৫% জিএসটি)</span></p>
+        <p class="text-gray-700 mt-1"><span data-bn="মূল দাম: ₹৫০০ | জিএসটি (৫%): ₹২৫ | মোট: ₹৫২৫" data-en="Base price: ₹500 | GST (5%): ₹25 | Total: ₹525">মূল দাম: ₹৫০০ | জিএসটি (৫%): ₹২৫ | মোট: ₹৫২৫</span></p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800"><span data-bn="উদাহরণ ৩: বিলাসবহুল পণ্য (২৮% জিএসটি)" data-en="Example 3: Luxury item (28% GST)">উদাহরণ ৩: বিলাসবহুল পণ্য (২৮% জিএসটি)</span></p>
+        <p class="text-gray-700 mt-1"><span data-bn="মূল দাম: ₹২০,০০০ | জিএসটি (২৮%): ₹৫,৬০০ | মোট: ₹২৫,৬০০" data-en="Base price: ₹20,000 | GST (28%): ₹5,600 | Total: ₹25,600">মূল দাম: ₹২০,০০০ | জিএসটি (২৮%): ₹৫,৬০০ | মোট: ₹২৫,৬০০</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="জিএসটি কী?" data-en="What is GST?">জিএসটি কী?</span></summary>
+        <p class="mt-3 text-gray-700"><span data-bn="জিএসটি (Goods and Services Tax) হলো ভারতের একটি পরোক্ষ কর যা পণ্য ও পরিষেবার উপর আরোপ করা হয়। ২০১৭ সালে এটি চালু হয় এবং আগের অনেক করকে প্রতিস্থাপন করে।" data-en="GST (Goods and Services Tax) is India's indirect tax on goods and services, introduced in 2017, replacing many previous taxes.">জিএসটি (Goods and Services Tax) হলো ভারতের একটি পরোক্ষ কর যা পণ্য ও পরিষেবার উপর আরোপ করা হয়। ২০১৭ সালে এটি চালু হয় এবং আগের অনেক করকে প্রতিস্থাপন করে।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ভারতে জিএসটি স্ল্যাব কতটি?" data-en="How many GST slabs are there in India?">ভারতে জিএসটি স্ল্যাব কতটি?</span></summary>
+        <p class="mt-3 text-gray-700"><span data-bn="ভারতে মূলত চারটি জিএসটি স্ল্যাব রয়েছে: ৫%, ১২%, ১৮% এবং ২৮%। এছাড়া কিছু প্রয়োজনীয় পণ্যে ০% জিএসটি প্রযোজ্য।" data-en="India has four main GST slabs: 5%, 12%, 18%, and 28%. Some essential items attract 0% GST.">ভারতে মূলত চারটি জিএসটি স্ল্যাব রয়েছে: ৫%, ১২%, ১৮% এবং ২৮%। এছাড়া কিছু প্রয়োজনীয় পণ্যে ০% জিএসটি প্রযোজ্য।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="রেস্তোরাঁতে কত জিএসটি?" data-en="What GST applies at restaurants?">রেস্তোরাঁতে কত জিএসটি?</span></summary>
+        <p class="mt-3 text-gray-700"><span data-bn="সাধারণ রেস্তোরাঁতে ৫% জিএসটি প্রযোজ্য। এসি রেস্তোরাঁ বা হোটেলের রেস্তোরাঁতে ১২% বা ১৮% হতে পারে।" data-en="Regular restaurants attract 5% GST. Air-conditioned restaurants or hotel restaurants may attract 12% or 18%.">সাধারণ রেস্তোরাঁতে ৫% জিএসটি প্রযোজ্য। এসি রেস্তোরাঁ বা হোটেলের রেস্তোরাঁতে ১২% বা ১৮% হতে পারে।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="জিএসটি ছাড়া দাম কীভাবে বের করব?" data-en="How to find the price before GST?">জিএসটি ছাড়া দাম কীভাবে বের করব?</span></summary>
+        <p class="mt-3 text-gray-700"><span data-bn="সূত্র: মূল দাম = মোট দাম ÷ (১ + জিএসটি হার/১০০)। যেমন, ১১৮ টাকায় ১৮% জিএসটি থাকলে মূল দাম = ১১৮ ÷ ১.১৮ = ১০০ টাকা।" data-en="Formula: Original price = Total price ÷ (1 + GST rate/100). E.g., ₹118 with 18% GST: ₹118 ÷ 1.18 = ₹100.">সূত্র: মূল দাম = মোট দাম ÷ (১ + জিএসটি হার/১০০)। যেমন, ১১৮ টাকায় ১৮% জিএসটি থাকলে মূল দাম = ১১৮ ÷ ১.১৮ = ১০০ টাকা।</span></p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="CGST ও SGST কী?" data-en="What are CGST and SGST?">CGST ও SGST কী?</span></summary>
+        <p class="mt-3 text-gray-700"><span data-bn="CGST হলো কেন্দ্রীয় সরকারের অংশ এবং SGST হলো রাজ্য সরকারের অংশ। উভয়ই মিলিয়ে মোট জিএসটি হয়। যেমন ১৮% জিএসটিতে ৯% CGST এবং ৯% SGST।" data-en="CGST goes to the central government and SGST to the state government. Together they make the total GST. For example, 18% GST = 9% CGST + 9% SGST.">CGST হলো কেন্দ্রীয় সরকারের অংশ এবং SGST হলো রাজ্য সরকারের অংশ। উভয়ই মিলিয়ে মোট জিএসটি হয়। যেমন ১৮% জিএসটিতে ৯% CGST এবং ৯% SGST।</span></p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    { url: "/calculators/percentage", nameBn: "শতাংশ ক্যালকুলেটর", nameEn: "Percentage Calculator", descBn: "শতাংশ বের করুন", descEn: "Calculate percentages", icon: "%" },
+    { url: "/calculators/discount", nameBn: "ছাড় ক্যালকুলেটর", nameEn: "Discount Calculator", descBn: "ডিসকাউন্ট হিসাব করুন", descEn: "Calculate discount", icon: "🏷️" },
+    { url: "/india/salary-to-hourly", nameBn: "বেতন ক্যালকুলেটর", nameEn: "Salary Calculator", descBn: "মাসিক বেতন হিসাব", descEn: "Monthly salary calculator", icon: "💰" }
+  ]} />
+</ToolLayout>
+
+<script is:inline>
+var currentMode = 'add';
+var currentRate = 18;
+
+function setMode(mode) {
+  currentMode = mode;
+  var addBtn = document.getElementById('btn-add');
+  var removeBtn = document.getElementById('btn-remove');
+  var priceLabel = document.getElementById('price-label');
+  var totalLabel = document.getElementById('total-label');
+  var lang = typeof getLang === 'function' ? getLang() : 'bn';
+
+  if (mode === 'add') {
+    addBtn.className = 'flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-teal-700 text-white';
+    removeBtn.className = 'flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300';
+    priceLabel.setAttribute('data-bn', 'জিএসটির আগের দাম (₹)');
+    priceLabel.setAttribute('data-en', 'Price before GST (₹)');
+    totalLabel.setAttribute('data-bn', 'জিএসটি সহ মোট দাম');
+    totalLabel.setAttribute('data-en', 'Total Price with GST');
+  } else {
+    removeBtn.className = 'flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-teal-700 text-white';
+    addBtn.className = 'flex-1 py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300';
+    priceLabel.setAttribute('data-bn', 'জিএসটি সহ মোট দাম (₹)');
+    priceLabel.setAttribute('data-en', 'Price including GST (₹)');
+    totalLabel.setAttribute('data-bn', 'জিএসটি ছাড়া মূল দাম');
+    totalLabel.setAttribute('data-en', 'Original Price without GST');
+  }
+  if (typeof applyLang === 'function') applyLang(lang);
+  calculate();
+}
+
+function selectRate(rate) {
+  currentRate = rate;
+  document.querySelectorAll('.gst-rate-btn').forEach(function(btn) {
+    if (parseFloat(btn.getAttribute('data-rate')) === rate) {
+      btn.className = 'gst-rate-btn py-3 rounded-xl font-bold text-lg border-2 border-teal-600 bg-teal-50 text-teal-700 transition-colors';
+    } else {
+      btn.className = 'gst-rate-btn py-3 rounded-xl font-bold text-lg border-2 border-gray-300 bg-white hover:border-teal-500 transition-colors';
+    }
+  });
+  document.getElementById('custom-rate').value = '';
+  calculate();
+}
+
+function selectCustomRate() {
+  var val = parseFloat(document.getElementById('custom-rate').value);
+  if (!isNaN(val) && val >= 0) {
+    currentRate = val;
+    document.querySelectorAll('.gst-rate-btn').forEach(function(btn) {
+      btn.className = 'gst-rate-btn py-3 rounded-xl font-bold text-lg border-2 border-gray-300 bg-white hover:border-teal-500 transition-colors';
+    });
+    calculate();
+  }
+}
+
+function calculate() {
+  var price = parseFloat(document.getElementById('price-input').value);
+  var resultsEl = document.getElementById('gst-results');
+
+  if (isNaN(price) || price < 0) {
+    resultsEl.classList.add('hidden');
+    return;
+  }
+
+  var original, gstAmt, total;
+
+  if (currentMode === 'add') {
+    original = price;
+    gstAmt = price * (currentRate / 100);
+    total = price + gstAmt;
+  } else {
+    total = price;
+    original = price / (1 + currentRate / 100);
+    gstAmt = price - original;
+  }
+
+  var fmt = function(n) { return '₹' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+
+  if (currentMode === 'add') {
+    document.getElementById('result-original').textContent = fmt(original);
+    document.getElementById('result-gst').textContent = fmt(gstAmt) + ' (' + currentRate + '%)';
+    document.getElementById('result-total').textContent = fmt(total);
+  } else {
+    document.getElementById('result-original').textContent = fmt(total);
+    document.getElementById('result-gst').textContent = fmt(gstAmt) + ' (' + currentRate + '%)';
+    document.getElementById('result-total').textContent = fmt(original);
+  }
+
+  resultsEl.classList.remove('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('price-input').addEventListener('input', calculate);
+  selectRate(18);
+});
+</script>

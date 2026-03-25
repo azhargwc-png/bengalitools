@@ -1,0 +1,40 @@
+---
+export interface Props {
+  tools: Array<{
+    url: string;
+    nameBn: string;
+    nameEn: string;
+    descBn: string;
+    descEn: string;
+    icon?: string;
+  }>;
+}
+
+const { tools } = Astro.props;
+---
+
+<section class="mt-8">
+  <h2 class="text-xl font-bold text-gray-900 mb-4">
+    <span data-bn="সম্পর্কিত টুলস" data-en="Related Tools">সম্পর্কিত টুলস</span>
+  </h2>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {tools.map(tool => (
+      <a
+        href={tool.url}
+        class="block p-4 border-2 border-teal-100 rounded-xl hover:border-teal-500 hover:shadow-md transition-all group"
+      >
+        <div class="flex items-start gap-3">
+          {tool.icon && <span class="text-2xl">{tool.icon}</span>}
+          <div>
+            <p class="font-semibold text-gray-900 group-hover:text-teal-700 transition-colors">
+              <span data-bn={tool.nameBn} data-en={tool.nameEn}>{tool.nameBn}</span>
+            </p>
+            <p class="text-sm text-gray-500 mt-1">
+              <span data-bn={tool.descBn} data-en={tool.descEn}>{tool.descBn}</span>
+            </p>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,278 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট | BanglaTools"
+  description="আজকের BDT থেকে INR লাইভ রেট। বাংলাদেশি টাকা থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট" data-en="BDT to INR — Bangladesh Taka to Indian Rupee">বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আজকের লাইভ রেটে বাংলাদেশি টাকা থেকে ভারতীয় রুপিতে রূপান্তর করুন" data-en="Convert Bangladesh Taka to Indian Rupees at today's live exchange rate">আজকের লাইভ রেটে বাংলাদেশি টাকা থেকে ভারতীয় রুপিতে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Rate display -->
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
+      <div>
+        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p class="text-xs text-gray-500">
+          <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
+          <span id="last-updated">—</span>
+        </p>
+      </div>
+    </div>
+    <!-- Inputs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="from-input">
+          <span data-bn="বাংলাদেশি টাকা (BDT ৳)" data-en="Bangladesh Taka (BDT ৳)">বাংলাদেশি টাকা (BDT ৳)</span>
+        </label>
+        <input
+          type="number"
+          id="from-input"
+          placeholder="যেমন: 1000"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="to-input">INR (₹)</label>
+        <input
+          type="number"
+          id="to-input"
+          placeholder="রুপি"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="BDT ঘরে বাংলাদেশি টাকার পরিমাণ লিখুন" data-en="Enter the taka amount in the BDT box">BDT ঘরে বাংলাদেশি টাকার পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="লাইভ রেট অনুযায়ী ভারতীয় রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The Indian Rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী ভারতীয় রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="ভারতীয় রুপি থেকে বাংলাদেশি টাকাও বের করতে INR ঘরে টাইপ করুন" data-en="Type in the INR box to convert Indian Rupees to Bangladesh Taka">ভারতীয় রুপি থেকে বাংলাদেশি টাকাও বের করতে INR ঘরে টাইপ করুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই টুলটি বাংলাদেশি টাকা (BDT) থেকে ভারতীয় রুপি (INR)-তে তাৎক্ষণিক রূপান্তর করে। বাংলাদেশ ও ভারতের পশ্চিমবঙ্গ, আসাম ও ত্রিপুরার মধ্যে একটি অনন্য সাংস্কৃতিক ও পারিবারিক বন্ধন রয়েছে। দুই দেশের অনেক পরিবার সীমান্তের দুই পারে ছড়িয়ে আছেন। চিকিৎসার জন্য কলকাতায় আসা, বিশ্ববিদ্যালয়ে ভর্তি হওয়া, বা ব্যবসায়িক লেনদেনের জন্য BDT থেকে INR রূপান্তর প্রয়োজন হয়। বাংলাদেশি তীর্থযাত্রীরা যারা ভারতে ধর্মীয় স্থান পরিদর্শন করেন তাদের জন্যও এই টুলটি উপকারী। সাধারণত ১ BDT = প্রায় ₹০.৭৫ থেকে ₹০.৮০ ভারতীয় রুপি। অর্থাৎ ১০০ বাংলাদেশি টাকা = প্রায় ₹৭৫-৮০ ভারতীয় রুপি। এই রেট প্রতিদিন সামান্য পরিবর্তন হয়। এই কনভার্টারটি ব্যবহার করে আপনি দ্রুত এবং সহজে মুদ্রা রূপান্তর করতে পারবেন। লগইন বা কোনো রেজিস্ট্রেশনের প্রয়োজন নেই।
+      </p>
+      <p data-lang-en style="display:none">
+        This tool converts Bangladesh Taka (BDT) to Indian Rupees (INR) using a live exchange rate from the frankfurter.app API. Bangladesh and the Indian states of West Bengal, Assam, and Tripura share strong cultural, linguistic, and family ties. Many Bengali families have relatives on both sides of the border. Common use cases for this converter include Bangladeshi patients traveling to Kolkata for medical treatment, students enrolling in Indian universities, business transactions between the two countries, and tourists visiting religious sites in India. Typically, 1 BDT equals about ₹0.75 to ₹0.80 Indian Rupees, meaning 100 BDT is worth approximately ₹75-80. The exchange rate reflects Bangladesh Bank and Reserve Bank of India policies along with trade flows between the two nations. This free tool supports two-way conversion and works on all devices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" কলকাতায় চিকিৎসার জন্য ৫,০০০ টাকা" data-en=" ৳5,000 for medical trip to Kolkata"> কলকাতায় চিকিৎসার জন্য ৫,০০০ টাকা</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫,০০০ BDT" data-en="Input: 5,000 BDT">ইনপুট: ৫,০০০ BDT</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৩,৮০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹3,800 (at current rate)">ফলাফল: প্রায় ₹৩,৮০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" ভারতে ভ্রমণের ১০,০০০ টাকা বাজেট" data-en=" ৳10,000 travel budget for India"> ভারতে ভ্রমণের ১০,০০০ টাকা বাজেট</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০,০০০ BDT" data-en="Input: 10,000 BDT">ইনপুট: ১০,০০০ BDT</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৭,৬০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹7,600 (at current rate)">ফলাফল: প্রায় ₹৭,৬০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" আন্তর্জাতিক লেনদেনে ৫০,০০০ টাকা" data-en=" ৳50,000 international transaction"> আন্তর্জাতিক লেনদেনে ৫০,০০০ টাকা</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫০,০০০ BDT" data-en="Input: 50,000 BDT">ইনপুট: ৫০,০০০ BDT</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৩৮,০০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹38,000 (at current rate)">ফলাফল: প্রায় ₹৩৮,০০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ বাংলাদেশি টাকা সমান কত ভারতীয় রুপি?" data-en="How many Indian Rupees is 1 Bangladesh Taka?">১ বাংলাদেশি টাকা সমান কত ভারতীয় রুপি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত ১ BDT = প্রায় ₹০.৭৫ থেকে ₹০.৮০। সঠিক লাইভ রেট উপরের টুলে দেখুন।" data-en="Typically 1 BDT equals about ₹0.75 to ₹0.80. Check the exact live rate in the tool above.">সাধারণত ১ BDT = প্রায় ₹০.৭৫ থেকে ₹০.৮০। সঠিক লাইভ রেট উপরের টুলে দেখুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বাংলাদেশ থেকে ভারতে কীভাবে টাকা পাঠানো যায়?" data-en="How can money be sent from Bangladesh to India?">বাংলাদেশ থেকে ভারতে কীভাবে টাকা পাঠানো যায়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ব্যাংক ওয়্যার ট্রান্সফার, ওয়েস্টার্ন ইউনিয়ন, বা অনুমোদিত মানি এক্সচেঞ্জ সেবার মাধ্যমে পাঠানো যায়। সবসময় বৈধ চ্যানেল ব্যবহার করুন।" data-en="Money can be sent via bank wire transfer, Western Union, or authorised money exchange services. Always use legal channels.">ব্যাংক ওয়্যার ট্রান্সফার, ওয়েস্টার্ন ইউনিয়ন, বা অনুমোদিত মানি এক্সচেঞ্জ সেবার মাধ্যমে পাঠানো যায়। সবসময় বৈধ চ্যানেল ব্যবহার করুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="BDT রেট কি স্থিতিশীল?" data-en="Is the BDT exchange rate stable?">BDT রেট কি স্থিতিশীল?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="বাংলাদেশি টাকার মান সরকারি নীতি ও বৈদেশিক মুদ্রার রিজার্ভের উপর নির্ভর করে। সাম্প্রতিক বছরগুলোতে কিছুটা ওঠানামা হয়েছে।" data-en="The taka's value depends on government policy and foreign exchange reserves. In recent years there has been some fluctuation.">বাংলাদেশি টাকার মান সরকারি নীতি ও বৈদেশিক মুদ্রার রিজার্ভের উপর নির্ভর করে। সাম্প্রতিক বছরগুলোতে কিছুটা ওঠানামা হয়েছে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কলকাতায় বাংলাদেশি টাকা ভাঙানো যায়?" data-en="Can Bangladesh Taka be exchanged in Kolkata?">কলকাতায় বাংলাদেশি টাকা ভাঙানো যায়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, কলকাতার অনুমোদিত ব্যাংক ও মানি এক্সচেঞ্জ কাউন্টারে BDT থেকে INR ভাঙানো যায়। এই টুলে রেট আগে থেকে চেক করে নিন।" data-en="Yes, BDT can be exchanged at authorised banks and money exchange counters in Kolkata. Check the rate here before going.">হ্যাঁ, কলকাতার অনুমোদিত ব্যাংক ও মানি এক্সচেঞ্জ কাউন্টারে BDT থেকে INR ভাঙানো যায়। এই টুলে রেট আগে থেকে চেক করে নিন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ভারতীয় রুপি থেকে বাংলাদেশি টাকাও কনভার্ট করা যাবে?" data-en="Can I also convert Indian Rupees to Bangladesh Taka?">ভারতীয় রুপি থেকে বাংলাদেশি টাকাও কনভার্ট করা যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য বাংলাদেশি টাকা স্বয়ংক্রিয়ভাবে দেখাবে।" data-en="Yes. Type the rupee amount in the INR box and the equivalent taka will appear automatically.">হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য বাংলাদেশি টাকা স্বয়ংক্রিয়ভাবে দেখাবে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/currency/usd-to-inr",
+      nameBn: "ডলার থেকে রুপি",
+      nameEn: "USD to INR",
+      descBn: "মার্কিন ডলার থেকে ভারতীয় রুপি",
+      descEn: "US Dollar to Indian Rupee",
+      icon: "🇺🇸"
+    },
+    {
+      url: "/currency/aed-to-inr",
+      nameBn: "দিরহাম থেকে রুপি",
+      nameEn: "AED to INR",
+      descBn: "দুবাই দিরহাম থেকে ভারতীয় রুপি",
+      descEn: "Dubai Dirham to Indian Rupee",
+      icon: "🇦🇪"
+    },
+    {
+      url: "/currency/gbp-to-inr",
+      nameBn: "পাউন্ড থেকে রুপি",
+      nameEn: "GBP to INR",
+      descBn: "ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপি",
+      descEn: "British Pound to Indian Rupee",
+      icon: "🇬🇧"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentRate = 0;
+  let rateLoaded = false;
+
+  async function fetchRate() {
+    try {
+      const res = await fetch('https://api.frankfurter.app/latest?from=BDT&to=INR');
+      const data = await res.json();
+      currentRate = data.rates.INR;
+      rateLoaded = true;
+
+      const rateEl = document.getElementById('live-rate');
+      const updatedEl = document.getElementById('last-updated');
+      const statusEl = document.getElementById('rate-status');
+
+      if (rateEl) rateEl.textContent = `1 BDT = ₹${currentRate.toFixed(4)}`;
+      if (updatedEl) updatedEl.textContent = new Date().toLocaleTimeString('bn-IN');
+      if (statusEl) { statusEl.textContent = '🟢 লাইভ রেট'; statusEl.className = 'text-green-600 font-medium text-sm'; }
+
+      calculate();
+    } catch(e) {
+      const statusEl = document.getElementById('rate-status');
+      if (statusEl) { statusEl.textContent = '⚠️ রেট লোড করতে সমস্যা'; statusEl.className = 'text-orange-600 font-medium text-sm'; }
+    }
+  }
+
+  function calculate() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(fromInput.value);
+    if (!isNaN(val) && val >= 0) {
+      toInput.value = (val * currentRate).toFixed(2);
+    }
+  }
+
+  function calculateReverse() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(toInput.value);
+    if (!isNaN(val) && val >= 0) {
+      fromInput.value = (val / currentRate).toFixed(2);
+    }
+  }
+
+  document.getElementById('from-input')?.addEventListener('input', calculate);
+  document.getElementById('to-input')?.addEventListener('input', calculateReverse);
+
+  fetchRate();
+</script>

@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { tools } from '../data/tools.js';
+
+const categories = [
+  {
+    key: 'converters',
+    nameBn: 'ইউনিট কনভার্টার',
+    nameEn: 'Unit Converters',
+    icon: '🔄',
+    color: 'teal',
+  },
+  {
+    key: 'currency',
+    nameBn: 'মুদ্রা বিনিময়',
+    nameEn: 'Currency',
+    icon: '💱',
+    color: 'teal',
+  },
+  {
+    key: 'health',
+    nameBn: 'স্বাস্থ্য সরঞ্জাম',
+    nameEn: 'Health Tools',
+    icon: '🏃',
+    color: 'teal',
+  },
+  {
+    key: 'calculators',
+    nameBn: 'ক্যালকুলেটর',
+    nameEn: 'Calculators',
+    icon: '🧮',
+    color: 'teal',
+  },
+  {
+    key: 'food',
+    nameBn: 'খাবার ও ক্যালরি',
+    nameEn: 'Food & Calories',
+    icon: '🍚',
+    color: 'teal',
+  },
+  {
+    key: 'india',
+    nameBn: 'ভারত টুলস',
+    nameEn: 'India Tools',
+    icon: '🇮🇳',
+    color: 'teal',
+  },
+];
+---
+
+<BaseLayout
+  title="BanglaTools — বাংলায় বিনামূল্যে অনলাইন টুলস"
+  titleBn="BanglaTools — বাংলায় বিনামূল্যে অনলাইন টুলস"
+  description="কনভার্টার, ক্যালকুলেটর, মুদ্রা বিনিময়, বিএমআই, ক্যালরি — সব বাংলায়। বিনামূল্যে, লগইন ছাড়াই।"
+  descriptionBn="কনভার্টার, ক্যালকুলেটর, মুদ্রা বিনিময়, বিএমআই, ক্যালরি — সব বাংলায়। বিনামূল্যে, লগইন ছাড়াই।"
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-teal-700 to-teal-900 text-white py-12 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
+          <span data-bn="বাংলায় বিনামূল্যে টুলস" data-en="Free Tools in Bengali">বাংলায় বিনামূল্যে টুলস</span>
+        </h1>
+        <p class="text-lg text-teal-100 mb-6">
+          <span data-bn="কনভার্টার, ক্যালকুলেটর, মুদ্রা রেট, স্বাস্থ্য টুলস — সব এক জায়গায়, বাংলায়" data-en="Converters, calculators, currency rates, health tools — all in one place, in Bengali">কনভার্টার, ক্যালকুলেটর, মুদ্রা রেট, স্বাস্থ্য টুলস — সব এক জায়গায়, বাংলায়</span>
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 text-sm">
+          <span class="bg-teal-600 px-3 py-1 rounded-full" data-bn="✓ লগইন লাগে না" data-en="✓ No Login Needed">✓ লগইন লাগে না</span>
+          <span class="bg-teal-600 px-3 py-1 rounded-full" data-bn="✓ সম্পূর্ণ বিনামূল্যে" data-en="✓ Completely Free">✓ সম্পূর্ণ বিনামূল্যে</span>
+          <span class="bg-teal-600 px-3 py-1 rounded-full" data-bn="✓ মোবাইলে কাজ করে" data-en="✓ Works on Mobile">✓ মোবাইলে কাজ করে</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Search -->
+    <div class="bg-teal-800 px-4 pb-4 pt-2 md:hidden">
+      <div class="relative max-w-md mx-auto">
+        <input
+          type="text"
+          id="hero-search"
+          placeholder="টুল খুঁজুন..."
+          class="w-full px-4 py-3 rounded-xl text-gray-900 text-base bg-white border-0 focus:outline-none focus:ring-2 focus:ring-saffron-400"
+          autocomplete="off"
+        />
+        <div id="hero-search-results" class="hidden absolute top-full left-0 w-full bg-white rounded-xl shadow-xl mt-1 max-h-72 overflow-y-auto z-50 text-gray-900"></div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <!-- AdSense Slot 1 -->
+      <AdSlot slot="homepage-top" />
+
+      <!-- Tool Categories -->
+      <div class="space-y-10">
+
+        <!-- Unit Converters -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>🔄</span>
+            <span data-bn="ইউনিট কনভার্টার" data-en="Unit Converters">ইউনিট কনভার্টার</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {tools.converters.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- Currency -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>💱</span>
+            <span data-bn="মুদ্রা বিনিময় — লাইভ রেট" data-en="Currency — Live Rates">মুদ্রা বিনিময় — লাইভ রেট</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {tools.currency.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- Health -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>🏃</span>
+            <span data-bn="স্বাস্থ্য সরঞ্জাম" data-en="Health Tools">স্বাস্থ্য সরঞ্জাম</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {tools.health.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- Calculators -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>🧮</span>
+            <span data-bn="দৈনন্দিন ক্যালকুলেটর" data-en="Everyday Calculators">দৈনন্দিন ক্যালকুলেটর</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {tools.calculators.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- Food -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>🍚</span>
+            <span data-bn="খাবার ও ক্যালরি" data-en="Food & Calories">খাবার ও ক্যালরি</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {tools.food.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- India Tools -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+            <span>🇮🇳</span>
+            <span data-bn="ভারত-বিশেষ টুলস" data-en="India-Specific Tools">ভারত-বিশেষ টুলস</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {tools.india.map((tool) => (
+              <a
+                href={tool.slug}
+                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+              >
+                <div class="text-3xl mb-2">{tool.icon}</div>
+                <div class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="text-xs text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- AdSense Slot 2 -->
+        <AdSlot slot="homepage-bottom" />
+
+        <!-- Why BanglaTools -->
+        <section class="bg-teal-50 rounded-2xl p-8 border border-teal-100">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <span data-bn="কেন BanglaTools?" data-en="Why BanglaTools?">কেন BanglaTools?</span>
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-4xl mb-3">🆓</div>
+              <h3 class="font-bold text-gray-900 mb-2" data-bn="সম্পূর্ণ বিনামূল্যে" data-en="Completely Free">সম্পূর্ণ বিনামূল্যে</h3>
+              <p class="text-sm text-gray-600" data-bn="৩০+ টুল সবসময় বিনামূল্যে।" data-en="30+ tools always free.">৩০+ টুল সবসময় বিনামূল্যে।</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl mb-3">⚡</div>
+              <h3 class="font-bold text-gray-900 mb-2" data-bn="দ্রুত ও সহজ" data-en="Fast & Simple">দ্রুত ও সহজ</h3>
+              <p class="text-sm text-gray-600" data-bn="তাৎক্ষণিক ফলাফল, কোনো অপেক্ষা নেই।" data-en="Instant results, no waiting.">তাৎক্ষণিক ফলাফল, কোনো অপেক্ষা নেই।</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl mb-3">🇧🇩</div>
+              <h3 class="font-bold text-gray-900 mb-2" data-bn="বাংলায় সবকিছু" data-en="Everything in Bengali">বাংলায় সবকিছু</h3>
+              <p class="text-sm text-gray-600" data-bn="বাংলা ও ইংরেজি দুই ভাষায় পাওয়া যায়।" data-en="Available in Bengali and English.">বাংলা ও ইংরেজি দুই ভাষায় পাওয়া যায়।</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+// Hero search
+document.addEventListener('DOMContentLoaded', function() {
+  var input = document.getElementById('hero-search');
+  var results = document.getElementById('hero-search-results');
+  if (input && results && typeof doSearch === 'function') {
+    input.addEventListener('input', function() { doSearch(this.value, results); });
+    document.addEventListener('click', function(e) {
+      if (!input.contains(e.target) && !results.contains(e.target)) results.classList.add('hidden');
+    });
+  }
+
+  // Apply lang on homepage cards
+  if (typeof initLang === 'function') initLang();
+});
+</script>

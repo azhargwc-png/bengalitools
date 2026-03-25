@@ -1,0 +1,332 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="বয়স ক্যালকুলেটর — জন্মতারিখ থেকে বয়স | BanglaTools"
+  description="জন্মতারিখ থেকে সঠিক বয়স বের করুন। বছর, মাস, দিনে সঠিক বয়স জানুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="বয়স ক্যালকুলেটর — জন্মতারিখ থেকে বয়স" data-en="Age Calculator — Calculate Exact Age">বয়স ক্যালকুলেটর — জন্মতারিখ থেকে বয়স</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="জন্মতারিখ থেকে বছর, মাস ও দিনে সঠিক বয়স জানুন" data-en="Find your exact age in years, months and days from your date of birth">জন্মতারিখ থেকে বছর, মাস ও দিনে সঠিক বয়স জানুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="dob-input">
+          <span data-bn="জন্মতারিখ" data-en="Date of Birth">জন্মতারিখ</span>
+        </label>
+        <input
+          type="date"
+          id="dob-input"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="calc-date-input">
+          <span data-bn="কোন তারিখে বয়স হিসাব করবেন" data-en="Calculate age as of date">কোন তারিখে বয়স হিসাব করবেন</span>
+        </label>
+        <input
+          type="date"
+          id="calc-date-input"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+        <p class="text-xs text-gray-400 mt-1">
+          <span data-bn="খালি রাখলে আজকের তারিখ ব্যবহার হবে" data-en="Leave blank to use today's date">খালি রাখলে আজকের তারিখ ব্যবহার হবে</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="age-result" class="hidden">
+      <!-- Main age display -->
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="age-years" class="text-4xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1">
+            <span data-bn="বছর" data-en="Years">বছর</span>
+          </p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="age-months" class="text-4xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1">
+            <span data-bn="মাস" data-en="Months">মাস</span>
+          </p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="age-days" class="text-4xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1">
+            <span data-bn="দিন" data-en="Days">দিন</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Extra info -->
+      <div class="space-y-2 text-sm text-gray-700 bg-white rounded-xl p-4 border border-gray-200">
+        <p>
+          <span class="font-medium text-gray-500">
+            <span data-bn="জন্মদিন ছিল:" data-en="Born on:">জন্মদিন ছিল:</span>
+          </span>
+          <span id="born-weekday" class="font-semibold text-teal-700 ml-2"></span>
+        </p>
+        <p>
+          <span class="font-medium text-gray-500">
+            <span data-bn="মোট দিন বেঁচে আছেন:" data-en="Total days lived:">মোট দিন বেঁচে আছেন:</span>
+          </span>
+          <span id="total-days" class="font-semibold text-teal-700 ml-2"></span>
+        </p>
+        <p>
+          <span class="font-medium text-gray-500">
+            <span data-bn="পরবর্তী জন্মদিন:" data-en="Next birthday:">পরবর্তী জন্মদিন:</span>
+          </span>
+          <span id="next-birthday" class="font-semibold text-teal-700 ml-2"></span>
+        </p>
+        <p>
+          <span class="font-medium text-gray-500">
+            <span data-bn="জন্মদিনের বাকি:" data-en="Days until birthday:">জন্মদিনের বাকি:</span>
+          </span>
+          <span id="days-to-birthday" class="font-semibold text-teal-700 ml-2"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="জন্মতারিখের ঘরে আপনার জন্ম তারিখ বেছে নিন" data-en="Select your date of birth in the Date of Birth field">জন্মতারিখের ঘরে আপনার জন্ম তারিখ বেছে নিন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="বয়স হিসাবের তারিখ খালি রাখলে আজকের তারিখ ব্যবহার হবে" data-en="Leave the calculation date blank to use today's date">বয়স হিসাবের তারিখ খালি রাখলে আজকের তারিখ ব্যবহার হবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="বছর, মাস, দিন এবং অতিরিক্ত তথ্য স্বয়ংক্রিয়ভাবে দেখাবে" data-en="Years, months, days and extra details appear automatically">বছর, মাস, দিন এবং অতিরিক্ত তথ্য স্বয়ংক্রিয়ভাবে দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই বয়স ক্যালকুলেটরটি জন্মতারিখ থেকে সঠিক বয়স বছর, মাস এবং দিনে হিসাব করে। শুধু বয়স নয়, এটি আরও অনেক তথ্য দেয়। আপনি কোন বারে (সোমবার, মঙ্গলবার ইত্যাদি) জন্মেছিলেন তাও জানা যাবে। আপনার জীবনের মোট কত দিন কেটেছে সেটাও দেখাবে এই টুল। পাশাপাশি আপনার পরবর্তী জন্মদিন কবে এবং সেটি আসতে আর কতদিন বাকি তাও জানাবে। বাংলাদেশ ও ভারতে বিভিন্ন সরকারি নথিতে নির্দিষ্ট বয়স দরকার হয়। পাসপোর্ট, ভিসা, চাকরির আবেদন, স্কুলে ভর্তি — সব ক্ষেত্রেই সঠিক বয়স জানা জরুরি। অবসরের বয়স, স্কুলে ভর্তির যোগ্যতা, বা ব্যাংক লোনের আবেদনেও বয়স গণনা দরকার হয়। এই টুলটি JavaScript Date অবজেক্ট ব্যবহার করে লিপ ইয়ারসহ সঠিক হিসাব করে। সম্পূর্ণ বিনামূল্যে এবং কোনো লগইন ছাড়াই ব্যবহার করা যায়।
+      </p>
+      <p data-lang-en style="display:none">
+        This age calculator computes your exact age in years, months, and days from your date of birth. Beyond just the age, it also tells you what day of the week you were born on, how many total days you have been alive, when your next birthday falls, and how many days remain until that birthday. In Bangladesh and India, an accurate age is required for passports, visas, job applications, school admissions, pension claims, and bank loan applications. The tool uses JavaScript's Date object, which correctly handles leap years and month-length variations. You can also calculate the age on any specific date — useful for legal documents that require age as of a particular date. The tool auto-calculates as soon as you select a date, with no button press needed. It is completely free and works on all devices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" জন্মতারিখ ১৫ আগস্ট ১৯৯০" data-en=" Date of birth: 15 August 1990"> জন্মতারিখ ১৫ আগস্ট ১৯৯০</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="আজকের তারিখ: ২৪ মার্চ ২০২৬" data-en="Today's date: 24 March 2026">আজকের তারিখ: ২৪ মার্চ ২০২৬</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="বয়স: ৩৫ বছর ৭ মাস ৯ দিন" data-en="Age: 35 years 7 months 9 days">বয়স: ৩৫ বছর ৭ মাস ৯ দিন</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" ২৯ ফেব্রুয়ারি ২০০০ (লিপ ইয়ার)" data-en=" 29 February 2000 (Leap Year)"> ২৯ ফেব্রুয়ারি ২০০০ (লিপ ইয়ার)</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="আজকের তারিখ: ২৪ মার্চ ২০২৬" data-en="Today's date: 24 March 2026">আজকের তারিখ: ২৪ মার্চ ২০২৬</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="বয়স: ২৬ বছর ০ মাস ২৩ দিন (লিপ ইয়ার সঠিকভাবে হিসাব হয়)" data-en="Age: 26 years 0 months 23 days (leap year handled correctly)">বয়স: ২৬ বছর ০ মাস ২৩ দিন (লিপ ইয়ার সঠিকভাবে হিসাব হয়)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" স্কুলে ভর্তির বয়স যাচাই (জন্ম ১ জানুয়ারি ২০২০)" data-en=" School admission age check (born 1 January 2020)"> স্কুলে ভর্তির বয়স যাচাই (জন্ম ১ জানুয়ারি ২০২০)</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="আজকের তারিখ: ২৪ মার্চ ২০২৬" data-en="Today's date: 24 March 2026">আজকের তারিখ: ২৪ মার্চ ২০২৬</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="বয়স: ৬ বছর ২ মাস ২৩ দিন" data-en="Age: 6 years 2 months 23 days">বয়স: ৬ বছর ২ মাস ২৩ দিন</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="সঠিক বয়স কীভাবে হিসাব করতে হয়?" data-en="How is exact age calculated?">সঠিক বয়স কীভাবে হিসাব করতে হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="জন্মতারিখ থেকে বর্তমান তারিখ বিয়োগ করে বছর, মাস ও দিন আলাদাভাবে হিসাব করা হয়। লিপ ইয়ার ও মাসের দিন সংখ্যার পার্থক্যও বিবেচনা করা হয়।" data-en="Exact age is calculated by subtracting the birth date from the current date, computing years, months, and days separately while accounting for leap years and varying month lengths.">জন্মতারিখ থেকে বর্তমান তারিখ বিয়োগ করে বছর, মাস ও দিন আলাদাভাবে হিসাব করা হয়। লিপ ইয়ার ও মাসের দিন সংখ্যার পার্থক্যও বিবেচনা করা হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমি কোন বারে জন্মেছিলাম কীভাবে জানব?" data-en="How can I find what day of the week I was born?">আমি কোন বারে জন্মেছিলাম কীভাবে জানব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই টুলে জন্মতারিখ দিলে স্বয়ংক্রিয়ভাবে বার দেখাবে। JavaScript Date অবজেক্ট ব্যবহার করে সঠিকভাবে বার নির্ধারণ করা হয়।" data-en="Enter your date of birth in this tool and the day of the week will appear automatically, calculated using the JavaScript Date object.">এই টুলে জন্মতারিখ দিলে স্বয়ংক্রিয়ভাবে বার দেখাবে। JavaScript Date অবজেক্ট ব্যবহার করে সঠিকভাবে বার নির্ধারণ করা হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পরবর্তী জন্মদিন কতদিন পরে?" data-en="How many days until my next birthday?">পরবর্তী জন্মদিন কতদিন পরে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই টুলটি স্বয়ংক্রিয়ভাবে পরবর্তী জন্মদিনের তারিখ ও বাকি দিনের সংখ্যা দেখায়। জন্মদিন আজকে হলে ০ দিন দেখাবে।" data-en="This tool automatically shows the date of your next birthday and how many days remain. If today is your birthday, it shows 0 days.">এই টুলটি স্বয়ংক্রিয়ভাবে পরবর্তী জন্মদিনের তারিখ ও বাকি দিনের সংখ্যা দেখায়। জন্মদিন আজকে হলে ০ দিন দেখাবে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমার বয়স মোট কত দিন?" data-en="What is my age in total days?">আমার বয়স মোট কত দিন?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই টুলটি জন্মদিন থেকে আজ পর্যন্ত মোট দিন সংখ্যা দেখায়। উদাহরণস্বরূপ ৩৫ বছর বয়সী একজন মানুষ প্রায় ১২,৭৭৫ দিন বেঁচে আছেন।" data-en="This tool shows the total number of days from birth until today. For example, a 35-year-old has lived approximately 12,775 days.">এই টুলটি জন্মদিন থেকে আজ পর্যন্ত মোট দিন সংখ্যা দেখায়। উদাহরণস্বরূপ ৩৫ বছর বয়সী একজন মানুষ প্রায় ১২,৭৭৫ দিন বেঁচে আছেন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="লিপ ইয়ারে জন্মালে বয়স কীভাবে হিসাব হয়?" data-en="How is age calculated for someone born on a leap day?">লিপ ইয়ারে জন্মালে বয়স কীভাবে হিসাব হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="লিপ ইয়ারে ২৯ ফেব্রুয়ারিতে জন্মানো ব্যক্তিদের ক্ষেত্রে লিপ বছর না হলে ২৮ ফেব্রুয়ারি বা ১ মার্চকে জন্মদিন ধরা হয়। এই টুলটি এই পরিস্থিতি সঠিকভাবে সামলায়।" data-en="For those born on February 29 in a leap year, non-leap years use either Feb 28 or Mar 1 as the birthday. This tool handles this situation correctly.">লিপ ইয়ারে ২৯ ফেব্রুয়ারিতে জন্মানো ব্যক্তিদের ক্ষেত্রে লিপ বছর না হলে ২৮ ফেব্রুয়ারি বা ১ মার্চকে জন্মদিন ধরা হয়। এই টুলটি এই পরিস্থিতি সঠিকভাবে সামলায়।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/health/bmi-calculator",
+      nameBn: "বিএমআই ক্যালকুলেটর",
+      nameEn: "BMI Calculator",
+      descBn: "উচ্চতা ও ওজন থেকে BMI বের করুন",
+      descEn: "Calculate BMI from height and weight",
+      icon: "🏃"
+    },
+    {
+      url: "/calculators/date-difference",
+      nameBn: "তারিখের পার্থক্য",
+      nameEn: "Date Difference",
+      descBn: "দুটি তারিখের মধ্যে ব্যবধান জানুন",
+      descEn: "Find the gap between two dates",
+      icon: "📅"
+    },
+    {
+      url: "/india/bengali-calendar",
+      nameBn: "বাংলা ক্যালেন্ডার",
+      nameEn: "Bengali Calendar",
+      descBn: "বাংলা তারিখ ও ক্যালেন্ডার",
+      descEn: "Bengali date and calendar",
+      icon: "🗓️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const dobInput = document.getElementById('dob-input') as HTMLInputElement;
+  const calcDateInput = document.getElementById('calc-date-input') as HTMLInputElement;
+
+  const weekdays = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
+  const weekdaysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const monthsBn = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+  const monthsEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  // Set today's date as default for calculation date
+  const today = new Date();
+  calcDateInput.value = today.toISOString().split('T')[0];
+
+  function calculate() {
+    const dobVal = dobInput.value;
+    if (!dobVal) { document.getElementById('age-result')!.classList.add('hidden'); return; }
+
+    const calcVal = calcDateInput.value || today.toISOString().split('T')[0];
+    const dob = new Date(dobVal);
+    const calcDate = new Date(calcVal);
+
+    if (dob >= calcDate) { document.getElementById('age-result')!.classList.add('hidden'); return; }
+
+    // Calculate years, months, days
+    let years = calcDate.getFullYear() - dob.getFullYear();
+    let months = calcDate.getMonth() - dob.getMonth();
+    let days = calcDate.getDate() - dob.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(calcDate.getFullYear(), calcDate.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    // Total days lived
+    const totalDays = Math.floor((calcDate.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24));
+
+    // Day of week born
+    const dayIdx = dob.getDay();
+    const bornWeekday = `${weekdays[dayIdx]} / ${weekdaysEn[dayIdx]}`;
+
+    // Next birthday
+    let nextBday = new Date(calcDate.getFullYear(), dob.getMonth(), dob.getDate());
+    if (nextBday <= calcDate) {
+      nextBday = new Date(calcDate.getFullYear() + 1, dob.getMonth(), dob.getDate());
+    }
+    const daysToNextBday = Math.floor((nextBday.getTime() - calcDate.getTime()) / (1000 * 60 * 60 * 24));
+    const nextBdayStr = `${nextBday.getDate()} ${monthsBn[nextBday.getMonth()]} ${nextBday.getFullYear()} / ${nextBday.getDate()} ${monthsEn[nextBday.getMonth()]} ${nextBday.getFullYear()}`;
+
+    // Update DOM
+    document.getElementById('age-result')!.classList.remove('hidden');
+    document.getElementById('age-years')!.textContent = String(years);
+    document.getElementById('age-months')!.textContent = String(months);
+    document.getElementById('age-days')!.textContent = String(days);
+    document.getElementById('born-weekday')!.textContent = bornWeekday;
+    document.getElementById('total-days')!.textContent = totalDays.toLocaleString('bn-IN') + ' দিন / ' + totalDays.toLocaleString() + ' days';
+    document.getElementById('next-birthday')!.textContent = nextBdayStr;
+    document.getElementById('days-to-birthday')!.textContent = daysToNextBday === 0 ? 'আজই জন্মদিন! 🎂 / Today!' : `${daysToNextBday} দিন / ${daysToNextBday} days`;
+  }
+
+  dobInput?.addEventListener('change', calculate);
+  calcDateInput?.addEventListener('change', calculate);
+</script>

@@ -1,0 +1,414 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="গতি ক্যালকুলেটর — দূরত্ব সময় গতি | BanglaTools"
+  description="গতি, দূরত্ব ও সময় হিসাব করুন। তিনটি মোডে সহজে হিসাব করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="গতি ক্যালকুলেটর — দূরত্ব সময় গতি" data-en="Speed Distance Time Calculator">গতি ক্যালকুলেটর — দূরত্ব সময় গতি</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="গতি, দূরত্ব বা সময় — যেকোনো একটি হিসাব করুন" data-en="Calculate speed, distance or time — choose any one">গতি, দূরত্ব বা সময় — যেকোনো একটি হিসাব করুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Mode Selector -->
+    <div class="grid grid-cols-3 gap-2 mb-6">
+      <button id="mode-speed" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all min-h-[44px]">
+        <span data-bn="গতি বের করুন" data-en="Find Speed">গতি বের করুন</span>
+      </button>
+      <button id="mode-dist" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]">
+        <span data-bn="দূরত্ব বের করুন" data-en="Find Distance">দূরত্ব বের করুন</span>
+      </button>
+      <button id="mode-time" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]">
+        <span data-bn="সময় বের করুন" data-en="Find Time">সময় বের করুন</span>
+      </button>
+    </div>
+
+    <!-- Formula Display -->
+    <div id="formula-display" class="bg-teal-50 border border-teal-200 rounded-xl p-3 text-center text-sm font-mono text-teal-800 mb-5">
+      গতি = দূরত্ব ÷ সময় / Speed = Distance ÷ Time
+    </div>
+
+    <!-- Unit Selector -->
+    <div class="mb-5">
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        <span data-bn="গতির একক" data-en="Speed Unit">গতির একক</span>
+      </label>
+      <select id="unit-select" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]">
+        <option value="kmh">km/h (কিলোমিটার/ঘণ্টা)</option>
+        <option value="ms">m/s (মিটার/সেকেন্ড)</option>
+        <option value="mph">mph (মাইল/ঘণ্টা)</option>
+      </select>
+    </div>
+
+    <!-- Mode: Find Speed -->
+    <div id="panel-speed">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="sp-distance">
+            <span data-bn="দূরত্ব (km)" data-en="Distance (km)">দূরত্ব (km)</span>
+          </label>
+          <input type="number" id="sp-distance" placeholder="যেমন: 180" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="সময় (ঘণ্টা ও মিনিট)" data-en="Time (hours and minutes)">সময় (ঘণ্টা ও মিনিট)</span>
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="number" id="sp-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="sp-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Find Distance -->
+    <div id="panel-dist" class="hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="dt-speed">
+            <span data-bn="গতি" data-en="Speed">গতি</span>
+          </label>
+          <input type="number" id="dt-speed" placeholder="যেমন: 60" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <span data-bn="সময় (ঘণ্টা ও মিনিট)" data-en="Time (hours and minutes)">সময় (ঘণ্টা ও মিনিট)</span>
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="number" id="dt-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="dt-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Find Time -->
+    <div id="panel-time" class="hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="tm-distance">
+            <span data-bn="দূরত্ব (km)" data-en="Distance (km)">দূরত্ব (km)</span>
+          </label>
+          <input type="number" id="tm-distance" placeholder="যেমন: 570" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="tm-speed">
+            <span data-bn="গতি" data-en="Speed">গতি</span>
+          </label>
+          <input type="number" id="tm-speed" placeholder="যেমন: 80" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="speed-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+      <p class="text-sm text-gray-500 mb-1" id="result-label-text">ফলাফল / Result</p>
+      <p id="speed-answer" class="text-4xl font-bold text-teal-700 mb-2"></p>
+      <p id="speed-formula-text" class="text-sm text-gray-500"></p>
+      <p id="speed-conversions" class="text-xs text-gray-400 mt-2"></p>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="কী বের করতে চান তা বেছে নিন — গতি, দূরত্ব বা সময়" data-en="Select what you want to find — speed, distance or time">কী বের করতে চান তা বেছে নিন — গতি, দূরত্ব বা সময়</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="একক বেছে নিন — km/h, m/s বা mph" data-en="Select the unit — km/h, m/s or mph">একক বেছে নিন — km/h, m/s বা mph</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="পরিচিত দুটি মান দিন — ঘণ্টা ও মিনিট আলাদা ঘরে দিতে পারবেন" data-en="Enter the two known values — hours and minutes can be entered separately">পরিচিত দুটি মান দিন — ঘণ্টা ও মিনিট আলাদা ঘরে দিতে পারবেন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="ফলাফল ও রূপান্তর মান সঙ্গে সঙ্গে দেখাবে" data-en="Result and unit conversions appear instantly">ফলাফল ও রূপান্তর মান সঙ্গে সঙ্গে দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই গতি ক্যালকুলেটরটি তিনটি মোডে কাজ করে। গতি মোডে দূরত্ব ও সময় দিলে গতি বের হয়। দূরত্ব মোডে গতি ও সময় দিলে দূরত্ব বের হয়। সময় মোডে দূরত্ব ও গতি দিলে কতক্ষণ লাগবে তা বের হয়। সময় ঘণ্টা ও মিনিট আলাদা ঘরে দেওয়া যায় — যা হিসাব সহজ করে। km/h, m/s ও mph একক সাপোর্ট করে। হাঁটা, সাইকেল চালানো, গাড়ি চালানো বা ট্রেনের গতি — সব ক্ষেত্রেই ব্যবহার করা যায়। পদার্থবিজ্ঞান ও গণিতের ছাত্রছাত্রীদের জন্যও উপকারী।
+      </p>
+      <p data-lang-en style="display:none">
+        This speed calculator works in three modes. Speed mode: enter distance and time to get speed. Distance mode: enter speed and time to get distance. Time mode: enter distance and speed to find how long the journey takes. Time can be entered in hours and minutes separately for convenience. Supports km/h, m/s and mph. Useful for walking, cycling, driving or train journeys, and also for students solving physics and math problems. Results include a unit conversion summary to help compare across different measurement systems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: সকালের হাঁটা" data-en="Example 1: Morning walk">উদাহরণ ১: সকালের হাঁটা</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ৩ km, সময়: ৪৫ মিনিট" data-en="Distance: 3 km, Time: 45 minutes">দূরত্ব: ৩ km, সময়: ৪৫ মিনিট</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="গতি: ৪ km/h" data-en="Speed: 4 km/h">গতি: ৪ km/h</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: কলকাতা থেকে দিঘা হাইওয়ে ড্রাইভ" data-en="Example 2: Kolkata to Digha highway drive">উদাহরণ ২: কলকাতা থেকে দিঘা হাইওয়ে ড্রাইভ</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ১৮০ km, গতি: ৬০ km/h" data-en="Distance: 180 km, Speed: 60 km/h">দূরত্ব: ১৮০ km, গতি: ৬০ km/h</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="সময়: ৩ ঘণ্টা" data-en="Time: 3 hours">সময়: ৩ ঘণ্টা</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: কলকাতা থেকে শিলিগুড়ি" data-en="Example 3: Kolkata to Siliguri">উদাহরণ ৩: কলকাতা থেকে শিলিগুড়ি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ৫৭০ km, সময়: ৮ ঘণ্টা ৩০ মিনিট" data-en="Distance: 570 km, Time: 8 hours 30 minutes">দূরত্ব: ৫৭০ km, সময়: ৮ ঘণ্টা ৩০ মিনিট</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="গড় গতি: প্রায় ৬৭ km/h" data-en="Average speed: approximately 67 km/h">গড় গতি: প্রায় ৬৭ km/h</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="গতি, দূরত্ব ও সময়ের সূত্র কী?" data-en="What are the formulas for speed, distance and time?">গতি, দূরত্ব ও সময়ের সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="গতি = দূরত্ব ÷ সময় | দূরত্ব = গতি × সময় | সময় = দূরত্ব ÷ গতি। এই তিনটি সূত্র একটি মূল সম্পর্ক থেকে আসে।" data-en="Speed = Distance ÷ Time | Distance = Speed × Time | Time = Distance ÷ Speed. All three formulas derive from one fundamental relationship.">গতি = দূরত্ব ÷ সময় | দূরত্ব = গতি × সময় | সময় = দূরত্ব ÷ গতি। এই তিনটি সূত্র একটি মূল সম্পর্ক থেকে আসে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="km/h থেকে m/s কীভাবে রূপান্তর করব?" data-en="How to convert km/h to m/s?">km/h থেকে m/s কীভাবে রূপান্তর করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="km/h কে ১০০০ দিয়ে গুণ করে ৩৬০০ দিয়ে ভাগ করুন, অথবা ০.২৭৭৮ দিয়ে গুণ করুন। যেমন ৭২ km/h = ২০ m/s।" data-en="Multiply km/h by 1000 and divide by 3600, or multiply by 0.2778. E.g., 72 km/h = 20 m/s.">km/h কে ১০০০ দিয়ে গুণ করে ৩৬০০ দিয়ে ভাগ করুন, অথবা ০.২৭৭৮ দিয়ে গুণ করুন। যেমন ৭২ km/h = ২০ m/s।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="গড় গতি বলতে কী বোঝায়?" data-en="What does average speed mean?">গড় গতি বলতে কী বোঝায়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="গড় গতি = মোট দূরত্ব ÷ মোট সময়। পুরো যাত্রায় গতি ওঠানামা করলেও এই একটি সংখ্যা পুরো যাত্রার প্রতিনিধিত্ব করে।" data-en="Average speed = total distance ÷ total time. Even if speed varies throughout a journey, this single value represents the overall trip.">গড় গতি = মোট দূরত্ব ÷ মোট সময়। পুরো যাত্রায় গতি ওঠানামা করলেও এই একটি সংখ্যা পুরো যাত্রার প্রতিনিধিত্ব করে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ঢাকা থেকে কলকাতা যেতে কতক্ষণ লাগে?" data-en="How long does it take to travel from Dhaka to Kolkata?">ঢাকা থেকে কলকাতা যেতে কতক্ষণ লাগে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="দূরত্ব প্রায় ২৮০ km। গড় ৬০ km/h হলে প্রায় ৪-৫ ঘণ্টা লাগে, তবে সীমান্ত পার হওয়ার সময় যোগ করতে হবে।" data-en="Distance is approximately 280 km. At an average of 60 km/h it takes about 4–5 hours driving time, not counting border crossing time.">দূরত্ব প্রায় ২৮০ km। গড় ৬০ km/h হলে প্রায় ৪-৫ ঘণ্টা লাগে, তবে সীমান্ত পার হওয়ার সময় যোগ করতে হবে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="mph কি ভারতে ব্যবহার হয়?" data-en="Is mph used in India?">mph কি ভারতে ব্যবহার হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না, ভারত ও বাংলাদেশে km/h ব্যবহার হয়। mph মূলত যুক্তরাষ্ট্র, যুক্তরাজ্য ও মিয়ানমারে ব্যবহার হয়। ১ mph ≈ ১.৬০৯ km/h।" data-en="No, India and Bangladesh use km/h. mph is mainly used in the USA, UK and Myanmar. 1 mph ≈ 1.609 km/h.">না, ভারত ও বাংলাদেশে km/h ব্যবহার হয়। mph মূলত যুক্তরাষ্ট্র, যুক্তরাজ্য ও মিয়ানমারে ব্যবহার হয়। ১ mph ≈ ১.৬০৯ km/h।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/km-to-miles",
+      nameBn: "কিমি থেকে মাইল",
+      nameEn: "km to Miles",
+      descBn: "কিলোমিটার থেকে মাইল রূপান্তর",
+      descEn: "Convert kilometres to miles",
+      icon: "📏"
+    },
+    {
+      url: "/calculators/fuel-cost",
+      nameBn: "জ্বালানি খরচ ক্যালকুলেটর",
+      nameEn: "Fuel Cost Calculator",
+      descBn: "যাত্রার পেট্রোল খরচ হিসাব করুন",
+      descEn: "Calculate fuel cost for a trip",
+      icon: "⛽"
+    },
+    {
+      url: "/calculators/date-difference",
+      nameBn: "তারিখের পার্থক্য",
+      nameEn: "Date Difference",
+      descBn: "দুটি তারিখের মধ্যে ব্যবধান জানুন",
+      descEn: "Find the gap between two dates",
+      icon: "📅"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentMode = 'speed';
+  const unitSelect = document.getElementById('unit-select') as HTMLSelectElement;
+  const speedResult = document.getElementById('speed-result')!;
+  const formulaDisplay = document.getElementById('formula-display')!;
+
+  const formulas: Record<string, string> = {
+    speed: 'গতি = দূরত্ব ÷ সময় / Speed = Distance ÷ Time',
+    dist: 'দূরত্ব = গতি × সময় / Distance = Speed × Time',
+    time: 'সময় = দূরত্ব ÷ গতি / Time = Distance ÷ Speed'
+  };
+
+  const modeBtns = document.querySelectorAll('.mode-btn') as NodeListOf<HTMLButtonElement>;
+  const panels: Record<string, HTMLElement> = {
+    speed: document.getElementById('panel-speed')!,
+    dist: document.getElementById('panel-dist')!,
+    time: document.getElementById('panel-time')!
+  };
+
+  function setMode(mode: string) {
+    currentMode = mode;
+    Object.keys(panels).forEach(k => {
+      panels[k].classList.toggle('hidden', k !== mode);
+    });
+    formulaDisplay.textContent = formulas[mode];
+    modeBtns.forEach(btn => {
+      const btnMode = btn.id.replace('mode-', '');
+      if (btnMode === mode) {
+        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all min-h-[44px]';
+      } else {
+        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]';
+      }
+    });
+    speedResult.classList.add('hidden');
+  }
+
+  document.getElementById('mode-speed')!.addEventListener('click', () => setMode('speed'));
+  document.getElementById('mode-dist')!.addEventListener('click', () => setMode('dist'));
+  document.getElementById('mode-time')!.addEventListener('click', () => setMode('time'));
+
+  function getUnitLabel(): string {
+    const u = unitSelect.value;
+    if (u === 'kmh') return 'km/h';
+    if (u === 'ms') return 'm/s';
+    return 'mph';
+  }
+
+  function getDistanceUnit(): string {
+    const u = unitSelect.value;
+    if (u === 'ms') return 'm';
+    if (u === 'mph') return 'miles';
+    return 'km';
+  }
+
+  function speedConversions(kmh: number): string {
+    const ms = kmh / 3.6;
+    const mph = kmh / 1.609;
+    return `${kmh.toFixed(2)} km/h = ${ms.toFixed(2)} m/s = ${mph.toFixed(2)} mph`;
+  }
+
+  function getTimeHours(hoursId: string, minutesId: string): number {
+    const h = parseFloat((document.getElementById(hoursId) as HTMLInputElement).value) || 0;
+    const m = parseFloat((document.getElementById(minutesId) as HTMLInputElement).value) || 0;
+    return h + m / 60;
+  }
+
+  function formatTime(hours: number): string {
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+    if (h === 0) return `${m} মিনিট / ${m} minutes`;
+    if (m === 0) return `${h} ঘণ্টা / ${h} hours`;
+    return `${h} ঘণ্টা ${m} মিনিট / ${h} hrs ${m} min`;
+  }
+
+  function calculate() {
+    const unit = unitSelect.value;
+    speedResult.classList.add('hidden');
+
+    if (currentMode === 'speed') {
+      const dist = parseFloat((document.getElementById('sp-distance') as HTMLInputElement).value);
+      const timeH = getTimeHours('sp-hours', 'sp-minutes');
+      if (!isNaN(dist) && dist > 0 && timeH > 0) {
+        let speed = dist / timeH;
+        if (unit === 'ms') speed = (dist * 1000) / (timeH * 3600);
+        else if (unit === 'mph') speed = dist / 1.609 / timeH;
+        document.getElementById('result-label-text')!.textContent = 'গতি / Speed';
+        document.getElementById('speed-answer')!.textContent = speed.toFixed(2) + ' ' + getUnitLabel();
+        document.getElementById('speed-formula-text')!.textContent = `${dist} ÷ ${timeH.toFixed(2)} = ${speed.toFixed(2)} ${getUnitLabel()}`;
+        const kmhSpeed = unit === 'kmh' ? speed : unit === 'ms' ? speed * 3.6 : speed * 1.609;
+        document.getElementById('speed-conversions')!.textContent = speedConversions(kmhSpeed);
+        speedResult.classList.remove('hidden');
+      }
+    } else if (currentMode === 'dist') {
+      const speed = parseFloat((document.getElementById('dt-speed') as HTMLInputElement).value);
+      const timeH = getTimeHours('dt-hours', 'dt-minutes');
+      if (!isNaN(speed) && speed > 0 && timeH > 0) {
+        let dist = speed * timeH;
+        if (unit === 'ms') dist = speed * timeH * 3600 / 1000;
+        else if (unit === 'mph') dist = speed * 1.609 * timeH;
+        document.getElementById('result-label-text')!.textContent = 'দূরত্ব / Distance';
+        document.getElementById('speed-answer')!.textContent = dist.toFixed(2) + ' ' + getDistanceUnit();
+        document.getElementById('speed-formula-text')!.textContent = `${speed} × ${timeH.toFixed(2)} = ${dist.toFixed(2)} ${getDistanceUnit()}`;
+        document.getElementById('speed-conversions')!.textContent = '';
+        speedResult.classList.remove('hidden');
+      }
+    } else if (currentMode === 'time') {
+      const dist = parseFloat((document.getElementById('tm-distance') as HTMLInputElement).value);
+      const speed = parseFloat((document.getElementById('tm-speed') as HTMLInputElement).value);
+      if (!isNaN(dist) && dist > 0 && !isNaN(speed) && speed > 0) {
+        let timeH = dist / speed;
+        if (unit === 'ms') timeH = (dist * 1000) / (speed * 3600);
+        else if (unit === 'mph') timeH = (dist / 1.609) / speed;
+        document.getElementById('result-label-text')!.textContent = 'সময় / Time';
+        document.getElementById('speed-answer')!.textContent = formatTime(timeH);
+        document.getElementById('speed-formula-text')!.textContent = `${dist} ÷ ${speed} = ${timeH.toFixed(3)} ঘণ্টা / hours`;
+        document.getElementById('speed-conversions')!.textContent = '';
+        speedResult.classList.remove('hidden');
+      }
+    }
+  }
+
+  // Add listeners to all inputs
+  ['sp-distance', 'sp-hours', 'sp-minutes', 'dt-speed', 'dt-hours', 'dt-minutes', 'tm-distance', 'tm-speed'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', calculate);
+  });
+  unitSelect.addEventListener('change', calculate);
+</script>

@@ -1,0 +1,327 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="আদর্শ ওজন ক্যালকুলেটর | BanglaTools"
+  description="উচ্চতা অনুযায়ী আদর্শ ওজন কত হওয়া উচিত জানুন। বিনামূল্যে আদর্শ ওজন ক্যালকুলেটর।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="আদর্শ ওজন ক্যালকুলেটর" data-en="Ideal Weight Calculator">আদর্শ ওজন ক্যালকুলেটর</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আপনার উচ্চতা অনুযায়ী স্বাস্থ্যকর ওজনের পরিসীমা জানুন" data-en="Find the healthy weight range for your height">আপনার উচ্চতা অনুযায়ী স্বাস্থ্যকর ওজনের পরিসীমা জানুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <!-- Height -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="iw-height">
+          <span data-bn="উচ্চতা (সেন্টিমিটার)" data-en="Height (centimetres)">উচ্চতা (সেন্টিমিটার)</span>
+        </label>
+        <input
+          type="number"
+          id="iw-height"
+          placeholder="যেমন: 165"
+          min="100"
+          max="250"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <!-- Gender -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          <span data-bn="লিঙ্গ" data-en="Gender">লিঙ্গ</span>
+        </label>
+        <div class="flex gap-2">
+          <button
+            id="iw-btn-male"
+            class="flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white min-h-[44px]"
+            onclick="setIWGender('male')"
+          >
+            <span data-bn="পুরুষ" data-en="Male">পুরুষ</span>
+          </button>
+          <button
+            id="iw-btn-female"
+            class="flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700 min-h-[44px]"
+            onclick="setIWGender('female')"
+          >
+            <span data-bn="মহিলা" data-en="Female">মহিলা</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="iw-result" class="hidden">
+      <!-- BMI-based range -->
+      <div class="mb-4">
+        <p class="text-sm font-medium text-gray-500 mb-2">
+          <span data-bn="BMI পদ্ধতি (১৮.৫ — ২৪.৯)" data-en="BMI method (18.5 — 24.9)">BMI পদ্ধতি (১৮.৫ — ২৪.৯)</span>
+        </p>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+          <p id="bmi-range" class="text-2xl font-bold text-green-700 text-center"></p>
+          <p class="text-xs text-gray-500 text-center mt-1">
+            <span data-bn="স্বাস্থ্যকর ওজনের পরিসীমা" data-en="Healthy weight range">স্বাস্থ্যকর ওজনের পরিসীমা</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Hamwi method -->
+      <div class="mb-4">
+        <p class="text-sm font-medium text-gray-500 mb-2">
+          <span data-bn="Hamwi পদ্ধতি" data-en="Hamwi method">Hamwi পদ্ধতি</span>
+        </p>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4">
+          <p id="hamwi-result" class="text-2xl font-bold text-teal-700 text-center"></p>
+          <p class="text-xs text-gray-500 text-center mt-1">
+            <span data-bn="আদর্শ ওজন (±১০% পরিসীমা)" data-en="Ideal weight (±10% range)">আদর্শ ওজন (±১০% পরিসীমা)</span>
+          </p>
+        </div>
+      </div>
+
+      <p id="iw-warning" class="text-sm text-orange-600 hidden text-center"></p>
+      <p id="iw-formula" class="text-xs text-gray-400 text-center mt-2"></p>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="আপনার উচ্চতা সেন্টিমিটারে লিখুন" data-en="Enter your height in centimetres">আপনার উচ্চতা সেন্টিমিটারে লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="আপনার লিঙ্গ বেছে নিন" data-en="Select your gender">আপনার লিঙ্গ বেছে নিন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="দুটি পদ্ধতিতে আদর্শ ওজনের পরিসীমা দেখাবে" data-en="Your ideal weight range appears using two methods">দুটি পদ্ধতিতে আদর্শ ওজনের পরিসীমা দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই আদর্শ ওজন ক্যালকুলেটর দুটি স্বীকৃত পদ্ধতি ব্যবহার করে আপনার আদর্শ ওজনের পরিসীমা নির্ধারণ করে। প্রথম পদ্ধতি হলো BMI-ভিত্তিক পদ্ধতি। স্বাস্থ্যকর BMI পরিসীমা ১৮.৫ থেকে ২৪.৯ ধরে ওজন নির্ধারণ করা হয়। সূত্র: ওজন = BMI × উচ্চতা (মিটার)²। দ্বিতীয় পদ্ধতি হলো Hamwi পদ্ধতি যা চিকিৎসা ক্ষেত্রে ব্যাপকভাবে ব্যবহৃত হয়। পুরুষের জন্য: ৪৮ + ২.৭ × (উচ্চতা ইঞ্চিতে - ৬০)। মহিলার জন্য: ৪৫.৫ + ২.২ × (উচ্চতা ইঞ্চিতে - ৬০)। আদর্শ ওজন জানা গুরুত্বপূর্ণ কারণ অতিরিক্ত ওজন ডায়াবেটিস, উচ্চ রক্তচাপ ও হৃদরোগের ঝুঁকি বাড়ায়। কম ওজনও অপুষ্টি ও হাড়ের সমস্যা তৈরি করতে পারে। এই টুলটি বাংলাদেশি ও ভারতীয় বাঙালি উভয়ের জন্য প্রযোজ্য। তবে মনে রাখবেন আদর্শ ওজন শুধু একটি নির্দেশিকা — চিকিৎসকের পরামর্শই সর্বোত্তম।
+      </p>
+      <p data-lang-en style="display:none">
+        This ideal weight calculator uses two recognised medical methods to determine your healthy weight range. The first is the BMI-based method, which calculates the weight range corresponding to a healthy BMI of 18.5 to 24.9 for your height. Formula: weight = BMI × height (in metres)². The second is the Hamwi method, widely used in clinical settings. For males: 48 + 2.7 × (height in inches − 60). For females: 45.5 + 2.2 × (height in inches − 60). Knowing your ideal weight is important because excess body weight increases the risk of type 2 diabetes, high blood pressure, and cardiovascular disease. Being underweight can lead to malnutrition and bone weakness. This tool is suitable for both Bangladeshi and Indian Bengali adults. Keep in mind that ideal weight is a guideline, not a strict target — factors like muscle mass, bone density, and individual body type also matter. Always consult a doctor for personalised health advice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" মহিলা, উচ্চতা ১৫৮ সেমি" data-en=" Female, height 158 cm"> মহিলা, উচ্চতা ১৫৮ সেমি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI পদ্ধতি: ৪৬.২ — ৬২.২ কেজি" data-en="BMI method: 46.2 — 62.2 kg">BMI পদ্ধতি: ৪৬.২ — ৬২.২ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="Hamwi: প্রায় ৫২.৪ কেজি (±৫.২ কেজি)" data-en="Hamwi: approx 52.4 kg (±5.2 kg)">Hamwi: প্রায় ৫২.৪ কেজি (±৫.২ কেজি)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" পুরুষ, উচ্চতা ১৭০ সেমি" data-en=" Male, height 170 cm"> পুরুষ, উচ্চতা ১৭০ সেমি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI পদ্ধতি: ৫৩.৫ — ৭২.১ কেজি" data-en="BMI method: 53.5 — 72.1 kg">BMI পদ্ধতি: ৫৩.৫ — ৭২.১ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="Hamwi: প্রায় ৬৬.৮ কেজি (±৬.৭ কেজি)" data-en="Hamwi: approx 66.8 kg (±6.7 kg)">Hamwi: প্রায় ৬৬.৮ কেজি (±৬.৭ কেজি)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" পুরুষ, উচ্চতা ১৮০ সেমি" data-en=" Male, height 180 cm"> পুরুষ, উচ্চতা ১৮০ সেমি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI পদ্ধতি: ৫৯.৯ — ৮০.৭ কেজি" data-en="BMI method: 59.9 — 80.7 kg">BMI পদ্ধতি: ৫৯.৯ — ৮০.৭ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="Hamwi: প্রায় ৭৪.০ কেজি (±৭.৪ কেজি)" data-en="Hamwi: approx 74.0 kg (±7.4 kg)">Hamwi: প্রায় ৭৪.০ কেজি (±৭.৪ কেজি)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আদর্শ ওজন কি সবার জন্য একই?" data-en="Is ideal weight the same for everyone?">আদর্শ ওজন কি সবার জন্য একই?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না। আদর্শ ওজন উচ্চতা, লিঙ্গ, হাড়ের গঠন ও পেশির পরিমাণের উপর নির্ভর করে। এই ক্যালকুলেটর একটি পরিসীমা দেখায় — নির্দিষ্ট একটি সংখ্যা নয়।" data-en="No. Ideal weight depends on height, gender, bone structure, and muscle mass. This calculator shows a range rather than a single number.">না। আদর্শ ওজন উচ্চতা, লিঙ্গ, হাড়ের গঠন ও পেশির পরিমাণের উপর নির্ভর করে। এই ক্যালকুলেটর একটি পরিসীমা দেখায় — নির্দিষ্ট একটি সংখ্যা নয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="BMI পদ্ধতি ও Hamwi পদ্ধতির মধ্যে পার্থক্য কী?" data-en="What is the difference between BMI and Hamwi methods?">BMI পদ্ধতি ও Hamwi পদ্ধতির মধ্যে পার্থক্য কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="BMI পদ্ধতি উচ্চতার বর্গের সাথে ওজনের অনুপাত ব্যবহার করে। Hamwi পদ্ধতি একটি সরলরেখার সূত্র যা মূলত হাসপাতালে পুষ্টি হিসাবের জন্য ব্যবহৃত হয়। দুটি পদ্ধতি কাছাকাছি ফলাফল দেয়।" data-en="The BMI method uses the ratio of weight to height squared. The Hamwi method uses a linear formula originally developed for clinical nutrition. Both methods give similar results.">BMI পদ্ধতি উচ্চতার বর্গের সাথে ওজনের অনুপাত ব্যবহার করে। Hamwi পদ্ধতি একটি সরলরেখার সূত্র যা মূলত হাসপাতালে পুষ্টি হিসাবের জন্য ব্যবহৃত হয়। দুটি পদ্ধতি কাছাকাছি ফলাফল দেয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="উচ্চতা ৫ ফুট হলে আদর্শ ওজন কত?" data-en="What is the ideal weight for 5 feet height?">উচ্চতা ৫ ফুট হলে আদর্শ ওজন কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৫ ফুট = ১৫২.৪ সেমি। পুরুষের জন্য আদর্শ ওজন প্রায় ৪৩-৫৬ কেজি এবং মহিলার জন্য ৪৩-৫৪ কেজি (BMI পদ্ধতিতে)।" data-en="5 feet = 152.4 cm. For males the ideal weight is approximately 43-56 kg and for females 43-54 kg (by BMI method).">৫ ফুট = ১৫২.৪ সেমি। পুরুষের জন্য আদর্শ ওজন প্রায় ৪৩-৫৬ কেজি এবং মহিলার জন্য ৪৩-৫৪ কেজি (BMI পদ্ধতিতে)।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ওজন কমাতে কতদিন সময় লাগে?" data-en="How long does it take to reach ideal weight?">ওজন কমাতে কতদিন সময় লাগে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="নিরাপদ হারে সপ্তাহে ০.৫-১ কেজি ওজন কমানো যায়। ১০ কেজি কমাতে প্রায় ২-৫ মাস লাগতে পারে। ক্যালরি ক্যালকুলেটর ব্যবহার করে লক্ষ্যমাত্রা নির্ধারণ করুন।" data-en="A safe rate is 0.5-1 kg per week. Losing 10 kg may take 2-5 months. Use the calorie calculator to set your targets.">নিরাপদ হারে সপ্তাহে ০.৫-১ কেজি ওজন কমানো যায়। ১০ কেজি কমাতে প্রায় ২-৫ মাস লাগতে পারে। ক্যালরি ক্যালকুলেটর ব্যবহার করে লক্ষ্যমাত্রা নির্ধারণ করুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমি আদর্শ ওজনে আছি কিনা কীভাবে বুঝব?" data-en="How do I know if I am at my ideal weight?">আমি আদর্শ ওজনে আছি কিনা কীভাবে বুঝব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই টুলে আপনার উচ্চতা দিলে আদর্শ ওজনের পরিসীমা জানতে পারবেন। BMI ক্যালকুলেটর দিয়েও যাচাই করতে পারেন। ডাক্তারের কাছে স্বাস্থ্য পরীক্ষা করাওয়াও ভালো।" data-en="Enter your height in this tool to get the ideal weight range. You can also verify using the BMI calculator. A health check-up with a doctor is also recommended.">এই টুলে আপনার উচ্চতা দিলে আদর্শ ওজনের পরিসীমা জানতে পারবেন। BMI ক্যালকুলেটর দিয়েও যাচাই করতে পারেন। ডাক্তারের কাছে স্বাস্থ্য পরীক্ষা করাওয়াও ভালো।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/health/bmi-calculator",
+      nameBn: "বিএমআই ক্যালকুলেটর",
+      nameEn: "BMI Calculator",
+      descBn: "উচ্চতা ও ওজন থেকে BMI বের করুন",
+      descEn: "Calculate BMI from height and weight",
+      icon: "🏃"
+    },
+    {
+      url: "/health/calorie-calculator",
+      nameBn: "ক্যালরি ক্যালকুলেটর",
+      nameEn: "Calorie Calculator",
+      descBn: "দৈনিক ক্যালরির চাহিদা জানুন",
+      descEn: "Calculate your daily calorie needs",
+      icon: "🔥"
+    },
+    {
+      url: "/converters/kg-to-lbs",
+      nameBn: "কেজি থেকে পাউন্ড",
+      nameEn: "kg to lbs",
+      descBn: "ওজন রূপান্তর করুন",
+      descEn: "Convert weight between kg and lbs",
+      icon: "⚖️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let iwGender = 'male';
+
+  function setIWGender(gender: string) {
+    iwGender = gender;
+    const btnMale = document.getElementById('iw-btn-male') as HTMLButtonElement;
+    const btnFemale = document.getElementById('iw-btn-female') as HTMLButtonElement;
+    if (gender === 'male') {
+      btnMale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white min-h-[44px]';
+      btnFemale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700 min-h-[44px]';
+    } else {
+      btnMale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700 min-h-[44px]';
+      btnFemale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white min-h-[44px]';
+    }
+    calculate();
+  }
+
+  (window as any).setIWGender = setIWGender;
+
+  function calculate() {
+    const heightCm = parseFloat((document.getElementById('iw-height') as HTMLInputElement).value);
+    if (isNaN(heightCm) || heightCm < 50) {
+      document.getElementById('iw-result')!.classList.add('hidden');
+      return;
+    }
+
+    const resultEl = document.getElementById('iw-result')!;
+    const warningEl = document.getElementById('iw-warning')!;
+    const formulaEl = document.getElementById('iw-formula')!;
+
+    // Show warning for unusual heights
+    if (heightCm < 100 || heightCm > 220) {
+      warningEl.classList.remove('hidden');
+      warningEl.textContent = 'উচ্চতাটি অস্বাভাবিক মনে হচ্ছে — অনুগ্রহ করে সঠিক মান দিন / The entered height seems unusual — please check your value.';
+    } else {
+      warningEl.classList.add('hidden');
+    }
+
+    const heightM = heightCm / 100;
+
+    // BMI-based range
+    const bmiLow = 18.5 * heightM * heightM;
+    const bmiHigh = 24.9 * heightM * heightM;
+
+    // Hamwi method
+    const heightInches = heightCm / 2.54;
+    let hamwi: number;
+    if (iwGender === 'male') {
+      hamwi = 48 + 2.7 * (heightInches - 60);
+    } else {
+      hamwi = 45.5 + 2.2 * (heightInches - 60);
+    }
+    const hamwiLow = hamwi * 0.9;
+    const hamwiHigh = hamwi * 1.1;
+
+    resultEl.classList.remove('hidden');
+
+    document.getElementById('bmi-range')!.textContent =
+      `${bmiLow.toFixed(1)} — ${bmiHigh.toFixed(1)} কেজি / kg`;
+
+    document.getElementById('hamwi-result')!.textContent =
+      `${hamwiLow.toFixed(1)} — ${hamwiHigh.toFixed(1)} কেজি / kg`;
+
+    const methodLabel = iwGender === 'male' ? 'Male' : 'Female';
+    formulaEl.textContent = `Hamwi (${methodLabel}): ${hamwi.toFixed(1)} kg ± 10% | BMI 18.5–24.9 at ${heightCm}cm`;
+  }
+
+  document.getElementById('iw-height')?.addEventListener('input', calculate);
+</script>

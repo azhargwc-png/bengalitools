@@ -1,0 +1,276 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="আজকের ডলার রেট — ডলার থেকে টাকা | BanglaTools"
+  description="আজকের USD থেকে INR লাইভ রেট। ডলার থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="আজকের ডলার রেট — ডলার থেকে টাকা" data-en="USD to INR — Dollar to Rupee Live Rate">আজকের ডলার রেট — ডলার থেকে টাকা</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আজকের লাইভ রেটে মার্কিন ডলার থেকে ভারতীয় রুপিতে রূপান্তর করুন" data-en="Convert US Dollars to Indian Rupees at today's live exchange rate">আজকের লাইভ রেটে মার্কিন ডলার থেকে ভারতীয় রুপিতে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Rate display -->
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
+      <div>
+        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p class="text-xs text-gray-500">
+          <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
+          <span id="last-updated">—</span>
+        </p>
+      </div>
+    </div>
+    <!-- Inputs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="from-input">USD ($)</label>
+        <input
+          type="number"
+          id="from-input"
+          placeholder="যেমন: 100"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="to-input">INR (₹)</label>
+        <input
+          type="number"
+          id="to-input"
+          placeholder="রুপি"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="উপরের USD ঘরে ডলারের পরিমাণ লিখুন" data-en="Enter the dollar amount in the USD box above">উপরের USD ঘরে ডলারের পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="রুপি থেকে ডলারও বের করতে INR ঘরে টাইপ করুন" data-en="To convert INR to USD, type in the INR box instead">রুপি থেকে ডলারও বের করতে INR ঘরে টাইপ করুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই টুলটি মার্কিন ডলার (USD) থেকে ভারতীয় রুপি (INR)-তে তাৎক্ষণিক রূপান্তর করে। রেটটি frankfurter.app API থেকে লাইভ নেওয়া হয়, যা ইউরোপিয়ান সেন্ট্রাল ব্যাংকের তথ্যের উপর ভিত্তি করে আপডেট হয়। ডলার থেকে রুপির হিসাব আজকাল অনেক কারণে দরকার হয়। বিদেশ থেকে রেমিট্যান্স পাঠানোর সময়, আন্তর্জাতিক পণ্য কেনার সময়, বা আমেরিকার চাকরির বেতন বোঝার সময় ডলারের রুপি মূল্য জানা জরুরি। যারা ভারত থেকে আমেরিকায় পড়তে যান বা ভিসার জন্য আবেদন করেন তাদের জন্যও এই টুলটি অত্যন্ত কার্যকর। USD-INR বিনিময় হার প্রতিদিন পরিবর্তন হয়। ভারতীয় রিজার্ভ ব্যাংক এবং মুদ্রাবাজারের উপর নির্ভর করে এই রেট নির্ধারিত হয়। ডলারের দাম বাড়লে রুপি দুর্বল হয় এবং আমদানি ব্যয় বাড়ে। এই কনভার্টারটি ব্যবহার করে আপনি যেকোনো পরিমাণ ডলার মুহূর্তের মধ্যে রুপিতে রূপান্তর করতে পারবেন। রিভার্স কনভার্শনও সম্ভব — রুপির পরিমাণ জানলে সমতুল্য ডলার কত তাও জানতে পারবেন।
+      </p>
+      <p data-lang-en style="display:none">
+        This tool converts US Dollars (USD) to Indian Rupees (INR) using a live exchange rate fetched from the frankfurter.app API, which is based on European Central Bank data. The USD to INR rate changes every trading day based on global forex markets. The rate is influenced by factors like India's trade balance, US Federal Reserve policy, oil prices, and foreign investment flows. As of recent years, 1 USD typically exchanges for around 82 to 85 Indian Rupees, though this fluctuates. This converter is useful for Indians working abroad, students paying US university fees, online shoppers buying from American websites, and professionals calculating international salaries. The tool works in both directions — you can enter USD to get INR, or enter INR to see the equivalent in dollars. The live rate is fetched automatically when the page loads. If the API is unavailable, a warning message is shown. This free tool requires no sign-up and works on all devices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" আমেরিকা থেকে ১০০ ডলার রেমিট্যান্স" data-en=" $100 remittance from USA"> আমেরিকা থেকে ১০০ ডলার রেমিট্যান্স</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০ USD" data-en="Input: 100 USD">ইনপুট: ১০০ USD</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৮,৩৫০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹8,350 (at current rate)">ফলাফল: প্রায় ₹৮,৩৫০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" বিদেশী বিশ্ববিদ্যালয়ের ৫০০ ডলার ফি" data-en=" $500 university fee payment"> বিদেশী বিশ্ববিদ্যালয়ের ৫০০ ডলার ফি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫০০ USD" data-en="Input: 500 USD">ইনপুট: ৫০০ USD</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৪১,৭৫০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹41,750 (at current rate)">ফলাফল: প্রায় ₹৪১,৭৫০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" অনলাইন শপিংয়ে ১০০০ ডলারের পণ্য" data-en=" $1,000 online shopping order"> অনলাইন শপিংয়ে ১০০০ ডলারের পণ্য</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০০ USD" data-en="Input: 1000 USD">ইনপুট: ১০০০ USD</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৮৩,৫০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹83,500 (at current rate)">ফলাফল: প্রায় ₹৮৩,৫০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আজকে ১ ডলার সমান কত রুপি?" data-en="How many rupees is 1 dollar today?">আজকে ১ ডলার সমান কত রুপি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ডলারের দাম প্রতিদিন বদলায়। এই পেজে লাইভ রেট দেখানো হয় যা frankfurter.app থেকে নেওয়া। সাধারণত ১ USD = ₹৮২ থেকে ₹৮৬ এর মধ্যে থাকে।" data-en="The dollar rate changes daily. This page shows a live rate from frankfurter.app. Typically 1 USD is between ₹82 and ₹86.">ডলারের দাম প্রতিদিন বদলায়। এই পেজে লাইভ রেট দেখানো হয় যা frankfurter.app থেকে নেওয়া। সাধারণত ১ USD = ₹৮২ থেকে ₹৮৬ এর মধ্যে থাকে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রেট কি সত্যিকারের লাইভ?" data-en="Is the rate truly live?">রেট কি সত্যিকারের লাইভ?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই রেটটি ইউরোপিয়ান সেন্ট্রাল ব্যাংকের তথ্যের উপর ভিত্তি করে প্রতিদিন আপডেট হয়। রিয়েল-টাইম ট্রেডিং রেটের সাথে সামান্য পার্থক্য থাকতে পারে।" data-en="This rate is updated daily based on European Central Bank data. There may be a small difference from real-time interbank trading rates.">এই রেটটি ইউরোপিয়ান সেন্ট্রাল ব্যাংকের তথ্যের উপর ভিত্তি করে প্রতিদিন আপডেট হয়। রিয়েল-টাইম ট্রেডিং রেটের সাথে সামান্য পার্থক্য থাকতে পারে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ব্যাংক বা হুন্ডিতে কি একই রেট পাওয়া যায়?" data-en="Do banks offer the same rate?">ব্যাংক বা হুন্ডিতে কি একই রেট পাওয়া যায়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ব্যাংক ও মানি এক্সচেঞ্জ কমিশন ও মার্জিন যোগ করে, তাই তাদের রেট সামান্য বেশি বা কম হতে পারে। এই টুলে মিড-মার্কেট রেট দেখানো হয়।" data-en="Banks and exchange services add commissions and margins, so their rates differ slightly. This tool shows the mid-market rate as a reference.">ব্যাংক ও মানি এক্সচেঞ্জ কমিশন ও মার্জিন যোগ করে, তাই তাদের রেট সামান্য বেশি বা কম হতে পারে। এই টুলে মিড-মার্কেট রেট দেখানো হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ডলারের দাম কেন বাড়ে বা কমে?" data-en="Why does the dollar rate go up or down?">ডলারের দাম কেন বাড়ে বা কমে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="মার্কিন ফেডারেল রিজার্ভের সুদের হার, ভারতের বাণিজ্য ঘাটতি, তেলের দাম, বিদেশী বিনিয়োগ এবং বৈশ্বিক অর্থনৈতিক পরিস্থিতির উপর ভিত্তি করে USD-INR রেট পরিবর্তন হয়।" data-en="The USD-INR rate changes based on US Federal Reserve interest rates, India's trade deficit, oil prices, foreign investment flows, and global economic conditions.">মার্কিন ফেডারেল রিজার্ভের সুদের হার, ভারতের বাণিজ্য ঘাটতি, তেলের দাম, বিদেশী বিনিয়োগ এবং বৈশ্বিক অর্থনৈতিক পরিস্থিতির উপর ভিত্তি করে USD-INR রেট পরিবর্তন হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রুপি থেকে ডলারেও কনভার্ট করা যাবে?" data-en="Can I also convert INR to USD?">রুপি থেকে ডলারেও কনভার্ট করা যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ডলার স্বয়ংক্রিয়ভাবে দেখাবে।" data-en="Yes. Type the rupee amount in the INR box and the equivalent USD will appear automatically.">হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ডলার স্বয়ংক্রিয়ভাবে দেখাবে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/currency/aed-to-inr",
+      nameBn: "দিরহাম থেকে রুপি",
+      nameEn: "AED to INR",
+      descBn: "দুবাই দিরহাম থেকে ভারতীয় রুপি",
+      descEn: "Dubai Dirham to Indian Rupee",
+      icon: "🇦🇪"
+    },
+    {
+      url: "/currency/eur-to-inr",
+      nameBn: "ইউরো থেকে রুপি",
+      nameEn: "EUR to INR",
+      descBn: "ইউরো থেকে ভারতীয় রুপি",
+      descEn: "Euro to Indian Rupee",
+      icon: "🇪🇺"
+    },
+    {
+      url: "/currency/bdt-to-inr",
+      nameBn: "বাংলাদেশি টাকা থেকে রুপি",
+      nameEn: "BDT to INR",
+      descBn: "বাংলাদেশি টাকা থেকে ভারতীয় রুপি",
+      descEn: "Bangladesh Taka to Indian Rupee",
+      icon: "🇧🇩"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentRate = 0;
+  let rateLoaded = false;
+
+  async function fetchRate() {
+    try {
+      const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=INR');
+      const data = await res.json();
+      currentRate = data.rates.INR;
+      rateLoaded = true;
+
+      const rateEl = document.getElementById('live-rate');
+      const updatedEl = document.getElementById('last-updated');
+      const statusEl = document.getElementById('rate-status');
+
+      if (rateEl) rateEl.textContent = `1 USD = ₹${currentRate.toFixed(2)}`;
+      if (updatedEl) updatedEl.textContent = new Date().toLocaleTimeString('bn-IN');
+      if (statusEl) { statusEl.textContent = '🟢 লাইভ রেট'; statusEl.className = 'text-green-600 font-medium text-sm'; }
+
+      calculate();
+    } catch(e) {
+      const statusEl = document.getElementById('rate-status');
+      if (statusEl) { statusEl.textContent = '⚠️ রেট লোড করতে সমস্যা'; statusEl.className = 'text-orange-600 font-medium text-sm'; }
+    }
+  }
+
+  function calculate() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(fromInput.value);
+    if (!isNaN(val) && val >= 0) {
+      toInput.value = (val * currentRate).toFixed(2);
+    }
+  }
+
+  function calculateReverse() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(toInput.value);
+    if (!isNaN(val) && val >= 0) {
+      fromInput.value = (val / currentRate).toFixed(2);
+    }
+  }
+
+  document.getElementById('from-input')?.addEventListener('input', calculate);
+  document.getElementById('to-input')?.addEventListener('input', calculateReverse);
+
+  fetchRate();
+</script>

@@ -1,0 +1,117 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="আদর্শ ওজন কত হওয়া উচিত — উচ্চতা অনুযায়ী ওজন | BanglaTools"
+  description="আদর্শ ওজন কত হওয়া উচিত জানুন। উচ্চতা অনুযায়ী আদর্শ ওজনের চার্ট ও ক্যালকুলেটর।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → আদর্শ ওজন কত হওয়া উচিত
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="আদর্শ ওজন কত হওয়া উচিত — উচ্চতা অনুযায়ী ওজন" data-en="What should be ideal weight — weight by height">আদর্শ ওজন কত হওয়া উচিত — উচ্চতা অনুযায়ী ওজন</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <!-- Quick calculator -->
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3"><span data-bn="আপনার আদর্শ ওজন জানুন" data-en="Find Your Ideal Weight">আপনার আদর্শ ওজন জানুন</span></h2>
+    <div class="grid grid-cols-2 gap-3 mb-3">
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="উচ্চতা (সেমি)" data-en="Height (cm)">উচ্চতা (সেমি)</span></label>
+        <input type="number" id="iw-height" placeholder="165" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" />
+      </div>
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="লিঙ্গ" data-en="Gender">লিঙ্গ</span></label>
+        <select id="iw-gender" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:border-teal-500 focus:outline-none mt-1 bg-white min-h-[44px]">
+          <option value="male" data-bn="পুরুষ" data-en="Male">পুরুষ</option>
+          <option value="female" data-bn="নারী" data-en="Female">নারী</option>
+        </select>
+      </div>
+    </div>
+    <div id="iw-result" class="hidden text-center py-3 bg-white rounded-xl border border-teal-200"></div>
+    <p class="text-center mt-2">
+      <a href="/health/ideal-weight" class="text-sm text-teal-700 hover:underline">→ <span data-bn="সম্পূর্ণ ক্যালকুলেটর" data-en="Full Calculator">সম্পূর্ণ ক্যালকুলেটর</span></a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">উচ্চতা অনুযায়ী আদর্শ ওজন চার্ট (নারী)</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-pink-600 text-white"><th class="p-3">উচ্চতা</th><th class="p-3">আদর্শ ওজন (কেজি)</th></tr></thead>
+          <tbody>
+            {[['১৫০ সেমি / ৪\'১১"','৪৫–৫৫'],['১৫৫ সেমি / ৫\'১"','৪৮–৫৮'],['১৫৮ সেমি / ৫\'২"','৫০–৬১'],['১৬০ সেমি / ৫\'৩"','৫২–৬৩'],['১৬৫ সেমি / ৫\'৫"','৫৫–৬৭'],['১৭০ সেমি / ৫\'৭"','৫৮–৭২']].map((r, i) => (
+              `<tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b"><td class="p-3">${r[0]}</td><td class="p-3 text-center font-bold text-pink-700">${r[1]}</td></tr>`
+            )).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">উচ্চতা অনুযায়ী আদর্শ ওজন চার্ট (পুরুষ)</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-blue-600 text-white"><th class="p-3">উচ্চতা</th><th class="p-3">আদর্শ ওজন (কেজি)</th></tr></thead>
+          <tbody>
+            {[['১৬০ সেমি / ৫\'৩"','৫৫–৬৭'],['১৬৫ সেমি / ৫\'৫"','৫৮–৭১'],['১৭০ সেমি / ৫\'৭"','৬৩–৭৭'],['১৭৫ সেমি / ৫\'৯"','৬৭–৮২'],['১৮০ সেমি / ৫\'১১"','৭১–৮৭'],['১৮৫ সেমি / ৬\'১"','৭৫–৯২']].map((r, i) => (
+              `<tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b"><td class="p-3">${r[0]}</td><td class="p-3 text-center font-bold text-blue-700">${r[1]}</td></tr>`
+            )).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">আদর্শ ওজন কীভাবে বজায় রাখবেন?</h2>
+      <ul class="space-y-2">
+        <li>🥗 <strong>সুষম খাবার:</strong> ভাত, সবজি, ডাল, মাছ — সঠিক পরিমাণে।</li>
+        <li>🚶 <strong>নিয়মিত হাঁটা:</strong> প্রতিদিন ৩০ মিনিট হাঁটা অনেক উপকারী।</li>
+        <li>💧 <strong>পর্যাপ্ত জল পান:</strong> প্রতিদিন কমপক্ষে ৮ গ্লাস জল।</li>
+        <li>😴 <strong>পর্যাপ্ত ঘুম:</strong> ৭-৮ ঘণ্টা ঘুম হরমোন নিয়ন্ত্রণ করে।</li>
+      </ul>
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Ideal weight chart by height (Female)</h2>
+      <p>A healthy BMI range of 18.5–24.9 is used to calculate ideal weight. For example, a woman who is 158 cm tall has an ideal weight range of approximately 46–62 kg.</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">How to maintain ideal weight?</h2>
+      <ul class="space-y-2">
+        <li>🥗 <strong>Balanced diet:</strong> Rice, vegetables, lentils, fish — in the right amounts.</li>
+        <li>🚶 <strong>Regular walking:</strong> 30 minutes of walking daily is very beneficial.</li>
+        <li>💧 <strong>Stay hydrated:</strong> Drink at least 8 glasses of water daily.</li>
+        <li>😴 <strong>Enough sleep:</strong> 7-8 hours of sleep helps regulate hormones.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center">
+    <a href="/health/ideal-weight" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="আদর্শ ওজন ক্যালকুলেটর →" data-en="Ideal Weight Calculator →">আদর্শ ওজন ক্যালকুলেটর →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+function calcIdealWeight() {
+  var h = parseFloat(document.getElementById('iw-height').value);
+  var gender = document.getElementById('iw-gender').value;
+  var resultEl = document.getElementById('iw-result');
+  if (isNaN(h) || h <= 0) { resultEl.classList.add('hidden'); return; }
+  var hm = h / 100;
+  var minWeight = (18.5 * hm * hm).toFixed(1);
+  var maxWeight = (24.9 * hm * hm).toFixed(1);
+  resultEl.innerHTML = '<p class="font-bold text-lg text-teal-800">আদর্শ ওজন: ' + minWeight + ' – ' + maxWeight + ' কেজি</p><p class="text-sm text-gray-600 mt-1">Ideal weight: ' + minWeight + ' – ' + maxWeight + ' kg</p>';
+  resultEl.classList.remove('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('iw-height').addEventListener('input', calcIdealWeight);
+  document.getElementById('iw-gender').addEventListener('change', calcIdealWeight);
+});
+</script>

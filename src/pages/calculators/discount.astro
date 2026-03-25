@@ -1,0 +1,370 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="ছাড় ক্যালকুলেটর — ডিসকাউন্ট ক্যালকুলেটর | BanglaTools"
+  description="ডিসকাউন্টের পরে আসল দাম কত হবে জানুন। ছাড়ের পরিমাণ ও সাশ্রয় হিসাব করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="ছাড় ক্যালকুলেটর — ডিসকাউন্ট ক্যালকুলেটর" data-en="Discount Calculator">ছাড় ক্যালকুলেটর — ডিসকাউন্ট ক্যালকুলেটর</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="ছাড়ের পরে দাম ও সাশ্রয় হিসাব করুন" data-en="Calculate final price and savings after discount">ছাড়ের পরে দাম ও সাশ্রয় হিসাব করুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Currency Toggle -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-sm font-medium text-gray-700" data-bn="মুদ্রা:" data-en="Currency:">মুদ্রা:</span>
+      <button id="btn-inr" class="px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all">₹ INR</button>
+      <button id="btn-bdt" class="px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all">৳ BDT</button>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="flex gap-2 mb-6">
+      <button id="tab-mode1" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all">
+        <span data-bn="দাম + ছাড়% → চূড়ান্ত দাম" data-en="Price + Discount% → Final Price">দাম + ছাড়% → চূড়ান্ত দাম</span>
+      </button>
+      <button id="tab-mode2" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all">
+        <span data-bn="মূল + বিক্রয় দাম → ছাড়%" data-en="Original + Sale Price → Discount%">মূল + বিক্রয় দাম → ছাড়%</span>
+      </button>
+    </div>
+
+    <!-- Mode 1 -->
+    <div id="mode1">
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="m1-price">
+            <span data-bn="মূল দাম" data-en="Original Price">মূল দাম</span>
+            <span id="m1-currency-label" class="text-teal-600 ml-1">₹</span>
+          </label>
+          <input type="number" id="m1-price" placeholder="যেমন: 1000" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="m1-discount">
+            <span data-bn="ছাড়ের হার (%)" data-en="Discount Rate (%)">ছাড়ের হার (%)</span>
+          </label>
+          <input type="number" id="m1-discount" placeholder="যেমন: 20" min="0" max="100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+      <div id="m1-result" class="hidden">
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-gray-500 line-through text-lg" id="m1-original-display"></span>
+            <span class="bg-red-100 text-red-700 text-sm font-bold px-3 py-1 rounded-full" id="m1-pct-badge"></span>
+          </div>
+          <p class="text-4xl font-bold text-teal-700 mb-3" id="m1-final-price"></p>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="bg-red-50 rounded-lg p-3 text-center">
+              <p class="text-gray-500 mb-1"><span data-bn="ছাড়ের পরিমাণ" data-en="Discount Amount">ছাড়ের পরিমাণ</span></p>
+              <p class="font-bold text-red-600 text-xl" id="m1-discount-amt"></p>
+            </div>
+            <div class="bg-green-50 rounded-lg p-3 text-center">
+              <p class="text-gray-500 mb-1"><span data-bn="সাশ্রয়" data-en="You Save">সাশ্রয়</span></p>
+              <p class="font-bold text-green-600 text-xl" id="m1-savings"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode 2 -->
+    <div id="mode2" class="hidden">
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="m2-original">
+            <span data-bn="মূল দাম" data-en="Original Price">মূল দাম</span>
+            <span id="m2-currency-label" class="text-teal-600 ml-1">₹</span>
+          </label>
+          <input type="number" id="m2-original" placeholder="যেমন: 1200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="m2-sale">
+            <span data-bn="বিক্রয় দাম" data-en="Sale Price">বিক্রয় দাম</span>
+            <span id="m2-currency-label2" class="text-teal-600 ml-1">₹</span>
+          </label>
+          <input type="number" id="m2-sale" placeholder="যেমন: 900" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+      <div id="m2-result" class="hidden">
+        <div class="bg-white rounded-xl p-5 border border-gray-200 text-center">
+          <p class="text-sm text-gray-500 mb-1"><span data-bn="ছাড়ের হার" data-en="Discount Percentage">ছাড়ের হার</span></p>
+          <p class="text-5xl font-bold text-teal-700 mb-3" id="m2-pct"></p>
+          <div class="grid grid-cols-2 gap-3 text-sm mt-2">
+            <div class="bg-red-50 rounded-lg p-3 text-center">
+              <p class="text-gray-500 mb-1"><span data-bn="সাশ্রয়" data-en="You Save">সাশ্রয়</span></p>
+              <p class="font-bold text-red-600 text-xl" id="m2-saved"></p>
+            </div>
+            <div class="bg-teal-50 rounded-lg p-3 text-center">
+              <p class="text-gray-500 mb-1"><span data-bn="চূড়ান্ত দাম" data-en="Final Price">চূড়ান্ত দাম</span></p>
+              <p class="font-bold text-teal-600 text-xl" id="m2-final"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="মুদ্রা বেছে নিন — ₹ ভারতীয় রুপি বা ৳ বাংলাদেশি টাকা" data-en="Choose currency — ₹ Indian Rupee or ৳ Bangladeshi Taka">মুদ্রা বেছে নিন — ₹ ভারতীয় রুপি বা ৳ বাংলাদেশি টাকা</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="মোড বেছে নিন: দাম ও ছাড়% দিলে চূড়ান্ত দাম বের হবে, অথবা দুটো দাম দিলে ছাড়% বের হবে" data-en="Choose mode: enter price and discount% to get final price, or enter two prices to find discount%">মোড বেছে নিন: দাম ও ছাড়% দিলে চূড়ান্ত দাম বের হবে, অথবা দুটো দাম দিলে ছাড়% বের হবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="সংখ্যা দিন — ফলাফল সঙ্গে সঙ্গে দেখাবে" data-en="Enter the numbers — result appears instantly">সংখ্যা দিন — ফলাফল সঙ্গে সঙ্গে দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই ছাড় ক্যালকুলেটরটি দুটি কাজ করতে পারে। প্রথমত, কোনো পণ্যের মূল দাম এবং ছাড়ের শতাংশ দিলে চূড়ান্ত দাম ও সঞ্চয়ের পরিমাণ বলে দেয়। শপিং মলে বা অনলাইনে কেনাকাটার সময় ৩০% বা ৫০% ছাড়ে আসলে কত দিতে হবে তা সঙ্গে সঙ্গে জানা যাবে। দ্বিতীয়ত, মূল দাম এবং বিক্রয় দাম দিলে ছাড়ের শতাংশ বের হয় — যা বিক্রেতাদের জন্য বা দাম তুলনা করতে কাজে লাগে। ₹ রুপি ও ৳ টাকা দুটো মুদ্রায় হিসাব করা যায়। ফলাফল স্পষ্টভাবে দেখানো হয় — মূল দামের উপর কাটা রেখা, বড় হরফে চূড়ান্ত দাম এবং সাশ্রয়ের পরিমাণ।
+      </p>
+      <p data-lang-en style="display:none">
+        This discount calculator serves two purposes. First, given an original price and a discount percentage, it instantly shows the final price and the amount saved — ideal when shopping at malls or online during sales. Second, given an original price and a sale price, it calculates the discount percentage — useful for sellers or comparing deals. The tool supports both ₹ Indian Rupee and ৳ Bangladeshi Taka. Results are displayed clearly with the original price shown crossed out, the final price in large text, the rupee amount discounted, and the total savings highlighted. The calculation updates in real time as you type.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: জামার উপর ৩০% ছাড়" data-en="Example 1: 30% off a shirt">উদাহরণ ১: জামার উপর ৩০% ছাড়</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="মূল দাম: ₹৮০০, ছাড়: ৩০%" data-en="Original price: ₹800, Discount: 30%">মূল দাম: ₹৮০০, ছাড়: ৩০%</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="চূড়ান্ত দাম: ₹৫৬০ | সাশ্রয়: ₹২৪০" data-en="Final price: ₹560 | You save: ₹240">চূড়ান্ত দাম: ₹৫৬০ | সাশ্রয়: ₹২৪০</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: ফোনের উপর ছাড়%" data-en="Example 2: Finding discount% on a phone">উদাহরণ ২: ফোনের উপর ছাড়%</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="মূল দাম: ₹২০,০০০, বিক্রয় দাম: ₹১৫,০০০" data-en="Original: ₹20,000, Sale price: ₹15,000">মূল দাম: ₹২০,০০০, বিক্রয় দাম: ₹১৫,০০০</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ছাড়: ২৫% | সাশ্রয়: ₹৫,০০০" data-en="Discount: 25% | Saved: ₹5,000">ছাড়: ২৫% | সাশ্রয়: ₹৫,০০০</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: বিগ সেলে ৫০% ছাড়" data-en="Example 3: 50% off in a big sale">উদাহরণ ৩: বিগ সেলে ৫০% ছাড়</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="মূল দাম: ৳১,২০০, ছাড়: ৫০%" data-en="Original price: ৳1,200, Discount: 50%">মূল দাম: ৳১,২০০, ছাড়: ৫০%</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="চূড়ান্ত দাম: ৳৬০০ | সাশ্রয়: ৳৬০০" data-en="Final price: ৳600 | You save: ৳600">চূড়ান্ত দাম: ৳৬০০ | সাশ্রয়: ৳৬০০</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ছাড়ের পরে দাম কীভাবে হিসাব করব?" data-en="How to calculate the price after discount?">ছাড়ের পরে দাম কীভাবে হিসাব করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="চূড়ান্ত দাম = মূল দাম × (১ - ছাড়% ÷ ১০০)। যেমন ₹১০০০ এর উপর ২০% ছাড়: ১০০০ × ০.৮ = ₹৮০০।" data-en="Final price = original price × (1 - discount% ÷ 100). E.g., 20% off ₹1000: 1000 × 0.8 = ₹800.">চূড়ান্ত দাম = মূল দাম × (১ - ছাড়% ÷ ১০০)। যেমন ₹১০০০ এর উপর ২০% ছাড়: ১০০০ × ০.৮ = ₹৮০০।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="দুটো আলাদা ছাড় একসাথে কীভাবে কাজ করে?" data-en="How do two successive discounts work?">দুটো আলাদা ছাড় একসাথে কীভাবে কাজ করে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="দুটো ছাড় পরপর প্রযোজ্য হলে একসাথে যোগ করবেন না। প্রথম ছাড়ের পরে দাম বের করুন, তারপর সেই দামের উপর দ্বিতীয় ছাড় দিন।" data-en="Two successive discounts do not simply add up. Apply the first discount, then apply the second discount on the resulting price.">দুটো ছাড় পরপর প্রযোজ্য হলে একসাথে যোগ করবেন না। প্রথম ছাড়ের পরে দাম বের করুন, তারপর সেই দামের উপর দ্বিতীয় ছাড় দিন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বিক্রয় দাম দেখে ছাড়ের শতাংশ কীভাবে বুঝব?" data-en="How to find discount percentage from sale price?">বিক্রয় দাম দেখে ছাড়ের শতাংশ কীভাবে বুঝব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ছাড়% = ((মূল দাম - বিক্রয় দাম) ÷ মূল দাম) × ১০০। দ্বিতীয় মোডে মূল দাম ও বিক্রয় দাম দিলে সঙ্গে সঙ্গে হিসাব হয়।" data-en="Discount% = ((original - sale) ÷ original) × 100. Use Mode 2 to calculate this instantly.">ছাড়% = ((মূল দাম - বিক্রয় দাম) ÷ মূল দাম) × ১০০। দ্বিতীয় মোডে মূল দাম ও বিক্রয় দাম দিলে সঙ্গে সঙ্গে হিসাব হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="অনলাইন শপিংয়ে ছাড় সত্যি কি না কীভাবে বুঝব?" data-en="How to verify if an online discount is genuine?">অনলাইন শপিংয়ে ছাড় সত্যি কি না কীভাবে বুঝব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="মূল (MRP) দাম ও বিক্রয় দাম এই টুলে দিন — সঠিক ছাড়% বেরিয়ে আসবে। ওয়েবসাইটের দাবি করা ছাড়ের সাথে মিলিয়ে নিন।" data-en="Enter the MRP and sale price in Mode 2 to find the real discount%. Compare that with the website's claimed discount.">মূল (MRP) দাম ও বিক্রয় দাম এই টুলে দিন — সঠিক ছাড়% বেরিয়ে আসবে। ওয়েবসাইটের দাবি করা ছাড়ের সাথে মিলিয়ে নিন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="GST যোগ করার পরে দাম কত হবে?" data-en="What will be the price after adding GST?">GST যোগ করার পরে দাম কত হবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ছাড়ের পরে দামের উপর GST হিসাব করতে আমাদের GST ক্যালকুলেটর ব্যবহার করুন।" data-en="To calculate GST on the discounted price, use our GST Calculator.">ছাড়ের পরে দামের উপর GST হিসাব করতে আমাদের GST ক্যালকুলেটর ব্যবহার করুন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/calculators/percentage",
+      nameBn: "শতাংশ ক্যালকুলেটর",
+      nameEn: "Percentage Calculator",
+      descBn: "তিন ধরনের শতাংশ হিসাব",
+      descEn: "Three types of percentage calculations",
+      icon: "%"
+    },
+    {
+      url: "/calculators/tip",
+      nameBn: "টিপ ক্যালকুলেটর",
+      nameEn: "Tip Calculator",
+      descBn: "রেস্তোরাঁ বিলে টিপ হিসাব করুন",
+      descEn: "Calculate restaurant tip",
+      icon: "🍽️"
+    },
+    {
+      url: "/india/gst-calculator",
+      nameBn: "জিএসটি ক্যালকুলেটর",
+      nameEn: "GST Calculator",
+      descBn: "GST সহ দাম হিসাব করুন",
+      descEn: "Calculate price with GST",
+      icon: "🧾"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currency = '₹';
+
+  // Currency toggle
+  const btnInr = document.getElementById('btn-inr')!;
+  const btnBdt = document.getElementById('btn-bdt')!;
+  const currencyLabels = [
+    document.getElementById('m1-currency-label')!,
+    document.getElementById('m2-currency-label')!,
+    document.getElementById('m2-currency-label2')!
+  ];
+
+  function setCurrency(sym: string) {
+    currency = sym;
+    currencyLabels.forEach(el => el.textContent = sym);
+    calcMode1();
+    calcMode2();
+  }
+
+  btnInr.addEventListener('click', () => {
+    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all';
+    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
+    setCurrency('₹');
+  });
+  btnBdt.addEventListener('click', () => {
+    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all';
+    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
+    setCurrency('৳');
+  });
+
+  // Mode tabs
+  const tabMode1 = document.getElementById('tab-mode1')!;
+  const tabMode2 = document.getElementById('tab-mode2')!;
+  const mode1 = document.getElementById('mode1')!;
+  const mode2 = document.getElementById('mode2')!;
+
+  tabMode1.addEventListener('click', () => {
+    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all';
+    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
+    mode1.classList.remove('hidden');
+    mode2.classList.add('hidden');
+  });
+  tabMode2.addEventListener('click', () => {
+    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all';
+    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
+    mode2.classList.remove('hidden');
+    mode1.classList.add('hidden');
+  });
+
+  // Mode 1
+  const m1price = document.getElementById('m1-price') as HTMLInputElement;
+  const m1discount = document.getElementById('m1-discount') as HTMLInputElement;
+  const m1result = document.getElementById('m1-result')!;
+
+  function calcMode1() {
+    const price = parseFloat(m1price.value);
+    const disc = parseFloat(m1discount.value);
+    if (!isNaN(price) && !isNaN(disc) && price > 0 && disc >= 0 && disc <= 100) {
+      const discAmt = (disc / 100) * price;
+      const final = price - discAmt;
+      document.getElementById('m1-original-display')!.textContent = currency + price.toFixed(2);
+      document.getElementById('m1-pct-badge')!.textContent = disc + '% OFF';
+      document.getElementById('m1-final-price')!.textContent = currency + final.toFixed(2);
+      document.getElementById('m1-discount-amt')!.textContent = currency + discAmt.toFixed(2);
+      document.getElementById('m1-savings')!.textContent = currency + discAmt.toFixed(2);
+      m1result.classList.remove('hidden');
+    } else {
+      m1result.classList.add('hidden');
+    }
+  }
+  m1price.addEventListener('input', calcMode1);
+  m1discount.addEventListener('input', calcMode1);
+
+  // Mode 2
+  const m2original = document.getElementById('m2-original') as HTMLInputElement;
+  const m2sale = document.getElementById('m2-sale') as HTMLInputElement;
+  const m2result = document.getElementById('m2-result')!;
+
+  function calcMode2() {
+    const orig = parseFloat(m2original.value);
+    const sale = parseFloat(m2sale.value);
+    if (!isNaN(orig) && !isNaN(sale) && orig > 0 && sale >= 0 && sale <= orig) {
+      const saved = orig - sale;
+      const pct = (saved / orig) * 100;
+      document.getElementById('m2-pct')!.textContent = pct.toFixed(2) + '%';
+      document.getElementById('m2-saved')!.textContent = currency + saved.toFixed(2);
+      document.getElementById('m2-final')!.textContent = currency + sale.toFixed(2);
+      m2result.classList.remove('hidden');
+    } else {
+      m2result.classList.add('hidden');
+    }
+  }
+  m2original.addEventListener('input', calcMode2);
+  m2sale.addEventListener('input', calcMode2);
+</script>

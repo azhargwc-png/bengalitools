@@ -1,0 +1,300 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="সেলসিয়াস থেকে ফারেনহাইট কনভার্টার | BanglaTools"
+  description="সেলসিয়াস থেকে ফারেনহাইট বা ফারেনহাইট থেকে সেলসিয়াস রূপান্তর করুন। শরীরের তাপমাত্রা পরীক্ষা করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="সেলসিয়াস থেকে ফারেনহাইট কনভার্টার" data-en="Celsius to Fahrenheit Converter">সেলসিয়াস থেকে ফারেনহাইট কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তাৎক্ষণিকভাবে সেলসিয়াস ও ফারেনহাইটের মধ্যে তাপমাত্রা রূপান্তর করুন" data-en="Instantly convert between Celsius and Fahrenheit temperatures">তাৎক্ষণিকভাবে সেলসিয়াস ও ফারেনহাইটের মধ্যে তাপমাত্রা রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="celsius-input">
+          <span data-bn="সেলসিয়াস (°C)" data-en="Celsius (°C)">সেলসিয়াস (°C)</span>
+        </label>
+        <input
+          type="number"
+          id="celsius-input"
+          placeholder="যেমন: 37"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="fahrenheit-input">
+          <span data-bn="ফারেনহাইট (°F)" data-en="Fahrenheit (°F)">ফারেনহাইট (°F)</span>
+        </label>
+        <input
+          type="number"
+          id="fahrenheit-input"
+          placeholder="যেমন: 98.6"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+    <div id="temp-context-display" class="mt-2 text-sm text-amber-700 font-medium text-center bg-amber-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+  </div>
+
+  <!-- Reference temperatures -->
+  <div class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="গুরুত্বপূর্ণ তাপমাত্রা রেফারেন্স" data-en="Important Temperature References">গুরুত্বপূর্ণ তাপমাত্রা রেফারেন্স</span>
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <button
+        onclick="document.getElementById('celsius-input').value='0'; document.getElementById('celsius-input').dispatchEvent(new Event('input'))"
+        class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center hover:bg-blue-100 transition-colors cursor-pointer"
+      >
+        <p class="font-bold text-blue-800 text-lg">0°C</p>
+        <p class="text-xs text-blue-600 mt-1"><span data-bn="পানি জমার বিন্দু" data-en="Freezing point">পানি জমার বিন্দু</span></p>
+      </button>
+      <button
+        onclick="document.getElementById('celsius-input').value='37'; document.getElementById('celsius-input').dispatchEvent(new Event('input'))"
+        class="bg-green-50 border border-green-200 rounded-xl p-3 text-center hover:bg-green-100 transition-colors cursor-pointer"
+      >
+        <p class="font-bold text-green-800 text-lg">37°C</p>
+        <p class="text-xs text-green-600 mt-1"><span data-bn="শরীরের স্বাভাবিক তাপমাত্রা" data-en="Normal body temp">শরীরের স্বাভাবিক তাপমাত্রা</span></p>
+      </button>
+      <button
+        onclick="document.getElementById('celsius-input').value='100'; document.getElementById('celsius-input').dispatchEvent(new Event('input'))"
+        class="bg-red-50 border border-red-200 rounded-xl p-3 text-center hover:bg-red-100 transition-colors cursor-pointer"
+      >
+        <p class="font-bold text-red-800 text-lg">100°C</p>
+        <p class="text-xs text-red-600 mt-1"><span data-bn="পানি ফুটার বিন্দু" data-en="Boiling point">পানি ফুটার বিন্দু</span></p>
+      </button>
+      <button
+        onclick="document.getElementById('celsius-input').value='38.5'; document.getElementById('celsius-input').dispatchEvent(new Event('input'))"
+        class="bg-orange-50 border border-orange-200 rounded-xl p-3 text-center hover:bg-orange-100 transition-colors cursor-pointer"
+      >
+        <p class="font-bold text-orange-800 text-lg">38.5°C</p>
+        <p class="text-xs text-orange-600 mt-1"><span data-bn="জ্বর" data-en="Fever">জ্বর</span></p>
+      </button>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="সেলসিয়াস ঘরে তাপমাত্রা লিখুন" data-en="Enter temperature in the Celsius box">সেলসিয়াস ঘরে তাপমাত্রা লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="ফারেনহাইট তাৎক্ষণিকভাবে দেখাবে" data-en="Fahrenheit appears instantly">ফারেনহাইট তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="উপরের বাটনগুলো ক্লিক করে সাধারণ তাপমাত্রা সরাসরি দেখুন" data-en="Click the quick-reference buttons above for common temperatures">উপরের বাটনগুলো ক্লিক করে সাধারণ তাপমাত্রা সরাসরি দেখুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        সেলসিয়াস থেকে ফারেনহাইট কনভার্টার আপনাকে দ্রুত তাপমাত্রা রূপান্তর করতে সাহায্য করবে। আমাদের দেশে তাপমাত্রা সেলসিয়াসে পরিমাপ করা হয়, কিন্তু আমেরিকা ও কিছু দেশে ফারেনহাইট ব্যবহার হয়। শরীরের স্বাভাবিক তাপমাত্রা ৩৭ ডিগ্রি সেলসিয়াস, যা ফারেনহাইটে ৯৮.৬ ডিগ্রি। জ্বর হলে তাপমাত্রা ৩৮ ডিগ্রি সেলসিয়াস বা তার বেশি হয়। পানি ০ ডিগ্রি সেলসিয়াসে জমে এবং ১০০ ডিগ্রিতে ফোটে। রান্নার রেসিপিতে তাপমাত্রা ফারেনহাইটে দেওয়া থাকলে এই টুলটি কাজে আসবে। আবহাওয়ার তাপমাত্রাও এই কনভার্টারে রূপান্তর করতে পারবেন। এটি বিনামূল্যে এবং যেকোনো ডিভাইসে কাজ করে।
+      </p>
+      <p data-lang-en style="display:none">
+        The Celsius to Fahrenheit converter helps you quickly convert temperatures between the two most widely used temperature scales. In Bangladesh and most of the world, Celsius is the standard. However, the United States still uses Fahrenheit for everyday weather and body temperature. Normal body temperature is 37°C which equals 98.6°F. Water freezes at 0°C (32°F) and boils at 100°C (212°F). When following American cooking recipes that use Fahrenheit oven temperatures, this tool is essential. The formula for converting Celsius to Fahrenheit is °F = (°C × 9/5) + 32, and to convert back, °C = (°F − 32) × 5/9. This free converter also shows contextual labels so you instantly know whether a temperature indicates cold, warm, fever, or boiling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" শরীরের স্বাভাবিক তাপমাত্রা ৩৭°C" data-en=" Normal body temperature 37°C"> শরীরের স্বাভাবিক তাপমাত্রা ৩৭°C</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৩৭°C" data-en="Input: 37°C">ইনপুট: ৩৭°C</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৯৮.৬°F" data-en="Result: 98.6°F">ফলাফল: ৯৮.৬°F</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" পানি ফুটার তাপমাত্রা ১০০°C" data-en=" Water boiling point 100°C"> পানি ফুটার তাপমাত্রা ১০০°C</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০°C" data-en="Input: 100°C">ইনপুট: ১০০°C</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ২১২°F" data-en="Result: 212°F">ফলাফল: ২১২°F</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" পানি জমার তাপমাত্রা ০°C" data-en=" Water freezing point 0°C"> পানি জমার তাপমাত্রা ০°C</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ০°C" data-en="Input: 0°C">ইনপুট: ০°C</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৩২°F" data-en="Result: 32°F">ফলাফল: ৩২°F</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শরীরের স্বাভাবিক তাপমাত্রা ফারেনহাইটে কত?" data-en="What is normal body temperature in Fahrenheit?">শরীরের স্বাভাবিক তাপমাত্রা ফারেনহাইটে কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="শরীরের স্বাভাবিক তাপমাত্রা ৯৮.৬°F বা ৩৭°C। ৩৮°C (১০০.৪°F) বা তার বেশি হলে জ্বর বলে গণ্য করা হয়।" data-en="Normal body temperature is 98.6°F (37°C). A temperature of 100.4°F (38°C) or above is generally considered a fever.">শরীরের স্বাভাবিক তাপমাত্রা ৯৮.৬°F বা ৩৭°C। ৩৮°C (১০০.৪°F) বা তার বেশি হলে জ্বর বলে গণ্য করা হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="৩৭ ডিগ্রি সেলসিয়াস ফারেনহাইটে কত?" data-en="What is 37 degrees Celsius in Fahrenheit?">৩৭ ডিগ্রি সেলসিয়াস ফারেনহাইটে কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৩৭ ডিগ্রি সেলসিয়াস = ৯৮.৬ ডিগ্রি ফারেনহাইট। হিসাব: (৩৭ × ৯/৫) + ৩২ = ৯৮.৬°F।" data-en="37 degrees Celsius equals 98.6 degrees Fahrenheit. Calculation: (37 × 9/5) + 32 = 98.6°F.">৩৭ ডিগ্রি সেলসিয়াস = ৯৮.৬ ডিগ্রি ফারেনহাইট। হিসাব: (৩৭ × ৯/৫) + ৩২ = ৯৮.৬°F।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="৯৮.৬°F সেলসিয়াসে কত?" data-en="What is 98.6°F in Celsius?">৯৮.৬°F সেলসিয়াসে কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৯৮.৬°F সমান ৩৭°C। হিসাব: (৯৮.৬ - ৩২) × ৫/৯ = ৩৭°C। এটি শরীরের স্বাভাবিক তাপমাত্রা।" data-en="98.6°F equals exactly 37°C. Calculation: (98.6 − 32) × 5/9 = 37°C. This is the normal human body temperature.">৯৮.৬°F সমান ৩৭°C। হিসাব: (৯৮.৬ - ৩২) × ৫/৯ = ৩৭°C। এটি শরীরের স্বাভাবিক তাপমাত্রা।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="সেলসিয়াস থেকে ফারেনহাইট রূপান্তরের সূত্র কী?" data-en="What is the formula to convert Celsius to Fahrenheit?">সেলসিয়াস থেকে ফারেনহাইট রূপান্তরের সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সূত্র: °F = (°C × ৯/৫) + ৩২। বিপরীতে: °C = (°F - ৩২) × ৫/৯।" data-en="Formula: °F = (°C × 9/5) + 32. Reverse formula: °C = (°F − 32) × 5/9.">সূত্র: °F = (°C × ৯/৫) + ৩২। বিপরীতে: °C = (°F - ৩২) × ৫/৯।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="সেলসিয়াস ও ফারেনহাইটের মধ্যে পার্থক্য কী?" data-en="What is the difference between Celsius and Fahrenheit?">সেলসিয়াস ও ফারেনহাইটের মধ্যে পার্থক্য কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সেলসিয়াস স্কেলে পানির জমার বিন্দু ০° এবং ফুটার বিন্দু ১০০°। ফারেনহাইট স্কেলে এগুলো যথাক্রমে ৩২° এবং ২১২°। বিশ্বের বেশিরভাগ দেশ সেলসিয়াস ব্যবহার করে, কিন্তু যুক্তরাষ্ট্র এখনো ফারেনহাইট ব্যবহার করে।" data-en="The Celsius scale sets water freezing at 0° and boiling at 100°. Fahrenheit sets these at 32° and 212°. Most of the world uses Celsius, while the USA still uses Fahrenheit for everyday temperatures.">সেলসিয়াস স্কেলে পানির জমার বিন্দু ০° এবং ফুটার বিন্দু ১০০°। ফারেনহাইট স্কেলে এগুলো যথাক্রমে ৩২° এবং ২১২°। বিশ্বের বেশিরভাগ দেশ সেলসিয়াস ব্যবহার করে, কিন্তু যুক্তরাষ্ট্র এখনো ফারেনহাইট ব্যবহার করে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/km-to-miles",
+      nameBn: "কিলোমিটার থেকে মাইল",
+      nameEn: "km to miles",
+      descBn: "দূরত্ব রূপান্তর করুন",
+      descEn: "Convert distance units",
+      icon: "🛣️"
+    },
+    {
+      url: "/health/water-intake",
+      nameBn: "পানি পানের হিসাব",
+      nameEn: "Water Intake Calculator",
+      descBn: "দৈনিক কতটুকু পানি পান করবেন",
+      descEn: "Calculate your daily water intake",
+      icon: "💧"
+    },
+    {
+      url: "/health/calorie-calculator",
+      nameBn: "ক্যালোরি ক্যালকুলেটর",
+      nameEn: "Calorie Calculator",
+      descBn: "দৈনিক ক্যালোরির চাহিদা বের করুন",
+      descEn: "Calculate your daily calorie needs",
+      icon: "🔥"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const celsiusInput = document.getElementById('celsius-input') as HTMLInputElement;
+  const fahrenheitInput = document.getElementById('fahrenheit-input') as HTMLInputElement;
+  const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
+  const tempContextDisplay = document.getElementById('temp-context-display') as HTMLElement;
+
+  function getTempContext(celsius: number): string {
+    if (celsius < 0) return '❄️ Freezing / বরফ জমার নিচে';
+    if (celsius < 10) return '🥶 Very cold / অত্যন্ত ঠান্ডা';
+    if (celsius < 20) return '🌤️ Cool / ঠান্ডা';
+    if (celsius < 30) return '🌡️ Comfortable / আরামদায়ক';
+    if (celsius < 37) return '☀️ Warm / গরম';
+    if (celsius === 37) return '✅ Normal body temp / শরীরের স্বাভাবিক তাপমাত্রা';
+    if (celsius < 38) return '🌡️ Slightly elevated / সামান্য বেশি';
+    if (celsius < 40) return '🤒 Fever / জ্বর';
+    if (celsius === 100) return '♨️ Water boiling point / পানির ফুটার তাপমাত্রা';
+    if (celsius >= 40) return '🔥 High fever / উচ্চ জ্বর';
+    return '';
+  }
+
+  celsiusInput?.addEventListener('input', () => {
+    const celsius = parseFloat(celsiusInput.value);
+    if (!isNaN(celsius)) {
+      const fahrenheit = (celsius * 9 / 5) + 32;
+      fahrenheitInput.value = fahrenheit.toFixed(2);
+      formulaDisplay.textContent = `(${celsius} × 9/5) + 32 = ${fahrenheit.toFixed(2)}°F`;
+      tempContextDisplay.textContent = getTempContext(celsius);
+    } else {
+      fahrenheitInput.value = '';
+      formulaDisplay.textContent = '';
+      tempContextDisplay.textContent = '';
+    }
+  });
+
+  fahrenheitInput?.addEventListener('input', () => {
+    const fahrenheit = parseFloat(fahrenheitInput.value);
+    if (!isNaN(fahrenheit)) {
+      const celsius = (fahrenheit - 32) * 5 / 9;
+      celsiusInput.value = celsius.toFixed(2);
+      formulaDisplay.textContent = `(${fahrenheit} − 32) × 5/9 = ${celsius.toFixed(2)}°C`;
+      tempContextDisplay.textContent = getTempContext(celsius);
+    } else {
+      celsiusInput.value = '';
+      formulaDisplay.textContent = '';
+      tempContextDisplay.textContent = '';
+    }
+  });
+</script>

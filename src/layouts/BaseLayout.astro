@@ -1,0 +1,160 @@
+---
+export interface Props {
+  title: string;
+  titleBn?: string;
+  description: string;
+  descriptionBn?: string;
+  canonical?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  titleBn,
+  description,
+  descriptionBn,
+  canonical,
+  ogType = 'website',
+} = Astro.props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="bn" id="html-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="BanglaTools" />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="bn" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Data attributes for bilingual meta -->
+    {titleBn && <meta name="title-bn" content={titleBn} />}
+    {descriptionBn && <meta name="description-bn" content={descriptionBn} />}
+  </head>
+  <body class="bg-white text-gray-900 font-sans antialiased">
+    <slot />
+
+    <!-- Language system -->
+    <script is:inline>
+      (function () {
+        var lang = localStorage.getItem('bt-lang') || 'bn';
+        document.documentElement.lang = lang;
+        document.documentElement.setAttribute('data-lang', lang);
+      })();
+    </script>
+
+    <script is:inline>
+      // Language toggle system
+      function initLang() {
+        var lang = localStorage.getItem('bt-lang') || 'bn';
+        applyLang(lang);
+      }
+
+      function applyLang(lang) {
+        localStorage.setItem('bt-lang', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.setAttribute('data-lang', lang);
+
+        // Show/hide elements
+        document.querySelectorAll('[data-bn]').forEach(function(el) {
+          el.textContent = lang === 'bn' ? el.getAttribute('data-bn') : el.getAttribute('data-en');
+        });
+        document.querySelectorAll('[data-lang-bn]').forEach(function(el) {
+          el.style.display = lang === 'bn' ? '' : 'none';
+        });
+        document.querySelectorAll('[data-lang-en]').forEach(function(el) {
+          el.style.display = lang === 'en' ? '' : 'none';
+        });
+
+        // Update toggle button
+        var btn = document.getElementById('lang-toggle');
+        if (btn) {
+          btn.textContent = lang === 'bn' ? 'English' : 'বাংলা';
+        }
+
+        // Update font class
+        if (lang === 'bn') {
+          document.body.classList.add('font-bengali');
+          document.body.classList.remove('font-english');
+        } else {
+          document.body.classList.add('font-english');
+          document.body.classList.remove('font-bengali');
+        }
+      }
+
+      function toggleLang() {
+        var current = localStorage.getItem('bt-lang') || 'bn';
+        applyLang(current === 'bn' ? 'en' : 'bn');
+      }
+
+      // Init on load
+      document.addEventListener('DOMContentLoaded', initLang);
+
+      // Expose globally
+      window.toggleLang = toggleLang;
+      window.applyLang = applyLang;
+      window.getLang = function() { return localStorage.getItem('bt-lang') || 'bn'; };
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  body.font-bengali {
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+  }
+  body.font-english {
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    font-family: 'Hind Siliguri', 'Inter', sans-serif;
+  }
+
+  /* AdSense placeholder slots */
+  .adsense-slot {
+    display: block;
+    min-height: 90px;
+    background: transparent;
+    margin: 1rem 0;
+  }
+
+  /* Smooth transitions */
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Touch-friendly inputs */
+  input, select, textarea, button {
+    min-height: 44px;
+  }
+</style>

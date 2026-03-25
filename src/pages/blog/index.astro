@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const posts = [
+  { slug: 'ek-keje-soman-kot-pound', titleBn: '১ কেজি সমান কত পাউন্ড — সম্পূর্ণ গাইড', titleEn: '1 kg equals how many pounds — Complete Guide', category: 'Converters', icon: '⚖️' },
+  { slug: 'bmi-koto-hole-swasthyokor', titleBn: 'বিএমআই কত হলে স্বাস্থ্যকর — WHO এর গাইডলাইন', titleEn: 'What BMI is healthy — WHO guidelines', category: 'Health', icon: '🏃' },
+  { slug: 'ajker-dollar-rate', titleBn: 'আজকের ডলারের রেট — লাইভ USD থেকে INR রেট', titleEn: "Today's Dollar Rate — Live USD to INR", category: 'Currency', icon: '💵' },
+  { slug: 'dubai-dirham-rate-ajke', titleBn: 'দুবাই দিরহাম আজকের রেট — AED থেকে INR লাইভ রেট', titleEn: "Dubai Dirham Today's Rate — AED to INR Live", category: 'Currency', icon: '🇦🇪' },
+  { slug: 'rasgolla-calorie', titleBn: 'রসগোল্লায় কত ক্যালরি — মিষ্টি খেলে কতটা ক্ষতি?', titleEn: 'How many calories in rasgolla?', category: 'Food', icon: '🍬' },
+  { slug: 'bdt-inr-rate', titleBn: 'বাংলাদেশি টাকা থেকে ভারতীয় রুপি — আজকের রেট', titleEn: 'Bangladesh Taka to Indian Rupee — Today\'s Rate', category: 'Currency', icon: '💱' },
+  { slug: 'ek-foot-soman-kot-cm', titleBn: '১ ফুট সমান কত সেন্টিমিটার — ফুট থেকে সেমি গাইড', titleEn: '1 foot equals how many cm — feet to cm guide', category: 'Converters', icon: '📐' },
+  { slug: 'adorsho-wozono-koto-howa-uchit', titleBn: 'আদর্শ ওজন কত হওয়া উচিত — উচ্চতা অনুযায়ী ওজন', titleEn: 'What should be ideal weight — by height', category: 'Health', icon: '⚖️' },
+  { slug: 'shotongsho-ber-korar-niyom', titleBn: 'শতাংশ বের করার নিয়ম — সহজ পদ্ধতি', titleEn: 'How to calculate percentage — easy method', category: 'Calculators', icon: '%' },
+  { slug: 'bmi-calculator-bangla', titleBn: 'বিএমআই ক্যালকুলেটর বাংলা — অনলাইনে বিনামূল্যে', titleEn: 'BMI Calculator in Bengali — Free Online', category: 'Health', icon: '🏃' },
+];
+
+const categoryColors: Record<string, string> = {
+  'Converters': 'bg-blue-100 text-blue-700',
+  'Health': 'bg-green-100 text-green-700',
+  'Currency': 'bg-yellow-100 text-yellow-700',
+  'Food': 'bg-orange-100 text-orange-700',
+  'Calculators': 'bg-purple-100 text-purple-700',
+};
+---
+
+<BaseLayout
+  title="ব্লগ — BanglaTools টিপস ও গাইড"
+  description="BanglaTools ব্লগ — কনভার্টার, ক্যালকুলেটর, ক্যালরি, মুদ্রা রেট নিয়ে বাংলায় গাইড ও টিপস।"
+>
+  <Header />
+
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+      <span data-bn="ব্লগ" data-en="Blog">ব্লগ</span>
+    </h1>
+    <p class="text-gray-600 mb-8 text-lg">
+      <span data-bn="টিপস, গাইড ও দরকারি তথ্য — বাংলায়" data-en="Tips, guides and useful information — in Bengali">টিপস, গাইড ও দরকারি তথ্য — বাংলায়</span>
+    </p>
+
+    <AdSlot slot="blog-top" />
+
+    <div class="space-y-4">
+      {posts.map((post) => (
+        <a
+          href={`/blog/${post.slug}`}
+          class="block bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-5 transition-all group"
+        >
+          <div class="flex items-start gap-4">
+            <div class="text-3xl flex-shrink-0 mt-1">{post.icon}</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColors[post.category]}`}>
+                  {post.category}
+                </span>
+              </div>
+              <h2 class="font-bold text-gray-900 text-lg leading-snug group-hover:text-teal-700 transition-colors" data-lang-bn>{post.titleBn}</h2>
+              <h2 class="font-bold text-gray-900 text-lg leading-snug group-hover:text-teal-700 transition-colors" data-lang-en style="display:none">{post.titleEn}</h2>
+            </div>
+            <div class="text-teal-600 flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <AdSlot slot="blog-bottom" />
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,321 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="জ্বালানি খরচ ক্যালকুলেটর — পেট্রোল খরচ | BanglaTools"
+  description="যাত্রার জ্বালানি খরচ হিসাব করুন। দূরত্ব, মাইলেজ ও পেট্রোলের দাম দিয়ে মোট খরচ বের করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="জ্বালানি খরচ ক্যালকুলেটর — পেট্রোল খরচ" data-en="Fuel Cost Calculator">জ্বালানি খরচ ক্যালকুলেটর — পেট্রোল খরচ</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="দূরত্ব, মাইলেজ ও পেট্রোলের দাম দিয়ে যাত্রার মোট খরচ বের করুন" data-en="Calculate total fuel cost using distance, mileage and fuel price">দূরত্ব, মাইলেজ ও পেট্রোলের দাম দিয়ে যাত্রার মোট খরচ বের করুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <!-- Distance -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="fc-distance">
+          <span data-bn="দূরত্ব (km)" data-en="Distance (km)">দূরত্ব (km)</span>
+        </label>
+        <input
+          type="number"
+          id="fc-distance"
+          placeholder="যেমন: 180"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+
+      <!-- Fuel efficiency -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="fc-mileage">
+          <span data-bn="মাইলেজ (km/লিটার)" data-en="Mileage (km/litre)">মাইলেজ (km/লিটার)</span>
+        </label>
+        <input
+          type="number"
+          id="fc-mileage"
+          placeholder="যেমন: 15"
+          value="15"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+
+      <!-- Fuel price -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="fc-price">
+          <span data-bn="পেট্রোলের দাম (₹/লিটার)" data-en="Fuel Price (₹/litre)">পেট্রোলের দাম (₹/লিটার)</span>
+        </label>
+        <input
+          type="number"
+          id="fc-price"
+          placeholder="যেমন: 100"
+          value="100"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+        <p class="text-xs text-gray-400 mt-1">
+          <span data-bn="কলকাতায় বর্তমান দাম প্রায় ₹১০৩/লিটার" data-en="Current Kolkata petrol price approx ₹103/litre">কলকাতায় বর্তমান দাম প্রায় ₹১০৩/লিটার</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Preset journey buttons -->
+    <div class="mb-5">
+      <p class="text-sm font-medium text-gray-700 mb-2">
+        <span data-bn="জনপ্রিয় যাত্রা বেছে নিন" data-en="Select a popular route">জনপ্রিয় যাত্রা বেছে নিন</span>
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="180">
+          <span data-bn="কলকাতা → দিঘা (১৮০ km)" data-en="Kolkata → Digha (180 km)">কলকাতা → দিঘা (১৮০ km)</span>
+        </button>
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="570">
+          <span data-bn="কলকাতা → শিলিগুড়ি (৫৭০ km)" data-en="Kolkata → Siliguri (570 km)">কলকাতা → শিলিগুড়ি (৫৭০ km)</span>
+        </button>
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="100">
+          <span data-bn="শহরে দৈনিক ১০০ km" data-en="City daily 100 km">শহরে দৈনিক ১০০ km</span>
+        </button>
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="1500">
+          <span data-bn="কলকাতা → দিল্লি (১৫০০ km)" data-en="Kolkata → Delhi (1500 km)">কলকাতা → দিল্লি (১৫০০ km)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="fc-result" class="hidden">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+          <p class="text-sm text-gray-500 mb-1">
+            <span data-bn="মোট জ্বালানি খরচ" data-en="Total Fuel Cost">মোট জ্বালানি খরচ</span>
+          </p>
+          <p id="fc-total-cost" class="text-4xl font-bold text-teal-700"></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+          <p class="text-sm text-gray-500 mb-1">
+            <span data-bn="প্রয়োজনীয় জ্বালানি" data-en="Fuel Required">প্রয়োজনীয় জ্বালানি</span>
+          </p>
+          <p id="fc-litres" class="text-4xl font-bold text-teal-700"></p>
+        </div>
+      </div>
+      <div class="mt-3 bg-white rounded-xl p-4 border border-gray-200 text-sm text-gray-600">
+        <p id="fc-breakdown"></p>
+        <p id="fc-per100" class="mt-1 text-gray-400"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="যাত্রার দূরত্ব কিলোমিটারে দিন অথবা জনপ্রিয় রুট বোতাম ক্লিক করুন" data-en="Enter the distance in km or click a popular route button">যাত্রার দূরত্ব কিলোমিটারে দিন অথবা জনপ্রিয় রুট বোতাম ক্লিক করুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="আপনার গাড়ির মাইলেজ (km/লিটার) দিন — গাড়ির ম্যানুয়ালে থাকে" data-en="Enter your vehicle's mileage (km/litre) — found in the owner's manual">আপনার গাড়ির মাইলেজ (km/লিটার) দিন — গাড়ির ম্যানুয়ালে থাকে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="স্থানীয় পেট্রোলের দাম দিন (ডিফল্ট ₹১০০/লিটার)" data-en="Enter local fuel price (default ₹100/litre)">স্থানীয় পেট্রোলের দাম দিন (ডিফল্ট ₹১০০/লিটার)</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="মোট খরচ ও প্রয়োজনীয় লিটার সঙ্গে সঙ্গে দেখাবে" data-en="Total cost and litres needed appear instantly">মোট খরচ ও প্রয়োজনীয় লিটার সঙ্গে সঙ্গে দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই জ্বালানি খরচ ক্যালকুলেটর দূরত্ব, গাড়ির মাইলেজ এবং পেট্রোলের দাম থেকে মোট জ্বালানি খরচ ও প্রয়োজনীয় লিটার হিসাব করে। দীর্ঘ যাত্রার পরিকল্পনা করার সময় বাজেট ঠিক করতে, বা মাসে গাড়িতে কত খরচ হচ্ছে তা জানতে এই টুল কাজে আসে। কলকাতা থেকে দিঘা, শিলিগুড়ি বা দিল্লি — জনপ্রিয় রুটের জন্য প্রিসেট বাটন রয়েছে। পেট্রোল ও ডিজেল উভয়ের জন্য ব্যবহার করা যাবে। হিসাব: প্রয়োজনীয় জ্বালানি = দূরত্ব ÷ মাইলেজ, মোট খরচ = জ্বালানি × প্রতি লিটার দাম।
+      </p>
+      <p data-lang-en style="display:none">
+        This fuel cost calculator computes the total fuel expense for a trip given distance, vehicle mileage, and current fuel price. It is useful for trip budgeting, comparing different routes, or tracking monthly vehicle running costs. Popular routes like Kolkata to Digha and Kolkata to Siliguri are available as preset buttons. Works for both petrol and diesel vehicles. Formula: fuel needed = distance ÷ mileage; total cost = fuel needed × price per litre. The result also shows cost per 100 km for easy comparison with other vehicles or routes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: কলকাতা থেকে দিঘা" data-en="Example 1: Kolkata to Digha">উদাহরণ ১: কলকাতা থেকে দিঘা</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ১৮০ km, মাইলেজ: ১৫ km/L, দাম: ₹১০০/L" data-en="Distance: 180 km, Mileage: 15 km/L, Price: ₹100/L">দূরত্ব: ১৮০ km, মাইলেজ: ১৫ km/L, দাম: ₹১০০/L</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="জ্বালানি: ১২ লিটার | মোট খরচ: ₹১,২০০" data-en="Fuel: 12 litres | Total cost: ₹1,200">জ্বালানি: ১২ লিটার | মোট খরচ: ₹১,২০০</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: কলকাতা থেকে শিলিগুড়ি" data-en="Example 2: Kolkata to Siliguri">উদাহরণ ২: কলকাতা থেকে শিলিগুড়ি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ৫৭০ km, মাইলেজ: ১৮ km/L, দাম: ₹১০০/L" data-en="Distance: 570 km, Mileage: 18 km/L, Price: ₹100/L">দূরত্ব: ৫৭০ km, মাইলেজ: ১৮ km/L, দাম: ₹১০০/L</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="জ্বালানি: ৩১.৭ লিটার | মোট খরচ: ₹৩,১৬৭" data-en="Fuel: 31.7 litres | Total cost: ₹3,167">জ্বালানি: ৩১.৭ লিটার | মোট খরচ: ₹৩,১৬৭</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: মাসে ২,০০০ km শহরে চলা" data-en="Example 3: 2,000 km monthly city driving">উদাহরণ ৩: মাসে ২,০০০ km শহরে চলা</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="দূরত্ব: ২,০০০ km, মাইলেজ: ১২ km/L, দাম: ₹১০৩/L" data-en="Distance: 2,000 km, Mileage: 12 km/L, Price: ₹103/L">দূরত্ব: ২,০০০ km, মাইলেজ: ১২ km/L, দাম: ₹১০৩/L</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="জ্বালানি: ১৬৬.৭ লিটার | মোট মাসিক খরচ: ₹১৭,১৭১" data-en="Fuel: 166.7 litres | Monthly total: ₹17,171">জ্বালানি: ১৬৬.৭ লিটার | মোট মাসিক খরচ: ₹১৭,১৭১</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="জ্বালানি খরচ কীভাবে হিসাব করব?" data-en="How do I calculate fuel cost?">জ্বালানি খরচ কীভাবে হিসাব করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="প্রয়োজনীয় জ্বালানি = দূরত্ব ÷ মাইলেজ। মোট খরচ = জ্বালানি (লিটার) × প্রতি লিটার দাম। যেমন ১৮০ km ÷ ১৫ km/L = ১২ লিটার × ₹১০০ = ₹১২০০।" data-en="Fuel needed = distance ÷ mileage. Total cost = litres × price per litre. E.g., 180 ÷ 15 = 12 litres × ₹100 = ₹1,200.">প্রয়োজনীয় জ্বালানি = দূরত্ব ÷ মাইলেজ। মোট খরচ = জ্বালানি (লিটার) × প্রতি লিটার দাম। যেমন ১৮০ km ÷ ১৫ km/L = ১২ লিটার × ₹১০০ = ₹১২০০।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কলকাতায় পেট্রোলের বর্তমান দাম কত?" data-en="What is the current petrol price in Kolkata?">কলকাতায় পেট্রোলের বর্তমান দাম কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="২০২৬ সালের মার্চ মাসে কলকাতায় পেট্রোলের দাম প্রায় ₹১০৩-₹১০৫ প্রতি লিটার। সঠিক দামের জন্য স্থানীয় পেট্রোল পাম্পে দেখুন।" data-en="As of March 2026 Kolkata petrol price is approximately ₹103–₹105 per litre. Check your local petrol pump for the exact current price.">২০২৬ সালের মার্চ মাসে কলকাতায় পেট্রোলের দাম প্রায় ₹১০৩-₹১০৫ প্রতি লিটার। সঠিক দামের জন্য স্থানীয় পেট্রোল পাম্পে দেখুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমার গাড়ির মাইলেজ কীভাবে জানব?" data-en="How do I find my vehicle's mileage?">আমার গাড়ির মাইলেজ কীভাবে জানব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="পুরো ট্যাঙ্ক ভরে নিন। কিছু দূর চলার পরে আবার পুরো ভরুন এবং লিটার রেকর্ড করুন। কত km চললেন তা ভাগ করুন। অথবা গাড়ির ম্যানুয়ালে ARAI মাইলেজ দেখুন।" data-en="Fill the tank, drive some distance, refill and note the litres used. Divide kilometres driven by litres. Or check the ARAI mileage in the owner's manual.">পুরো ট্যাঙ্ক ভরে নিন। কিছু দূর চলার পরে আবার পুরো ভরুন এবং লিটার রেকর্ড করুন। কত km চললেন তা ভাগ করুন। অথবা গাড়ির ম্যানুয়ালে ARAI মাইলেজ দেখুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ডিজেলের জন্যও কি এই ক্যালকুলেটর ব্যবহার করা যাবে?" data-en="Can this be used for diesel vehicles too?">ডিজেলের জন্যও কি এই ক্যালকুলেটর ব্যবহার করা যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, শুধু ডিজেলের বর্তমান দাম ও আপনার ডিজেল গাড়ির মাইলেজ দিন। ডিজেল গাড়ির মাইলেজ সাধারণত পেট্রোলের চেয়ে বেশি।" data-en="Yes, simply enter the current diesel price and your diesel vehicle's mileage. Diesel vehicles typically deliver better mileage than petrol equivalents.">হ্যাঁ, শুধু ডিজেলের বর্তমান দাম ও আপনার ডিজেল গাড়ির মাইলেজ দিন। ডিজেল গাড়ির মাইলেজ সাধারণত পেট্রোলের চেয়ে বেশি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="যাত্রায় ফিরে আসার খরচও হিসাব করতে চাই" data-en="How to include return trip cost?">যাত্রায় ফিরে আসার খরচও হিসাব করতে চাই</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="দূরত্বের জায়গায় দুই দিকের দূরত্ব দিন — যেমন কলকাতা থেকে দিঘা যাতায়াত = ৩৬০ km। অথবা ফলাফলকে দুই দিয়ে গুণ করুন।" data-en="Enter double the one-way distance — e.g., Kolkata–Digha return = 360 km. Or simply multiply the one-way result by 2.">দূরত্বের জায়গায় দুই দিকের দূরত্ব দিন — যেমন কলকাতা থেকে দিঘা যাতায়াত = ৩৬০ km। অথবা ফলাফলকে দুই দিয়ে গুণ করুন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/calculators/speed",
+      nameBn: "গতি ক্যালকুলেটর",
+      nameEn: "Speed Calculator",
+      descBn: "গতি, দূরত্ব ও সময় হিসাব করুন",
+      descEn: "Calculate speed, distance and time",
+      icon: "🚗"
+    },
+    {
+      url: "/converters/km-to-miles",
+      nameBn: "কিমি থেকে মাইল",
+      nameEn: "km to Miles",
+      descBn: "কিলোমিটার থেকে মাইল রূপান্তর",
+      descEn: "Convert kilometres to miles",
+      icon: "📏"
+    },
+    {
+      url: "/converters/litre-to-gallon",
+      nameBn: "লিটার থেকে গ্যালন",
+      nameEn: "Litre to Gallon",
+      descBn: "লিটার থেকে গ্যালন রূপান্তর",
+      descEn: "Convert litres to gallons",
+      icon: "🪣"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const distInput = document.getElementById('fc-distance') as HTMLInputElement;
+  const mileageInput = document.getElementById('fc-mileage') as HTMLInputElement;
+  const priceInput = document.getElementById('fc-price') as HTMLInputElement;
+  const fcResult = document.getElementById('fc-result')!;
+  const presetBtns = document.querySelectorAll('.preset-btn') as NodeListOf<HTMLButtonElement>;
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      distInput.value = btn.dataset.dist || '';
+      calculate();
+    });
+  });
+
+  function calculate() {
+    const dist = parseFloat(distInput.value);
+    const mileage = parseFloat(mileageInput.value);
+    const price = parseFloat(priceInput.value);
+
+    if (!isNaN(dist) && !isNaN(mileage) && !isNaN(price) && dist > 0 && mileage > 0 && price > 0) {
+      const litres = dist / mileage;
+      const totalCost = litres * price;
+      const per100 = (litres / dist) * 100 * price;
+
+      document.getElementById('fc-total-cost')!.textContent = '₹' + totalCost.toFixed(2);
+      document.getElementById('fc-litres')!.textContent = litres.toFixed(2) + ' L';
+      document.getElementById('fc-breakdown')!.textContent =
+        `${dist} km ÷ ${mileage} km/L = ${litres.toFixed(2)} L × ₹${price} = ₹${totalCost.toFixed(2)}`;
+      document.getElementById('fc-per100')!.textContent =
+        `প্রতি ১০০ km খরচ / Cost per 100 km: ₹${per100.toFixed(2)}`;
+      fcResult.classList.remove('hidden');
+    } else {
+      fcResult.classList.add('hidden');
+    }
+  }
+
+  distInput.addEventListener('input', calculate);
+  mileageInput.addEventListener('input', calculate);
+  priceInput.addEventListener('input', calculate);
+
+  // Calculate on load with default values
+  calculate();
+</script>

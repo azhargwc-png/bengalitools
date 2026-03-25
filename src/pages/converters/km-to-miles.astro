@@ -1,0 +1,245 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="কিলোমিটার থেকে মাইল কনভার্টার | BanglaTools"
+  description="কিলোমিটার থেকে মাইল বা মাইল থেকে কিলোমিটার রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="কিলোমিটার থেকে মাইল কনভার্টার" data-en="km to miles Converter">কিলোমিটার থেকে মাইল কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তাৎক্ষণিকভাবে কিলোমিটার ও মাইলের মধ্যে রূপান্তর করুন" data-en="Instantly convert between kilometers and miles">তাৎক্ষণিকভাবে কিলোমিটার ও মাইলের মধ্যে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="km-input">
+          <span data-bn="কিলোমিটার (km)" data-en="Kilometers (km)">কিলোমিটার (km)</span>
+        </label>
+        <input
+          type="number"
+          id="km-input"
+          placeholder="যেমন: 5"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="miles-input">
+          <span data-bn="মাইল (miles)" data-en="Miles">মাইল (miles)</span>
+        </label>
+        <input
+          type="number"
+          id="miles-input"
+          placeholder="যেমন: 3.11"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="কিলোমিটার ঘরে দূরত্ব লিখুন" data-en="Enter distance in the km box">কিলোমিটার ঘরে দূরত্ব লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="মাইল তাৎক্ষণিকভাবে দেখাবে" data-en="Miles appear instantly">মাইল তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="মাইল থেকে কিলোমিটারও বের করতে পারবেন" data-en="You can also convert from miles to km">মাইল থেকে কিলোমিটারও বের করতে পারবেন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        কিলোমিটার থেকে মাইল কনভার্টার দিয়ে আপনি সহজেই দূরত্ব রূপান্তর করতে পারবেন। বাংলাদেশ ও ভারতে দূরত্ব কিলোমিটারে মাপা হয়, কিন্তু আমেরিকা ও যুক্তরাজ্যে মাইল ব্যবহার হয়। সকালের হাঁটা ৫ কিলোমিটার মানে ৩.১১ মাইল। ম্যারাথন দৌড়ের দূরত্ব ৪২.১৯৫ কিলোমিটার, যা প্রায় ২৬.২ মাইল। ঢাকা থেকে চট্টগ্রামের দূরত্ব প্রায় ২৪২ কিলোমিটার, যা ১৫০ মাইলের বেশি। গাড়ির স্পিডোমিটারে মাইল প্রতি ঘণ্টা দেওয়া থাকলে এই টুল কাজে আসবে। ১ কিলোমিটার সমান ০.৬২১৩৭১ মাইল। এই কনভার্টার বিনামূল্যে এবং যেকোনো ডিভাইসে ব্যবহার করা যায়।
+      </p>
+      <p data-lang-en style="display:none">
+        The km to miles converter helps you easily switch between kilometers and miles. Bangladesh, India, and most of the world use kilometers for road distances, while the USA and UK use miles on their road signs and maps. A 5 km morning walk equals 3.11 miles. A full marathon is 42.195 km or 26.22 miles. The distance from Kolkata to Dhaka is approximately 300 km, which equals about 186 miles. GPS devices, fitness trackers, and American maps often use miles. This tool works in both directions — enter km to get miles, or enter miles to get km. The conversion factor is 1 km = 0.621371 miles. This free tool is available on any device with no sign-up required.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" সকালের হাঁটা ৫ কিলোমিটার" data-en=" Morning walk 5 km"> সকালের হাঁটা ৫ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫ কিলোমিটার" data-en="Input: 5 km">ইনপুট: ৫ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৩.১১ মাইল" data-en="Result: 3.11 miles">ফলাফল: ৩.১১ মাইল</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" ম্যারাথন দৌড়ের দূরত্ব ৪২ কিলোমিটার" data-en=" Marathon distance 42 km"> ম্যারাথন দৌড়ের দূরত্ব ৪২ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৪২ কিলোমিটার" data-en="Input: 42 km">ইনপুট: ৪২ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ২৬.১ মাইল" data-en="Result: 26.1 miles">ফলাফল: ২৬.১ মাইল</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" কলকাতা থেকে ঢাকার দূরত্ব ৩০০ কিলোমিটার" data-en=" Kolkata to Dhaka distance 300 km"> কলকাতা থেকে ঢাকার দূরত্ব ৩০০ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৩০০ কিলোমিটার" data-en="Input: 300 km">ইনপুট: ৩০০ কিলোমিটার</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ১৮৬.৪ মাইল" data-en="Result: 186.4 miles">ফলাফল: ১৮৬.৪ মাইল</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ কিলোমিটার সমান কত মাইল?" data-en="How many miles is 1 kilometer?">১ কিলোমিটার সমান কত মাইল?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ কিলোমিটার সমান ০.৬২১৩৭১ মাইল। সহজে মনে রাখতে পারেন: ১ কিলোমিটার প্রায় ০.৬২ মাইলের সমান।" data-en="1 kilometer equals 0.621371 miles. An easy way to remember: 1 km is roughly 0.62 miles.">১ কিলোমিটার সমান ০.৬২১৩৭১ মাইল। সহজে মনে রাখতে পারেন: ১ কিলোমিটার প্রায় ০.৬২ মাইলের সমান।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ মাইল সমান কত কিলোমিটার?" data-en="How many kilometers is 1 mile?">১ মাইল সমান কত কিলোমিটার?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ মাইল সমান ১.৬০৯৩৪ কিলোমিটার। অর্থাৎ ১ মাইল প্রায় দেড় কিলোমিটারের বেশি।" data-en="1 mile equals 1.60934 kilometers. So 1 mile is a little over one and a half kilometers.">১ মাইল সমান ১.৬০৯৩৪ কিলোমিটার। অর্থাৎ ১ মাইল প্রায় দেড় কিলোমিটারের বেশি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ম্যারাথনের দূরত্ব কত কিলোমিটার ও মাইল?" data-en="What is the marathon distance in km and miles?">ম্যারাথনের দূরত্ব কত কিলোমিটার ও মাইল?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="একটি পূর্ণ ম্যারাথনের দূরত্ব ৪২.১৯৫ কিলোমিটার, যা ২৬.২১৯ মাইলের সমান। হাফ ম্যারাথন হলো ২১.০৯৭৫ কিলোমিটার বা ১৩.১০৯ মাইল।" data-en="A full marathon is 42.195 km, equal to 26.219 miles. A half marathon is 21.0975 km or 13.109 miles.">একটি পূর্ণ ম্যারাথনের দূরত্ব ৪২.১৯৫ কিলোমিটার, যা ২৬.২১৯ মাইলের সমান। হাফ ম্যারাথন হলো ২১.০৯৭৫ কিলোমিটার বা ১৩.১০৯ মাইল।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কলকাতা থেকে ঢাকার দূরত্ব কত কিলোমিটার ও মাইল?" data-en="What is the distance from Kolkata to Dhaka in km and miles?">কলকাতা থেকে ঢাকার দূরত্ব কত কিলোমিটার ও মাইল?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="কলকাতা থেকে ঢাকার সড়কপথে দূরত্ব প্রায় ৩০০ কিলোমিটার, যা প্রায় ১৮৬ মাইল। সরাসরি (আকাশপথ) দূরত্ব প্রায় ১৮৫ কিলোমিটার।" data-en="The road distance from Kolkata to Dhaka is approximately 300 km, which equals about 186 miles. The straight-line (aerial) distance is about 185 km.">কলকাতা থেকে ঢাকার সড়কপথে দূরত্ব প্রায় ৩০০ কিলোমিটার, যা প্রায় ১৮৬ মাইল। সরাসরি (আকাশপথ) দূরত্ব প্রায় ১৮৫ কিলোমিটার।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কিলোমিটার থেকে মাইল বের করার সূত্র কী?" data-en="What is the formula to convert km to miles?">কিলোমিটার থেকে মাইল বের করার সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সূত্র: মাইল = কিলোমিটার × ০.৬২১৩৭১। উদাহরণ: ১০ কিলোমিটার × ০.৬২১৩৭১ = ৬.২১ মাইল।" data-en="Formula: miles = km × 0.621371. Example: 10 km × 0.621371 = 6.21 miles.">সূত্র: মাইল = কিলোমিটার × ০.৬২১৩৭১। উদাহরণ: ১০ কিলোমিটার × ০.৬২১৩৭১ = ৬.২১ মাইল।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/feet-to-meters",
+      nameBn: "ফুট থেকে মিটার",
+      nameEn: "feet to meters",
+      descBn: "ফুট ও মিটার রূপান্তর করুন",
+      descEn: "Convert feet and meters",
+      icon: "📐"
+    },
+    {
+      url: "/calculators/speed",
+      nameBn: "গতি ক্যালকুলেটর",
+      nameEn: "Speed Calculator",
+      descBn: "গতি, দূরত্ব ও সময় হিসাব করুন",
+      descEn: "Calculate speed, distance and time",
+      icon: "🚗"
+    },
+    {
+      url: "/calculators/fuel-cost",
+      nameBn: "জ্বালানি খরচ ক্যালকুলেটর",
+      nameEn: "Fuel Cost Calculator",
+      descBn: "ভ্রমণের জ্বালানি খরচ হিসাব করুন",
+      descEn: "Calculate fuel cost for your trip",
+      icon: "⛽"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const kmInput = document.getElementById('km-input') as HTMLInputElement;
+  const milesInput = document.getElementById('miles-input') as HTMLInputElement;
+  const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
+
+  kmInput?.addEventListener('input', () => {
+    const km = parseFloat(kmInput.value);
+    if (!isNaN(km) && km >= 0) {
+      const miles = km * 0.621371;
+      milesInput.value = miles.toFixed(4);
+      formulaDisplay.textContent = `${km} km × 0.621371 = ${miles.toFixed(4)} miles`;
+    } else {
+      milesInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+
+  milesInput?.addEventListener('input', () => {
+    const miles = parseFloat(milesInput.value);
+    if (!isNaN(miles) && miles >= 0) {
+      const km = miles / 0.621371;
+      kmInput.value = km.toFixed(4);
+      formulaDisplay.textContent = `${miles} miles ÷ 0.621371 = ${km.toFixed(4)} km`;
+    } else {
+      kmInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+</script>

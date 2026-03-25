@@ -1,0 +1,138 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="বিএমআই কত হলে স্বাস্থ্যকর — WHO এর গাইডলাইন | BanglaTools"
+  description="বিএমআই কত হলে স্বাস্থ্যকর তা WHO বলে ১৮.৫ থেকে ২৪.৯। বিস্তারিত গাইড ও BMI ক্যালকুলেটর সহ।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → বিএমআই কত হলে স্বাস্থ্যকর
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="বিএমআই কত হলে স্বাস্থ্যকর — WHO এর গাইডলাইন" data-en="What BMI is Healthy — WHO Guidelines">বিএমআই কত হলে স্বাস্থ্যকর — WHO এর গাইডলাইন</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <!-- Embed BMI calculator -->
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">
+      <span data-bn="আপনার BMI পরীক্ষা করুন" data-en="Check Your BMI">আপনার BMI পরীক্ষা করুন</span>
+    </h2>
+    <div class="grid grid-cols-2 gap-3 mb-3">
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="উচ্চতা (সেমি)" data-en="Height (cm)">উচ্চতা (সেমি)</span></label>
+        <input type="number" id="bmi-h" placeholder="170" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" />
+      </div>
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="ওজন (কেজি)" data-en="Weight (kg)">ওজন (কেজি)</span></label>
+        <input type="number" id="bmi-w" placeholder="70" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" />
+      </div>
+    </div>
+    <div id="bmi-result" class="hidden text-center py-3 rounded-xl font-bold text-xl"></div>
+    <p class="text-center mt-2">
+      <a href="/health/bmi-calculator" class="text-sm text-teal-700 hover:underline">
+        <span data-bn="→ সম্পূর্ণ BMI ক্যালকুলেটর দেখুন" data-en="→ See full BMI calculator">→ সম্পূর্ণ BMI ক্যালকুলেটর দেখুন</span>
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">BMI কী?</h2>
+      <p>BMI (Body Mass Index) হলো শরীরের ওজন ও উচ্চতার অনুপাতের একটি পরিমাপ। WHO (বিশ্ব স্বাস্থ্য সংস্থা) BMI ব্যবহার করে মানুষের শরীরের ওজন স্বাস্থ্যকর কিনা তা নির্ধারণ করে।</p>
+      <p>সূত্র: <strong>BMI = ওজন (কেজি) ÷ উচ্চতা (মিটার)²</strong></p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">WHO অনুযায়ী BMI চার্ট</h2>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 bg-blue-50 p-4 rounded-xl border border-blue-200">
+          <div class="w-4 h-4 bg-blue-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI ১৮.৫-এর কম — কম ওজন (Underweight)</p><p class="text-sm text-gray-600 mt-1">ওজন বাড়ানোর প্রয়োজন। পুষ্টিবিদের পরামর্শ নিন।</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-green-50 p-4 rounded-xl border border-green-200">
+          <div class="w-4 h-4 bg-green-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI ১৮.৫–২৪.৯ — স্বাস্থ্যকর (Healthy) ✓</p><p class="text-sm text-gray-600 mt-1">এটি আদর্শ পরিসর। এই BMI বজায় রাখুন।</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-orange-50 p-4 rounded-xl border border-orange-200">
+          <div class="w-4 h-4 bg-orange-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI ২৫–২৯.৯ — অতিরিক্ত ওজন (Overweight)</p><p class="text-sm text-gray-600 mt-1">ডায়াবেটিস ও হৃদরোগের ঝুঁকি বাড়ে। জীবনযাত্রা পরিবর্তন করুন।</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-red-50 p-4 rounded-xl border border-red-200">
+          <div class="w-4 h-4 bg-red-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI ৩০ বা তার বেশি — স্থূলতা (Obese)</p><p class="text-sm text-gray-600 mt-1">ডাক্তারের সাথে পরামর্শ করুন। চিকিৎসা প্রয়োজন হতে পারে।</p></div>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">বাস্তব উদাহরণ</h2>
+      <p><strong>উদাহরণ ১:</strong> নারী, উচ্চতা ১৫৮ সেমি, ওজন ৫৫ কেজি → BMI = ৫৫ ÷ (১.৫৮)² = ২২.০ → <span class="text-green-700 font-bold">স্বাস্থ্যকর</span></p>
+      <p class="mt-2"><strong>উদাহরণ ২:</strong> পুরুষ, উচ্চতা ১৭০ সেমি, ওজন ৮০ কেজি → BMI = ৮০ ÷ (১.৭০)² = ২৭.৭ → <span class="text-orange-700 font-bold">অতিরিক্ত ওজন</span></p>
+      <p class="mt-2"><strong>উদাহরণ ৩:</strong> কিশোর, উচ্চতা ১৬৫ সেমি, ওজন ৪৫ কেজি → BMI = ৪৫ ÷ (১.৬৫)² = ১৬.৫ → <span class="text-blue-700 font-bold">কম ওজন</span></p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">BMI-এর সীমাবদ্ধতা</h2>
+      <p>BMI সবার জন্য নিখুঁত নয়। অ্যাথলেট বা মাংসপেশি বেশি এমন মানুষের BMI বেশি হতে পারে তবুও তারা স্বাস্থ্যকর। বয়স্ক মানুষের ক্ষেত্রে BMI ভিন্নভাবে ব্যাখ্যা করতে হয়।</p>
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">What is BMI?</h2>
+      <p>BMI (Body Mass Index) is a measure of the ratio between body weight and height. The WHO uses BMI to determine whether a person's weight is healthy.</p>
+      <p>Formula: <strong>BMI = weight (kg) ÷ height (m)²</strong></p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">WHO BMI Categories</h2>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 bg-blue-50 p-4 rounded-xl border border-blue-200">
+          <div class="w-4 h-4 bg-blue-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI below 18.5 — Underweight</p><p class="text-sm text-gray-600 mt-1">Weight gain needed. Consult a nutritionist.</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-green-50 p-4 rounded-xl border border-green-200">
+          <div class="w-4 h-4 bg-green-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI 18.5–24.9 — Healthy ✓</p><p class="text-sm text-gray-600 mt-1">This is the ideal range. Maintain this BMI.</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-orange-50 p-4 rounded-xl border border-orange-200">
+          <div class="w-4 h-4 bg-orange-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI 25–29.9 — Overweight</p><p class="text-sm text-gray-600 mt-1">Increased risk of diabetes and heart disease. Lifestyle changes needed.</p></div>
+        </div>
+        <div class="flex items-center gap-3 bg-red-50 p-4 rounded-xl border border-red-200">
+          <div class="w-4 h-4 bg-red-500 rounded-full flex-shrink-0"></div>
+          <div><p class="font-bold">BMI 30 or above — Obese</p><p class="text-sm text-gray-600 mt-1">Consult a doctor. Medical intervention may be needed.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+    <a href="/health/bmi-calculator" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="BMI ক্যালকুলেটর খুলুন →" data-en="Open BMI Calculator →">BMI ক্যালকুলেটর খুলুন →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  var hEl = document.getElementById('bmi-h');
+  var wEl = document.getElementById('bmi-w');
+  var resultEl = document.getElementById('bmi-result');
+
+  function calc() {
+    var h = parseFloat(hEl.value) / 100;
+    var w = parseFloat(wEl.value);
+    if (isNaN(h) || isNaN(w) || h <= 0 || w <= 0) { resultEl.classList.add('hidden'); return; }
+    var bmi = w / (h * h);
+    var cat, color;
+    if (bmi < 18.5) { cat = 'কম ওজন / Underweight'; color = 'bg-blue-100 text-blue-800'; }
+    else if (bmi < 25) { cat = 'স্বাস্থ্যকর / Healthy ✓'; color = 'bg-green-100 text-green-800'; }
+    else if (bmi < 30) { cat = 'অতিরিক্ত ওজন / Overweight'; color = 'bg-orange-100 text-orange-800'; }
+    else { cat = 'স্থূলতা / Obese'; color = 'bg-red-100 text-red-800'; }
+    resultEl.className = 'text-center py-3 rounded-xl font-bold text-xl ' + color;
+    resultEl.textContent = 'BMI: ' + bmi.toFixed(1) + ' — ' + cat;
+    resultEl.classList.remove('hidden');
+  }
+
+  hEl.addEventListener('input', calc);
+  wEl.addEventListener('input', calc);
+});
+</script>

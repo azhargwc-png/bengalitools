@@ -1,0 +1,276 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="ইউরো রেট আজকে — ইউরো থেকে টাকা | BanglaTools"
+  description="আজকের EUR থেকে INR লাইভ রেট। ইউরো থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="ইউরো রেট আজকে — ইউরো থেকে ভারতীয় টাকা" data-en="EUR to INR — Euro to Rupee Live Rate">ইউরো রেট আজকে — ইউরো থেকে ভারতীয় টাকা</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আজকের লাইভ রেটে ইউরো থেকে ভারতীয় রুপিতে রূপান্তর করুন" data-en="Convert Euros to Indian Rupees at today's live exchange rate">আজকের লাইভ রেটে ইউরো থেকে ভারতীয় রুপিতে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Rate display -->
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
+      <div>
+        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p class="text-xs text-gray-500">
+          <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
+          <span id="last-updated">—</span>
+        </p>
+      </div>
+    </div>
+    <!-- Inputs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="from-input">EUR (€)</label>
+        <input
+          type="number"
+          id="from-input"
+          placeholder="যেমন: 100"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="to-input">INR (₹)</label>
+        <input
+          type="number"
+          id="to-input"
+          placeholder="রুপি"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="EUR ঘরে ইউরোর পরিমাণ লিখুন" data-en="Enter the euro amount in the EUR box">EUR ঘরে ইউরোর পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="রুপি থেকে ইউরোও বের করতে INR ঘরে টাইপ করুন" data-en="Type in the INR box to convert rupees back to euros">রুপি থেকে ইউরোও বের করতে INR ঘরে টাইপ করুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই টুলটি ইউরো (EUR) থেকে ভারতীয় রুপি (INR)-তে তাৎক্ষণিক রূপান্তর করে। ইউরো হলো ইউরোপের ২০টিরও বেশি দেশের সরকারি মুদ্রা। জার্মানি, ফ্রান্স, ইতালি, স্পেন, নেদারল্যান্ডস সহ অনেক দেশে ইউরো চলে। যারা ইউরোপে পড়াশোনা করছেন বা কাজ করছেন তাদের জন্য ইউরোর রুপি মূল্য জানা অত্যন্ত গুরুত্বপূর্ণ। ইউরোপীয় বিশ্ববিদ্যালয়গুলোর টিউশন ফি, বাড়ি ভাড়া, ও দৈনন্দিন খরচ ইউরোতে হিসাব করা হয়। ভারতীয় বাঙালি শিক্ষার্থীরা যারা জার্মানি বা ফ্রান্সে পড়তে যান তারা এই টুলটি ব্যবহার করে তাদের মাসিক বাজেট বুঝতে পারবেন। ইউরো-রুপি বিনিময় হার প্রতিদিন পরিবর্তন হয় এবং ইউরোপিয়ান সেন্ট্রাল ব্যাংকের নীতির উপর নির্ভর করে। সাধারণত ১ EUR = ₹৮৮ থেকে ₹৯৫ এর মধ্যে থাকে। এই কনভার্টারটি বিনামূল্যে এবং যেকোনো ডিভাইসে ব্যবহারযোগ্য। রিভার্স কনভার্শনও সম্ভব।
+      </p>
+      <p data-lang-en style="display:none">
+        This tool converts Euros (EUR) to Indian Rupees (INR) using a live exchange rate from the frankfurter.app API, powered by European Central Bank data. The Euro is the official currency of more than 20 European Union countries, including Germany, France, Italy, Spain, and the Netherlands. It is one of the world's most traded currencies and widely used for international transactions. Typically, 1 EUR is worth between ₹88 and ₹95 Indian Rupees, though the rate changes daily based on ECB policy, global trade flows, and economic indicators. Bengali students studying in Germany, France, or other Eurozone countries need this converter to calculate tuition fees, rent, and living expenses in rupees. Professionals working in Europe sending remittances home, and travelers planning European trips also find this tool very useful. The rate loads automatically and the converter works in both directions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" জার্মানিতে ১০০ ইউরো মাসিক খরচ" data-en=" €100 monthly expense in Germany"> জার্মানিতে ১০০ ইউরো মাসিক খরচ</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০ EUR" data-en="Input: 100 EUR">ইনপুট: ১০০ EUR</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৯,১০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹9,100 (at current rate)">ফলাফল: প্রায় ₹৯,১০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" ফ্রান্স থেকে ৫০০ ইউরো পাঠানো" data-en=" Sending €500 from France"> ফ্রান্স থেকে ৫০০ ইউরো পাঠানো</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫০০ EUR" data-en="Input: 500 EUR">ইনপুট: ৫০০ EUR</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৪৫,৫০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹45,500 (at current rate)">ফলাফল: প্রায় ₹৪৫,৫০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" বিশ্ববিদ্যালয়ের ১০০০ ইউরো ফি" data-en=" €1,000 university fee"> বিশ্ববিদ্যালয়ের ১০০০ ইউরো ফি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০০ EUR" data-en="Input: 1000 EUR">ইনপুট: ১০০০ EUR</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৯১,০০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹91,000 (at current rate)">ফলাফল: প্রায় ₹৯১,০০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আজকে ১ ইউরো সমান কত রুপি?" data-en="How many rupees is 1 euro today?">আজকে ১ ইউরো সমান কত রুপি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত ১ EUR = ₹৮৮ থেকে ₹৯৫ এর মধ্যে থাকে। এই পেজে লাইভ রেট দেখানো হচ্ছে — সঠিক মান উপরে দেখুন।" data-en="Typically 1 EUR is between ₹88 and ₹95. This page shows a live rate — check the current value displayed above.">সাধারণত ১ EUR = ₹৮৮ থেকে ₹৯৫ এর মধ্যে থাকে। এই পেজে লাইভ রেট দেখানো হচ্ছে — সঠিক মান উপরে দেখুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কোন কোন দেশে ইউরো ব্যবহার হয়?" data-en="Which countries use the euro?">কোন কোন দেশে ইউরো ব্যবহার হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="জার্মানি, ফ্রান্স, ইতালি, স্পেন, নেদারল্যান্ডস, বেলজিয়াম, পর্তুগাল, গ্রিস সহ ২০+ ইউরোপীয় দেশ ইউরো ব্যবহার করে।" data-en="Germany, France, Italy, Spain, Netherlands, Belgium, Portugal, Greece, and 20+ other European countries use the euro.">জার্মানি, ফ্রান্স, ইতালি, স্পেন, নেদারল্যান্ডস, বেলজিয়াম, পর্তুগাল, গ্রিস সহ ২০+ ইউরোপীয় দেশ ইউরো ব্যবহার করে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ইউরো কি ডলারের চেয়ে শক্তিশালী?" data-en="Is the euro stronger than the dollar?">ইউরো কি ডলারের চেয়ে শক্তিশালী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত হ্যাঁ — ১ ইউরো ১.০৫ থেকে ১.১৫ ডলারের সমতুল্য। তবে এই রেট সময়ের সাথে পরিবর্তিত হয়।" data-en="Generally yes — 1 euro is worth about 1.05 to 1.15 dollars. However this rate fluctuates over time.">সাধারণত হ্যাঁ — ১ ইউরো ১.০৫ থেকে ১.১৫ ডলারের সমতুল্য। তবে এই রেট সময়ের সাথে পরিবর্তিত হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ইউরোপে পড়তে গেলে কত টাকা লাগে?" data-en="How much does it cost to study in Europe?">ইউরোপে পড়তে গেলে কত টাকা লাগে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="জার্মানিতে অনেক পাবলিক বিশ্ববিদ্যালয়ে বিনামূল্যে পড়া যায়। থাকা-খাওয়া মিলিয়ে মাসে প্রায় ৬০০-১০০০ ইউরো লাগে যা প্রায় ₹৫৫,০০০ থেকে ₹৯০,০০০।" data-en="Many German public universities have no tuition fees. Living expenses are about 600-1000 EUR per month, equivalent to approximately ₹55,000 to ₹90,000.">জার্মানিতে অনেক পাবলিক বিশ্ববিদ্যালয়ে বিনামূল্যে পড়া যায়। থাকা-খাওয়া মিলিয়ে মাসে প্রায় ৬০০-১০০০ ইউরো লাগে যা প্রায় ₹৫৫,০০০ থেকে ₹৯০,০০০।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রুপি থেকে ইউরোতেও কনভার্ট করা যাবে?" data-en="Can I also convert INR to EUR?">রুপি থেকে ইউরোতেও কনভার্ট করা যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ইউরো স্বয়ংক্রিয়ভাবে দেখাবে।" data-en="Yes. Type the rupee amount in the INR box and the equivalent euros will appear automatically.">হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ইউরো স্বয়ংক্রিয়ভাবে দেখাবে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/currency/usd-to-inr",
+      nameBn: "ডলার থেকে রুপি",
+      nameEn: "USD to INR",
+      descBn: "মার্কিন ডলার থেকে ভারতীয় রুপি",
+      descEn: "US Dollar to Indian Rupee",
+      icon: "🇺🇸"
+    },
+    {
+      url: "/currency/gbp-to-inr",
+      nameBn: "পাউন্ড থেকে রুপি",
+      nameEn: "GBP to INR",
+      descBn: "ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপি",
+      descEn: "British Pound to Indian Rupee",
+      icon: "🇬🇧"
+    },
+    {
+      url: "/currency/aed-to-inr",
+      nameBn: "দিরহাম থেকে রুপি",
+      nameEn: "AED to INR",
+      descBn: "দুবাই দিরহাম থেকে ভারতীয় রুপি",
+      descEn: "Dubai Dirham to Indian Rupee",
+      icon: "🇦🇪"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentRate = 0;
+  let rateLoaded = false;
+
+  async function fetchRate() {
+    try {
+      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=INR');
+      const data = await res.json();
+      currentRate = data.rates.INR;
+      rateLoaded = true;
+
+      const rateEl = document.getElementById('live-rate');
+      const updatedEl = document.getElementById('last-updated');
+      const statusEl = document.getElementById('rate-status');
+
+      if (rateEl) rateEl.textContent = `1 EUR = ₹${currentRate.toFixed(2)}`;
+      if (updatedEl) updatedEl.textContent = new Date().toLocaleTimeString('bn-IN');
+      if (statusEl) { statusEl.textContent = '🟢 লাইভ রেট'; statusEl.className = 'text-green-600 font-medium text-sm'; }
+
+      calculate();
+    } catch(e) {
+      const statusEl = document.getElementById('rate-status');
+      if (statusEl) { statusEl.textContent = '⚠️ রেট লোড করতে সমস্যা'; statusEl.className = 'text-orange-600 font-medium text-sm'; }
+    }
+  }
+
+  function calculate() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(fromInput.value);
+    if (!isNaN(val) && val >= 0) {
+      toInput.value = (val * currentRate).toFixed(2);
+    }
+  }
+
+  function calculateReverse() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(toInput.value);
+    if (!isNaN(val) && val >= 0) {
+      fromInput.value = (val / currentRate).toFixed(2);
+    }
+  }
+
+  document.getElementById('from-input')?.addEventListener('input', calculate);
+  document.getElementById('to-input')?.addEventListener('input', calculateReverse);
+
+  fetchRate();
+</script>

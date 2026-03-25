@@ -1,0 +1,10 @@
+---
+export interface Props {
+  slot?: string;
+}
+const { slot = 'default' } = Astro.props;
+---
+
+<div class="adsense-slot" data-slot={slot} aria-label="Advertisement">
+  <!-- Google AdSense ad will appear here after approval -->
+</div>

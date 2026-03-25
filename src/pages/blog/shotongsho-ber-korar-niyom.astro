@@ -1,0 +1,119 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="শতাংশ বের করার নিয়ম — সহজ পদ্ধতি | BanglaTools"
+  description="শতাংশ বের করার সহজ নিয়ম শিখুন। সূত্র, উদাহরণ ও শতাংশ ক্যালকুলেটর সহ সম্পূর্ণ গাইড।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → শতাংশ বের করার নিয়ম
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="শতাংশ বের করার নিয়ম — সহজ পদ্ধতি" data-en="How to Calculate Percentage — Easy Method">শতাংশ বের করার নিয়ম — সহজ পদ্ধতি</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <!-- Quick calculator embed -->
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3"><span data-bn="দ্রুত শতাংশ ক্যালকুলেটর" data-en="Quick Percentage Calculator">দ্রুত শতাংশ ক্যালকুলেটর</span></h2>
+    <div class="space-y-3">
+      <div class="flex items-center gap-2">
+        <input type="number" id="pc-x" placeholder="X" class="w-24 px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        <span class="text-gray-600" data-bn="হলো" data-en="is">হলো</span>
+        <input type="number" id="pc-y" placeholder="Y" class="w-24 px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        <span class="text-gray-600" data-bn="-এর কত শতাংশ?" data-en="% of what?">-এর কত শতাংশ?</span>
+      </div>
+      <div id="pc-result" class="hidden text-xl font-bold text-teal-700 bg-white rounded-xl p-3 border border-teal-200 text-center"></div>
+    </div>
+    <p class="text-center mt-2">
+      <a href="/calculators/percentage" class="text-sm text-teal-700 hover:underline">→ <span data-bn="সম্পূর্ণ শতাংশ ক্যালকুলেটর" data-en="Full Percentage Calculator">সম্পূর্ণ শতাংশ ক্যালকুলেটর</span></a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">শতাংশ কী?</h2>
+      <p>শতাংশ মানে প্রতি একশতে কতটুকু। "%" চিহ্ন দিয়ে প্রকাশ করা হয়। যেমন ৫০% মানে প্রতি ১০০-তে ৫০, অর্থাৎ অর্ধেক।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">শতাংশ বের করার ৩টি মূল সূত্র</h2>
+      <div class="space-y-4">
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold text-teal-800 mb-2">সূত্র ১: X কত % এর Y?</p>
+          <p class="font-mono text-lg">শতাংশ = (X ÷ Y) × ১০০</p>
+          <p class="text-sm text-gray-600 mt-1">উদাহরণ: ৩০ হলো ১২০-এর কত %? = (৩০ ÷ ১২০) × ১০০ = <strong>২৫%</strong></p>
+        </div>
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold text-teal-800 mb-2">সূত্র ২: Y-এর X% কত?</p>
+          <p class="font-mono text-lg">ফলাফল = (X ÷ ১০০) × Y</p>
+          <p class="text-sm text-gray-600 mt-1">উদাহরণ: ৫০০-এর ১৮% কত? = (১৮ ÷ ১০০) × ৫০০ = <strong>৯০</strong></p>
+        </div>
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold text-teal-800 mb-2">সূত্র ৩: X থেকে Y-এ কতটুকু বৃদ্ধি/হ্রাস?</p>
+          <p class="font-mono text-lg">পরিবর্তন % = ((Y - X) ÷ X) × ১০০</p>
+          <p class="text-sm text-gray-600 mt-1">উদাহরণ: ১০০ থেকে ১৫০ হলে বৃদ্ধি = ((১৫০-১০০) ÷ ১০০) × ১০০ = <strong>৫০%</strong></p>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">দৈনন্দিন জীবনে শতাংশের ব্যবহার</h2>
+      <ul class="space-y-2">
+        <li>🏷️ <strong>শপিংয়ে ছাড়:</strong> ৩০% ছাড় মানে ₹১০০-এর জায়গায় ₹৭০ দিতে হবে।</li>
+        <li>📊 <strong>পরীক্ষার নম্বর:</strong> ৫০০-এ ৩৭৫ মানে ৭৫%।</li>
+        <li>🏦 <strong>ব্যাংকের সুদ:</strong> ১০,০০০ টাকায় ৬% সুদ = ₹৬০০ প্রতি বছর।</li>
+        <li>📈 <strong>GST:</strong> ₹১,০০০-এ ১৮% GST = ₹১৮০।</li>
+      </ul>
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">What is percentage?</h2>
+      <p>Percentage means "per hundred". It is expressed with the "%" symbol. For example, 50% means 50 out of every 100, i.e., half.</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">3 main percentage formulas</h2>
+      <div class="space-y-3">
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold">Formula 1: X is what % of Y?</p>
+          <p class="font-mono">% = (X ÷ Y) × 100</p>
+        </div>
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold">Formula 2: What is X% of Y?</p>
+          <p class="font-mono">Result = (X ÷ 100) × Y</p>
+        </div>
+        <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+          <p class="font-bold">Formula 3: % change from X to Y?</p>
+          <p class="font-mono">Change % = ((Y - X) ÷ X) × 100</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center">
+    <a href="/calculators/percentage" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="শতাংশ ক্যালকুলেটর খুলুন →" data-en="Open Percentage Calculator →">শতাংশ ক্যালকুলেটর খুলুন →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  var xEl = document.getElementById('pc-x');
+  var yEl = document.getElementById('pc-y');
+  var resultEl = document.getElementById('pc-result');
+
+  function calc() {
+    var x = parseFloat(xEl.value);
+    var y = parseFloat(yEl.value);
+    if (isNaN(x) || isNaN(y) || y === 0) { resultEl.classList.add('hidden'); return; }
+    var pct = (x / y) * 100;
+    resultEl.textContent = x + ' হলো ' + y + '-এর ' + pct.toFixed(2) + '% | ' + x + ' is ' + pct.toFixed(2) + '% of ' + y;
+    resultEl.classList.remove('hidden');
+  }
+
+  xEl.addEventListener('input', calc);
+  yEl.addEventListener('input', calc);
+});
+</script>

@@ -1,0 +1,276 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="পাউন্ড রেট আজকে — পাউন্ড থেকে টাকা | BanglaTools"
+  description="আজকের GBP থেকে INR লাইভ রেট। ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="পাউন্ড রেট আজকে — পাউন্ড থেকে ভারতীয় টাকা" data-en="GBP to INR — British Pound to Rupee Live Rate">পাউন্ড রেট আজকে — পাউন্ড থেকে ভারতীয় টাকা</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="আজকের লাইভ রেটে ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপিতে রূপান্তর করুন" data-en="Convert British Pounds to Indian Rupees at today's live exchange rate">আজকের লাইভ রেটে ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপিতে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Rate display -->
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+      <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
+      <div>
+        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p class="text-xs text-gray-500">
+          <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
+          <span id="last-updated">—</span>
+        </p>
+      </div>
+    </div>
+    <!-- Inputs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="from-input">GBP (£)</label>
+        <input
+          type="number"
+          id="from-input"
+          placeholder="যেমন: 100"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="to-input">INR (₹)</label>
+        <input
+          type="number"
+          id="to-input"
+          placeholder="রুপি"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="GBP ঘরে পাউন্ডের পরিমাণ লিখুন" data-en="Enter the pound amount in the GBP box">GBP ঘরে পাউন্ডের পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="রুপি থেকে পাউন্ডও বের করতে INR ঘরে টাইপ করুন" data-en="Type in the INR box to convert rupees back to pounds">রুপি থেকে পাউন্ডও বের করতে INR ঘরে টাইপ করুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই টুলটি ব্রিটিশ পাউন্ড স্টার্লিং (GBP) থেকে ভারতীয় রুপি (INR)-তে তাৎক্ষণিক রূপান্তর করে। যুক্তরাজ্য বাঙালি প্রবাসীদের জন্য একটি অত্যন্ত গুরুত্বপূর্ণ গন্তব্য। লন্ডন, বার্মিংহাম, ব্র্যাডফোর্ড ও অন্যান্য শহরে বহু বাঙালি পরিবার বাস করেন এবং তারা নিয়মিত ভারতে টাকা পাঠান। পাউন্ড বিশ্বের অন্যতম শক্তিশালী মুদ্রা। সাধারণত ১ GBP = ₹১০৫ থেকে ₹১১৫ ভারতীয় রুপি, যা ডলারের চেয়ে বেশি। যুক্তরাজ্যে পড়াশোনার খরচ, ভিসা ফি, এবং টিউশন ফি পাউন্ডে হিসাব করা হয়। এই কনভার্টারটি ব্যবহার করে আপনি সহজেই যুক্তরাজ্যের খরচ ভারতীয় রুপিতে বুঝতে পারবেন। যারা যুক্তরাজ্য ভ্রমণ করছেন বা সেখানে কাজ করছেন তাদের জন্য এটি একটি অপরিহার্য টুল। রেট প্রতিদিন আপডেট হয় এবং পেজ লোডের সময় স্বয়ংক্রিয়ভাবে ফেচ করা হয়। রিভার্স কনভার্শনও উপলব্ধ — রুপি থেকে পাউন্ডও বের করা যায়।
+      </p>
+      <p data-lang-en style="display:none">
+        This tool converts British Pounds Sterling (GBP) to Indian Rupees (INR) using a live exchange rate from the frankfurter.app API. The British Pound is one of the world's oldest and strongest currencies. Typically, 1 GBP is worth between ₹105 and ₹115, making it more valuable per unit than the US Dollar or Euro. The UK is home to a large Bengali diaspora community, particularly in London, Birmingham, Bradford, and Leicester. Bengalis from both India and Bangladesh living in the UK regularly remit money home. Students applying to UK universities, professionals calculating UK salaries against Indian equivalents, and families planning visits to the UK all benefit from this tool. The converter fetches the live GBP-INR rate on page load and supports two-way conversion. The rate is based on ECB reference data via the Frankfurter API and updates each banking day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" লন্ডন থেকে ১০০ পাউন্ড রেমিট্যান্স" data-en=" £100 remittance from London"> লন্ডন থেকে ১০০ পাউন্ড রেমিট্যান্স</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০ GBP" data-en="Input: 100 GBP">ইনপুট: ১০০ GBP</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹১০,৮০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹10,800 (at current rate)">ফলাফল: প্রায় ₹১০,৮০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" যুক্তরাজ্যে ৫০০ পাউন্ড মাসিক বাজেট" data-en=" £500 monthly budget in UK"> যুক্তরাজ্যে ৫০০ পাউন্ড মাসিক বাজেট</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫০০ GBP" data-en="Input: 500 GBP">ইনপুট: ৫০০ GBP</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹৫৪,০০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹54,000 (at current rate)">ফলাফল: প্রায় ₹৫৪,০০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" ইউকে ভিসার ১০০০ পাউন্ড ফি" data-en=" £1,000 UK visa fee"> ইউকে ভিসার ১০০০ পাউন্ড ফি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১০০০ GBP" data-en="Input: 1000 GBP">ইনপুট: ১০০০ GBP</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: প্রায় ₹১,০৮,০০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹1,08,000 (at current rate)">ফলাফল: প্রায় ₹১,০৮,০০০ (বর্তমান রেট অনুযায়ী)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আজকে ১ পাউন্ড সমান কত রুপি?" data-en="How many rupees is 1 pound today?">আজকে ১ পাউন্ড সমান কত রুপি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত ১ GBP = ₹১০৫ থেকে ₹১১৫। সঠিক লাইভ রেট উপরের টুলে দেখুন।" data-en="Typically 1 GBP is between ₹105 and ₹115. Check the exact live rate in the tool above.">সাধারণত ১ GBP = ₹১০৫ থেকে ₹১১৫। সঠিক লাইভ রেট উপরের টুলে দেখুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পাউন্ড কি ডলার বা ইউরোর চেয়ে দামি?" data-en="Is the pound more valuable than the dollar or euro?">পাউন্ড কি ডলার বা ইউরোর চেয়ে দামি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, সাধারণত ১ পাউন্ড = ১.২৫-১.৩০ ডলার এবং ১.১৫-১.২০ ইউরো। তাই পাউন্ড প্রধান মুদ্রাগুলোর মধ্যে সবচেয়ে দামি।" data-en="Yes, typically 1 GBP equals about 1.25-1.30 USD and 1.15-1.20 EUR, making it the most valuable of the major currencies.">হ্যাঁ, সাধারণত ১ পাউন্ড = ১.২৫-১.৩০ ডলার এবং ১.১৫-১.২০ ইউরো। তাই পাউন্ড প্রধান মুদ্রাগুলোর মধ্যে সবচেয়ে দামি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="যুক্তরাজ্য কি ইউরো ব্যবহার করে?" data-en="Does the UK use the euro?">যুক্তরাজ্য কি ইউরো ব্যবহার করে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না। যুক্তরাজ্য তাদের নিজস্ব মুদ্রা পাউন্ড স্টার্লিং ব্যবহার করে। Brexit-এর পরেও এটি পরিবর্তন হয়নি।" data-en="No. The UK uses its own currency, the Pound Sterling (GBP). This did not change after Brexit.">না। যুক্তরাজ্য তাদের নিজস্ব মুদ্রা পাউন্ড স্টার্লিং ব্যবহার করে। Brexit-এর পরেও এটি পরিবর্তন হয়নি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="UK থেকে ভারতে টাকা পাঠানোর সেরা উপায় কী?" data-en="What is the best way to send money from UK to India?">UK থেকে ভারতে টাকা পাঠানোর সেরা উপায় কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="Wise (TransferWise), Remitly, Western Union, বা ব্যাংক ট্রান্সফার ব্যবহার করতে পারেন। প্রতিটির ফি ও রেট আলাদা — তুলনা করে পাঠান।" data-en="You can use Wise (TransferWise), Remitly, Western Union, or direct bank transfer. Compare rates and fees for each service before sending.">Wise (TransferWise), Remitly, Western Union, বা ব্যাংক ট্রান্সফার ব্যবহার করতে পারেন। প্রতিটির ফি ও রেট আলাদা — তুলনা করে পাঠান।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রুপি থেকে পাউন্ডেও কনভার্ট করা যাবে?" data-en="Can I also convert INR to GBP?">রুপি থেকে পাউন্ডেও কনভার্ট করা যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য পাউন্ড স্বয়ংক্রিয়ভাবে দেখাবে।" data-en="Yes. Type the rupee amount in the INR box and the equivalent pounds will appear automatically.">হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য পাউন্ড স্বয়ংক্রিয়ভাবে দেখাবে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/currency/usd-to-inr",
+      nameBn: "ডলার থেকে রুপি",
+      nameEn: "USD to INR",
+      descBn: "মার্কিন ডলার থেকে ভারতীয় রুপি",
+      descEn: "US Dollar to Indian Rupee",
+      icon: "🇺🇸"
+    },
+    {
+      url: "/currency/eur-to-inr",
+      nameBn: "ইউরো থেকে রুপি",
+      nameEn: "EUR to INR",
+      descBn: "ইউরো থেকে ভারতীয় রুপি",
+      descEn: "Euro to Indian Rupee",
+      icon: "🇪🇺"
+    },
+    {
+      url: "/currency/bdt-to-inr",
+      nameBn: "বাংলাদেশি টাকা থেকে রুপি",
+      nameEn: "BDT to INR",
+      descBn: "বাংলাদেশি টাকা থেকে ভারতীয় রুপি",
+      descEn: "Bangladesh Taka to Indian Rupee",
+      icon: "🇧🇩"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentRate = 0;
+  let rateLoaded = false;
+
+  async function fetchRate() {
+    try {
+      const res = await fetch('https://api.frankfurter.app/latest?from=GBP&to=INR');
+      const data = await res.json();
+      currentRate = data.rates.INR;
+      rateLoaded = true;
+
+      const rateEl = document.getElementById('live-rate');
+      const updatedEl = document.getElementById('last-updated');
+      const statusEl = document.getElementById('rate-status');
+
+      if (rateEl) rateEl.textContent = `1 GBP = ₹${currentRate.toFixed(2)}`;
+      if (updatedEl) updatedEl.textContent = new Date().toLocaleTimeString('bn-IN');
+      if (statusEl) { statusEl.textContent = '🟢 লাইভ রেট'; statusEl.className = 'text-green-600 font-medium text-sm'; }
+
+      calculate();
+    } catch(e) {
+      const statusEl = document.getElementById('rate-status');
+      if (statusEl) { statusEl.textContent = '⚠️ রেট লোড করতে সমস্যা'; statusEl.className = 'text-orange-600 font-medium text-sm'; }
+    }
+  }
+
+  function calculate() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(fromInput.value);
+    if (!isNaN(val) && val >= 0) {
+      toInput.value = (val * currentRate).toFixed(2);
+    }
+  }
+
+  function calculateReverse() {
+    if (!rateLoaded) return;
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(toInput.value);
+    if (!isNaN(val) && val >= 0) {
+      fromInput.value = (val / currentRate).toFixed(2);
+    }
+  }
+
+  document.getElementById('from-input')?.addEventListener('input', calculate);
+  document.getElementById('to-input')?.addEventListener('input', calculateReverse);
+
+  fetchRate();
+</script>

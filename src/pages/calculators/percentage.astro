@@ -1,0 +1,356 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম | BanglaTools"
+  description="শতাংশ ক্যালকুলেটর দিয়ে সহজে শতাংশ বের করুন। তিন ধরনের শতাংশ হিসাব এক পাতায়।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম" data-en="Percentage Calculator">শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তিন ধরনের শতাংশ হিসাব এক পাতায় — সহজে ও দ্রুত" data-en="Three types of percentage calculations on one page — quick and easy">তিন ধরনের শতাংশ হিসাব এক পাতায় — সহজে ও দ্রুত</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool Section -->
+  <div class="space-y-6 mb-8">
+
+    <!-- Calculator 1: X is what % of Y -->
+    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+      <h3 class="text-lg font-bold text-teal-700 mb-4">
+        <span data-bn="X, Y-এর কত শতাংশ?" data-en="X is what % of Y?">X, Y-এর কত শতাংশ?</span>
+      </h3>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c1-x">
+            <span data-bn="X (মান)" data-en="X (value)">X (মান)</span>
+          </label>
+          <input type="number" id="c1-x" placeholder="যেমন: 25" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c1-y">
+            <span data-bn="Y (মোট)" data-en="Y (total)">Y (মোট)</span>
+          </label>
+          <input type="number" id="c1-y" placeholder="যেমন: 200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+      <div id="c1-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <p class="text-sm text-gray-500 mb-1">
+          <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
+        </p>
+        <p id="c1-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c1-formula" class="text-sm text-gray-500 mt-1"></p>
+      </div>
+    </div>
+
+    <!-- Calculator 2: What is X% of Y -->
+    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+      <h3 class="text-lg font-bold text-teal-700 mb-4">
+        <span data-bn="Y-এর X% কত?" data-en="What is X% of Y?">Y-এর X% কত?</span>
+      </h3>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c2-x">
+            <span data-bn="X (শতাংশ %)" data-en="X (percentage %)">X (শতাংশ %)</span>
+          </label>
+          <input type="number" id="c2-x" placeholder="যেমন: 15" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c2-y">
+            <span data-bn="Y (মোট মান)" data-en="Y (total value)">Y (মোট মান)</span>
+          </label>
+          <input type="number" id="c2-y" placeholder="যেমন: 500" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+      <div id="c2-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <p class="text-sm text-gray-500 mb-1">
+          <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
+        </p>
+        <p id="c2-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c2-formula" class="text-sm text-gray-500 mt-1"></p>
+      </div>
+    </div>
+
+    <!-- Calculator 3: Percentage Change -->
+    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+      <h3 class="text-lg font-bold text-teal-700 mb-4">
+        <span data-bn="X থেকে Y-এ কত % পরিবর্তন?" data-en="% change from X to Y?">X থেকে Y-এ কত % পরিবর্তন?</span>
+      </h3>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c3-x">
+            <span data-bn="X (আগের মান)" data-en="X (original value)">X (আগের মান)</span>
+          </label>
+          <input type="number" id="c3-x" placeholder="যেমন: 100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="c3-y">
+            <span data-bn="Y (নতুন মান)" data-en="Y (new value)">Y (নতুন মান)</span>
+          </label>
+          <input type="number" id="c3-y" placeholder="যেমন: 125" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+        </div>
+      </div>
+      <div id="c3-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <p class="text-sm text-gray-500 mb-1">
+          <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
+        </p>
+        <p id="c3-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c3-label" class="text-sm font-semibold mt-1"></p>
+        <p id="c3-formula" class="text-sm text-gray-500 mt-1"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="প্রথম ক্যালকুলেটর: X এবং Y দিন — X, Y-এর কত শতাংশ তা জানতে" data-en="First calculator: Enter X and Y to find what percentage X is of Y">প্রথম ক্যালকুলেটর: X এবং Y দিন — X, Y-এর কত শতাংশ তা জানতে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="দ্বিতীয় ক্যালকুলেটর: শতাংশ ও মোট মান দিন — ওই শতাংশ পরিমাণ বের করতে" data-en="Second calculator: Enter the percentage and total value to find the amount">দ্বিতীয় ক্যালকুলেটর: শতাংশ ও মোট মান দিন — ওই শতাংশ পরিমাণ বের করতে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="তৃতীয় ক্যালকুলেটর: আগের ও নতুন মান দিন — পার্থক্যের শতাংশ বের করতে" data-en="Third calculator: Enter old and new values to find the percentage change">তৃতীয় ক্যালকুলেটর: আগের ও নতুন মান দিন — পার্থক্যের শতাংশ বের করতে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="সব হিসাব রিয়েল-টাইমে আপডেট হয়, কোনো বাটন চাপতে হয় না" data-en="All calculations update in real time — no button press needed">সব হিসাব রিয়েল-টাইমে আপডেট হয়, কোনো বাটন চাপতে হয় না</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই শতাংশ ক্যালকুলেটরটি তিনটি আলাদা ধরনের শতাংশ হিসাব একসাথে করতে পারে। প্রথম ক্যালকুলেটরটি জানায় যে কোনো একটি সংখ্যা আরেকটি সংখ্যার কত শতাংশ — যেমন পরীক্ষায় পাওয়া নম্বর মোট নম্বরের কত শতাংশ। দ্বিতীয় ক্যালকুলেটর দিয়ে কোনো মানের নির্দিষ্ট শতাংশ বের করা যায় — যেমন ১০০০ টাকার ১৫% কত। তৃতীয় ক্যালকুলেটর দুটি সংখ্যার মধ্যে শতাংশ পরিবর্তন দেখায় — কোনো কিছুর দাম বা পরিমাণ কতটুকু বাড়ল বা কমল তা শতাংশে প্রকাশ করে। ব্যবসায়, পড়াশোনা, বা দৈনন্দিন জীবনে শতাংশ হিসাব অত্যন্ত গুরুত্বপূর্ণ। এই টুলটি সম্পূর্ণ বিনামূল্যে এবং ইন্টারনেট ছাড়াও কাজ করে।
+      </p>
+      <p data-lang-en style="display:none">
+        This percentage calculator handles three common types of percentage problems on a single page. The first calculator tells you what percentage one number is of another — for example, what percentage of total marks did you score in an exam. The second calculator finds a specific percentage of a given value — for example, what is 15% of 1000 rupees. The third calculator computes the percentage change between two values — useful for tracking price increases, salary changes, or population growth. Whether you are a student, a shopkeeper, or managing household finances, these three calculations cover almost every percentage problem you will encounter in daily life. All three update instantly as you type.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: পরীক্ষার নম্বর" data-en="Example 1: Exam score percentage">উদাহরণ ১: পরীক্ষার নম্বর</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="X = ৭৫ (পাওয়া নম্বর), Y = ১০০ (মোট নম্বর)" data-en="X = 75 (marks obtained), Y = 100 (total marks)">X = ৭৫ (পাওয়া নম্বর), Y = ১০০ (মোট নম্বর)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: (৭৫ ÷ ১০০) × ১০০ = ৭৫%" data-en="Result: (75 ÷ 100) × 100 = 75%">ফলাফল: (৭৫ ÷ ১০০) × ১০০ = ৭৫%</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: দামের উপর ছাড়" data-en="Example 2: Discount on price">উদাহরণ ২: দামের উপর ছাড়</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="X = ২০% (ছাড়), Y = ৫০০ টাকা (মূল দাম)" data-en="X = 20% (discount), Y = ₹500 (original price)">X = ২০% (ছাড়), Y = ৫০০ টাকা (মূল দাম)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: (২০ ÷ ১০০) × ৫০০ = ১০০ টাকা ছাড়" data-en="Result: (20 ÷ 100) × 500 = ₹100 discount">ফলাফল: (২০ ÷ ১০০) × ৫০০ = ১০০ টাকা ছাড়</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: দামের পরিবর্তন" data-en="Example 3: Price change">উদাহরণ ৩: দামের পরিবর্তন</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="X = ৮০ (আগের দাম), Y = ১০০ (নতুন দাম)" data-en="X = 80 (old price), Y = 100 (new price)">X = ৮০ (আগের দাম), Y = ১০০ (নতুন দাম)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ((১০০ - ৮০) ÷ ৮০) × ১০০ = ২৫% বৃদ্ধি" data-en="Result: ((100 - 80) ÷ 80) × 100 = 25% increase">ফলাফল: ((১০০ - ৮০) ÷ ৮০) × ১০০ = ২৫% বৃদ্ধি</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শতাংশ বের করার সূত্র কী?" data-en="What is the formula for percentage?">শতাংশ বের করার সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="শতাংশ = (অংশ ÷ মোট) × ১০০। যেমন ৫০ এর মধ্যে ২৫ হলো ৫০%।" data-en="Percentage = (part ÷ whole) × 100. For example, 25 out of 50 is 50%.">শতাংশ = (অংশ ÷ মোট) × ১০০। যেমন ৫০ এর মধ্যে ২৫ হলো ৫০%।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শতাংশ পরিবর্তন কীভাবে হিসাব করব?" data-en="How do I calculate percentage change?">শতাংশ পরিবর্তন কীভাবে হিসাব করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="শতাংশ পরিবর্তন = ((নতুন মান - আগের মান) ÷ আগের মান) × ১০০। ফলাফল ধনাত্মক হলে বৃদ্ধি, ঋণাত্মক হলে হ্রাস।" data-en="Percentage change = ((new value - old value) ÷ old value) × 100. A positive result means increase, negative means decrease.">শতাংশ পরিবর্তন = ((নতুন মান - আগের মান) ÷ আগের মান) × ১০০। ফলাফল ধনাত্মক হলে বৃদ্ধি, ঋণাত্মক হলে হ্রাস।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="৫০০ টাকার ১৮% কত?" data-en="What is 18% of 500?">৫০০ টাকার ১৮% কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৫০০ × (১৮ ÷ ১০০) = ৯০ টাকা। দ্বিতীয় ক্যালকুলেটরে X = ১৮ এবং Y = ৫০০ দিলেই দেখতে পাবেন।" data-en="500 × (18 ÷ 100) = 90. Enter X = 18 and Y = 500 in the second calculator to verify.">৫০০ × (১৮ ÷ ১০০) = ৯০ টাকা। দ্বিতীয় ক্যালকুলেটরে X = ১৮ এবং Y = ৫০০ দিলেই দেখতে পাবেন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শতাংশ বৃদ্ধি ও হ্রাসের পার্থক্য কী?" data-en="What is the difference between percentage increase and decrease?">শতাংশ বৃদ্ধি ও হ্রাসের পার্থক্য কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="পরিবর্তনের সূত্রে ফলাফল ধনাত্মক (+) হলে বৃদ্ধি (increase), ঋণাত্মক (-) হলে হ্রাস (decrease)। তৃতীয় ক্যালকুলেটর স্বয়ংক্রিয়ভাবে বলে দেয়।" data-en="If the result is positive (+) it is an increase; if negative (-) it is a decrease. The third calculator labels this automatically.">পরিবর্তনের সূত্রে ফলাফল ধনাত্মক (+) হলে বৃদ্ধি (increase), ঋণাত্মক (-) হলে হ্রাস (decrease)। তৃতীয় ক্যালকুলেটর স্বয়ংক্রিয়ভাবে বলে দেয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পরীক্ষায় মোট নম্বর ৫০০, পেয়েছি ৩৮৫ — শতাংশ কত?" data-en="Total marks 500, got 385 — what is the percentage?">পরীক্ষায় মোট নম্বর ৫০০, পেয়েছি ৩৮৫ — শতাংশ কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="(৩৮৫ ÷ ৫০০) × ১০০ = ৭৭%। প্রথম ক্যালকুলেটরে X = ৩৮৫ এবং Y = ৫০০ দিন।" data-en="(385 ÷ 500) × 100 = 77%. Enter X = 385 and Y = 500 in the first calculator.">  (৩৮৫ ÷ ৫০০) × ১০০ = ৭৭%। প্রথম ক্যালকুলেটরে X = ৩৮৫ এবং Y = ৫০০ দিন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/calculators/discount",
+      nameBn: "ছাড় ক্যালকুলেটর",
+      nameEn: "Discount Calculator",
+      descBn: "ডিসকাউন্টের পরে দাম হিসাব করুন",
+      descEn: "Calculate price after discount",
+      icon: "🏷️"
+    },
+    {
+      url: "/calculators/tip",
+      nameBn: "টিপ ক্যালকুলেটর",
+      nameEn: "Tip Calculator",
+      descBn: "রেস্তোরাঁ বিলে টিপ হিসাব করুন",
+      descEn: "Calculate restaurant tip",
+      icon: "🍽️"
+    },
+    {
+      url: "/india/gst-calculator",
+      nameBn: "জিএসটি ক্যালকুলেটর",
+      nameEn: "GST Calculator",
+      descBn: "GST সহ দাম হিসাব করুন",
+      descEn: "Calculate price with GST",
+      icon: "🧾"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  // Calculator 1: X is what % of Y
+  const c1x = document.getElementById('c1-x') as HTMLInputElement;
+  const c1y = document.getElementById('c1-y') as HTMLInputElement;
+  const c1result = document.getElementById('c1-result')!;
+  const c1answer = document.getElementById('c1-answer')!;
+  const c1formula = document.getElementById('c1-formula')!;
+
+  function calcC1() {
+    const x = parseFloat(c1x.value);
+    const y = parseFloat(c1y.value);
+    if (!isNaN(x) && !isNaN(y) && y !== 0) {
+      const pct = (x / y) * 100;
+      c1answer.textContent = pct.toFixed(2) + '%';
+      c1formula.textContent = `(${x} ÷ ${y}) × 100 = ${pct.toFixed(2)}%`;
+      c1result.classList.remove('hidden');
+    } else {
+      c1result.classList.add('hidden');
+    }
+  }
+  c1x.addEventListener('input', calcC1);
+  c1y.addEventListener('input', calcC1);
+
+  // Calculator 2: What is X% of Y
+  const c2x = document.getElementById('c2-x') as HTMLInputElement;
+  const c2y = document.getElementById('c2-y') as HTMLInputElement;
+  const c2result = document.getElementById('c2-result')!;
+  const c2answer = document.getElementById('c2-answer')!;
+  const c2formula = document.getElementById('c2-formula')!;
+
+  function calcC2() {
+    const x = parseFloat(c2x.value);
+    const y = parseFloat(c2y.value);
+    if (!isNaN(x) && !isNaN(y)) {
+      const val = (x / 100) * y;
+      c2answer.textContent = val.toFixed(2);
+      c2formula.textContent = `(${x} ÷ 100) × ${y} = ${val.toFixed(2)}`;
+      c2result.classList.remove('hidden');
+    } else {
+      c2result.classList.add('hidden');
+    }
+  }
+  c2x.addEventListener('input', calcC2);
+  c2y.addEventListener('input', calcC2);
+
+  // Calculator 3: Percentage change
+  const c3x = document.getElementById('c3-x') as HTMLInputElement;
+  const c3y = document.getElementById('c3-y') as HTMLInputElement;
+  const c3result = document.getElementById('c3-result')!;
+  const c3answer = document.getElementById('c3-answer')!;
+  const c3label = document.getElementById('c3-label')!;
+  const c3formula = document.getElementById('c3-formula')!;
+
+  function calcC3() {
+    const x = parseFloat(c3x.value);
+    const y = parseFloat(c3y.value);
+    if (!isNaN(x) && !isNaN(y) && x !== 0) {
+      const change = ((y - x) / x) * 100;
+      const absChange = Math.abs(change).toFixed(2);
+      c3answer.textContent = absChange + '%';
+      if (change > 0) {
+        c3label.textContent = '▲ বৃদ্ধি / Increase';
+        c3label.className = 'text-sm font-semibold mt-1 text-green-600';
+        c3answer.className = 'text-4xl font-bold text-green-600';
+      } else if (change < 0) {
+        c3label.textContent = '▼ হ্রাস / Decrease';
+        c3label.className = 'text-sm font-semibold mt-1 text-red-600';
+        c3answer.className = 'text-4xl font-bold text-red-600';
+      } else {
+        c3label.textContent = '— কোনো পরিবর্তন নেই / No change';
+        c3label.className = 'text-sm font-semibold mt-1 text-gray-500';
+        c3answer.className = 'text-4xl font-bold text-teal-700';
+      }
+      c3formula.textContent = `((${y} - ${x}) ÷ ${x}) × 100 = ${change.toFixed(2)}%`;
+      c3result.classList.remove('hidden');
+    } else {
+      c3result.classList.add('hidden');
+    }
+  }
+  c3x.addEventListener('input', calcC3);
+  c3y.addEventListener('input', calcC3);
+</script>

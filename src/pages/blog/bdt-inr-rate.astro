@@ -1,0 +1,115 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="বাংলাদেশি টাকা থেকে ভারতীয় রুপি — আজকের রেট | BanglaTools"
+  description="আজকের BDT থেকে INR বিনিময় হার। বাংলাদেশি টাকা থেকে ভারতীয় রুপি লাইভ কনভার্টার।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="বাংলাদেশি টাকা থেকে ভারতীয় রুপি — আজকের রেট" data-en="Bangladesh Taka to Indian Rupee — Today's Rate">বাংলাদেশি টাকা থেকে ভারতীয় রুপি — আজকের রেট</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="font-bold text-teal-800"><span data-bn="লাইভ BDT থেকে INR রেট" data-en="Live BDT to INR Rate">লাইভ BDT থেকে INR রেট</span></h2>
+      <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Live</span>
+    </div>
+    <div id="bdt-rate-display" class="text-3xl font-bold text-teal-900 mb-1">লোড হচ্ছে...</div>
+    <div id="bdt-updated" class="text-xs text-gray-500 mb-4"></div>
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="টাকা (BDT)" data-en="BDT">টাকা (BDT)</span></label>
+        <input type="number" id="bdt-in" placeholder="1000" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-lg focus:border-teal-500 focus:outline-none mt-1 min-h-[44px]" />
+      </div>
+      <div>
+        <label class="text-sm text-gray-600"><span data-bn="রুপি (INR)" data-en="INR">রুপি (INR)</span></label>
+        <input type="number" id="inr-bdt-out" placeholder="..." class="w-full px-3 py-2 border-2 border-teal-300 bg-teal-50 rounded-lg text-lg mt-1 min-h-[44px]" readonly />
+      </div>
+    </div>
+    <p class="text-center mt-2">
+      <a href="/currency/bdt-to-inr" class="text-sm text-teal-700 hover:underline">→ <span data-bn="সম্পূর্ণ কনভার্টার" data-en="Full Converter">সম্পূর্ণ কনভার্টার</span></a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">BDT থেকে INR — সীমান্তবর্তী পরিবারের জন্য</h2>
+      <p>বাংলাদেশ ও ভারতের মধ্যে অনেক পরিবার রয়েছে যারা দুই দেশে বিভক্ত। বিবাহ, চিকিৎসা, ব্যবসা বা পড়াশোনার জন্য দুই দেশের মধ্যে অর্থ লেনদেন প্রয়োজন হয়। এই কনভার্টার তাদের জন্য বিশেষ উপকারী।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">উদাহরণ রূপান্তর</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">BDT (৳)</th><th class="p-3">আনুমানিক INR (₹)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">৳১,০০০</td><td class="p-3 text-center font-bold">≈ ₹৭৫০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">৳৫,০০০</td><td class="p-3 text-center font-bold">≈ ₹৩,৭৫০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">৳১০,০০০</td><td class="p-3 text-center font-bold">≈ ₹৭,৫০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">৳৫০,০০০</td><td class="p-3 text-center font-bold">≈ ₹৩৭,৫০০</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">* আনুমানিক মান। সঠিক রেটের জন্য লাইভ কনভার্টার ব্যবহার করুন।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">বাংলাদেশ থেকে ভারতে অর্থ পাঠানো</h2>
+      <p>আনুষ্ঠানিক চ্যানেলের মাধ্যমে অর্থ পাঠানো সবচেয়ে নিরাপদ। ব্যাংক ট্রান্সফার, বিকাশ থেকে ব্যাংক, বা অনুমোদিত রেমিট্যান্স সংস্থার মাধ্যমে পাঠানো যায়। অনানুষ্ঠানিক পথে অর্থ পাঠানো আইনত নিষিদ্ধ।</p>
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">BDT to INR — For cross-border Bengali families</h2>
+      <p>Many families are split between Bangladesh and India. For weddings, medical treatment, business or education, money transfers between the two countries are often necessary. This converter is especially useful for these families.</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Example conversions</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">BDT (৳)</th><th class="p-3">Approx. INR (₹)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">৳1,000</td><td class="p-3 text-center font-bold">≈ ₹750</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">৳5,000</td><td class="p-3 text-center font-bold">≈ ₹3,750</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">৳10,000</td><td class="p-3 text-center font-bold">≈ ₹7,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center">
+    <a href="/currency/bdt-to-inr" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="লাইভ BDT to INR কনভার্টার →" data-en="Live BDT to INR Converter →">লাইভ BDT to INR কনভার্টার →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+var bdtRate = null;
+document.addEventListener('DOMContentLoaded', function() {
+  var bdtEl = document.getElementById('bdt-in');
+  var inrEl = document.getElementById('inr-bdt-out');
+
+  fetch('https://api.frankfurter.app/latest?from=BDT&to=INR')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      bdtRate = data.rates.INR;
+      document.getElementById('bdt-rate-display').textContent = '1 BDT = ₹' + bdtRate.toFixed(4);
+      document.getElementById('bdt-updated').textContent = 'আপডেট: ' + data.date;
+    })
+    .catch(function() {
+      document.getElementById('bdt-rate-display').textContent = 'রেট লোড করা যায়নি';
+    });
+
+  bdtEl.addEventListener('input', function() {
+    if (!bdtRate) return;
+    var v = parseFloat(bdtEl.value);
+    inrEl.value = isNaN(v) ? '' : (v * bdtRate).toFixed(2);
+  });
+});
+</script>

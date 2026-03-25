@@ -1,0 +1,291 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="লিটার থেকে গ্যালন কনভার্টার | BanglaTools"
+  description="লিটার থেকে গ্যালন বা গ্যালন থেকে লিটার রূপান্তর করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="লিটার থেকে গ্যালন কনভার্টার" data-en="litre to gallon Converter">লিটার থেকে গ্যালন কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তাৎক্ষণিকভাবে লিটার ও গ্যালনের মধ্যে রূপান্তর করুন (US গ্যালন)" data-en="Instantly convert between litres and gallons (US gallon)">তাৎক্ষণিকভাবে লিটার ও গ্যালনের মধ্যে রূপান্তর করুন (US গ্যালন)</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Gallon type toggle -->
+    <div class="flex gap-3 mb-4">
+      <button
+        id="btn-us"
+        onclick="setGallonType('us')"
+        class="px-4 py-2 rounded-lg font-medium text-sm bg-teal-700 text-white transition-colors min-h-[44px]"
+      >
+        <span data-bn="US গ্যালন (৩.৭৮৫ L)" data-en="US Gallon (3.785 L)">US গ্যালন (৩.৭৮৫ L)</span>
+      </button>
+      <button
+        id="btn-uk"
+        onclick="setGallonType('uk')"
+        class="px-4 py-2 rounded-lg font-medium text-sm bg-gray-200 text-gray-700 transition-colors min-h-[44px]"
+      >
+        <span data-bn="UK গ্যালন (৪.৫৪৬ L)" data-en="UK Gallon (4.546 L)">UK গ্যালন (৪.৫৪৬ L)</span>
+      </button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="litre-input">
+          <span data-bn="লিটার (L)" data-en="Litres (L)">লিটার (L)</span>
+        </label>
+        <input
+          type="number"
+          id="litre-input"
+          placeholder="যেমন: 40"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="gallon-input">
+          <span data-bn="গ্যালন (gallon)" data-en="Gallons">গ্যালন (gallon)</span>
+        </label>
+        <input
+          type="number"
+          id="gallon-input"
+          placeholder="যেমন: 10.57"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="US বা UK গ্যালন টাইপ বেছে নিন" data-en="Select US or UK gallon type">US বা UK গ্যালন টাইপ বেছে নিন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="লিটার ঘরে পরিমাণ লিখুন" data-en="Enter volume in the litres box">লিটার ঘরে পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="গ্যালন তাৎক্ষণিকভাবে দেখাবে। গ্যালন থেকে লিটারও বের করতে পারবেন।" data-en="Gallons appear instantly. You can also convert from gallons to litres.">গ্যালন তাৎক্ষণিকভাবে দেখাবে। গ্যালন থেকে লিটারও বের করতে পারবেন।</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        লিটার থেকে গ্যালন কনভার্টার দিয়ে আপনি সহজে তরলের পরিমাণ রূপান্তর করতে পারবেন। গাড়ির জ্বালানি ট্যাঙ্কের ধারণক্ষমতা সাধারণত লিটারে দেওয়া হয়, কিন্তু আমেরিকান গাড়ির ম্যানুয়ালে গ্যালনে থাকে। রান্নার রেসিপিতে পরিমাণ গ্যালনে দেওয়া থাকতে পারে। পানির ট্যাংক বা সুইমিং পুলের ধারণক্ষমতা বোঝার জন্য এই কনভার্টার কাজে আসে। ১ US গ্যালন সমান ৩.৭৮৫৪১ লিটার এবং ১ UK (ইম্পেরিয়াল) গ্যালন সমান ৪.৫৪৬০৯ লিটার। এই কনভার্টারে আপনি US এবং UK গ্যালন উভয়েই রূপান্তর করতে পারবেন। এটি বিনামূল্যে এবং যেকোনো ডিভাইসে কাজ করে।
+      </p>
+      <p data-lang-en style="display:none">
+        The litre to gallon converter helps you easily convert liquid volumes between litres and gallons. Car fuel tank capacities are often listed in litres in Bangladesh and India, but American vehicles show gallons. Fuel efficiency is sometimes shown in miles per gallon (MPG). Water tank and swimming pool capacities are also described in gallons in some countries. There are two types of gallons — the US gallon (3.78541 litres) and the UK imperial gallon (4.54609 litres). This tool supports both. Simply click the US or UK button to switch between them. Whether you are calculating fuel costs, understanding a recipe, or checking a water tank capacity, this free tool gives you the answer instantly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" পানির বোতল ১ লিটার" data-en=" Water bottle 1 litre"> পানির বোতল ১ লিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ১ লিটার (US)" data-en="Input: 1 litre (US)">ইনপুট: ১ লিটার (US)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ০.২৬৪ গ্যালন" data-en="Result: 0.264 gallons">ফলাফল: ০.২৬৪ গ্যালন</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" গাড়ির ফুয়েল ট্যাঙ্ক ৪০ লিটার" data-en=" Car fuel tank 40 litres"> গাড়ির ফুয়েল ট্যাঙ্ক ৪০ লিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৪০ লিটার (US)" data-en="Input: 40 litres (US)">ইনপুট: ৪০ লিটার (US)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ১০.৫৭ গ্যালন" data-en="Result: 10.57 gallons">ফলাফল: ১০.৫৭ গ্যালন</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" রান্নার তেল ৫ লিটার" data-en=" Cooking oil 5 litres"> রান্নার তেল ৫ লিটার</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৫ লিটার (US)" data-en="Input: 5 litres (US)">ইনপুট: ৫ লিটার (US)</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ১.৩২ গ্যালন" data-en="Result: 1.32 gallons">ফলাফল: ১.৩২ গ্যালন</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ লিটার সমান কত গ্যালন?" data-en="How many gallons is 1 litre?">১ লিটার সমান কত গ্যালন?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ লিটার সমান ০.২৬৪১৭ US গ্যালন বা ০.২১৯৯৭ UK গ্যালন। US গ্যালন বেশি প্রচলিত।" data-en="1 litre equals 0.26417 US gallons or 0.21997 UK (imperial) gallons. The US gallon is more commonly referenced internationally.">১ লিটার সমান ০.২৬৪১৭ US গ্যালন বা ০.২১৯৯৭ UK গ্যালন। US গ্যালন বেশি প্রচলিত।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ গ্যালন সমান কত লিটার?" data-en="How many litres is 1 gallon?">১ গ্যালন সমান কত লিটার?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ US গ্যালন সমান ৩.৭৮৫৪১ লিটার। ১ UK গ্যালন সমান ৪.৫৪৬০৯ লিটার।" data-en="1 US gallon equals 3.78541 litres. 1 UK (imperial) gallon equals 4.54609 litres.">১ US গ্যালন সমান ৩.৭৮৫৪১ লিটার। ১ UK গ্যালন সমান ৪.৫৪৬০৯ লিটার।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="গাড়ির ৪০ লিটার ট্যাঙ্ক মানে কত গ্যালন?" data-en="How many gallons is a 40-litre fuel tank?">গাড়ির ৪০ লিটার ট্যাঙ্ক মানে কত গ্যালন?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৪০ লিটার সমান ১০.৫৭ US গ্যালন বা ৮.৮০ UK গ্যালন। বেশিরভাগ সাধারণ গাড়ির ট্যাঙ্ক ৩৫-৫০ লিটারের মধ্যে হয়।" data-en="40 litres equals 10.57 US gallons or 8.80 UK gallons. Most standard cars have fuel tanks between 35 and 50 litres.">৪০ লিটার সমান ১০.৫৭ US গ্যালন বা ৮.৮০ UK গ্যালন। বেশিরভাগ সাধারণ গাড়ির ট্যাঙ্ক ৩৫-৫০ লিটারের মধ্যে হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="US গ্যালন ও UK গ্যালনের মধ্যে পার্থক্য কী?" data-en="What is the difference between US and UK gallon?">US গ্যালন ও UK গ্যালনের মধ্যে পার্থক্য কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="US গ্যালন = ৩.৭৮৫৪১ লিটার। UK (ইম্পেরিয়াল) গ্যালন = ৪.৫৪৬০৯ লিটার। UK গ্যালন US গ্যালনের চেয়ে প্রায় ২০% বড়। আমেরিকার রেসিপি ও গাড়িতে US গ্যালন ব্যবহার হয়।" data-en="The US gallon is 3.78541 litres and the UK (imperial) gallon is 4.54609 litres. The UK gallon is about 20% larger than the US gallon. American recipes and vehicles use the US gallon.">US গ্যালন = ৩.৭৮৫৪১ লিটার। UK (ইম্পেরিয়াল) গ্যালন = ৪.৫৪৬০৯ লিটার। UK গ্যালন US গ্যালনের চেয়ে প্রায় ২০% বড়। আমেরিকার রেসিপি ও গাড়িতে US গ্যালন ব্যবহার হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="লিটার থেকে গ্যালন বের করার সূত্র কী?" data-en="What is the formula to convert litres to gallons?">লিটার থেকে গ্যালন বের করার সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="US গ্যালন: গ্যালন = লিটার ÷ ৩.৭৮৫৪১। UK গ্যালন: গ্যালন = লিটার ÷ ৪.৫৪৬০৯। উদাহরণ: ১০ লিটার ÷ ৩.৭৮৫৪১ = ২.৬৪ US গ্যালন।" data-en="US gallon: gallons = litres ÷ 3.78541. UK gallon: gallons = litres ÷ 4.54609. Example: 10 litres ÷ 3.78541 = 2.64 US gallons.">US গ্যালন: গ্যালন = লিটার ÷ ৩.৭৮৫৪১। UK গ্যালন: গ্যালন = লিটার ÷ ৪.৫৪৬০৯। উদাহরণ: ১০ লিটার ÷ ৩.৭৮৫৪১ = ২.৬৪ US গ্যালন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/km-to-miles",
+      nameBn: "কিলোমিটার থেকে মাইল",
+      nameEn: "km to miles",
+      descBn: "দূরত্ব রূপান্তর করুন",
+      descEn: "Convert distance units",
+      icon: "🛣️"
+    },
+    {
+      url: "/calculators/fuel-cost",
+      nameBn: "জ্বালানি খরচ ক্যালকুলেটর",
+      nameEn: "Fuel Cost Calculator",
+      descBn: "ভ্রমণের জ্বালানি খরচ হিসাব করুন",
+      descEn: "Calculate fuel cost for your trip",
+      icon: "⛽"
+    },
+    {
+      url: "/health/water-intake",
+      nameBn: "পানি পানের হিসাব",
+      nameEn: "Water Intake Calculator",
+      descBn: "দৈনিক কতটুকু পানি পান করবেন",
+      descEn: "Calculate your daily water intake",
+      icon: "💧"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const litreInput = document.getElementById('litre-input') as HTMLInputElement;
+  const gallonInput = document.getElementById('gallon-input') as HTMLInputElement;
+  const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
+  const btnUs = document.getElementById('btn-us') as HTMLButtonElement;
+  const btnUk = document.getElementById('btn-uk') as HTMLButtonElement;
+
+  let gallonFactor = 3.78541; // US gallon default
+  let gallonType = 'US';
+
+  (window as any).setGallonType = function(type: string) {
+    if (type === 'us') {
+      gallonFactor = 3.78541;
+      gallonType = 'US';
+      btnUs.classList.add('bg-teal-700', 'text-white');
+      btnUs.classList.remove('bg-gray-200', 'text-gray-700');
+      btnUk.classList.add('bg-gray-200', 'text-gray-700');
+      btnUk.classList.remove('bg-teal-700', 'text-white');
+    } else {
+      gallonFactor = 4.54609;
+      gallonType = 'UK';
+      btnUk.classList.add('bg-teal-700', 'text-white');
+      btnUk.classList.remove('bg-gray-200', 'text-gray-700');
+      btnUs.classList.add('bg-gray-200', 'text-gray-700');
+      btnUs.classList.remove('bg-teal-700', 'text-white');
+    }
+    // Re-run conversion with current input
+    if (litreInput.value) {
+      litreInput.dispatchEvent(new Event('input'));
+    } else if (gallonInput.value) {
+      gallonInput.dispatchEvent(new Event('input'));
+    }
+  };
+
+  litreInput?.addEventListener('input', () => {
+    const litres = parseFloat(litreInput.value);
+    if (!isNaN(litres) && litres >= 0) {
+      const gallons = litres / gallonFactor;
+      gallonInput.value = gallons.toFixed(4);
+      formulaDisplay.textContent = `${litres} L ÷ ${gallonFactor} = ${gallons.toFixed(4)} ${gallonType} gallons`;
+    } else {
+      gallonInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+
+  gallonInput?.addEventListener('input', () => {
+    const gallons = parseFloat(gallonInput.value);
+    if (!isNaN(gallons) && gallons >= 0) {
+      const litres = gallons * gallonFactor;
+      litreInput.value = litres.toFixed(4);
+      formulaDisplay.textContent = `${gallons} ${gallonType} gallons × ${gallonFactor} = ${litres.toFixed(4)} L`;
+    } else {
+      litreInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+</script>

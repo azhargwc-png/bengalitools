@@ -1,0 +1,245 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="কেজি থেকে পাউন্ড কনভার্টার | BanglaTools"
+  description="কেজি থেকে পাউন্ড বা পাউন্ড থেকে কেজি তাৎক্ষণিকভাবে রূপান্তর করুন। বিনামূল্যে অনলাইন কনভার্টার।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="কেজি থেকে পাউন্ড কনভার্টার" data-en="kg to lbs Converter">কেজি থেকে পাউন্ড কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="তাৎক্ষণিকভাবে কেজি ও পাউন্ডের মধ্যে রূপান্তর করুন" data-en="Instantly convert between kilograms and pounds">তাৎক্ষণিকভাবে কেজি ও পাউন্ডের মধ্যে রূপান্তর করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="kg-input">
+          <span data-bn="কেজি (kg)" data-en="Kilograms (kg)">কেজি (kg)</span>
+        </label>
+        <input
+          type="number"
+          id="kg-input"
+          placeholder="যেমন: 70"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="lbs-input">
+          <span data-bn="পাউন্ড (lbs)" data-en="Pounds (lbs)">পাউন্ড (lbs)</span>
+        </label>
+        <input
+          type="number"
+          id="lbs-input"
+          placeholder="যেমন: 154.32"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="কেজি ঘরে আপনার ওজন লিখুন" data-en="Enter weight in kg box">কেজি ঘরে আপনার ওজন লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="পাউন্ড তাৎক্ষণিকভাবে দেখাবে" data-en="Pounds appear instantly">পাউন্ড তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="পাউন্ড থেকে কেজিও বের করতে পারবেন" data-en="You can also convert from lbs to kg">পাউন্ড থেকে কেজিও বের করতে পারবেন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        কেজি থেকে পাউন্ড কনভার্টার ব্যবহার করে আপনি খুব সহজে ওজন রূপান্তর করতে পারবেন। বিমান ভ্রমণে লাগেজের ওজন সাধারণত পাউন্ডে বা কেজিতে দেওয়া হয়। অনেক সময় শিশুর ওজন পাউন্ডে বলা হয়। এই টুলটি ব্যবহার করে আপনি সহজে ওজন রূপান্তর করতে পারবেন। ১ কেজি সমান ২.২০৪৬২ পাউন্ড। আপনার শরীরের ওজন ৭০ কেজি হলে তা পাউন্ডে ১৫৪.৩২ পাউন্ড। এই কনভার্টারটি বিনামূল্যে এবং কোনো লগইন ছাড়াই ব্যবহার করা যায়। ডাক্তারের প্রেসক্রিপশনে ওজন পাউন্ডে থাকলে এই টুলটি কাজে আসবে। আন্তর্জাতিক শপিং সাইটে পণ্যের ওজন পাউন্ডে দেওয়া থাকে। এই কনভার্টার ব্যবহার করে আপনি সহজেই বুঝতে পারবেন কতটুকু পাউন্ড মানে কতটুকু কেজি।
+      </p>
+      <p data-lang-en style="display:none">
+        The kg to lbs converter helps you instantly convert between kilograms and pounds. This is useful for airline luggage limits, medical records, and international shopping. One kilogram equals 2.20462 pounds. So a 23 kg luggage limit equals 50.71 lbs. Many countries like the USA and UK use pounds for body weight. If your doctor gives a weight recommendation in pounds, this tool helps you understand it in kilograms. The converter works both ways — enter kg to get lbs, or enter lbs to get kg. Athletes tracking fitness goals, parents weighing newborns, and travelers checking baggage allowances all benefit from this quick conversion tool. This free tool requires no login and works on any device including mobile phones. Simply type your value in either box and the result appears immediately without pressing any button.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" নবজাতক শিশুর ওজন ৩.৫ কেজি" data-en=" Newborn baby weight 3.5 kg"> নবজাতক শিশুর ওজন ৩.৫ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৩.৫ কেজি" data-en="Input: 3.5 kg">ইনপুট: ৩.৫ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৭.৭২ পাউন্ড" data-en="Result: 7.72 lbs">ফলাফল: ৭.৭২ পাউন্ড</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" বিমানের লাগেজ সীমা ২৩ কেজি" data-en=" Airline luggage limit 23 kg"> বিমানের লাগেজ সীমা ২৩ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ২৩ কেজি" data-en="Input: 23 kg">ইনপুট: ২৩ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ৫০.৭১ পাউন্ড" data-en="Result: 50.71 lbs">ফলাফল: ৫০.৭১ পাউন্ড</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" একজন পূর্ণবয়স্ক ব্যক্তির ওজন ৭০ কেজি" data-en=" Adult body weight 70 kg"> একজন পূর্ণবয়স্ক ব্যক্তির ওজন ৭০ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="ইনপুট: ৭০ কেজি" data-en="Input: 70 kg">ইনপুট: ৭০ কেজি</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="ফলাফল: ১৫৪.৩২ পাউন্ড" data-en="Result: 154.32 lbs">ফলাফল: ১৫৪.৩২ পাউন্ড</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ কেজি সমান কত পাউন্ড?" data-en="How many pounds is 1 kg?">১ কেজি সমান কত পাউন্ড?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ কেজি সমান ২.২০৪৬২ পাউন্ড। সহজে মনে রাখতে পারেন: প্রতি ১ কেজিতে প্রায় ২.২ পাউন্ড।" data-en="1 kilogram equals 2.20462 pounds. An easy way to remember: multiply kg by 2.2 for an approximate answer.">১ কেজি সমান ২.২০৪৬২ পাউন্ড। সহজে মনে রাখতে পারেন: প্রতি ১ কেজিতে প্রায় ২.২ পাউন্ড।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ পাউন্ড সমান কত কেজি?" data-en="How many kg is 1 pound?">১ পাউন্ড সমান কত কেজি?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ পাউন্ড সমান ০.৪৫৩৫৯ কেজি। অর্থাৎ প্রায় আধা কেজির একটু কম।" data-en="1 pound equals 0.45359 kilograms. That is roughly half a kilogram.">১ পাউন্ড সমান ০.৪৫৩৫৯ কেজি। অর্থাৎ প্রায় আধা কেজির একটু কম।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বিমানের লাগেজ ২৩ কেজি মানে কত পাউন্ড?" data-en="How many lbs is a 23 kg luggage limit?">বিমানের লাগেজ ২৩ কেজি মানে কত পাউন্ড?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="২৩ কেজি সমান ৫০.৭১ পাউন্ড। আন্তর্জাতিক ফ্লাইটে সাধারণত ২৩ কেজি বা ৫০ পাউন্ড লাগেজ বহনের অনুমতি দেওয়া হয়।" data-en="23 kg equals 50.71 lbs. Most international flights allow 23 kg (approximately 50 lbs) in checked baggage.">২৩ কেজি সমান ৫০.৭১ পাউন্ড। আন্তর্জাতিক ফ্লাইটে সাধারণত ২৩ কেজি বা ৫০ পাউন্ড লাগেজ বহনের অনুমতি দেওয়া হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কেজি থেকে পাউন্ড বের করার সূত্র কী?" data-en="What is the formula to convert kg to lbs?">কেজি থেকে পাউন্ড বের করার সূত্র কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সূত্র হলো: পাউন্ড = কেজি × ২.২০৪৬২। উদাহরণ: ৫০ কেজি × ২.২০৪৬২ = ১১০.২৩ পাউন্ড।" data-en="The formula is: lbs = kg × 2.20462. Example: 50 kg × 2.20462 = 110.23 lbs.">সূত্র হলো: পাউন্ড = কেজি × ২.২০৪৬২। উদাহরণ: ৫০ কেজি × ২.২০৪৬২ = ১১০.২৩ পাউন্ড।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমার ওজন ৭০ কেজি, পাউন্ডে কত?" data-en="I weigh 70 kg, how much is that in pounds?">আমার ওজন ৭০ কেজি, পাউন্ডে কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="৭০ কেজি সমান ১৫৪.৩২ পাউন্ড। ৭০ × ২.২০৪৬২ = ১৫৪.৩২।" data-en="70 kg equals 154.32 lbs. The calculation is 70 × 2.20462 = 154.32.">৭০ কেজি সমান ১৫৪.৩২ পাউন্ড। ৭০ × ২.২০৪৬২ = ১৫৪.৩২।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/converters/cm-to-inches",
+      nameBn: "সেন্টিমিটার থেকে ইঞ্চি",
+      nameEn: "cm to inches",
+      descBn: "উচ্চতা ও দৈর্ঘ্য রূপান্তর করুন",
+      descEn: "Convert height and length",
+      icon: "📏"
+    },
+    {
+      url: "/health/bmi-calculator",
+      nameBn: "বিএমআই ক্যালকুলেটর",
+      nameEn: "BMI Calculator",
+      descBn: "ওজন ও উচ্চতা দিয়ে BMI বের করুন",
+      descEn: "Calculate BMI from weight and height",
+      icon: "🏃"
+    },
+    {
+      url: "/health/ideal-weight",
+      nameBn: "আদর্শ ওজন ক্যালকুলেটর",
+      nameEn: "Ideal Weight Calculator",
+      descBn: "আপনার আদর্শ ওজন কত জানুন",
+      descEn: "Find your ideal weight range",
+      icon: "⚖️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const kgInput = document.getElementById('kg-input') as HTMLInputElement;
+  const lbsInput = document.getElementById('lbs-input') as HTMLInputElement;
+  const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
+
+  kgInput?.addEventListener('input', () => {
+    const kg = parseFloat(kgInput.value);
+    if (!isNaN(kg) && kg >= 0) {
+      const lbs = kg * 2.20462;
+      lbsInput.value = lbs.toFixed(4);
+      formulaDisplay.textContent = `${kg} kg × 2.20462 = ${lbs.toFixed(4)} lbs`;
+    } else {
+      lbsInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+
+  lbsInput?.addEventListener('input', () => {
+    const lbs = parseFloat(lbsInput.value);
+    if (!isNaN(lbs) && lbs >= 0) {
+      const kg = lbs / 2.20462;
+      kgInput.value = kg.toFixed(4);
+      formulaDisplay.textContent = `${lbs} lbs ÷ 2.20462 = ${kg.toFixed(4)} kg`;
+    } else {
+      kgInput.value = '';
+      formulaDisplay.textContent = '';
+    }
+  });
+</script>

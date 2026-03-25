@@ -1,0 +1,413 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="বিএমআই ক্যালকুলেটর বাংলা — BMI Calculator | BanglaTools"
+  description="বিএমআই ক্যালকুলেটর দিয়ে আপনার উচ্চতা ও ওজন থেকে BMI বের করুন। বিনামূল্যে অনলাইন BMI চেকার।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="বিএমআই ক্যালকুলেটর বাংলা" data-en="BMI Calculator in Bengali">বিএমআই ক্যালকুলেটর বাংলা</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="উচ্চতা ও ওজন থেকে আপনার বডি মাস ইনডেক্স (BMI) বের করুন" data-en="Calculate your Body Mass Index (BMI) from height and weight">উচ্চতা ও ওজন থেকে আপনার বডি মাস ইনডেক্স (BMI) বের করুন</span>
+  </p>
+
+  <!-- AdSense Slot 1 -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+    <!-- Unit toggle -->
+    <div class="flex gap-2 mb-6">
+      <button
+        id="btn-metric"
+        class="flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white"
+        onclick="setUnit('metric')"
+      >
+        <span data-bn="মেট্রিক (সেমি / কেজি)" data-en="Metric (cm / kg)">মেট্রিক (সেমি / কেজি)</span>
+      </button>
+      <button
+        id="btn-imperial"
+        class="flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700"
+        onclick="setUnit('imperial')"
+      >
+        <span data-bn="ইম্পেরিয়াল (ফুট / পাউন্ড)" data-en="Imperial (ft / lbs)">ইম্পেরিয়াল (ফুট / পাউন্ড)</span>
+      </button>
+    </div>
+
+    <!-- Metric inputs -->
+    <div id="metric-inputs" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="height-cm">
+          <span data-bn="উচ্চতা (সেন্টিমিটার)" data-en="Height (centimetres)">উচ্চতা (সেন্টিমিটার)</span>
+        </label>
+        <input
+          type="number"
+          id="height-cm"
+          placeholder="যেমন: 165"
+          min="50"
+          max="250"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="weight-kg">
+          <span data-bn="ওজন (কিলোগ্রাম)" data-en="Weight (kilograms)">ওজন (কিলোগ্রাম)</span>
+        </label>
+        <input
+          type="number"
+          id="weight-kg"
+          placeholder="যেমন: 60"
+          min="1"
+          max="300"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+
+    <!-- Imperial inputs -->
+    <div id="imperial-inputs" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4" style="display:none">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="height-ft">
+          <span data-bn="ফুট" data-en="Feet">ফুট</span>
+        </label>
+        <input
+          type="number"
+          id="height-ft"
+          placeholder="5"
+          min="1"
+          max="8"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="height-in">
+          <span data-bn="ইঞ্চি" data-en="Inches">ইঞ্চি</span>
+        </label>
+        <input
+          type="number"
+          id="height-in"
+          placeholder="5"
+          min="0"
+          max="11"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="weight-lbs">
+          <span data-bn="পাউন্ড" data-en="Pounds">পাউন্ড</span>
+        </label>
+        <input
+          type="number"
+          id="weight-lbs"
+          placeholder="132"
+          min="1"
+          max="700"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="bmi-result" class="mt-4 hidden">
+      <div class="text-center py-4">
+        <p class="text-sm text-gray-500 mb-1">
+          <span data-bn="আপনার BMI" data-en="Your BMI">আপনার BMI</span>
+        </p>
+        <p id="bmi-value" class="text-5xl font-bold text-teal-700 mb-3">—</p>
+        <div id="bmi-category" class="inline-block px-4 py-2 rounded-full text-sm font-semibold"></div>
+        <p id="bmi-formula" class="text-xs text-gray-400 mt-3"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="মেট্রিক বা ইম্পেরিয়াল পদ্ধতি বেছে নিন" data-en="Choose Metric or Imperial mode">মেট্রিক বা ইম্পেরিয়াল পদ্ধতি বেছে নিন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="আপনার উচ্চতা ও ওজন লিখুন" data-en="Enter your height and weight">আপনার উচ্চতা ও ওজন লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="BMI এবং স্বাস্থ্য শ্রেণী তাৎক্ষণিকভাবে দেখাবে" data-en="Your BMI and health category appear instantly">BMI এবং স্বাস্থ্য শ্রেণী তাৎক্ষণিকভাবে দেখাবে</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- BMI categories reference -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="BMI শ্রেণীসমূহ" data-en="BMI Categories">BMI শ্রেণীসমূহ</span>
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="bg-blue-100 rounded-xl p-3 text-center border border-blue-200">
+        <p class="text-xs text-blue-600 font-medium mb-1">
+          <span data-bn="কম ওজন" data-en="Underweight">কম ওজন</span>
+        </p>
+        <p class="text-lg font-bold text-blue-800">&lt; 18.5</p>
+      </div>
+      <div class="bg-green-100 rounded-xl p-3 text-center border border-green-200">
+        <p class="text-xs text-green-600 font-medium mb-1">
+          <span data-bn="স্বাস্থ্যকর" data-en="Healthy">স্বাস্থ্যকর</span>
+        </p>
+        <p class="text-lg font-bold text-green-800">18.5–24.9</p>
+      </div>
+      <div class="bg-orange-100 rounded-xl p-3 text-center border border-orange-200">
+        <p class="text-xs text-orange-600 font-medium mb-1">
+          <span data-bn="অতিরিক্ত ওজন" data-en="Overweight">অতিরিক্ত ওজন</span>
+        </p>
+        <p class="text-lg font-bold text-orange-800">25–29.9</p>
+      </div>
+      <div class="bg-red-100 rounded-xl p-3 text-center border border-red-200">
+        <p class="text-xs text-red-600 font-medium mb-1">
+          <span data-bn="স্থূলতা" data-en="Obese">স্থূলতা</span>
+        </p>
+        <p class="text-lg font-bold text-red-800">&ge; 30</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        বিএমআই (BMI) বা বডি মাস ইনডেক্স হলো একটি সহজ গাণিতিক পদ্ধতি যা দিয়ে একজন মানুষের ওজন তাদের উচ্চতার অনুপাতে স্বাস্থ্যকর কিনা তা বোঝা যায়। সূত্রটি হলো: BMI = ওজন (কেজি) ÷ [উচ্চতা (মিটার)]²। এই টুলটি মেট্রিক (সেন্টিমিটার ও কেজি) এবং ইম্পেরিয়াল (ফুট, ইঞ্চি ও পাউন্ড) উভয় পদ্ধতিতে কাজ করে। BMI ১৮.৫ এর কম হলে ওজন কম, ১৮.৫ থেকে ২৪.৯ স্বাস্থ্যকর, ২৫ থেকে ২৯.৯ অতিরিক্ত ওজন, এবং ৩০ বা তার বেশি হলে স্থূলতা বলে গণ্য করা হয়। ডাক্তার ও স্বাস্থ্যকর্মীরা প্রাথমিকভাবে এই পদ্ধতি ব্যবহার করেন রোগীর স্বাস্থ্য মূল্যায়নে। তবে BMI সব ক্ষেত্রে নিখুঁত নয়। পেশিবহুল ব্যক্তি, বয়স্ক মানুষ ও শিশুদের ক্ষেত্রে BMI সঠিক চিত্র নাও দিতে পারে। এই টুলটি ব্যবহার করে আপনি বুঝতে পারবেন আপনার ওজন নিয়ন্ত্রণে রাখতে কোনো ব্যবস্থা নেওয়া দরকার কিনা।
+      </p>
+      <p data-lang-en style="display:none">
+        BMI (Body Mass Index) is a simple mathematical measure that helps assess whether a person's weight is healthy relative to their height. The formula is: BMI = weight (kg) ÷ [height (m)]². This tool supports both metric (cm and kg) and imperial (feet, inches, pounds) inputs. BMI below 18.5 indicates underweight, 18.5 to 24.9 is healthy, 25 to 29.9 is overweight, and 30 or above is classified as obese. Doctors and health professionals commonly use BMI as an initial screening tool. However, BMI has limitations — it does not account for muscle mass, bone density, age, or gender differences. A very muscular person may have a high BMI without being unhealthy. For children and the elderly, separate growth charts and assessments are recommended. This free BMI calculator works on all devices and gives instant results with no login required.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
+          <span data-bn=" মহিলা — উচ্চতা ১৫৮ সেমি, ওজন ৫৫ কেজি" data-en=" Female — height 158 cm, weight 55 kg"> মহিলা — উচ্চতা ১৫৮ সেমি, ওজন ৫৫ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI = ৫৫ ÷ (১.৫৮)² = ২২.০" data-en="BMI = 55 ÷ (1.58)² = 22.0">BMI = ৫৫ ÷ (১.৫৮)² = ২২.০</span>
+        </p>
+        <p class="text-green-700 font-medium">
+          <span data-bn="ফলাফল: স্বাস্থ্যকর (Healthy)" data-en="Result: Healthy">ফলাফল: স্বাস্থ্যকর (Healthy)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
+          <span data-bn=" পুরুষ — উচ্চতা ১৭০ সেমি, ওজন ৮০ কেজি" data-en=" Male — height 170 cm, weight 80 kg"> পুরুষ — উচ্চতা ১৭০ সেমি, ওজন ৮০ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI = ৮০ ÷ (১.৭০)² = ২৭.৭" data-en="BMI = 80 ÷ (1.70)² = 27.7">BMI = ৮০ ÷ (১.৭০)² = ২৭.৭</span>
+        </p>
+        <p class="text-orange-700 font-medium">
+          <span data-bn="ফলাফল: অতিরিক্ত ওজন (Overweight)" data-en="Result: Overweight">ফলাফল: অতিরিক্ত ওজন (Overweight)</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
+          <span data-bn=" কিশোর — উচ্চতা ১৬৫ সেমি, ওজন ৪৫ কেজি" data-en=" Teenager — height 165 cm, weight 45 kg"> কিশোর — উচ্চতা ১৬৫ সেমি, ওজন ৪৫ কেজি</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="BMI = ৪৫ ÷ (১.৬৫)² = ১৬.৫" data-en="BMI = 45 ÷ (1.65)² = 16.5">BMI = ৪৫ ÷ (১.৬৫)² = ১৬.৫</span>
+        </p>
+        <p class="text-blue-700 font-medium">
+          <span data-bn="ফলাফল: কম ওজন (Underweight)" data-en="Result: Underweight">ফলাফল: কম ওজন (Underweight)</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="স্বাস্থ্যকর BMI রেঞ্জ কত?" data-en="What is the healthy BMI range?">স্বাস্থ্যকর BMI রেঞ্জ কত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="বয়স্ক মানুষের জন্য ১৮.৫ থেকে ২৪.৯ স্বাস্থ্যকর BMI বলে বিবেচিত। তবে এশীয়দের জন্য সীমা কিছুটা কম, ১৮.৫ থেকে ২২.৯ সবচেয়ে উপযুক্ত বলে অনেক বিশেষজ্ঞ মনে করেন।" data-en="For adults, 18.5 to 24.9 is considered healthy BMI. However, for Asian populations many experts suggest the optimal range is 18.5 to 22.9.">বয়স্ক মানুষের জন্য ১৮.৫ থেকে ২৪.৯ স্বাস্থ্যকর BMI বলে বিবেচিত। তবে এশীয়দের জন্য সীমা কিছুটা কম, ১৮.৫ থেকে ২২.৯ সবচেয়ে উপযুক্ত বলে অনেক বিশেষজ্ঞ মনে করেন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পুরুষ ও মহিলার BMI কি আলাদা?" data-en="Is BMI different for men and women?">পুরুষ ও মহিলার BMI কি আলাদা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="BMI সূত্র পুরুষ ও মহিলার জন্য একই। তবে শরীরে চর্বির বিতরণ ভিন্ন। একই BMI-তে মহিলাদের সাধারণত বেশি চর্বি থাকে। এই কারণে কোমরের মাপও গুরুত্বপূর্ণ।" data-en="The BMI formula is the same for men and women. However, fat distribution differs. Women typically have more body fat at the same BMI. Waist circumference is also an important health indicator.">BMI সূত্র পুরুষ ও মহিলার জন্য একই। তবে শরীরে চর্বির বিতরণ ভিন্ন। একই BMI-তে মহিলাদের সাধারণত বেশি চর্বি থাকে। এই কারণে কোমরের মাপও গুরুত্বপূর্ণ।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="BMI কি সবসময় নির্ভুল?" data-en="Is BMI always accurate?">BMI কি সবসময় নির্ভুল?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না। পেশিবহুল ব্যক্তিরা উচ্চ BMI দেখাতে পারেন অথচ সুস্বাস্থ্যের অধিকারী। শিশু, বৃদ্ধ, গর্ভবতী মহিলা ও অ্যাথলেটদের ক্ষেত্রে BMI সঠিক নাও হতে পারে।" data-en="No. Muscular people may show high BMI yet be perfectly healthy. BMI is less accurate for children, the elderly, pregnant women, and athletes.">না। পেশিবহুল ব্যক্তিরা উচ্চ BMI দেখাতে পারেন অথচ সুস্বাস্থ্যের অধিকারী। শিশু, বৃদ্ধ, গর্ভবতী মহিলা ও অ্যাথলেটদের ক্ষেত্রে BMI সঠিক নাও হতে পারে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শিশুদের জন্য BMI কীভাবে হিসাব করে?" data-en="How is BMI calculated for children?">শিশুদের জন্য BMI কীভাবে হিসাব করে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="শিশুদের BMI বয়স ও লিঙ্গ-নির্দিষ্ট পার্সেন্টাইল চার্টের সাহায্যে মূল্যায়ন করা হয়। এই টুলটি প্রাপ্তবয়স্কদের জন্য — শিশুদের ক্ষেত্রে শিশু-বিশেষজ্ঞের পরামর্শ নিন।" data-en="Children's BMI is assessed using age and gender-specific percentile charts. This tool is for adults — consult a paediatrician for children.">শিশুদের BMI বয়স ও লিঙ্গ-নির্দিষ্ট পার্সেন্টাইল চার্টের সাহায্যে মূল্যায়ন করা হয়। এই টুলটি প্রাপ্তবয়স্কদের জন্য — শিশুদের ক্ষেত্রে শিশু-বিশেষজ্ঞের পরামর্শ নিন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="BMI কমাতে কী করতে হবে?" data-en="How can I lower my BMI?">BMI কমাতে কী করতে হবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সুষম খাদ্যাভ্যাস ও নিয়মিত ব্যায়ামের মাধ্যমে ওজন কমানো যায়। প্রতিদিন ৩০ মিনিট হাঁটা, চিনি ও তৈলাক্ত খাবার কমানো এবং বেশি শাকসবজি খাওয়া কার্যকর।" data-en="BMI can be lowered through a balanced diet and regular exercise. Walking 30 minutes daily, reducing sugar and oily food, and eating more vegetables are effective steps.">সুষম খাদ্যাভ্যাস ও নিয়মিত ব্যায়ামের মাধ্যমে ওজন কমানো যায়। প্রতিদিন ৩০ মিনিট হাঁটা, চিনি ও তৈলাক্ত খাবার কমানো এবং বেশি শাকসবজি খাওয়া কার্যকর।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSense Slot 2 -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/health/ideal-weight",
+      nameBn: "আদর্শ ওজন ক্যালকুলেটর",
+      nameEn: "Ideal Weight Calculator",
+      descBn: "উচ্চতা অনুযায়ী আদর্শ ওজন জানুন",
+      descEn: "Find your ideal weight by height",
+      icon: "⚖️"
+    },
+    {
+      url: "/health/calorie-calculator",
+      nameBn: "ক্যালরি ক্যালকুলেটর",
+      nameEn: "Calorie Calculator",
+      descBn: "দৈনিক ক্যালরির চাহিদা জানুন",
+      descEn: "Calculate your daily calorie needs",
+      icon: "🔥"
+    },
+    {
+      url: "/converters/kg-to-lbs",
+      nameBn: "কেজি থেকে পাউন্ড",
+      nameEn: "kg to lbs",
+      descBn: "ওজন রূপান্তর করুন",
+      descEn: "Convert weight units",
+      icon: "⚖️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  let currentUnit = 'metric';
+
+  function setUnit(unit: string) {
+    currentUnit = unit;
+    const metricInputs = document.getElementById('metric-inputs') as HTMLElement;
+    const imperialInputs = document.getElementById('imperial-inputs') as HTMLElement;
+    const btnMetric = document.getElementById('btn-metric') as HTMLButtonElement;
+    const btnImperial = document.getElementById('btn-imperial') as HTMLButtonElement;
+
+    if (unit === 'metric') {
+      metricInputs.style.display = '';
+      imperialInputs.style.display = 'none';
+      btnMetric.className = 'flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white';
+      btnImperial.className = 'flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700';
+    } else {
+      metricInputs.style.display = 'none';
+      imperialInputs.style.display = '';
+      btnMetric.className = 'flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700';
+      btnImperial.className = 'flex-1 py-2 px-4 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white';
+    }
+    calculate();
+  }
+
+  (window as any).setUnit = setUnit;
+
+  function calculate() {
+    let heightM = 0;
+    let weightKg = 0;
+
+    if (currentUnit === 'metric') {
+      const hcm = parseFloat((document.getElementById('height-cm') as HTMLInputElement).value);
+      const wkg = parseFloat((document.getElementById('weight-kg') as HTMLInputElement).value);
+      if (isNaN(hcm) || isNaN(wkg) || hcm <= 0 || wkg <= 0) { hideResult(); return; }
+      heightM = hcm / 100;
+      weightKg = wkg;
+    } else {
+      const ft = parseFloat((document.getElementById('height-ft') as HTMLInputElement).value) || 0;
+      const inch = parseFloat((document.getElementById('height-in') as HTMLInputElement).value) || 0;
+      const lbs = parseFloat((document.getElementById('weight-lbs') as HTMLInputElement).value);
+      if ((ft === 0 && inch === 0) || isNaN(lbs) || lbs <= 0) { hideResult(); return; }
+      const totalInches = (ft * 12) + inch;
+      heightM = totalInches * 0.0254;
+      weightKg = lbs * 0.453592;
+    }
+
+    const bmi = weightKg / (heightM * heightM);
+    showResult(bmi, heightM * 100, weightKg);
+  }
+
+  function hideResult() {
+    const resultEl = document.getElementById('bmi-result') as HTMLElement;
+    resultEl.classList.add('hidden');
+  }
+
+  function showResult(bmi: number, heightCm: number, weightKg: number) {
+    const resultEl = document.getElementById('bmi-result') as HTMLElement;
+    const bmiValueEl = document.getElementById('bmi-value') as HTMLElement;
+    const bmiCategoryEl = document.getElementById('bmi-category') as HTMLElement;
+    const bmiFormulaEl = document.getElementById('bmi-formula') as HTMLElement;
+
+    resultEl.classList.remove('hidden');
+    bmiValueEl.textContent = bmi.toFixed(1);
+
+    const hm = (heightCm / 100).toFixed(2);
+    bmiFormulaEl.textContent = `${weightKg.toFixed(1)} ÷ (${hm})² = ${bmi.toFixed(1)}`;
+
+    if (bmi < 18.5) {
+      bmiCategoryEl.className = 'inline-block px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800';
+      bmiCategoryEl.textContent = 'কম ওজন / Underweight';
+    } else if (bmi < 25) {
+      bmiCategoryEl.className = 'inline-block px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800';
+      bmiCategoryEl.textContent = 'স্বাস্থ্যকর / Healthy';
+    } else if (bmi < 30) {
+      bmiCategoryEl.className = 'inline-block px-4 py-2 rounded-full text-sm font-semibold bg-orange-100 text-orange-800';
+      bmiCategoryEl.textContent = 'অতিরিক্ত ওজন / Overweight';
+    } else {
+      bmiCategoryEl.className = 'inline-block px-4 py-2 rounded-full text-sm font-semibold bg-red-100 text-red-800';
+      bmiCategoryEl.textContent = 'স্থূলতা / Obese';
+    }
+  }
+
+  document.getElementById('height-cm')?.addEventListener('input', calculate);
+  document.getElementById('weight-kg')?.addEventListener('input', calculate);
+  document.getElementById('height-ft')?.addEventListener('input', calculate);
+  document.getElementById('height-in')?.addEventListener('input', calculate);
+  document.getElementById('weight-lbs')?.addEventListener('input', calculate);
+</script>

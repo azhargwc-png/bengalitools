@@ -1,0 +1,322 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="টিপ ক্যালকুলেটর | BanglaTools"
+  description="রেস্তোরাঁ বিলে টিপ হিসাব করুন। বিল, টিপ শতাংশ ও জনসংখ্যা দিয়ে প্রতি জনের ভাগ বের করুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="টিপ ক্যালকুলেটর" data-en="Tip Calculator">টিপ ক্যালকুলেটর</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="রেস্তোরাঁ বিল ভাগ করুন, টিপ হিসাব করুন" data-en="Split restaurant bills and calculate tips easily">রেস্তোরাঁ বিল ভাগ করুন, টিপ হিসাব করুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Bill Amount -->
+    <div class="mb-5">
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="bill-amount">
+        <span data-bn="বিলের পরিমাণ (₹)" data-en="Bill Amount (₹)">বিলের পরিমাণ (₹)</span>
+      </label>
+      <input
+        type="number"
+        id="bill-amount"
+        placeholder="যেমন: 850"
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[44px]"
+      />
+    </div>
+
+    <!-- Tip Preset Buttons -->
+    <div class="mb-5">
+      <p class="text-sm font-medium text-gray-700 mb-2">
+        <span data-bn="টিপের হার বেছে নিন" data-en="Select Tip Percentage">টিপের হার বেছে নিন</span>
+      </p>
+      <div class="grid grid-cols-4 gap-2 mb-3">
+        <button data-tip="10" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">10%</button>
+        <button data-tip="15" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">15%</button>
+        <button data-tip="20" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">20%</button>
+        <button data-tip="25" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">25%</button>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-500 mb-1" for="custom-tip">
+          <span data-bn="অথবা কাস্টম টিপ % দিন" data-en="Or enter custom tip %">অথবা কাস্টম টিপ % দিন</span>
+        </label>
+        <input
+          type="number"
+          id="custom-tip"
+          placeholder="যেমন: 12"
+          min="0"
+          max="100"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+        />
+      </div>
+    </div>
+
+    <!-- Number of People -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="num-people">
+        <span data-bn="কতজন ভাগ করবেন" data-en="Number of People">কতজন ভাগ করবেন</span>
+      </label>
+      <input
+        type="number"
+        id="num-people"
+        value="1"
+        min="1"
+        max="20"
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[44px]"
+      />
+    </div>
+
+    <!-- Result -->
+    <div id="tip-result" class="hidden">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-gray-500 mb-1"><span data-bn="টিপের পরিমাণ" data-en="Tip Amount">টিপের পরিমাণ</span></p>
+          <p id="tip-amount" class="text-2xl font-bold text-teal-700"></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-gray-500 mb-1"><span data-bn="মোট বিল" data-en="Total Bill">মোট বিল</span></p>
+          <p id="total-bill" class="text-2xl font-bold text-teal-700"></p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-gray-500 mb-1"><span data-bn="প্রতি জন" data-en="Per Person">প্রতি জন</span></p>
+          <p id="per-person" class="text-2xl font-bold text-teal-700"></p>
+        </div>
+      </div>
+      <p class="text-center text-sm text-gray-500 mt-3" id="tip-breakdown"></p>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="বিলের মোট পরিমাণ লিখুন" data-en="Enter the total bill amount">বিলের মোট পরিমাণ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="১০%, ১৫%, ২০%, ২৫% বাটনে ক্লিক করুন অথবা নিজের পছন্দের শতাংশ লিখুন" data-en="Click 10%, 15%, 20%, 25% buttons or enter a custom percentage">১০%, ১৫%, ২০%, ২৫% বাটনে ক্লিক করুন অথবা নিজের পছন্দের শতাংশ লিখুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="কতজন বিল ভাগ করবেন তা লিখুন (১ থেকে ২০)" data-en="Enter how many people will split the bill (1 to 20)">কতজন বিল ভাগ করবেন তা লিখুন (১ থেকে ২০)</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="টিপের পরিমাণ, মোট বিল ও প্রতিজনের ভাগ দেখুন" data-en="View tip amount, total bill and per person share">টিপের পরিমাণ, মোট বিল ও প্রতিজনের ভাগ দেখুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই টিপ ক্যালকুলেটরটি রেস্তোরাঁর বিলে টিপ হিসাব করতে এবং বিল ভাগ করতে সাহায্য করে। বিলের পরিমাণ ও টিপের শতাংশ দিলে তিনটি ফলাফল একসাথে দেখায় — টিপের পরিমাণ, মোট বিল (বিল + টিপ) এবং প্রতিজনের ভাগ। ১০%, ১৫%, ২০% ও ২৫% প্রিসেট বাটন দেওয়া আছে যেগুলো ক্লিক করলে হাইলাইট হয়। ইচ্ছেমতো যেকোনো শতাংশও টাইপ করা যায়। বন্ধুদের সাথে বা পরিবারের সাথে খাওয়ার পরে বিল ভাগ করার সময় এই টুল বিশেষ কাজে আসে। ভারত ও বাংলাদেশে টিপ দেওয়ার প্রচলন ধীরে ধীরে বাড়ছে, বিশেষত বড় রেস্তোরাঁ ও ক্যাফেতে।
+      </p>
+      <p data-lang-en style="display:none">
+        This tip calculator helps you compute the tip on a restaurant bill and split the total among multiple people. Enter the bill amount and select a tip percentage — or type a custom one — and it instantly shows the tip amount, the total bill including tip, and the per-person share. The four preset buttons (10%, 15%, 20%, 25%) highlight when selected for quick visual confirmation. When dining out with friends or family, this tool makes it easy to settle the bill fairly without any mental arithmetic. The calculation updates in real time as you change any input.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: দুজনে খাওয়া" data-en="Example 1: Dining for two">উদাহরণ ১: দুজনে খাওয়া</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="বিল: ₹৬০০, টিপ: ১৫%, জন: ২" data-en="Bill: ₹600, Tip: 15%, People: 2">বিল: ₹৬০০, টিপ: ১৫%, জন: ২</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="টিপ: ₹৯০ | মোট: ₹৬৯০ | প্রতিজন: ₹৩৪৫" data-en="Tip: ₹90 | Total: ₹690 | Per person: ₹345">টিপ: ₹৯০ | মোট: ₹৬৯০ | প্রতিজন: ₹৩৪৫</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: বন্ধুদের দলে খাওয়া" data-en="Example 2: Group dinner with friends">উদাহরণ ২: বন্ধুদের দলে খাওয়া</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="বিল: ₹২,৪০০, টিপ: ২০%, জন: ৬" data-en="Bill: ₹2,400, Tip: 20%, People: 6">বিল: ₹২,৪০০, টিপ: ২০%, জন: ৬</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="টিপ: ₹৪৮০ | মোট: ₹২,৮৮০ | প্রতিজন: ₹৪৮০" data-en="Tip: ₹480 | Total: ₹2,880 | Per person: ₹480">টিপ: ₹৪৮০ | মোট: ₹২,৮৮০ | প্রতিজন: ₹৪৮০</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: একা খাওয়া, ১০% টিপ" data-en="Example 3: Solo dining, 10% tip">উদাহরণ ৩: একা খাওয়া, ১০% টিপ</span>
+        </p>
+        <p class="text-gray-700 mt-1">
+          <span data-bn="বিল: ₹৩৫০, টিপ: ১০%, জন: ১" data-en="Bill: ₹350, Tip: 10%, People: 1">বিল: ₹৩৫০, টিপ: ১০%, জন: ১</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="টিপ: ₹৩৫ | মোট: ₹৩৮৫ | প্রতিজন: ₹৩৮৫" data-en="Tip: ₹35 | Total: ₹385 | Per person: ₹385">টিপ: ₹৩৫ | মোট: ₹৩৮৫ | প্রতিজন: ₹৩৮৫</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রেস্তোরাঁয় কত শতাংশ টিপ দেওয়া উচিত?" data-en="What percentage tip should you give at a restaurant?">রেস্তোরাঁয় কত শতাংশ টিপ দেওয়া উচিত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="ভারত ও বাংলাদেশে সাধারণত ১০% থেকে ১৫% টিপ দেওয়া হয়। উন্নত দেশগুলোয় ১৫% থেকে ২০% প্রচলিত। সেবা অসাধারণ হলে ২০-২৫% দিতে পারেন।" data-en="In India and Bangladesh, 10–15% is common. In Western countries, 15–20% is standard. For exceptional service, 20–25% is appropriate.">ভারত ও বাংলাদেশে সাধারণত ১০% থেকে ১৫% টিপ দেওয়া হয়। উন্নত দেশগুলোয় ১৫% থেকে ২০% প্রচলিত। সেবা অসাধারণ হলে ২০-২৫% দিতে পারেন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ভারতে টিপ দেওয়া কি বাধ্যতামূলক?" data-en="Is tipping mandatory in India?">ভারতে টিপ দেওয়া কি বাধ্যতামূলক?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না, ভারতে টিপ দেওয়া বাধ্যতামূলক নয়। তবে ভালো সেবার জন্য টিপ দেওয়া শিষ্টাচার হিসেবে ধরা হয়। কিছু রেস্তোরাঁয় সার্ভিস চার্জ বিলে যোগ থাকে।" data-en="No, tipping is not mandatory in India. However, it is considered polite for good service. Some restaurants automatically add a service charge to the bill.">না, ভারতে টিপ দেওয়া বাধ্যতামূলক নয়। তবে ভালো সেবার জন্য টিপ দেওয়া শিষ্টাচার হিসেবে ধরা হয়। কিছু রেস্তোরাঁয় সার্ভিস চার্জ বিলে যোগ থাকে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বিলে ট্যাক্স থাকলে টিপ কিসের উপর হিসাব করব?" data-en="Should tip be calculated on the pre-tax or post-tax bill?">বিলে ট্যাক্স থাকলে টিপ কিসের উপর হিসাব করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত ট্যাক্স বাদ দিয়ে মূল বিলের উপর টিপ হিসাব করা হয়। তবে সুবিধার জন্য মোট বিলের উপরেও হিসাব করা যায়।" data-en="Tip is typically calculated on the pre-tax subtotal. However, for convenience many people calculate it on the total bill amount.">সাধারণত ট্যাক্স বাদ দিয়ে মূল বিলের উপর টিপ হিসাব করা হয়। তবে সুবিধার জন্য মোট বিলের উপরেও হিসাব করা যায়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বন্ধুদের মধ্যে বিল সমানভাবে ভাগ হয় না কেন?" data-en="Why doesn't the bill divide equally sometimes?">বন্ধুদের মধ্যে বিল সমানভাবে ভাগ হয় না কেন?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="মোট বিল (টিপসহ) কে জনসংখ্যা দিয়ে ভাগ করলে দশমিক আসতে পারে। এই ক্যালকুলেটর ঠিক ঠিক হিসাব দেখায়, কিন্তু বাস্তবে নিকটতম সংখ্যায় নিতে হয়।" data-en="Dividing the total (including tip) by the number of people may result in a decimal. The calculator shows the exact figure; in practice, round to the nearest whole number.">মোট বিল (টিপসহ) কে জনসংখ্যা দিয়ে ভাগ করলে দশমিক আসতে পারে। এই ক্যালকুলেটর ঠিক ঠিক হিসাব দেখায়, কিন্তু বাস্তবে নিকটতম সংখ্যায় নিতে হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ডেলিভারি অর্ডারে টিপ দেওয়া উচিত?" data-en="Should you tip on delivery orders?">ডেলিভারি অর্ডারে টিপ দেওয়া উচিত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, ডেলিভারি বয়কে সাধারণত ১০-১৫% বা নির্দিষ্ট পরিমাণ টিপ দেওয়া হয়। Swiggy/Zomato-তে অ্যাপের মধ্যেই টিপ দেওয়ার সুযোগ থাকে।" data-en="Yes, delivery riders typically receive 10–15% or a fixed amount. Swiggy/Zomato offer an in-app tipping option at checkout.">হ্যাঁ, ডেলিভারি বয়কে সাধারণত ১০-১৫% বা নির্দিষ্ট পরিমাণ টিপ দেওয়া হয়। Swiggy/Zomato-তে অ্যাপের মধ্যেই টিপ দেওয়ার সুযোগ থাকে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/calculators/discount",
+      nameBn: "ছাড় ক্যালকুলেটর",
+      nameEn: "Discount Calculator",
+      descBn: "ডিসকাউন্টের পরে দাম হিসাব করুন",
+      descEn: "Calculate price after discount",
+      icon: "🏷️"
+    },
+    {
+      url: "/calculators/percentage",
+      nameBn: "শতাংশ ক্যালকুলেটর",
+      nameEn: "Percentage Calculator",
+      descBn: "তিন ধরনের শতাংশ হিসাব",
+      descEn: "Three types of percentage calculations",
+      icon: "%"
+    },
+    {
+      url: "/calculators/fuel-cost",
+      nameBn: "জ্বালানি খরচ ক্যালকুলেটর",
+      nameEn: "Fuel Cost Calculator",
+      descBn: "যাত্রার পেট্রোল খরচ হিসাব করুন",
+      descEn: "Calculate fuel cost for a trip",
+      icon: "⛽"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const billInput = document.getElementById('bill-amount') as HTMLInputElement;
+  const customTip = document.getElementById('custom-tip') as HTMLInputElement;
+  const numPeople = document.getElementById('num-people') as HTMLInputElement;
+  const tipResult = document.getElementById('tip-result')!;
+  const tipButtons = document.querySelectorAll('.tip-btn') as NodeListOf<HTMLButtonElement>;
+
+  let selectedTip = 0;
+
+  function setTipBtn(val: number) {
+    selectedTip = val;
+    customTip.value = '';
+    tipButtons.forEach(btn => {
+      if (parseInt(btn.dataset.tip || '0') === val) {
+        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-teal-500 bg-teal-500 text-white transition-all min-h-[44px]';
+      } else {
+        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]';
+      }
+    });
+    calculate();
+  }
+
+  tipButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTipBtn(parseInt(btn.dataset.tip || '0'));
+    });
+  });
+
+  customTip.addEventListener('input', () => {
+    selectedTip = parseFloat(customTip.value) || 0;
+    tipButtons.forEach(btn => {
+      btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]';
+    });
+    calculate();
+  });
+
+  billInput.addEventListener('input', calculate);
+  numPeople.addEventListener('input', calculate);
+
+  function calculate() {
+    const bill = parseFloat(billInput.value);
+    const people = parseInt(numPeople.value) || 1;
+    const tipPct = selectedTip || parseFloat(customTip.value) || 0;
+
+    if (!isNaN(bill) && bill > 0) {
+      const tipAmt = (tipPct / 100) * bill;
+      const total = bill + tipAmt;
+      const perPerson = total / people;
+
+      document.getElementById('tip-amount')!.textContent = '₹' + tipAmt.toFixed(2);
+      document.getElementById('total-bill')!.textContent = '₹' + total.toFixed(2);
+      document.getElementById('per-person')!.textContent = '₹' + perPerson.toFixed(2);
+      document.getElementById('tip-breakdown')!.textContent =
+        `₹${bill.toFixed(2)} বিল + ₹${tipAmt.toFixed(2)} টিপ (${tipPct}%) = ₹${total.toFixed(2)} ÷ ${people} জন`;
+      tipResult.classList.remove('hidden');
+    } else {
+      tipResult.classList.add('hidden');
+    }
+  }
+</script>

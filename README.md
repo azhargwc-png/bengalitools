@@ -1,0 +1,254 @@
+# BanglaTools — bengalitools.com
+
+A bilingual Bengali-English utility website offering free online converters,
+calculators, health tools, and food calorie resources for Bengali speakers
+worldwide — West Bengal, Bangladesh, UK, USA, Gulf countries.
+
+---
+
+## What This Site Is
+
+BanglaTools is a static Astro website built for Bengali speakers who need
+everyday utility tools in their own language. Every tool works instantly
+with no login, no account, and no complicated setup. The site is fully
+bilingual — every page has a Bengali and English toggle that switches all
+content instantly.
+
+**Target audience:** Bengali speakers globally
+**Primary language:** Bengali (বাংলা)
+**Secondary language:** English
+**Monetization:** Google AdSense + affiliate links
+**Goal:** Rank on Google for Bengali-language utility searches with
+zero or near-zero competition
+
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|------|---------|
+| Astro | Static site framework — fast, SEO-friendly |
+| Tailwind CSS | Styling |
+| Vanilla JavaScript | Tool calculations and interactions |
+| frankfurter.app | Free live currency exchange rates (no API key needed) |
+| GitHub | Version control and code backup |
+| Vercel | Hosting and automatic deployment |
+| Cloudflare | CDN, SSL, DDoS protection, DNS management |
+| GoDaddy | Domain registrar (bengalitools.com) |
+
+---
+
+## Project Structure
+
+```
+bengalitools/
+│
+├── README.md                  ← You are here — project overview
+├── ROADMAP.md                 ← Live to-do list and progress tracker
+│
+├── skills/
+│   ├── keyword-research.md    ← SEO Skill 1: Find Bengali keywords
+│   ├── content-creator.md     ← SEO Skill 2: Build optimized pages
+│   └── seo-audit.md           ← SEO Skill 3: Monthly site audit
+│
+├── src/
+│   ├── pages/
+│   │   ├── index.astro               ← Homepage
+│   │   ├── about.astro               ← About page
+│   │   ├── privacy-policy.astro      ← Privacy policy
+│   │   ├── contact.astro             ← Contact page
+│   │   │
+│   │   ├── converters/               ← Unit converter pages
+│   │   │   ├── kg-to-lbs.astro
+│   │   │   ├── cm-to-inches.astro
+│   │   │   ├── celsius-to-fahrenheit.astro
+│   │   │   ├── km-to-miles.astro
+│   │   │   ├── feet-to-meters.astro
+│   │   │   └── litre-to-gallon.astro
+│   │   │
+│   │   ├── currency/                 ← Currency converter pages
+│   │   │   ├── usd-to-inr.astro
+│   │   │   ├── aed-to-inr.astro
+│   │   │   ├── eur-to-inr.astro
+│   │   │   ├── gbp-to-inr.astro
+│   │   │   └── bdt-to-inr.astro
+│   │   │
+│   │   ├── health/                   ← Health tool pages
+│   │   │   ├── bmi-calculator.astro
+│   │   │   ├── age-calculator.astro
+│   │   │   ├── calorie-calculator.astro
+│   │   │   ├── ideal-weight.astro
+│   │   │   └── water-intake.astro
+│   │   │
+│   │   ├── calculators/              ← Everyday calculator pages
+│   │   │   ├── percentage.astro
+│   │   │   ├── discount.astro
+│   │   │   ├── tip.astro
+│   │   │   ├── date-difference.astro
+│   │   │   ├── speed.astro
+│   │   │   └── fuel-cost.astro
+│   │   │
+│   │   ├── food/                     ← Calorie and food pages
+│   │   │   ├── calorie-lookup.astro
+│   │   │   ├── recipe-calculator.astro
+│   │   │   └── bengali-food-chart.astro
+│   │   │
+│   │   ├── india/                    ← India-specific tools
+│   │   │   ├── gst-calculator.astro
+│   │   │   ├── bengali-calendar.astro
+│   │   │   ├── number-to-bengali.astro
+│   │   │   └── salary-to-hourly.astro
+│   │   │
+│   │   └── blog/                     ← SEO blog posts
+│   │       └── [slug].astro
+│   │
+│   ├── components/
+│   │   ├── Header.astro              ← Navigation + language toggle
+│   │   ├── Footer.astro              ← Footer with links
+│   │   ├── ToolCard.astro            ← Reusable tool card component
+│   │   ├── RelatedTools.astro        ← Related tools section
+│   │   └── LanguageToggle.astro      ← Bengali/English switcher
+│   │
+│   ├── layouts/
+│   │   ├── BaseLayout.astro          ← Main layout with SEO meta tags
+│   │   └── ToolLayout.astro          ← Layout for tool pages
+│   │
+│   └── data/
+│       ├── foods.js                  ← Bengali food calorie database
+│       ├── translations.js           ← All Bengali/English text strings
+│       └── tools.js                  ← Tool metadata and descriptions
+│
+├── public/
+│   ├── favicon.ico
+│   ├── robots.txt
+│   └── sitemap.xml                   ← Auto-generated by Astro
+│
+├── astro.config.mjs                  ← Astro configuration
+├── tailwind.config.mjs               ← Tailwind configuration
+└── package.json                      ← Dependencies
+```
+
+---
+
+## How to Run Locally
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+Site runs at `http://localhost:4321` in development.
+
+---
+
+## How to Deploy (Vercel)
+
+Deployment is fully automatic. Every time you push to GitHub, Vercel
+detects the change and deploys within 60 seconds.
+
+```bash
+# After making changes with Claude Code:
+git add .
+git commit -m "describe what you changed"
+git push
+```
+
+Vercel does the rest automatically. Check deployment status at:
+vercel.com/dashboard
+
+---
+
+## How to Use the Skills with Claude Code
+
+This project has 3 SEO skills stored in the `/skills` folder.
+Reference them in Claude Code prompts like this:
+
+```
+"Read skills/keyword-research.md and find me 10 new Bengali 
+keyword opportunities for tool pages"
+
+"Read skills/content-creator.md and build an SEO-optimized 
+page for the keyword বিএমআই ক্যালকুলেটর"
+
+"Read skills/seo-audit.md and run a full audit of the site 
+and tell me everything that needs fixing"
+```
+
+---
+
+## Domain and DNS Setup
+
+| Service | Purpose | Status |
+|---------|---------|--------|
+| GoDaddy | Domain registrar for bengalitools.com | Active |
+| Cloudflare | Nameservers, CDN, SSL, DNS management | Connected |
+| Vercel | Hosting — connected via Cloudflare DNS A record | Active |
+
+**To update DNS:** Always make changes in Cloudflare, not GoDaddy.
+GoDaddy nameservers now point to Cloudflare. Cloudflare controls
+all DNS records.
+
+---
+
+## Currency API
+
+The currency converter uses frankfurter.app — a completely free,
+open API with no API key required. It provides live exchange rates
+updated daily from the European Central Bank.
+
+```javascript
+// Example API call
+fetch('https://api.frankfurter.app/latest?from=USD&to=INR')
+```
+
+No API key. No rate limits for normal usage. No cost ever.
+
+---
+
+## Google Tools Setup
+
+| Tool | Purpose | URL |
+|------|---------|-----|
+| Google Search Console | Monitor indexing and rankings | search.google.com/search-console |
+| Google Analytics | Track visitor traffic | analytics.google.com |
+| Google AdSense | Display ads and earn revenue | adsense.google.com |
+| PageSpeed Insights | Check site speed | pagespeed.web.dev |
+
+---
+
+## Important Rules — Never Break These
+
+1. **Every tool page must have content** — minimum 150 words in Bengali
+   and English, 3 worked examples, 5 FAQs. No bare tools without content
+   or Google will not index the page.
+
+2. **Never hardcode API keys in files** — store them in `.env` and make
+   sure `.env` is in `.gitignore`. Currently no API keys are needed
+   but this applies to any future paid APIs.
+
+3. **Always update ROADMAP.md** when you complete a task or add a new
+   idea. This file is your project memory.
+
+4. **Test on mobile before every deployment** — over 90% of Bengali
+   users browse on mobile. If it breaks on mobile it breaks for your
+   entire audience.
+
+5. **Run the SEO audit skill monthly** — use `skills/seo-audit.md`
+   to check the site health and fix issues before they hurt rankings.
+
+---
+
+## Contact and Ownership
+
+Site: bengalitools.com
+Built with: Claude Code + Astro
+Started: March 2026

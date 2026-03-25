@@ -1,0 +1,456 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { foods } from '../../data/foods.js';
+---
+
+<ToolLayout
+  title="রেসিপি ক্যালরি ক্যালকুলেটর | BanglaTools"
+  description="রান্নার রেসিপির মোট ক্যালরি হিসাব করুন। উপকরণ ও পরিমাণ দিয়ে প্রতি সার্ভিংয়ের ক্যালরি জানুন।"
+>
+  <!-- H1 -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="রেসিপি ক্যালরি ক্যালকুলেটর" data-en="Recipe Calorie Calculator">রেসিপি ক্যালরি ক্যালকুলেটর</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="রান্নার উপকরণ ও পরিমাণ দিয়ে রেসিপির মোট ক্যালরি জানুন" data-en="Add ingredients and quantities to calculate total recipe calories">রান্নার উপকরণ ও পরিমাণ দিয়ে রেসিপির মোট ক্যালরি জানুন</span>
+  </p>
+
+  <!-- AdSlot above tool -->
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Servings selector -->
+    <div class="flex items-center gap-4 mb-5">
+      <label class="text-sm font-medium text-gray-700">
+        <span data-bn="কতজনের জন্য রান্না?" data-en="Number of servings:">কতজনের জন্য রান্না?</span>
+      </label>
+      <select id="servings-select" class="px-4 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none">
+        <option value="2">২ জন</option>
+        <option value="4" selected>৪ জন</option>
+        <option value="6">৬ জন</option>
+        <option value="8">৮ জন</option>
+      </select>
+    </div>
+
+    <!-- Ingredients list -->
+    <div id="ingredients-list" class="space-y-3 mb-4"></div>
+
+    <!-- Add ingredient button -->
+    <button id="add-ingredient-btn" class="w-full py-3 border-2 border-dashed border-teal-300 rounded-xl text-teal-700 font-semibold hover:border-teal-500 hover:bg-teal-50 transition-all flex items-center justify-center gap-2">
+      <span class="text-xl leading-none">+</span>
+      <span data-bn="উপকরণ যোগ করুন" data-en="Add Ingredient">উপকরণ যোগ করুন</span>
+    </button>
+
+    <!-- Autocomplete dropdown -->
+    <div id="autocomplete-dropdown" class="hidden fixed z-50 bg-white border border-gray-200 rounded-xl shadow-lg max-h-48 overflow-y-auto w-64"></div>
+
+    <!-- Total result -->
+    <div id="recipe-result" class="hidden mt-5">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-sm text-gray-500 mb-1">
+            <span data-bn="রেসিপির মোট ক্যালরি" data-en="Total Recipe Calories">রেসিপির মোট ক্যালরি</span>
+          </p>
+          <p id="total-calories" class="text-4xl font-bold text-teal-700"></p>
+          <p class="text-xs text-gray-400 mt-1">kcal</p>
+        </div>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-sm text-gray-500 mb-1">
+            <span data-bn="প্রতি সার্ভিংয়ে ক্যালরি" data-en="Calories Per Serving">প্রতি সার্ভিংয়ে ক্যালরি</span>
+          </p>
+          <p id="per-serving-calories" class="text-4xl font-bold text-teal-700"></p>
+          <p class="text-xs text-gray-400 mt-1" id="serving-label"></p>
+        </div>
+      </div>
+      <!-- Ingredient breakdown -->
+      <div id="ingredient-breakdown" class="mt-4 bg-white rounded-xl p-4 border border-gray-200">
+        <p class="text-sm font-semibold text-gray-700 mb-2">
+          <span data-bn="উপকরণ অনুযায়ী ভাঙন" data-en="Breakdown by ingredient">উপকরণ অনুযায়ী ভাঙন</span>
+        </p>
+        <div id="breakdown-list" class="space-y-1"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="রেসিপিটি কতজনের জন্য তা সিলেক্ট করুন" data-en="Select how many servings the recipe makes">রেসিপিটি কতজনের জন্য তা সিলেক্ট করুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="'উপকরণ যোগ করুন' বাটনে ক্লিক করুন এবং খাবারের নাম টাইপ করুন — অটোকমপ্লিট সাজেশন দেখাবে" data-en="Click 'Add Ingredient' and type the food name — autocomplete suggestions will appear">  'উপকরণ যোগ করুন' বাটনে ক্লিক করুন এবং খাবারের নাম টাইপ করুন — অটোকমপ্লিট সাজেশন দেখাবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="পরিমাণ গ্রামে দিন — ক্যালরি স্বয়ংক্রিয়ভাবে হিসাব হবে" data-en="Enter quantity in grams — calories calculate automatically">পরিমাণ গ্রামে দিন — ক্যালরি স্বয়ংক্রিয়ভাবে হিসাব হবে</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="সর্বোচ্চ ১৫টি উপকরণ যোগ করা যাবে। মোট ও প্রতি সার্ভিংয়ের ক্যালরি দেখাবে।" data-en="Up to 15 ingredients can be added. Total and per-serving calories are shown.">সর্বোচ্চ ১৫টি উপকরণ যোগ করা যাবে। মোট ও প্রতি সার্ভিংয়ের ক্যালরি দেখাবে।</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        এই রেসিপি ক্যালরি ক্যালকুলেটর দিয়ে যেকোনো রান্নার রেসিপির মোট ক্যালরি হিসাব করা যায়। রেসিপিতে ব্যবহৃত প্রতিটি উপকরণ ও তার পরিমাণ (গ্রামে) দিলে মোট ক্যালরি এবং প্রতি সার্ভিংয়ের ক্যালরি বের হয়। সর্বোচ্চ ১৫টি উপকরণ দেওয়া যায়। খাবারের নাম বাংলা বা ইংরেজিতে টাইপ করলে আমাদের ডেটাবেজ থেকে অটোকমপ্লিট সাজেশন আসে। ডায়েট পরিকল্পনা, ক্যালরি গণনা বা পুষ্টিবিদের পরামর্শ অনুসরণ করার সময় এই টুল অত্যন্ত কার্যকর।
+      </p>
+      <p data-lang-en style="display:none">
+        This recipe calorie calculator lets you compute the total calorie count for any cooked recipe. Add up to 15 ingredients with their quantities in grams and the tool calculates total calories and calories per serving. Type a food name in Bengali or English to see autocomplete suggestions from our database. This tool is highly useful for diet planning, calorie tracking, meal prep, and following nutritionist advice about daily calorie intake.
+      </p>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
+    </h2>
+    <div class="space-y-4">
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ১: খিচুড়ির রেসিপি" data-en="Example 1: Khichuri recipe">উদাহরণ ১: খিচুড়ির রেসিপি</span>
+        </p>
+        <p class="text-gray-700 mt-1 text-sm">
+          <span data-bn="চাল ২০০g + ডাল ১০০g + আলু ১০০g + পেঁয়াজ ৫০g → ৪ জনের জন্য" data-en="Rice 200g + Dal 100g + Potato 100g + Onion 50g → 4 servings">চাল ২০০g + ডাল ১০০g + আলু ১০০g + পেঁয়াজ ৫০g → ৪ জনের জন্য</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="মোট: প্রায় ৬০০ kcal | প্রতি জন: ১৫০ kcal" data-en="Total: approx 600 kcal | Per serving: 150 kcal">মোট: প্রায় ৬০০ kcal | প্রতি জন: ১৫০ kcal</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ২: মুরগির ঝোল" data-en="Example 2: Chicken curry">উদাহরণ ২: মুরগির ঝোল</span>
+        </p>
+        <p class="text-gray-700 mt-1 text-sm">
+          <span data-bn="মুরগি ৫০০g + আলু ২০০g + পেঁয়াজ ১০০g + টমেটো ১০০g → ৪ জনের জন্য" data-en="Chicken 500g + Potato 200g + Onion 100g + Tomato 100g → 4 servings">মুরগি ৫০০g + আলু ২০০g + পেঁয়াজ ১০০g + টমেটো ১০০g → ৪ জনের জন্য</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="মোট: প্রায় ১১০০ kcal | প্রতি জন: ২৭৫ kcal" data-en="Total: approx 1100 kcal | Per serving: 275 kcal">মোট: প্রায় ১১০০ kcal | প্রতি জন: ২৭৫ kcal</span>
+        </p>
+      </div>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
+        <p class="font-semibold text-teal-800">
+          <span data-bn="উদাহরণ ৩: সকালের নাস্তা হিসাব" data-en="Example 3: Breakfast calorie tracking">উদাহরণ ৩: সকালের নাস্তা হিসাব</span>
+        </p>
+        <p class="text-gray-700 mt-1 text-sm">
+          <span data-bn="রুটি ১২০g + ডিম ১০০g + দুধ ২৫০g → ১ জনের জন্য" data-en="Roti 120g + Egg 100g + Milk 250g → 1 serving">রুটি ১২০g + ডিম ১০০g + দুধ ২৫০g → ১ জনের জন্য</span>
+        </p>
+        <p class="text-gray-700 font-medium">
+          <span data-bn="মোট: প্রায় ৭৩৫ kcal" data-en="Total: approx 735 kcal">মোট: প্রায় ৭৩৫ kcal</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="রান্নার পরে ক্যালরি কি পরিবর্তন হয়?" data-en="Do calories change after cooking?">রান্নার পরে ক্যালরি কি পরিবর্তন হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, রান্নার পদ্ধতির উপর নির্ভর করে ক্যালরি পরিবর্তন হতে পারে। সেদ্ধ করলে পানি শুষে নিয়ে ওজন বাড়ে, তেলে ভাজলে ক্যালরি বাড়ে। এই ক্যালকুলেটরের তথ্য রান্না করা খাবারের গড় ক্যালরির উপর ভিত্তি করে তৈরি।" data-en="Yes, cooking changes calories. Boiling adds water weight while frying adds oil calories. The data in this calculator is based on average calories of cooked foods.">হ্যাঁ, রান্নার পদ্ধতির উপর নির্ভর করে ক্যালরি পরিবর্তন হতে পারে। সেদ্ধ করলে পানি শুষে নিয়ে ওজন বাড়ে, তেলে ভাজলে ক্যালরি বাড়ে। এই ক্যালকুলেটরের তথ্য রান্না করা খাবারের গড় ক্যালরির উপর ভিত্তি করে তৈরি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="আমার খাবারের ক্যালরি ডেটাবেজে নেই, কী করব?" data-en="What if my food is not in the database?">আমার খাবারের ক্যালরি ডেটাবেজে নেই, কী করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সবচেয়ে কাছের বিকল্প খাবার বেছে নিন। যেমন বিশেষ ধরনের মাছ না থাকলে 'মাছের ঝোল' ব্যবহার করুন।" data-en="Choose the closest equivalent food. For example, if your specific fish dish isn't listed, use 'Fish Curry' as an approximation.">সবচেয়ে কাছের বিকল্প খাবার বেছে নিন। যেমন বিশেষ ধরনের মাছ না থাকলে 'মাছের ঝোল' ব্যবহার করুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="প্রতিদিন কত ক্যালরি খাওয়া উচিত?" data-en="How many calories should I eat per day?">প্রতিদিন কত ক্যালরি খাওয়া উচিত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সাধারণত পুরুষদের জন্য ২০০০-২৫০০ kcal এবং মহিলাদের জন্য ১৬০০-২০০০ kcal দৈনিক প্রয়োজন। বয়স, উচ্চতা, ওজন ও কার্যকলাপের উপর নির্ভর করে। সঠিক হিসাবের জন্য আমাদের ক্যালরি ক্যালকুলেটর ব্যবহার করুন।" data-en="Generally men need 2000–2500 kcal and women 1600–2000 kcal daily. It depends on age, height, weight and activity level. Use our Calorie Calculator for an accurate figure.">সাধারণত পুরুষদের জন্য ২০০০-২৫০০ kcal এবং মহিলাদের জন্য ১৬০০-২০০০ kcal দৈনিক প্রয়োজন। বয়স, উচ্চতা, ওজন ও কার্যকলাপের উপর নির্ভর করে। সঠিক হিসাবের জন্য আমাদের ক্যালরি ক্যালকুলেটর ব্যবহার করুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ক্যালরি হিসাব কতটা সঠিক?" data-en="How accurate are the calorie calculations?">ক্যালরি হিসাব কতটা সঠিক?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="এই তথ্যগুলো গড় মান। রান্নার পদ্ধতি, উপকরণের বিভিন্নতা ও পরিবেশনার পরিমাণের কারণে বাস্তব ক্যালরি ±১০-২০% পরিবর্তিত হতে পারে।" data-en="These values are averages. Due to variations in cooking method, ingredient quality and serving size, actual calories may vary by ±10–20%.">এই তথ্যগুলো গড় মান। রান্নার পদ্ধতি, উপকরণের বিভিন্নতা ও পরিবেশনার পরিমাণের কারণে বাস্তব ক্যালরি ±১০-২০% পরিবর্তিত হতে পারে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="তেল ও মশলার ক্যালরি কীভাবে হিসাব করব?" data-en="How do I account for oil and spices?">তেল ও মশলার ক্যালরি কীভাবে হিসাব করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="রান্নায় ব্যবহৃত তেলের পরিমাণ আনুমানিক ধরুন — ১ টেবিল চামচ তেল = প্রায় ১৫ মিলি = প্রায় ১২০ ক্যালরি। মশলার ক্যালরি সাধারণত নগণ্য।" data-en="Estimate oil used — 1 tablespoon oil = approx 15ml = approx 120 calories. Spice calories are generally negligible.">রান্নায় ব্যবহৃত তেলের পরিমাণ আনুমানিক ধরুন — ১ টেবিল চামচ তেল = প্রায় ১৫ মিলি = প্রায় ১২০ ক্যালরি। মশলার ক্যালরি সাধারণত নগণ্য।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- AdSlot below FAQ -->
+  <AdSlot slot="below-faq" />
+
+  <!-- Related Tools -->
+  <RelatedTools tools={[
+    {
+      url: "/food/calorie-lookup",
+      nameBn: "খাবারের ক্যালরি লুকআপ",
+      nameEn: "Food Calorie Lookup",
+      descBn: "বাংলা খাবারের ক্যালরি খুঁজুন",
+      descEn: "Look up Bengali food calories",
+      icon: "🔍"
+    },
+    {
+      url: "/food/bengali-food-chart",
+      nameBn: "বাংলা খাবারের ক্যালরি চার্ট",
+      nameEn: "Bengali Food Calorie Chart",
+      descBn: "সমস্ত বাংলা খাবারের ক্যালরি চার্ট",
+      descEn: "Complete Bengali food calorie chart",
+      icon: "📊"
+    },
+    {
+      url: "/health/calorie-calculator",
+      nameBn: "ক্যালরি ক্যালকুলেটর",
+      nameEn: "Calorie Calculator",
+      descBn: "দৈনিক ক্যালরির চাহিদা জানুন",
+      descEn: "Find your daily calorie needs",
+      icon: "🔥"
+    }
+  ]} />
+</ToolLayout>
+
+<script define:vars={{ foodsData: foods }}>
+  const MAX_INGREDIENTS = 15;
+  let ingredients = []; // { foodId, foodName, caloriesPer100, grams }
+  let activeInputIndex = null;
+
+  const ingredientsList = document.getElementById('ingredients-list');
+  const addBtn = document.getElementById('add-ingredient-btn');
+  const servingsSelect = document.getElementById('servings-select');
+  const recipeResult = document.getElementById('recipe-result');
+  const dropdown = document.getElementById('autocomplete-dropdown');
+
+  function addIngredientRow() {
+    if (ingredients.length >= MAX_INGREDIENTS) return;
+    const idx = ingredients.length;
+    ingredients.push({ foodId: null, foodName: '', caloriesPer100: 0, grams: 0 });
+    renderIngredients();
+    // Focus the new search input
+    setTimeout(() => {
+      const input = document.getElementById(`food-input-${idx}`);
+      if (input) input.focus();
+    }, 50);
+    if (ingredients.length >= MAX_INGREDIENTS) {
+      addBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+  }
+
+  function removeIngredient(idx) {
+    ingredients.splice(idx, 1);
+    renderIngredients();
+    updateResult();
+    if (ingredients.length < MAX_INGREDIENTS) {
+      addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+  }
+
+  function renderIngredients() {
+    ingredientsList.innerHTML = ingredients.map((ing, idx) => `
+      <div class="flex gap-2 items-start" data-index="${idx}">
+        <div class="flex-1 relative">
+          <input
+            type="text"
+            id="food-input-${idx}"
+            value="${ing.foodName}"
+            placeholder="খাবারের নাম / food name..."
+            autocomplete="off"
+            class="w-full px-3 py-2.5 border-2 ${ing.foodId ? 'border-teal-400' : 'border-gray-300'} rounded-xl text-sm focus:border-teal-500 focus:outline-none"
+            data-idx="${idx}"
+          />
+          ${ing.caloriesPer100 > 0 ? `<span class="absolute right-2 top-2.5 text-xs text-teal-600 font-medium">${ing.caloriesPer100} kcal/100g</span>` : ''}
+        </div>
+        <div class="w-28">
+          <input
+            type="number"
+            id="grams-input-${idx}"
+            value="${ing.grams || ''}"
+            placeholder="গ্রাম / g"
+            min="1"
+            class="w-full px-3 py-2.5 border-2 border-gray-300 rounded-xl text-sm focus:border-teal-500 focus:outline-none"
+            data-idx="${idx}"
+          />
+        </div>
+        <div class="w-16 text-right pt-2.5">
+          ${ing.foodId && ing.grams > 0 ? `<span class="text-sm font-bold text-teal-700">${Math.round(ing.caloriesPer100 * ing.grams / 100)}</span><span class="text-xs text-gray-400"> kcal</span>` : ''}
+        </div>
+        <button class="remove-btn pt-1.5 text-gray-400 hover:text-red-500 transition-colors text-xl leading-none" data-idx="${idx}">×</button>
+      </div>
+    `).join('');
+
+    // Attach events
+    document.querySelectorAll('[id^="food-input-"]').forEach(input => {
+      input.addEventListener('input', handleFoodInput);
+      input.addEventListener('focus', handleFoodFocus);
+      input.addEventListener('blur', () => setTimeout(hideDropdown, 200));
+    });
+    document.querySelectorAll('[id^="grams-input-"]').forEach(input => {
+      input.addEventListener('input', handleGramsInput);
+    });
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => removeIngredient(parseInt(btn.dataset.idx)));
+    });
+  }
+
+  function handleFoodFocus(e) {
+    activeInputIndex = parseInt(e.target.dataset.idx);
+    const q = e.target.value;
+    showDropdown(q, activeInputIndex, e.target);
+  }
+
+  function handleFoodInput(e) {
+    const idx = parseInt(e.target.dataset.idx);
+    activeInputIndex = idx;
+    ingredients[idx].foodName = e.target.value;
+    ingredients[idx].foodId = null;
+    ingredients[idx].caloriesPer100 = 0;
+    showDropdown(e.target.value, idx, e.target);
+    updateResult();
+  }
+
+  function handleGramsInput(e) {
+    const idx = parseInt(e.target.dataset.idx);
+    ingredients[idx].grams = parseFloat(e.target.value) || 0;
+    renderIngredients();
+    updateResult();
+  }
+
+  function showDropdown(query, idx, inputEl) {
+    const q = query.toLowerCase().trim();
+    let matches = foodsData;
+    if (q) {
+      matches = foodsData.filter(f =>
+        f.bn.includes(query) || f.en.toLowerCase().includes(q)
+      );
+    }
+    matches = matches.slice(0, 10);
+
+    if (matches.length === 0) { hideDropdown(); return; }
+
+    const rect = inputEl.getBoundingClientRect();
+    dropdown.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+    dropdown.style.left = (rect.left + window.scrollX) + 'px';
+    dropdown.style.width = rect.width + 'px';
+
+    dropdown.innerHTML = matches.map(f => `
+      <button
+        class="w-full text-left px-3 py-2 hover:bg-teal-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center"
+        data-food-id="${f.id}"
+        data-food-bn="${f.bn}"
+        data-food-en="${f.en}"
+        data-calories="${f.calories}"
+      >
+        <span><span class="font-medium">${f.bn}</span> <span class="text-gray-400 text-xs">${f.en}</span></span>
+        <span class="text-teal-600 text-xs font-medium">${f.calories} kcal/100g</span>
+      </button>
+    `).join('');
+
+    dropdown.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        selectFood(idx, btn.dataset.foodId, btn.dataset.foodBn, btn.dataset.foodEn, parseInt(btn.dataset.calories));
+      });
+    });
+
+    dropdown.classList.remove('hidden');
+  }
+
+  function selectFood(idx, foodId, bn, en, calories) {
+    ingredients[idx].foodId = foodId;
+    ingredients[idx].foodName = bn + ' (' + en + ')';
+    ingredients[idx].caloriesPer100 = calories;
+    hideDropdown();
+    renderIngredients();
+    updateResult();
+    // Focus grams input
+    setTimeout(() => {
+      const gi = document.getElementById(`grams-input-${idx}`);
+      if (gi) gi.focus();
+    }, 50);
+  }
+
+  function hideDropdown() {
+    dropdown.classList.add('hidden');
+  }
+
+  function updateResult() {
+    const servings = parseInt(servingsSelect.value) || 4;
+    const validIngredients = ingredients.filter(ing => ing.foodId && ing.grams > 0);
+
+    if (validIngredients.length === 0) {
+      recipeResult.classList.add('hidden');
+      return;
+    }
+
+    const totalCal = validIngredients.reduce((sum, ing) => {
+      return sum + (ing.caloriesPer100 * ing.grams / 100);
+    }, 0);
+
+    const perServing = totalCal / servings;
+
+    document.getElementById('total-calories').textContent = Math.round(totalCal).toLocaleString();
+    document.getElementById('per-serving-calories').textContent = Math.round(perServing).toLocaleString();
+    document.getElementById('serving-label').textContent = `${servings} সার্ভিং-এর জন্য / for ${servings} servings`;
+
+    const breakdownList = document.getElementById('breakdown-list');
+    breakdownList.innerHTML = validIngredients.map(ing => {
+      const cal = Math.round(ing.caloriesPer100 * ing.grams / 100);
+      const pct = Math.round((cal / totalCal) * 100);
+      return `
+        <div class="flex justify-between items-center text-sm py-1 border-b border-gray-100 last:border-0">
+          <span class="text-gray-700">${ing.foodName}</span>
+          <span class="flex gap-3 items-center">
+            <span class="text-gray-400">${ing.grams}g</span>
+            <span class="font-semibold text-teal-700">${cal} kcal</span>
+            <span class="text-gray-400 text-xs">${pct}%</span>
+          </span>
+        </div>
+      `;
+    }).join('');
+
+    recipeResult.classList.remove('hidden');
+  }
+
+  addBtn.addEventListener('click', addIngredientRow);
+  servingsSelect.addEventListener('change', updateResult);
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && !e.target.id.startsWith('food-input-')) {
+      hideDropdown();
+    }
+  });
+
+  // Start with 3 ingredient rows
+  addIngredientRow();
+  addIngredientRow();
+  addIngredientRow();
+</script>
