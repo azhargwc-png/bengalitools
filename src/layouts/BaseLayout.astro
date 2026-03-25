@@ -54,7 +54,7 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -135,9 +135,9 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 <style is:global>
   /* ─── Font families ─────────────────────────────────── */
   body, body.font-bengali {
-    font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+    font-family: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
     font-size: 1rem;        /* 16px base — Bengali needs this minimum */
-    font-weight: 500;       /* Medium weight — Bengali/Indic digit strokes are thin at 400 */
+    font-weight: 500;       /* Medium weight for readable strokes */
     line-height: 1.65;      /* Bengali glyphs are taller; extra leading helps */
   }
   body.font-english {

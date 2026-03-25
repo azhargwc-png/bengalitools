@@ -20,7 +20,7 @@ export default {
         }
       },
       fontFamily: {
-        bengali: ['Hind Siliguri', 'Noto Sans Bengali', 'sans-serif'],
+        bengali: ['Noto Sans Bengali', 'Hind Siliguri', 'sans-serif'],
         english: ['Inter', 'sans-serif'],
       },
     },
