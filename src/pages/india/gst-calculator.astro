@@ -96,10 +96,24 @@ import AdSlot from '../../components/AdSlot.astro';
         <span class="text-gray-700" data-bn="জিএসটি পরিমাণ" data-en="GST Amount">জিএসটি পরিমাণ</span>
         <span id="result-gst" class="text-xl font-bold text-teal-700"></span>
       </div>
+      <div class="bg-white rounded-xl p-4 border border-gray-200 flex justify-between items-center">
+        <span id="cgst-label" class="text-gray-700" data-bn="সিজিএসটি" data-en="CGST">সিজিএসটি</span>
+        <span id="result-cgst" class="text-xl font-bold text-teal-600"></span>
+      </div>
+      <div class="bg-white rounded-xl p-4 border border-gray-200 flex justify-between items-center">
+        <span id="sgst-label" class="text-gray-700" data-bn="এসজিএসটি" data-en="SGST">এসজিএসটি</span>
+        <span id="result-sgst" class="text-xl font-bold text-teal-600"></span>
+      </div>
       <div class="bg-teal-50 rounded-xl p-4 border border-teal-300 flex justify-between items-center">
         <span class="font-bold text-teal-800" id="total-label" data-bn="জিএসটি সহ মোট দাম" data-en="Total Price with GST">জিএসটি সহ মোট দাম</span>
         <span id="result-total" class="text-2xl font-bold text-teal-700"></span>
       </div>
+      <button
+        onclick="resetCalculator()"
+        class="w-full py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-colors"
+      >
+        <span data-bn="রিসেট করুন" data-en="Reset">রিসেট করুন</span>
+      </button>
     </div>
   </div>
 
@@ -267,18 +281,42 @@ function calculate() {
   }
 
   var fmt = function(n) { return '₹' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+  var halfRate = currentRate / 2;
+  var cgstAmt = gstAmt / 2;
+  var sgstAmt = gstAmt / 2;
+
+  var lang = typeof getLang === 'function' ? getLang() : 'bn';
+  var cgstLabelEl = document.getElementById('cgst-label');
+  var sgstLabelEl = document.getElementById('sgst-label');
+  cgstLabelEl.setAttribute('data-bn', 'সিজিএসটি (' + halfRate + '%)');
+  cgstLabelEl.setAttribute('data-en', 'CGST (' + halfRate + '%)');
+  sgstLabelEl.setAttribute('data-bn', 'এসজিএসটি (' + halfRate + '%)');
+  sgstLabelEl.setAttribute('data-en', 'SGST (' + halfRate + '%)');
+  if (typeof applyLang === 'function') applyLang(lang);
 
   if (currentMode === 'add') {
     document.getElementById('result-original').textContent = fmt(original);
     document.getElementById('result-gst').textContent = fmt(gstAmt) + ' (' + currentRate + '%)';
+    document.getElementById('result-cgst').textContent = fmt(cgstAmt);
+    document.getElementById('result-sgst').textContent = fmt(sgstAmt);
     document.getElementById('result-total').textContent = fmt(total);
   } else {
     document.getElementById('result-original').textContent = fmt(total);
     document.getElementById('result-gst').textContent = fmt(gstAmt) + ' (' + currentRate + '%)';
+    document.getElementById('result-cgst').textContent = fmt(cgstAmt);
+    document.getElementById('result-sgst').textContent = fmt(sgstAmt);
     document.getElementById('result-total').textContent = fmt(original);
   }
 
   resultsEl.classList.remove('hidden');
+}
+
+function resetCalculator() {
+  document.getElementById('price-input').value = '';
+  document.getElementById('custom-rate').value = '';
+  document.getElementById('gst-results').classList.add('hidden');
+  selectRate(18);
+  setMode('add');
 }
 
 document.addEventListener('DOMContentLoaded', function() {

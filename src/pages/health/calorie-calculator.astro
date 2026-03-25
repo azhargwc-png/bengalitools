@@ -140,6 +140,11 @@ import AdSlot from '../../components/AdSlot.astro';
       </div>
       <p id="calorie-bmr-info" class="text-xs text-gray-400 text-center mt-3"></p>
     </div>
+
+    <!-- Reset button -->
+    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm">
+      <span data-bn="পরিষ্কার করুন" data-en="Clear">পরিষ্কার করুন</span> ✕
+    </button>
   </div>
 
   <!-- How to use -->
@@ -350,4 +355,18 @@ import AdSlot from '../../components/AdSlot.astro';
   document.getElementById('cal-weight')?.addEventListener('input', calculate);
   document.getElementById('cal-height')?.addEventListener('input', calculate);
   document.getElementById('cal-activity')?.addEventListener('change', calculate);
+
+  function resetTool() {
+    (document.getElementById('cal-age') as HTMLInputElement).value = '';
+    (document.getElementById('cal-weight') as HTMLInputElement).value = '';
+    (document.getElementById('cal-height') as HTMLInputElement).value = '';
+    (document.getElementById('cal-activity') as HTMLSelectElement).selectedIndex = 0;
+    selectedGender = 'male';
+    const btnMale = document.getElementById('btn-male') as HTMLButtonElement;
+    const btnFemale = document.getElementById('btn-female') as HTMLButtonElement;
+    btnMale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-teal-700 text-white min-h-[44px]';
+    btnFemale.className = 'flex-1 py-2 px-3 rounded-lg font-semibold text-sm transition-all bg-gray-200 text-gray-700 min-h-[44px]';
+    document.getElementById('calorie-result')!.classList.add('hidden');
+  }
+  (window as any).resetTool = resetTool;
 </script>

@@ -47,8 +47,12 @@ import AdSlot from '../../components/AdSlot.astro';
         />
       </div>
     </div>
-    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
-    <div id="temp-context-display" class="mt-2 text-sm text-amber-700 font-medium text-center bg-amber-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+    <div id="result-display" class="mt-4 text-center hidden">
+      <p class="text-4xl font-bold text-teal-700 text-center" id="result-main"></p>
+      <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
+    </div>
+    <div id="temp-context-display" class="mt-2 text-sm text-amber-700 font-medium text-center bg-amber-50 rounded-lg py-2 px-4 hidden"></div>
+    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
   </div>
 
   <!-- Reference temperatures -->
@@ -87,6 +91,26 @@ import AdSlot from '../../components/AdSlot.astro';
       </button>
     </div>
   </div>
+
+  <!-- Quick Reference Table -->
+  <section id="quick-ref" class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="দ্রুত রূপান্তর টেবিল" data-en="Quick Reference Table">দ্রুত রূপান্তর টেবিল</span></h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="সেলসিয়াস (°C)" data-en="Celsius (°C)">সেলসিয়াস (°C)</span></th><th class="p-3 text-left"><span data-bn="ফারেনহাইট (°F)" data-en="Fahrenheit (°F)">ফারেনহাইট (°F)</span></th><th class="p-3 text-left"><span data-bn="বিবরণ" data-en="Note">বিবরণ</span></th></tr></thead>
+        <tbody>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">0°C</td><td class="p-3 font-bold">32°F</td><td class="p-3 text-gray-500"><span data-bn="পানি জমার বিন্দু" data-en="Freezing point">পানি জমার বিন্দু</span></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">10°C</td><td class="p-3 font-bold">50°F</td><td class="p-3 text-gray-500"><span data-bn="শীতল" data-en="Cool">শীতল</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">20°C</td><td class="p-3 font-bold">68°F</td><td class="p-3 text-gray-500"><span data-bn="আরামদায়ক" data-en="Comfortable">আরামদায়ক</span></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">25°C</td><td class="p-3 font-bold">77°F</td><td class="p-3 text-gray-500"><span data-bn="উষ্ণ" data-en="Warm">উষ্ণ</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">30°C</td><td class="p-3 font-bold">86°F</td><td class="p-3 text-gray-500"><span data-bn="গরম" data-en="Hot">গরম</span></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">37°C</td><td class="p-3 font-bold">98.6°F</td><td class="p-3 text-gray-500"><span data-bn="শরীরের স্বাভাবিক তাপমাত্রা" data-en="Normal body temp">শরীরের স্বাভাবিক তাপমাত্রা</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">40°C</td><td class="p-3 font-bold">104°F</td><td class="p-3 text-gray-500"><span data-bn="উচ্চ জ্বর" data-en="High fever">উচ্চ জ্বর</span></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">100°C</td><td class="p-3 font-bold">212°F</td><td class="p-3 text-gray-500"><span data-bn="পানি ফুটার বিন্দু" data-en="Boiling point">পানি ফুটার বিন্দু</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <!-- How to use -->
   <section class="mb-8">
@@ -253,6 +277,8 @@ import AdSlot from '../../components/AdSlot.astro';
 <script>
   const celsiusInput = document.getElementById('celsius-input') as HTMLInputElement;
   const fahrenheitInput = document.getElementById('fahrenheit-input') as HTMLInputElement;
+  const resultDisplay = document.getElementById('result-display') as HTMLElement;
+  const resultMain = document.getElementById('result-main') as HTMLElement;
   const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
   const tempContextDisplay = document.getElementById('temp-context-display') as HTMLElement;
 
@@ -275,12 +301,15 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(celsius)) {
       const fahrenheit = (celsius * 9 / 5) + 32;
       fahrenheitInput.value = fahrenheit.toFixed(2);
+      resultMain.textContent = `${fahrenheit.toFixed(2)}°F`;
       formulaDisplay.textContent = `(${celsius} × 9/5) + 32 = ${fahrenheit.toFixed(2)}°F`;
+      resultDisplay.classList.remove('hidden');
       tempContextDisplay.textContent = getTempContext(celsius);
+      tempContextDisplay.classList.remove('hidden');
     } else {
       fahrenheitInput.value = '';
-      formulaDisplay.textContent = '';
-      tempContextDisplay.textContent = '';
+      resultDisplay.classList.add('hidden');
+      tempContextDisplay.classList.add('hidden');
     }
   });
 
@@ -289,12 +318,22 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(fahrenheit)) {
       const celsius = (fahrenheit - 32) * 5 / 9;
       celsiusInput.value = celsius.toFixed(2);
+      resultMain.textContent = `${celsius.toFixed(2)}°C`;
       formulaDisplay.textContent = `(${fahrenheit} − 32) × 5/9 = ${celsius.toFixed(2)}°C`;
+      resultDisplay.classList.remove('hidden');
       tempContextDisplay.textContent = getTempContext(celsius);
+      tempContextDisplay.classList.remove('hidden');
     } else {
       celsiusInput.value = '';
-      formulaDisplay.textContent = '';
-      tempContextDisplay.textContent = '';
+      resultDisplay.classList.add('hidden');
+      tempContextDisplay.classList.add('hidden');
     }
   });
+
+  (window as any).resetTool = function() {
+    celsiusInput.value = '';
+    fahrenheitInput.value = '';
+    resultDisplay.classList.add('hidden');
+    tempContextDisplay.classList.add('hidden');
+  };
 </script>

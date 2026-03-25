@@ -26,6 +26,7 @@ import AdSlot from '../../components/AdSlot.astro';
       <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
       <div>
         <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <div id="rate-change" class="text-sm mt-1 min-h-[20px]"></div>
         <p class="text-xs text-gray-500">
           <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
           <span id="last-updated">—</span>
@@ -56,6 +57,11 @@ import AdSlot from '../../components/AdSlot.astro';
           class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
         />
       </div>
+    </div>
+    <div class="flex justify-end mt-3">
+      <button onclick="resetCurrency()" class="py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors">
+        <span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span>
+      </button>
     </div>
   </div>
 
@@ -241,6 +247,30 @@ import AdSlot from '../../components/AdSlot.astro';
       if (statusEl) { statusEl.textContent = '🟢 লাইভ রেট'; statusEl.className = 'text-green-600 font-medium text-sm'; }
 
       calculate();
+
+      // Fetch yesterday for comparison
+      try {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (yesterday.getDay() === 0) yesterday.setDate(yesterday.getDate() - 2);
+        if (yesterday.getDay() === 6) yesterday.setDate(yesterday.getDate() - 1);
+        const yDate = yesterday.toISOString().split('T')[0];
+        const resY = await fetch(`https://api.frankfurter.app/${yDate}?from=AED&to=INR`);
+        const dataY = await resY.json();
+        const prevRate = dataY.rates.INR;
+        const diff = currentRate - prevRate;
+        const diffPct = ((diff / prevRate) * 100).toFixed(2);
+        const changeEl = document.getElementById('rate-change');
+        if (changeEl) {
+          if (diff > 0.001) {
+            changeEl.innerHTML = `<span class="text-green-600 font-semibold">↑ +${Math.abs(diff).toFixed(4)} (+${diffPct}%) গতকালের তুলনায়</span>`;
+          } else if (diff < -0.001) {
+            changeEl.innerHTML = `<span class="text-red-500 font-semibold">↓ ${Math.abs(diff).toFixed(4)} (${diffPct}%) গতকালের তুলনায়</span>`;
+          } else {
+            changeEl.innerHTML = `<span class="text-gray-500">→ অপরিবর্তিত</span>`;
+          }
+        }
+      } catch(e) { /* silently ignore if yesterday fetch fails */ }
     } catch(e) {
       const statusEl = document.getElementById('rate-status');
       if (statusEl) { statusEl.textContent = '⚠️ রেট লোড করতে সমস্যা'; statusEl.className = 'text-orange-600 font-medium text-sm'; }
@@ -268,6 +298,14 @@ import AdSlot from '../../components/AdSlot.astro';
       fromInput.value = (val / currentRate).toFixed(2);
     }
   }
+
+  function resetCurrency() {
+    const fromInput = document.getElementById('from-input') as HTMLInputElement;
+    const toInput = document.getElementById('to-input') as HTMLInputElement;
+    if (fromInput) fromInput.value = '';
+    if (toInput) toInput.value = '';
+  }
+  (window as any).resetCurrency = resetCurrency;
 
   document.getElementById('from-input')?.addEventListener('input', calculate);
   document.getElementById('to-input')?.addEventListener('input', calculateReverse);
