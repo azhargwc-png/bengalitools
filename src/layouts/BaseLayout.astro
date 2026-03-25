@@ -137,6 +137,7 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
   body, body.font-bengali {
     font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
     font-size: 1rem;        /* 16px base — Bengali needs this minimum */
+    font-weight: 500;       /* Medium weight — Bengali/Indic digit strokes are thin at 400 */
     line-height: 1.65;      /* Bengali glyphs are taller; extra leading helps */
   }
   body.font-english {
