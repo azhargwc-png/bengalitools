@@ -66,8 +66,30 @@ import AdSlot from '../../components/AdSlot.astro';
         />
       </div>
     </div>
-    <div id="formula-display" class="mt-4 text-sm text-teal-700 font-medium text-center bg-teal-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
+    <div id="result-display" class="mt-4 text-center hidden">
+      <p class="text-4xl font-bold text-teal-700 text-center" id="result-main"></p>
+      <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
+    </div>
+    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
   </div>
+
+  <!-- Quick Reference Table -->
+  <section id="quick-ref" class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="দ্রুত রূপান্তর টেবিল" data-en="Quick Reference Table">দ্রুত রূপান্তর টেবিল</span></h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="লিটার (L)" data-en="Litres (L)">লিটার (L)</span></th><th class="p-3 text-left"><span data-bn="US গ্যালন" data-en="US Gallon">US গ্যালন</span></th><th class="p-3 text-left"><span data-bn="UK গ্যালন" data-en="UK Gallon">UK গ্যালন</span></th></tr></thead>
+        <tbody>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">1 L</td><td class="p-3 font-bold">0.264 gal</td><td class="p-3 font-bold">0.220 gal</td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">5 L</td><td class="p-3 font-bold">1.321 gal</td><td class="p-3 font-bold">1.100 gal</td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">10 L</td><td class="p-3 font-bold">2.642 gal</td><td class="p-3 font-bold">2.200 gal</td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">20 L</td><td class="p-3 font-bold">5.283 gal</td><td class="p-3 font-bold">4.399 gal</td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">50 L</td><td class="p-3 font-bold">13.21 gal</td><td class="p-3 font-bold">10.998 gal</td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">100 L</td><td class="p-3 font-bold">26.42 gal</td><td class="p-3 font-bold">21.997 gal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <!-- How to use -->
   <section class="mb-8">
@@ -234,6 +256,8 @@ import AdSlot from '../../components/AdSlot.astro';
 <script>
   const litreInput = document.getElementById('litre-input') as HTMLInputElement;
   const gallonInput = document.getElementById('gallon-input') as HTMLInputElement;
+  const resultDisplay = document.getElementById('result-display') as HTMLElement;
+  const resultMain = document.getElementById('result-main') as HTMLElement;
   const formulaDisplay = document.getElementById('formula-display') as HTMLElement;
   const btnUs = document.getElementById('btn-us') as HTMLButtonElement;
   const btnUk = document.getElementById('btn-uk') as HTMLButtonElement;
@@ -270,10 +294,12 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(litres) && litres >= 0) {
       const gallons = litres / gallonFactor;
       gallonInput.value = gallons.toFixed(4);
+      resultMain.textContent = `${gallons.toFixed(4)} ${gallonType} gal`;
       formulaDisplay.textContent = `${litres} L ÷ ${gallonFactor} = ${gallons.toFixed(4)} ${gallonType} gallons`;
+      resultDisplay.classList.remove('hidden');
     } else {
       gallonInput.value = '';
-      formulaDisplay.textContent = '';
+      resultDisplay.classList.add('hidden');
     }
   });
 
@@ -282,10 +308,18 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(gallons) && gallons >= 0) {
       const litres = gallons * gallonFactor;
       litreInput.value = litres.toFixed(4);
+      resultMain.textContent = `${litres.toFixed(4)} L`;
       formulaDisplay.textContent = `${gallons} ${gallonType} gallons × ${gallonFactor} = ${litres.toFixed(4)} L`;
+      resultDisplay.classList.remove('hidden');
     } else {
       litreInput.value = '';
-      formulaDisplay.textContent = '';
+      resultDisplay.classList.add('hidden');
     }
   });
+
+  (window as any).resetTool = function() {
+    litreInput.value = '';
+    gallonInput.value = '';
+    resultDisplay.classList.add('hidden');
+  };
 </script>
