@@ -185,17 +185,5 @@ export const tools = {
       desc: { bn: 'মাসিক বেতন থেকে ঘণ্টায় বেতন', en: 'Monthly salary to hourly rate' },
       icon: '💰',
     },
-    {
-      slug: '/india/gold-price',
-      name: { bn: 'আজকের সোনার দাম', en: 'Gold Price Today' },
-      desc: { bn: 'ভারতে সোনার লাইভ রেট', en: 'Live gold rate in India' },
-      icon: '🥇',
-    },
-    {
-      slug: '/india/silver-price',
-      name: { bn: 'আজকের রূপার দাম', en: 'Silver Price Today' },
-      desc: { bn: 'ভারতে রূপার লাইভ রেট', en: 'Live silver rate in India' },
-      icon: '🥈',
-    },
   ],
 };
