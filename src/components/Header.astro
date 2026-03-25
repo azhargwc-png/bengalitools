@@ -21,7 +21,7 @@
             type="text"
             id="header-search"
             placeholder="টুল খুঁজুন..."
-            class="w-48 lg:w-64 px-3 py-2 rounded-lg text-gray-900 text-sm bg-white border-0 focus:outline-none focus:ring-2 focus:ring-saffron-400"
+            class="w-48 lg:w-64 px-3 py-2 rounded-lg text-gray-900 text-base bg-white border-0 focus:outline-none focus:ring-2 focus:ring-saffron-400"
             autocomplete="off"
           />
           <div id="search-results" class="hidden absolute top-full left-0 w-full bg-white rounded-lg shadow-xl mt-1 max-h-72 overflow-y-auto z-50 text-gray-900"></div>
@@ -31,7 +31,7 @@
         <button
           id="lang-toggle"
           onclick="toggleLang()"
-          class="px-3 py-2 bg-saffron-500 hover:bg-saffron-600 text-white rounded-lg text-sm font-medium transition-colors min-h-[44px]"
+          class="px-3 py-2 bg-saffron-500 hover:bg-saffron-600 text-white rounded-lg text-base font-medium transition-colors min-h-[44px]"
           aria-label="Switch language"
         >
           English
@@ -52,7 +52,7 @@
     </div>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-1 pb-2 text-sm overflow-x-auto">
+    <nav class="hidden md:flex items-center gap-1 pb-2 text-base overflow-x-auto">
       <a href="/converters/kg-to-lbs" class="nav-link whitespace-nowrap px-3 py-1.5 rounded hover:bg-teal-600 transition-colors">
         <span data-bn="কনভার্টার" data-en="Converters">কনভার্টার</span>
       </a>
@@ -85,11 +85,11 @@
         type="text"
         id="mobile-search"
         placeholder="টুল খুঁজুন..."
-        class="w-full px-3 py-2 rounded-lg text-gray-900 text-sm bg-white border-0 focus:outline-none"
+        class="w-full px-3 py-2 rounded-lg text-gray-900 text-base bg-white border-0 focus:outline-none"
         autocomplete="off"
       />
     </div>
-    <nav class="grid grid-cols-2 gap-2 text-sm">
+    <nav class="grid grid-cols-2 gap-2 text-base">
       <a href="/converters/kg-to-lbs" class="px-3 py-2 bg-teal-700 rounded hover:bg-teal-600 transition-colors">
         <span data-bn="ইউনিট কনভার্টার" data-en="Unit Converters">ইউনিট কনভার্টার</span>
       </a>
@@ -159,9 +159,9 @@ function doSearch(q, resultsEl) {
   }).slice(0, 8);
   if (r.length === 0) { resultsEl.classList.add('hidden'); return; }
   resultsEl.innerHTML = r.map(function(t) {
-    return '<a href="' + t.url + '" class="flex items-center px-4 py-3 hover:bg-gray-100 border-b border-gray-100 last:border-0 text-sm">' +
-      '<span class="font-medium text-gray-900">' + t.name + '</span>' +
-      '<span class="ml-2 text-gray-500 text-xs">' + t.en + '</span></a>';
+    return '<a href="' + t.url + '" class="flex items-center px-4 py-3 hover:bg-gray-100 border-b border-gray-100 last:border-0">' +
+      '<span class="font-medium text-gray-900 text-base">' + t.name + '</span>' +
+      '<span class="ml-2 text-gray-500 text-sm">' + t.en + '</span></a>';
   }).join('');
   resultsEl.classList.remove('hidden');
 }
