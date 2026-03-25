@@ -152,10 +152,18 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
      These rules bump common Tailwind size classes +1–2px when
      the page is in Bengali mode (data-lang="bn" on <html>).
   */
-  [data-lang="bn"] .text-xs  { font-size: 0.8125rem; }   /* 13px  (was 12px) */
+  [data-lang="bn"] .text-xs  { font-size: 0.875rem;  }   /* 14px  (was 12px) */
   [data-lang="bn"] .text-sm  { font-size: 1rem;      }   /* 16px  (was 14px) */
   [data-lang="bn"] .text-base { font-size: 1.0625rem; }  /* 17px  (was 16px) */
   [data-lang="bn"] .text-lg  { font-size: 1.1875rem; }   /* 19px  (was 18px) */
+
+  /* font-mono falls back to a Latin monospace font that can't render Bengali.
+     In Bengali mode, switch to the Bengali font so digits and script show correctly. */
+  [data-lang="bn"] .font-mono {
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
 
   /* ─── AdSense placeholder slots ────────────────────── */
   .adsense-slot {
