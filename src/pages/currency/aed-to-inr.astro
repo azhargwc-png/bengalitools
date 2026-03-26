@@ -27,7 +27,7 @@ import AdSlot from '../../components/AdSlot.astro';
       <div>
         <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
         <div id="rate-change" class="text-sm mt-1 min-h-[20px]"></div>
-        <p class="text-xs text-gray-500">
+        <p class="text-sm text-gray-500">
           <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
           <span id="last-updated">—</span>
         </p>
@@ -248,10 +248,11 @@ import AdSlot from '../../components/AdSlot.astro';
 
       calculate();
 
-      // Fetch yesterday for comparison
+      // After getting currentRate, fetch yesterday for comparison
       try {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
+        // Skip weekends (go to Friday if Saturday/Sunday)
         if (yesterday.getDay() === 0) yesterday.setDate(yesterday.getDate() - 2);
         if (yesterday.getDay() === 6) yesterday.setDate(yesterday.getDate() - 1);
         const yDate = yesterday.toISOString().split('T')[0];
@@ -263,9 +264,9 @@ import AdSlot from '../../components/AdSlot.astro';
         const changeEl = document.getElementById('rate-change');
         if (changeEl) {
           if (diff > 0.001) {
-            changeEl.innerHTML = `<span class="text-green-600 font-semibold">↑ +${Math.abs(diff).toFixed(4)} (+${diffPct}%) গতকালের তুলনায়</span>`;
+            changeEl.innerHTML = `<span class="text-green-600 font-semibold">↑ +${Math.abs(diff).toFixed(4)} (+${diffPct}%)</span>`;
           } else if (diff < -0.001) {
-            changeEl.innerHTML = `<span class="text-red-500 font-semibold">↓ ${Math.abs(diff).toFixed(4)} (${diffPct}%) গতকালের তুলনায়</span>`;
+            changeEl.innerHTML = `<span class="text-red-600 font-semibold">↓ ${diff.toFixed(4)} (${diffPct}%)</span>`;
           } else {
             changeEl.innerHTML = `<span class="text-gray-500">→ অপরিবর্তিত</span>`;
           }

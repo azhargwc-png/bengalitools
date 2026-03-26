@@ -32,7 +32,7 @@ import AdSlot from '../../components/AdSlot.astro';
           placeholder="যেমন: 5"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
         />
       </div>
       <div>
@@ -45,15 +45,15 @@ import AdSlot from '../../components/AdSlot.astro';
           placeholder="যেমন: 3.11"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
         />
       </div>
     </div>
     <div id="result-display" class="mt-4 text-center hidden">
-      <p class="text-4xl font-bold text-teal-700 text-center" id="result-main"></p>
+      <p class="text-4xl font-bold text-teal-700" id="result-main"></p>
       <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
     </div>
-    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
+    <button id="reset-btn" onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
   </div>
 
   <!-- Quick Reference Table -->
@@ -61,16 +61,18 @@ import AdSlot from '../../components/AdSlot.astro';
     <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="দ্রুত রূপান্তর টেবিল" data-en="Quick Reference Table">দ্রুত রূপান্তর টেবিল</span></h2>
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
-        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="কিলোমিটার (km)" data-en="Kilometers (km)">কিলোমিটার (km)</span></th><th class="p-3 text-left"><span data-bn="মাইল (miles)" data-en="Miles">মাইল (miles)</span></th></tr></thead>
+        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="কিলোমিটার (km)" data-en="km">কিলোমিটার (km)</span></th><th class="p-3 text-left"><span data-bn="মাইল (miles)" data-en="miles">মাইল (miles)</span></th><th class="p-3 text-left"><span data-bn="উদাহরণ" data-en="Example">উদাহরণ</span></th></tr></thead>
         <tbody>
-          <tr class="bg-white border-b border-gray-200"><td class="p-3">1 km</td><td class="p-3 font-bold">0.62 mi</td></tr>
-          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">5 km</td><td class="p-3 font-bold">3.11 mi</td></tr>
-          <tr class="bg-white border-b border-gray-200"><td class="p-3">10 km</td><td class="p-3 font-bold">6.21 mi</td></tr>
-          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">21 km</td><td class="p-3 font-bold">13.05 mi</td></tr>
-          <tr class="bg-white border-b border-gray-200"><td class="p-3">42 km</td><td class="p-3 font-bold">26.10 mi</td></tr>
-          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">50 km</td><td class="p-3 font-bold">31.07 mi</td></tr>
-          <tr class="bg-white border-b border-gray-200"><td class="p-3">100 km</td><td class="p-3 font-bold">62.14 mi</td></tr>
-          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">500 km</td><td class="p-3 font-bold">310.7 mi</td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">1 km</td><td class="p-3 font-bold">0.62 mi</td><td class="p-3"></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">5 km</td><td class="p-3 font-bold">3.11 mi</td><td class="p-3"><span data-bn="সকালের হাঁটা" data-en="Morning walk">সকালের হাঁটা</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">10 km</td><td class="p-3 font-bold">6.21 mi</td><td class="p-3"></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">21 km</td><td class="p-3 font-bold">13.05 mi</td><td class="p-3"><span data-bn="হাফ ম্যারাথন" data-en="Half marathon">হাফ ম্যারাথন</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">42 km</td><td class="p-3 font-bold">26.10 mi</td><td class="p-3"><span data-bn="ম্যারাথন" data-en="Marathon">ম্যারাথন</span></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">50 km</td><td class="p-3 font-bold">31.07 mi</td><td class="p-3"></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">100 km</td><td class="p-3 font-bold">62.14 mi</td><td class="p-3"></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">300 km</td><td class="p-3 font-bold">186.41 mi</td><td class="p-3"><span data-bn="কলকাতা-ঢাকা" data-en="Kolkata-Dhaka">কলকাতা-ঢাকা</span></td></tr>
+          <tr class="bg-white border-b border-gray-200"><td class="p-3">500 km</td><td class="p-3 font-bold">310.69 mi</td><td class="p-3"></td></tr>
+          <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">1000 km</td><td class="p-3 font-bold">621.37 mi</td><td class="p-3"></td></tr>
         </tbody>
       </table>
     </div>
@@ -250,7 +252,7 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(km) && km >= 0) {
       const miles = km * 0.621371;
       milesInput.value = miles.toFixed(4);
-      resultMain.textContent = `${miles.toFixed(4)} miles`;
+      resultMain.textContent = `${miles.toFixed(2)} miles`;
       formulaDisplay.textContent = `${km} km × 0.621371 = ${miles.toFixed(4)} miles`;
       resultDisplay.classList.remove('hidden');
     } else {
@@ -264,7 +266,7 @@ import AdSlot from '../../components/AdSlot.astro';
     if (!isNaN(miles) && miles >= 0) {
       const km = miles / 0.621371;
       kmInput.value = km.toFixed(4);
-      resultMain.textContent = `${km.toFixed(4)} km`;
+      resultMain.textContent = `${km.toFixed(2)} km`;
       formulaDisplay.textContent = `${miles} miles ÷ 0.621371 = ${km.toFixed(4)} km`;
       resultDisplay.classList.remove('hidden');
     } else {

@@ -47,10 +47,15 @@ import AdSlot from '../../components/AdSlot.astro';
       </div>
     </div>
 
+    <!-- Reset button -->
+    <div class="flex justify-end mt-3">
+      <button onclick="resetAge()" class="py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
+    </div>
+
     <!-- Result -->
-    <div id="age-result" class="hidden">
+    <div id="age-result" class="hidden mt-4">
       <!-- Main age display -->
-      <div class="grid grid-cols-3 gap-3 mb-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
         <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
           <p id="age-years" class="text-4xl font-bold text-teal-700">0</p>
           <p class="text-sm text-gray-600 mt-1">
@@ -69,14 +74,12 @@ import AdSlot from '../../components/AdSlot.astro';
             <span data-bn="দিন" data-en="Days">দিন</span>
           </p>
         </div>
-      </div>
-
-      <!-- Hours lived -->
-      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center mb-4">
-        <p id="age-hours" class="text-4xl font-bold text-teal-700">0</p>
-        <p class="text-sm text-gray-600 mt-1">
-          <span data-bn="ঘণ্টা বেঁচে আছেন (মোট)" data-en="Hours Lived (total)">ঘণ্টা বেঁচে আছেন (মোট)</span>
-        </p>
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p id="age-hours" class="text-4xl font-bold text-teal-700">0</p>
+          <p class="text-sm text-gray-600 mt-1">
+            <span data-bn="ঘণ্টা" data-en="Hours">ঘণ্টা</span>
+          </p>
+        </div>
       </div>
 
       <!-- Extra info -->
@@ -107,11 +110,6 @@ import AdSlot from '../../components/AdSlot.astro';
         </p>
       </div>
     </div>
-
-    <!-- Reset button -->
-    <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm">
-      <span data-bn="পরিষ্কার করুন" data-en="Clear">পরিষ্কার করুন</span> ✕
-    </button>
   </div>
 
   <!-- How to use -->
@@ -317,6 +315,9 @@ import AdSlot from '../../components/AdSlot.astro';
     // Total days lived
     const totalDays = Math.floor((calcDate.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24));
 
+    // Total hours lived
+    const totalHours = Math.floor(totalDays * 24);
+
     // Day of week born
     const dayIdx = dob.getDay();
     const bornWeekday = `${weekdays[dayIdx]} / ${weekdaysEn[dayIdx]}`;
@@ -334,21 +335,21 @@ import AdSlot from '../../components/AdSlot.astro';
     document.getElementById('age-years')!.textContent = String(years);
     document.getElementById('age-months')!.textContent = String(months);
     document.getElementById('age-days')!.textContent = String(days);
-    document.getElementById('born-weekday')!.textContent = bornWeekday;
-    const totalHours = totalDays * 24;
-    document.getElementById('total-days')!.textContent = totalDays.toLocaleString('bn-IN') + ' দিন / ' + totalDays.toLocaleString() + ' days';
     document.getElementById('age-hours')!.textContent = totalHours.toLocaleString();
+    document.getElementById('born-weekday')!.textContent = bornWeekday;
+    document.getElementById('total-days')!.textContent = totalDays.toLocaleString('bn-IN') + ' দিন / ' + totalDays.toLocaleString() + ' days';
     document.getElementById('next-birthday')!.textContent = nextBdayStr;
     document.getElementById('days-to-birthday')!.textContent = daysToNextBday === 0 ? 'আজই জন্মদিন! 🎂 / Today!' : `${daysToNextBday} দিন / ${daysToNextBday} days`;
   }
 
-  dobInput?.addEventListener('change', calculate);
-  calcDateInput?.addEventListener('change', calculate);
-
-  function resetTool() {
+  function resetAge() {
     dobInput.value = '';
     calcDateInput.value = today.toISOString().split('T')[0];
     document.getElementById('age-result')!.classList.add('hidden');
   }
-  (window as any).resetTool = resetTool;
+
+  (window as any).resetAge = resetAge;
+
+  dobInput?.addEventListener('change', calculate);
+  calcDateInput?.addEventListener('change', calculate);
 </script>
