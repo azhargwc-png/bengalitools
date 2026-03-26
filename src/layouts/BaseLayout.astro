@@ -62,6 +62,10 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <!-- Data attributes for bilingual meta -->
     {titleBn && <meta name="title-bn" content={titleBn} />}
     {descriptionBn && <meta name="description-bn" content={descriptionBn} />}
+
+    <!-- Google AdSense — Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7942711962511546"
+         crossorigin="anonymous"></script>
   </head>
   <body class="bg-white text-gray-900 antialiased font-bengali">
     <slot />

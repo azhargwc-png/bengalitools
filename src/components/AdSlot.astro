@@ -5,6 +5,12 @@ export interface Props {
 const { slot = 'default' } = Astro.props;
 ---
 
-<div class="adsense-slot" data-slot={slot} aria-label="Advertisement">
-  <!-- Google AdSense ad will appear here after approval -->
-</div>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7942711962511546"
+     data-ad-slot={slot}
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script is:inline>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
