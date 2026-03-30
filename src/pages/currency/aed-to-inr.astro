@@ -233,9 +233,12 @@ import AdSlot from '../../components/AdSlot.astro';
 
   async function fetchRate() {
     try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=AED&to=INR');
+      // AED is fixed-pegged to USD at 3.6725 AED = 1 USD
+      // So we fetch USD→INR and derive AED→INR = usdToInr / 3.6725
+      const AED_USD_PEG = 3.6725;
+      const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=INR');
       const data = await res.json();
-      currentRate = data.rates.INR;
+      currentRate = data.rates.INR / AED_USD_PEG;
       rateLoaded = true;
 
       const rateEl = document.getElementById('live-rate');
@@ -256,9 +259,9 @@ import AdSlot from '../../components/AdSlot.astro';
         if (yesterday.getDay() === 0) yesterday.setDate(yesterday.getDate() - 2);
         if (yesterday.getDay() === 6) yesterday.setDate(yesterday.getDate() - 1);
         const yDate = yesterday.toISOString().split('T')[0];
-        const resY = await fetch(`https://api.frankfurter.app/${yDate}?from=AED&to=INR`);
+        const resY = await fetch(`https://api.frankfurter.app/${yDate}?from=USD&to=INR`);
         const dataY = await resY.json();
-        const prevRate = dataY.rates.INR;
+        const prevRate = dataY.rates.INR / AED_USD_PEG;
         const diff = currentRate - prevRate;
         const diffPct = ((diff / prevRate) * 100).toFixed(2);
         const changeEl = document.getElementById('rate-change');

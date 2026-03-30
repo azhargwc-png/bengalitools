@@ -234,7 +234,7 @@ import AdSlot from '../../components/AdSlot.astro';
 
   async function fetchRate() {
     try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=BDT&to=INR');
+      const res = await fetch('https://open.er-api.com/v6/latest/BDT');
       const data = await res.json();
       currentRate = data.rates.INR;
       rateLoaded = true;
