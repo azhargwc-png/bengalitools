@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.bengalitools.com" }],
+      "destination": "https://bengalitools.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "bengalitools.vercel.app" }],
+      "destination": "https://bengalitools.com/:path*",
+      "permanent": true
+    }
+  ]
+}
