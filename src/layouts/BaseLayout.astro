@@ -17,7 +17,8 @@ const {
   ogType = 'website',
 } = Astro.props;
 
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const rawPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
 ---
 
 <!doctype html>

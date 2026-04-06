@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://bengalitools.com',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [
     sitemap(),
     tailwind(),
