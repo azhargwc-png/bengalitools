@@ -248,74 +248,32 @@ import { foods } from '../../data/foods.js';
 
 <script define:vars={{ foodsData: foods }}>
   const MAX_INGREDIENTS = 15;
-  let ingredients = []; // { foodId, foodName, caloriesPer100, grams }
+  let ingredients = [];
   let activeInputIndex = null;
 
   const ingredientsList = document.getElementById('ingredients-list');
-  const addBtn = document.getElementById('add-ingredient-btn');
-  const clearAllBtn = document.getElementById('clear-all-btn');
-  const servingsSelect = document.getElementById('servings-select');
-  const recipeResult = document.getElementById('recipe-result');
-  const dropdown = document.getElementById('autocomplete-dropdown');
+  const addBtn          = document.getElementById('add-ingredient-btn');
+  const clearAllBtn     = document.getElementById('clear-all-btn');
+  const servingsSelect  = document.getElementById('servings-select');
+  const recipeResult    = document.getElementById('recipe-result');
+  const dropdown        = document.getElementById('autocomplete-dropdown');
 
-  function updateClearAllVisibility() {
-    if (ingredients.length > 0) {
-      clearAllBtn.classList.remove('hidden');
-    } else {
-      clearAllBtn.classList.add('hidden');
-    }
-  }
-
-  function addIngredientRow() {
-    if (ingredients.length >= MAX_INGREDIENTS) return;
-    const idx = ingredients.length;
-    ingredients.push({ foodId: null, foodName: '', caloriesPer100: 0, grams: 0 });
-    renderIngredients();
-    updateClearAllVisibility();
-    // Focus the new search input
-    setTimeout(() => {
-      const input = document.getElementById(`food-input-${idx}`);
-      if (input) input.focus();
-    }, 50);
-    if (ingredients.length >= MAX_INGREDIENTS) {
-      addBtn.classList.add('opacity-50', 'cursor-not-allowed');
-    }
-  }
-
-  function removeIngredient(idx) {
-    ingredients.splice(idx, 1);
-    renderIngredients();
-    updateResult();
-    updateClearAllVisibility();
-    if (ingredients.length < MAX_INGREDIENTS) {
-      addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-  }
-
-  function clearAll() {
-    ingredients = [];
-    renderIngredients();
-    updateResult();
-    updateClearAllVisibility();
-    addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-  }
-
+  // ── Render full list (only on add/remove, NOT on grams input) ─────────────
   function renderIngredients() {
     ingredientsList.innerHTML = ingredients.map((ing, idx) => `
-      <div class="flex gap-2 items-start" data-index="${idx}">
+      <div class="flex gap-2 items-center" data-index="${idx}">
         <div class="flex-1 relative">
           <input
             type="text"
             id="food-input-${idx}"
-            value="${ing.foodName}"
+            value="${ing.foodName.replace(/"/g, '&quot;')}"
             placeholder="খাবারের নাম / food name..."
             autocomplete="off"
-            class="w-full px-3 py-2.5 border-2 ${ing.foodId ? 'border-teal-400' : 'border-gray-300'} rounded-xl text-sm focus:border-teal-500 focus:outline-none"
+            class="w-full px-3 py-2.5 border-2 ${ing.foodId ? 'border-teal-400 bg-teal-50' : 'border-gray-300'} rounded-xl text-sm focus:border-teal-500 focus:outline-none"
             data-idx="${idx}"
           />
-          ${ing.caloriesPer100 > 0 ? `<span class="absolute right-2 top-2.5 text-xs text-teal-600 font-medium">${ing.caloriesPer100} kcal/100g</span>` : ''}
         </div>
-        <div class="w-28">
+        <div class="w-28 shrink-0">
           <input
             type="number"
             id="grams-input-${idx}"
@@ -326,82 +284,113 @@ import { foods } from '../../data/foods.js';
             data-idx="${idx}"
           />
         </div>
-        <div class="w-16 text-right pt-2.5">
+        <div class="w-16 shrink-0 text-right" id="cal-display-${idx}">
           ${ing.foodId && ing.grams > 0 ? `<span class="text-sm font-bold text-teal-700">${Math.round(ing.caloriesPer100 * ing.grams / 100)}</span><span class="text-xs text-gray-400"> kcal</span>` : ''}
         </div>
-        <button class="remove-btn pt-1.5 text-gray-400 hover:text-red-500 transition-colors text-xl leading-none" data-idx="${idx}">×</button>
+        <button class="remove-btn shrink-0 text-gray-400 hover:text-red-500 text-xl leading-none px-1" data-idx="${idx}">×</button>
       </div>
     `).join('');
 
-    // Attach events
-    document.querySelectorAll('[id^="food-input-"]').forEach(input => {
+    ingredientsList.querySelectorAll('[id^="food-input-"]').forEach(input => {
       input.addEventListener('input', handleFoodInput);
       input.addEventListener('focus', handleFoodFocus);
       input.addEventListener('blur', () => setTimeout(hideDropdown, 200));
     });
-    document.querySelectorAll('[id^="grams-input-"]').forEach(input => {
+    ingredientsList.querySelectorAll('[id^="grams-input-"]').forEach(input => {
       input.addEventListener('input', handleGramsInput);
     });
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', () => removeIngredient(parseInt(btn.dataset.idx)));
+    ingredientsList.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        ingredients.splice(parseInt(btn.dataset.idx), 1);
+        renderIngredients();
+        updateResult();
+        syncUI();
+      });
     });
   }
 
+  function syncUI() {
+    clearAllBtn.classList.toggle('hidden', ingredients.length === 0);
+    addBtn.classList.toggle('opacity-50', ingredients.length >= MAX_INGREDIENTS);
+    addBtn.classList.toggle('cursor-not-allowed', ingredients.length >= MAX_INGREDIENTS);
+  }
+
+  function addIngredientRow() {
+    if (ingredients.length >= MAX_INGREDIENTS) return;
+    const idx = ingredients.length;
+    ingredients.push({ foodId: null, foodName: '', caloriesPer100: 0, grams: 0 });
+    renderIngredients();
+    syncUI();
+    setTimeout(() => document.getElementById(`food-input-${idx}`)?.focus(), 50);
+  }
+
+  // ── Food name input handlers ───────────────────────────────────────────────
   function handleFoodFocus(e) {
     activeInputIndex = parseInt(e.target.dataset.idx);
-    const q = e.target.value;
-    showDropdown(q, activeInputIndex, e.target);
+    showDropdown(e.target.value, activeInputIndex, e.target);
   }
 
   function handleFoodInput(e) {
     const idx = parseInt(e.target.dataset.idx);
     activeInputIndex = idx;
-    ingredients[idx].foodName = e.target.value;
-    ingredients[idx].foodId = null;
+    ingredients[idx].foodName    = e.target.value;
+    ingredients[idx].foodId      = null;
     ingredients[idx].caloriesPer100 = 0;
+    // Reset border without re-rendering the whole list
+    e.target.className = e.target.className.replace('border-teal-400 bg-teal-50', 'border-gray-300');
+    updateCalDisplay(idx);
     showDropdown(e.target.value, idx, e.target);
     updateResult();
   }
 
+  // ── Grams input — update display in-place, no full re-render ─────────────
   function handleGramsInput(e) {
     const idx = parseInt(e.target.dataset.idx);
     ingredients[idx].grams = parseFloat(e.target.value) || 0;
-    renderIngredients();
+    updateCalDisplay(idx);
     updateResult();
   }
 
+  function updateCalDisplay(idx) {
+    const ing = ingredients[idx];
+    const el  = document.getElementById(`cal-display-${idx}`);
+    if (!el) return;
+    if (ing.foodId && ing.grams > 0) {
+      const cal = Math.round(ing.caloriesPer100 * ing.grams / 100);
+      el.innerHTML = `<span class="text-sm font-bold text-teal-700">${cal}</span><span class="text-xs text-gray-400"> kcal</span>`;
+    } else {
+      el.innerHTML = '';
+    }
+  }
+
+  // ── Autocomplete dropdown ─────────────────────────────────────────────────
   function showDropdown(query, idx, inputEl) {
     const q = query.toLowerCase().trim();
-    let matches = foodsData;
-    if (q) {
-      matches = foodsData.filter(f =>
-        f.bn.includes(query) || f.en.toLowerCase().includes(q)
-      );
-    }
+    let matches = q
+      ? foodsData.filter(f => f.bn.includes(query) || f.en.toLowerCase().includes(q))
+      : foodsData.slice(0, 10);
     matches = matches.slice(0, 10);
 
     if (matches.length === 0) { hideDropdown(); return; }
 
     const rect = inputEl.getBoundingClientRect();
-    dropdown.style.top = (rect.bottom + window.scrollY + 4) + 'px';
-    dropdown.style.left = (rect.left + window.scrollX) + 'px';
+    dropdown.style.top   = (rect.bottom + window.scrollY + 4) + 'px';
+    dropdown.style.left  = (rect.left  + window.scrollX)     + 'px';
     dropdown.style.width = rect.width + 'px';
 
     dropdown.innerHTML = matches.map(f => `
       <button
-        class="w-full text-left px-3 py-2 hover:bg-teal-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center"
-        data-food-id="${f.id}"
-        data-food-bn="${f.bn}"
-        data-food-en="${f.en}"
-        data-calories="${f.calories}"
+        class="w-full text-left px-3 py-2.5 hover:bg-teal-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center gap-2"
+        data-food-id="${f.id}" data-food-bn="${f.bn.replace(/"/g, '&quot;')}"
+        data-food-en="${f.en}" data-calories="${f.calories}"
       >
-        <span><span class="font-medium">${f.bn}</span> <span class="text-gray-400 text-xs">${f.en}</span></span>
-        <span class="text-teal-600 text-xs font-medium">${f.calories} kcal/100g</span>
+        <span class="min-w-0 truncate"><span class="font-medium">${f.bn}</span> <span class="text-gray-400 text-xs">${f.en}</span></span>
+        <span class="shrink-0 text-teal-600 text-xs font-medium">${f.calories} kcal/100g</span>
       </button>
     `).join('');
 
     dropdown.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('mousedown', (e) => {
+      btn.addEventListener('mousedown', e => {
         e.preventDefault();
         selectFood(idx, btn.dataset.foodId, btn.dataset.foodBn, btn.dataset.foodEn, parseInt(btn.dataset.calories));
       });
@@ -411,77 +400,74 @@ import { foods } from '../../data/foods.js';
   }
 
   function selectFood(idx, foodId, bn, en, calories) {
-    ingredients[idx].foodId = foodId;
-    ingredients[idx].foodName = bn + ' (' + en + ')';
+    ingredients[idx].foodId        = foodId;
+    ingredients[idx].foodName      = bn;
     ingredients[idx].caloriesPer100 = calories;
     hideDropdown();
-    renderIngredients();
+    // Update the food input field in-place
+    const foodInput = document.getElementById(`food-input-${idx}`);
+    if (foodInput) {
+      foodInput.value = bn + ' (' + en + ')';
+      foodInput.className = foodInput.className
+        .replace('border-gray-300', '')
+        .replace('border-teal-400 bg-teal-50', '') + ' border-teal-400 bg-teal-50';
+    }
+    updateCalDisplay(idx);
     updateResult();
-    // Focus grams input
-    setTimeout(() => {
-      const gi = document.getElementById(`grams-input-${idx}`);
-      if (gi) gi.focus();
-    }, 50);
+    setTimeout(() => document.getElementById(`grams-input-${idx}`)?.focus(), 50);
   }
 
   function hideDropdown() {
     dropdown.classList.add('hidden');
   }
 
+  // ── Results panel ──────────────────────────────────────────────────────────
   function updateResult() {
     const servings = parseInt(servingsSelect.value) || 4;
-    const validIngredients = ingredients.filter(ing => ing.foodId && ing.grams > 0);
+    const valid    = ingredients.filter(ing => ing.foodId && ing.grams > 0);
 
-    if (validIngredients.length === 0) {
-      recipeResult.classList.add('hidden');
-      return;
-    }
+    if (valid.length === 0) { recipeResult.classList.add('hidden'); return; }
 
-    const totalCal = validIngredients.reduce((sum, ing) => {
-      return sum + (ing.caloriesPer100 * ing.grams / 100);
-    }, 0);
+    const totalCal = valid.reduce((s, ing) => s + ing.caloriesPer100 * ing.grams / 100, 0);
+    document.getElementById('total-calories').textContent     = Math.round(totalCal).toLocaleString();
+    document.getElementById('per-serving-calories').textContent = Math.round(totalCal / servings).toLocaleString();
+    document.getElementById('serving-label').textContent     = `${servings} সার্ভিং / for ${servings} servings`;
 
-    const perServing = totalCal / servings;
-
-    document.getElementById('total-calories').textContent = Math.round(totalCal).toLocaleString();
-    document.getElementById('per-serving-calories').textContent = Math.round(perServing).toLocaleString();
-    document.getElementById('serving-label').textContent = `${servings} সার্ভিং-এর জন্য / for ${servings} servings`;
-
-    const breakdownList = document.getElementById('breakdown-list');
-    breakdownList.innerHTML = validIngredients.map(ing => {
+    document.getElementById('breakdown-list').innerHTML = valid.map(ing => {
       const cal = Math.round(ing.caloriesPer100 * ing.grams / 100);
-      const pct = Math.round((cal / totalCal) * 100);
+      const pct = Math.round(cal / totalCal * 100);
       return `
         <div class="py-1.5 border-b border-gray-100 last:border-0">
           <div class="flex justify-between items-center text-sm mb-1">
             <span class="text-gray-800 font-medium truncate max-w-[60%]">${ing.foodName}</span>
-            <span class="flex gap-3 items-center flex-shrink-0">
+            <span class="flex gap-3 items-center shrink-0">
               <span class="text-gray-400 text-xs">${ing.grams}g</span>
               <span class="font-bold text-teal-700">${cal} kcal</span>
               <span class="text-gray-400 text-xs w-8 text-right">${pct}%</span>
             </span>
           </div>
           <div class="w-full bg-gray-100 rounded-full h-1.5">
-            <div class="bg-teal-500 h-1.5 rounded-full" style="width: ${pct}%"></div>
+            <div class="bg-teal-500 h-1.5 rounded-full" style="width:${pct}%"></div>
           </div>
-        </div>
-      `;
+        </div>`;
     }).join('');
 
     recipeResult.classList.remove('hidden');
   }
 
+  // ── Event listeners ────────────────────────────────────────────────────────
   addBtn.addEventListener('click', addIngredientRow);
   servingsSelect.addEventListener('change', updateResult);
-  clearAllBtn.addEventListener('click', clearAll);
-  document.addEventListener('click', (e) => {
-    if (!dropdown.contains(e.target) && !e.target.id.startsWith('food-input-')) {
-      hideDropdown();
-    }
+  clearAllBtn.addEventListener('click', () => {
+    ingredients = [];
+    renderIngredients();
+    updateResult();
+    syncUI();
+  });
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target) && !e.target.dataset.idx) hideDropdown();
   });
 
-  // Start with 3 ingredient rows
-  addIngredientRow();
-  addIngredientRow();
+  // Start with 1 row
   addIngredientRow();
 </script>
