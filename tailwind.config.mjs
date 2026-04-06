@@ -25,5 +25,6 @@ export default {
       },
     },
   },
+  safelist: ['leading-normal'],
   plugins: [],
 };

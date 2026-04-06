@@ -139,12 +139,12 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
 </html>
 
 <style is:global>
-  /* ─── Font families ─────────────────────────────────── */
+  /* ─── Font families ──────────────────────────────────── */
   body, body.font-bengali {
     font-family: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
     font-size: 1rem;        /* 16px base — Bengali needs this minimum */
     font-weight: 500;       /* Medium weight for readable strokes */
-    line-height: 1.65;      /* Bengali glyphs are taller; extra leading helps */
+    line-height: 1.651;     /* Bengali glyphs are taller; extra leading helps */
   }
   body.font-english {
     font-family: 'Inter', sans-serif;
