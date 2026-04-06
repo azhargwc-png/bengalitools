@@ -9,233 +9,107 @@ import { foods } from '../../data/foods.js';
   title="খাবারের ক্যালরি — বাংলা খাবার ক্যালরি | BanglaTools"
   description="বাংলা ও ভারতীয় খাবারের ক্যালরি জানুন। ১২০+ খাবারের ক্যালরি তথ্য।"
 >
-  <!-- H1 -->
-  <h1 class="text-3xl font-bold text-gray-900 mb-2">
-    <span data-bn="খাবারের ক্যালরি — বাংলা খাবার ক্যালরি লুকআপ" data-en="Food Calorie Lookup — Bengali Foods">খাবারের ক্যালরি — বাংলা খাবার ক্যালরি লুকআপ</span>
+  <h1 class="text-2xl font-bold text-gray-900 mb-1">
+    <span data-bn="খাবারের ক্যালরি" data-en="Food Calorie Lookup">খাবারের ক্যালরি</span>
   </h1>
-  <p class="text-gray-600 mb-6 text-lg">
-    <span data-bn="বাংলা ও ভারতীয় খাবারের ক্যালরি খুঁজুন — ১২০+ খাবার" data-en="Find calories in Bengali and Indian foods — 120+ items">বাংলা ও ভারতীয় খাবারের ক্যালরি খুঁজুন — ১২০+ খাবার</span>
+  <p class="text-gray-500 mb-5">
+    <span data-bn="১২০+ বাংলা ও ভারতীয় খাবার" data-en="120+ Bengali & Indian foods">১২০+ বাংলা ও ভারতীয় খাবার</span>
   </p>
 
-  <!-- AdSlot above tool -->
   <AdSlot slot="above-tool" />
 
-  <!-- Tool -->
-  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+  <div class="mb-8">
 
-    <!-- Search box -->
-    <div class="mb-4">
-      <label class="block text-sm font-medium text-gray-700 mb-1" for="food-search">
-        <span data-bn="খাবারের নাম খুঁজুন (বাংলা বা ইংরেজিতে)" data-en="Search food name (Bengali or English)">খাবারের নাম খুঁজুন (বাংলা বা ইংরেজিতে)</span>
-      </label>
-      <div class="relative flex gap-2">
-        <input
-          type="text"
-          id="food-search"
-          placeholder="যেমন: ভাত, chicken, luchi..."
-          class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
-        />
-        <button
-          id="clear-search-btn"
-          class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-600 text-sm font-bold transition-colors"
-          title="মুছুন / Clear"
-          aria-label="Clear search"
-        >✕</button>
-      </div>
+    <!-- Search -->
+    <div class="relative mb-4">
+      <input
+        type="text"
+        id="food-search"
+        placeholder="খাবার খুঁজুন — যেমন ভাত, chicken, luchi…"
+        class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none"
+        autocomplete="off"
+      />
+      <button
+        id="clear-btn"
+        class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-600 text-xs font-bold"
+        aria-label="Clear"
+      >✕</button>
     </div>
 
-    <!-- Category filter -->
-    <div class="flex flex-wrap gap-2 mb-4" id="cat-filters">
-      <button data-cat="all" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 text-white transition-all">
-        <span data-bn="সব" data-en="All">সব</span>
-      </button>
-      <button data-cat="staple" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="ভাত-রুটি" data-en="Staples">ভাত-রুটি</span>
-      </button>
-      <button data-cat="fish" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="মাছ" data-en="Fish">মাছ</span>
-      </button>
-      <button data-cat="egg" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="ডিম" data-en="Egg">ডিম</span>
-      </button>
-      <button data-cat="meat" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="মাংস" data-en="Meat">মাংস</span>
-      </button>
-      <button data-cat="veg" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="সবজি রান্না" data-en="Veg Dishes">সবজি রান্না</span>
-      </button>
-      <button data-cat="sweet" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="মিষ্টি" data-en="Sweets">মিষ্টি</span>
-      </button>
-      <button data-cat="snack" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="স্ন্যাকস" data-en="Snacks">স্ন্যাকস</span>
-      </button>
-      <button data-cat="fruit" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="ফল" data-en="Fruit">ফল</span>
-      </button>
-      <button data-cat="vegetable" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="কাঁচা সবজি" data-en="Vegetables">কাঁচা সবজি</span>
-      </button>
-      <button data-cat="indian" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="ভারতীয়" data-en="Indian">ভারতীয়</span>
-      </button>
-      <button data-cat="international" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all">
-        <span data-bn="আন্তর্জাতিক" data-en="International">আন্তর্জাতিক</span>
-      </button>
+    <!-- Category chips — horizontal scroll -->
+    <div class="flex gap-2 overflow-x-auto pb-2 mb-4 scrollbar-hide" id="cat-filters">
+      <button data-cat="all"           class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-teal-600 text-white whitespace-nowrap"><span data-bn="সব" data-en="All">সব</span></button>
+      <button data-cat="staple"        class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="ভাত-রুটি" data-en="Staples">ভাত-রুটি</span></button>
+      <button data-cat="fish"          class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="মাছ" data-en="Fish">মাছ</span></button>
+      <button data-cat="egg"           class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="ডিম" data-en="Egg">ডিম</span></button>
+      <button data-cat="meat"          class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="মাংস" data-en="Meat">মাংস</span></button>
+      <button data-cat="veg"           class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="সবজি রান্না" data-en="Veg Dishes">সবজি রান্না</span></button>
+      <button data-cat="sweet"         class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="মিষ্টি" data-en="Sweets">মিষ্টি</span></button>
+      <button data-cat="snack"         class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="স্ন্যাকস" data-en="Snacks">স্ন্যাকস</span></button>
+      <button data-cat="fruit"         class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="ফল" data-en="Fruit">ফল</span></button>
+      <button data-cat="vegetable"     class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="কাঁচা সবজি" data-en="Vegetables">কাঁচা সবজি</span></button>
+      <button data-cat="indian"        class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="ভারতীয়" data-en="Indian">ভারতীয়</span></button>
+      <button data-cat="international" class="cat-btn shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-teal-50 whitespace-nowrap"><span data-bn="আন্তর্জাতিক" data-en="Intl">আন্তর্জাতিক</span></button>
     </div>
 
-    <!-- Results count -->
-    <p id="result-count" class="text-sm text-gray-500 mb-3"></p>
+    <!-- Result count -->
+    <p id="result-count" class="text-sm text-gray-400 mb-3"></p>
 
-    <!-- Food grid -->
-    <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    <!-- Food list -->
+    <div id="food-list" class="space-y-2"></div>
 
     <!-- No results -->
-    <div id="no-results" class="hidden text-center py-8 text-gray-400">
-      <p class="text-4xl mb-2">🔍</p>
-      <p><span data-bn="কোনো খাবার পাওয়া যায়নি" data-en="No foods found">কোনো খাবার পাওয়া যায়নি</span></p>
+    <div id="no-results" class="hidden text-center py-12 text-gray-400">
+      <p class="text-3xl mb-2">🔍</p>
+      <p class="text-sm"><span data-bn="কোনো খাবার পাওয়া যায়নি" data-en="No foods found">কোনো খাবার পাওয়া যায়নি</span></p>
     </div>
 
   </div>
 
-  <!-- How to use -->
-  <section class="mb-8">
-    <h2 class="text-xl font-bold text-gray-900 mb-4">
-      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
-    </h2>
-    <ol class="space-y-3 text-gray-700">
-      <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
-        <span data-bn="খাবারের নাম বাংলা বা ইংরেজিতে সার্চ বক্সে লিখুন" data-en="Type the food name in Bengali or English in the search box">খাবারের নাম বাংলা বা ইংরেজিতে সার্চ বক্সে লিখুন</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
-        <span data-bn="বা ক্যাটাগরি বাটনে ক্লিক করে নির্দিষ্ট ধরনের খাবার দেখুন" data-en="Or click a category button to filter by food type">বা ক্যাটাগরি বাটনে ক্লিক করে নির্দিষ্ট ধরনের খাবার দেখুন</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
-        <span data-bn="প্রতিটি কার্ডে প্রতি ১০০g ও সাধারণ পরিমাণের ক্যালরি দেখাবে" data-en="Each card shows calories per 100g and per typical serving">প্রতিটি কার্ডে প্রতি ১০০g ও সাধারণ পরিমাণের ক্যালরি দেখাবে</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
-        <span data-bn="কার্ডে ক্লিক করে নিজের পরিমাণ দিয়ে ক্যালরি হিসাব করুন" data-en="Click any card to calculate calories for your own portion size">কার্ডে ক্লিক করে নিজের পরিমাণ দিয়ে ক্যালরি হিসাব করুন</span>
-      </li>
-    </ol>
-  </section>
-
-  <!-- What this tool does -->
-  <section class="mb-8">
-    <h2 class="text-xl font-bold text-gray-900 mb-4">
-      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
-    </h2>
-    <div class="text-gray-700 leading-relaxed">
-      <p data-lang-bn>
-        এই ক্যালরি লুকআপ টুলটি ১২০টিরও বেশি বাংলা ও ভারতীয় খাবারের ক্যালরি তথ্য একত্রে রেখেছে। ভাত, ডাল, রুটি থেকে শুরু করে ইলিশ মাছ, রসগোল্লা, সিঙারা, ফুচকা পর্যন্ত — সব ধরনের খাবারের ক্যালরি এখানে পাবেন। বাংলা বা ইংরেজি দুটোতেই সার্চ করা যায়। প্রতিটি খাবারের জন্য প্রতি ১০০ গ্রামে ক্যালরি এবং সাধারণ পরিমাণে ক্যালরি দেখানো হয়। ওজন নিয়ন্ত্রণ বা ডায়েট পরিকল্পনার জন্য এই তথ্য দরকারি। ক্যাটাগরি ফিল্টার দিয়ে মাছ, মাংস, মিষ্টি ইত্যাদি আলাদা করে দেখা যায়।
-      </p>
-      <p data-lang-en style="display:none">
-        This calorie lookup tool contains calorie data for over 120 Bengali and Indian foods. From rice, dal and roti to hilsa fish, rasgolla, singara and fuchka — you can find calorie counts for all common Bengali foods. Search in Bengali or English. Each food card shows calories per 100g and calories per typical serving size. This information is valuable for weight management, calorie counting and diet planning. Category filters allow you to browse by fish, meat, sweets, snacks, fruits, vegetables and more.
-      </p>
-    </div>
-  </section>
-
-  <!-- Examples -->
-  <section class="mb-8">
-    <h2 class="text-xl font-bold text-gray-900 mb-4">
-      <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
-    </h2>
-    <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
-          <span data-bn="ভাত vs রুটি — কোনটায় বেশি ক্যালরি?" data-en="Rice vs Roti — which has more calories?">ভাত vs রুটি — কোনটায় বেশি ক্যালরি?</span>
-        </p>
-        <p class="text-gray-700 mt-1">
-          <span data-bn="রান্না করা ভাত: প্রতি ১০০g = ১৩০ ক্যালরি | রুটি: প্রতি ১০০g = ২৯৭ ক্যালরি" data-en="Cooked rice: 130 cal/100g | Chapati: 297 cal/100g">রান্না করা ভাত: প্রতি ১০০g = ১৩০ ক্যালরি | রুটি: প্রতি ১০০g = ২৯৭ ক্যালরি</span>
-        </p>
-        <p class="text-gray-700 font-medium text-sm mt-1">
-          <span data-bn="তবে সাধারণত রুটির পরিমাণ ভাতের চেয়ে কম খাওয়া হয়" data-en="However, a typical roti serving (40g) is much lighter than a rice serving (200g)">তবে সাধারণ পরিবেশনের আকার আলাদা হওয়ায় প্রকৃত ক্যালরি গ্রহণ তুলনীয়</span>
-        </p>
-      </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
-          <span data-bn="বিরিয়ানির ক্যালরি" data-en="Biryani calories">বিরিয়ানির ক্যালরি</span>
-        </p>
-        <p class="text-gray-700 mt-1">
-          <span data-bn="১ প্লেট বিরিয়ানি (৩০০g): প্রায় ৬০০ ক্যালরি" data-en="1 plate biryani (300g): approximately 600 calories">১ প্লেট বিরিয়ানি (৩০০g): প্রায় ৬০০ ক্যালরি</span>
-        </p>
-      </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
-          <span data-bn="ফুচকার ক্যালরি কত?" data-en="How many calories in fuchka?">ফুচকার ক্যালরি কত?</span>
-        </p>
-        <p class="text-gray-700 mt-1">
-          <span data-bn="৬টি ফুচকা (৩০g): মাত্র ২১ ক্যালরি! হালকা স্ন্যাকস হিসেবে দারুণ।" data-en="6 pieces fuchka (30g): only 21 calories! A great light snack.">৬টি ফুচকা (৩০g): মাত্র ২১ ক্যালরি! হালকা স্ন্যাকস হিসেবে দারুণ।</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="mb-8">
-    <h2 class="text-xl font-bold text-gray-900 mb-4">
-      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    <h2 class="text-lg font-bold text-gray-900 mb-3">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="FAQ">সাধারণ প্রশ্নোত্তর</span>
     </h2>
-    <div class="space-y-4">
+    <div class="space-y-3">
       <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
         <summary class="font-semibold text-gray-900 cursor-pointer">
           <span data-bn="এক কাপ ভাতে কত ক্যালরি?" data-en="How many calories in one cup of rice?">এক কাপ ভাতে কত ক্যালরি?</span>
         </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="এক কাপ রান্না করা ভাত (প্রায় ২০০g) = প্রায় ২৬০ ক্যালরি। সাদা ভাতে প্রতি ১০০g = ১৩০ ক্যালরি।" data-en="One cup of cooked rice (approx 200g) = approx 260 calories. White cooked rice has 130 cal per 100g.">এক কাপ রান্না করা ভাত (প্রায় ২০০g) = প্রায় ২৬০ ক্যালরি। সাদা ভাতে প্রতি ১০০g = ১৩০ ক্যালরি।</span>
+        <p class="mt-2 text-gray-600 text-sm">
+          <span data-bn="এক কাপ রান্না করা ভাত (প্রায় ২০০g) = প্রায় ২৬০ ক্যালরি।" data-en="One cup of cooked rice (approx 200g) = approx 260 calories.">এক কাপ রান্না করা ভাত (প্রায় ২০০g) = প্রায় ২৬০ ক্যালরি।</span>
         </p>
       </details>
       <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
         <summary class="font-semibold text-gray-900 cursor-pointer">
           <span data-bn="ইলিশ মাছে কত ক্যালরি?" data-en="How many calories in hilsa fish?">ইলিশ মাছে কত ক্যালরি?</span>
         </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="শোরষে ইলিশ: প্রতি ১০০g = ১৭৫ ক্যালরি। ১ পিস ইলিশ (১৫০g পরিবেশন) = প্রায় ২৬৩ ক্যালরি। ইলিশে ওমেগা-৩ ফ্যাটি অ্যাসিড থাকে।" data-en="Hilsa in mustard sauce: 175 cal per 100g. 1 piece serving (150g) = approx 263 calories. Hilsa is rich in omega-3 fatty acids.">শোরষে ইলিশ: প্রতি ১০০g = ১৭৫ ক্যালরি। ১ পিস ইলিশ (১৫০g পরিবেশন) = প্রায় ২৬৩ ক্যালরি। ইলিশে ওমেগা-৩ ফ্যাটি অ্যাসিড থাকে।</span>
+        <p class="mt-2 text-gray-600 text-sm">
+          <span data-bn="শোরষে ইলিশ: প্রতি ১০০g = ১৭৫ ক্যালরি। ১ পিস (১৫০g) = প্রায় ২৬৩ ক্যালরি।" data-en="Hilsa in mustard sauce: 175 cal/100g. 1 piece (150g) = approx 263 calories.">শোরষে ইলিশ: প্রতি ১০০g = ১৭৫ ক্যালরি। ১ পিস (১৫০g) = প্রায় ২৬৩ ক্যালরি।</span>
         </p>
       </details>
       <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
         <summary class="font-semibold text-gray-900 cursor-pointer">
           <span data-bn="রসগোল্লায় কত ক্যালরি?" data-en="How many calories in rasgolla?">রসগোল্লায় কত ক্যালরি?</span>
         </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="১টি রসগোল্লা (প্রায় ৫০g) = প্রায় ৯৩ ক্যালরি। প্রতি ১০০g = ১৮৬ ক্যালরি।" data-en="1 rasgolla (approx 50g) = approx 93 calories. Per 100g = 186 calories.">১টি রসগোল্লা (প্রায় ৫০g) = প্রায় ৯৩ ক্যালরি। প্রতি ১০০g = ১৮৬ ক্যালরি।</span>
+        <p class="mt-2 text-gray-600 text-sm">
+          <span data-bn="১টি রসগোল্লা (প্রায় ৫০g) = প্রায় ৯৩ ক্যালরি।" data-en="1 rasgolla (approx 50g) = approx 93 calories.">১টি রসগোল্লা (প্রায় ৫০g) = প্রায় ৯৩ ক্যালরি।</span>
         </p>
       </details>
       <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
         <summary class="font-semibold text-gray-900 cursor-pointer">
           <span data-bn="ভাত খেলে কি মোটা হওয়া যায়?" data-en="Does eating rice cause weight gain?">ভাত খেলে কি মোটা হওয়া যায়?</span>
         </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="ভাত নিজে থেকে মোটা করে না — মোট ক্যালরি গ্রহণ বেশি হলেই ওজন বাড়ে। পরিমিত পরিমাণে ভাত স্বাস্থ্যকর সুষম খাদ্যের অংশ হতে পারে।" data-en="Rice itself does not cause weight gain — it is total calorie surplus that leads to weight gain. Moderate rice consumption can be part of a healthy balanced diet.">ভাত নিজে থেকে মোটা করে না — মোট ক্যালরি গ্রহণ বেশি হলেই ওজন বাড়ে। পরিমিত পরিমাণে ভাত স্বাস্থ্যকর সুষম খাদ্যের অংশ হতে পারে।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="লুচি ও পরোটায় কত ক্যালরি?" data-en="How many calories in luchi and paratha?">লুচি ও পরোটায় কত ক্যালরি?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="লুচি (১টি, ৪০g) = ১৪০ ক্যালরি। পরোটা (১টি, ৬০g) = ১৯৬ ক্যালরি। তেলে ভাজার কারণে রুটির চেয়ে বেশি ক্যালরি।" data-en="Luchi (1 piece, 40g) = 140 calories. Paratha (1 piece, 60g) = 196 calories. Higher than plain roti due to oil used in cooking.">লুচি (১টি, ৪০g) = ১৪০ ক্যালরি। পরোটা (১টি, ৬০g) = ১৯৬ ক্যালরি। তেলে ভাজার কারণে রুটির চেয়ে বেশি ক্যালরি।</span>
+        <p class="mt-2 text-gray-600 text-sm">
+          <span data-bn="ভাত নিজে থেকে মোটা করে না — মোট ক্যালরি বেশি হলেই ওজন বাড়ে।" data-en="Rice itself does not cause weight gain — a total calorie surplus leads to weight gain.">ভাত নিজে থেকে মোটা করে না — মোট ক্যালরি বেশি হলেই ওজন বাড়ে।</span>
         </p>
       </details>
     </div>
   </section>
 
-  <!-- AdSlot below FAQ -->
   <AdSlot slot="below-faq" />
 
-  <!-- Related Tools -->
   <RelatedTools tools={[
-    {
-      url: "/food/recipe-calculator",
-      nameBn: "রেসিপি ক্যালরি ক্যালকুলেটর",
-      nameEn: "Recipe Calorie Calculator",
-      descBn: "রেসিপির মোট ক্যালরি হিসাব করুন",
-      descEn: "Calculate total calories for a recipe",
-      icon: "🍳"
-    },
     {
       url: "/food/bengali-food-chart",
       nameBn: "বাংলা খাবারের ক্যালরি চার্ট",
@@ -245,148 +119,118 @@ import { foods } from '../../data/foods.js';
       icon: "📊"
     },
     {
-      url: "/health/calorie-calculator",
-      nameBn: "ক্যালরি ক্যালকুলেটর",
-      nameEn: "Calorie Calculator",
-      descBn: "দৈনিক ক্যালরির চাহিদা জানুন",
-      descEn: "Find your daily calorie needs",
-      icon: "🔥"
+      url: "/health/ideal-weight",
+      nameBn: "আদর্শ ওজন ক্যালকুলেটর",
+      nameEn: "Ideal Weight Calculator",
+      descBn: "আপনার আদর্শ ওজন জানুন",
+      descEn: "Find your ideal body weight",
+      icon: "⚖️"
     }
   ]} />
 </ToolLayout>
 
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
 <script define:vars={{ foodsData: foods }}>
   const searchInput = document.getElementById('food-search');
-  const clearSearchBtn = document.getElementById('clear-search-btn');
-  const foodGrid = document.getElementById('food-grid');
-  const noResults = document.getElementById('no-results');
+  const clearBtn    = document.getElementById('clear-btn');
+  const foodList    = document.getElementById('food-list');
+  const noResults   = document.getElementById('no-results');
   const resultCount = document.getElementById('result-count');
-  const catBtns = document.querySelectorAll('.cat-btn');
+  const catBtns     = document.querySelectorAll('.cat-btn');
 
-  let currentCat = 'all';
+  let currentCat   = 'all';
   let currentQuery = '';
 
-  const categoryLabels = {
+  const catLabels = {
     staple: 'ভাত-রুটি', fish: 'মাছ', egg: 'ডিম', meat: 'মাংস',
-    veg: 'সবজি', dairy: 'দুগ্ধজাত', sweet: 'মিষ্টি', snack: 'স্ন্যাকস',
-    main: 'মূল খাবার', beverage: 'পানীয়', fruit: 'ফল',
-    vegetable: 'কাঁচা সবজি', indian: 'ভারতীয়', international: 'আন্তর্জাতিক'
+    veg: 'সবজি', sweet: 'মিষ্টি', snack: 'স্ন্যাকস',
+    fruit: 'ফল', vegetable: 'কাঁচা সবজি',
+    indian: 'ভারতীয়', international: 'আন্তর্জাতিক',
+    dairy: 'দুগ্ধজাত', beverage: 'পানীয়', main: 'মূল খাবার'
   };
 
-  function getCalorieColor(cal) {
-    if (cal < 100) return 'text-green-600';
-    if (cal < 200) return 'text-teal-600';
-    if (cal < 300) return 'text-yellow-600';
-    return 'text-red-600';
+  function calColor(c) {
+    if (c < 100) return '#16a34a';
+    if (c < 200) return '#0d9488';
+    if (c < 300) return '#d97706';
+    return '#dc2626';
   }
 
   function renderFoods(list) {
     if (list.length === 0) {
-      foodGrid.innerHTML = '';
+      foodList.innerHTML = '';
       noResults.classList.remove('hidden');
       resultCount.textContent = '';
       return;
     }
     noResults.classList.add('hidden');
-    resultCount.textContent = `${list.length}টি খাবার পাওয়া গেছে / ${list.length} foods found`;
+    resultCount.textContent = `${list.length}টি খাবার / ${list.length} foods`;
 
-    foodGrid.innerHTML = list.map(f => `
-      <div class="bg-white rounded-xl border border-gray-200 hover:border-teal-300 hover:shadow-md transition-all overflow-hidden">
-        <div
-          class="food-card-header p-4 cursor-pointer select-none"
-          data-calories="${f.calories}"
-          title="ক্লিক করুন পরিমাণ হিসাব করতে / Click to calculate portion"
-        >
-          <div class="flex justify-between items-start gap-2 mb-3">
-            <div class="min-w-0">
-              <p class="font-bold text-gray-900 text-lg leading-snug">${f.bn}</p>
-              <p class="text-sm text-gray-500 mt-0.5">${f.en}</p>
-            </div>
-            <span class="shrink-0 inline-block px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-xs font-medium">${categoryLabels[f.category] || f.category}</span>
+    foodList.innerHTML = list.map(f => `
+      <div class="food-row bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <!-- Main row -->
+        <div class="flex items-center justify-between gap-3 px-4 py-3 cursor-pointer select-none food-row-header" data-cal="${f.calories}">
+          <div class="min-w-0">
+            <p class="font-semibold text-gray-900 leading-snug">${f.bn}</p>
+            <p class="text-xs text-gray-400 truncate">${f.en} · <span class="text-gray-400">${catLabels[f.category] || f.category}</span></p>
           </div>
-          <div class="space-y-2">
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-gray-500">প্রতি ১০০g / per 100g</span>
-              <span class="font-bold text-xl ${getCalorieColor(f.calories)}">${f.calories} kcal</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-gray-100 pt-2">
-              <span class="text-sm text-gray-500">${f.serving}g পরিবেশন / serving</span>
-              <span class="font-semibold text-base text-gray-700">${f.servingCal} kcal</span>
-            </div>
+          <div class="shrink-0 text-right">
+            <p class="text-xl font-bold" style="color:${calColor(f.calories)}">${f.calories}</p>
+            <p class="text-xs text-gray-400">kcal/100g</p>
           </div>
-          <p class="text-xs text-gray-400 mt-3 text-right portion-toggle-hint">হিসাব করুন / Calculate ▾</p>
         </div>
-        <div class="portion-calc px-4 pb-4 pt-3 border-t border-gray-100 hidden bg-gray-50">
-          <p class="text-sm text-gray-600 mb-2 font-medium">আপনার পরিমাণ / Your portion</p>
-          <div class="flex items-center gap-3">
+        <!-- Expandable portion row -->
+        <div class="portion-panel hidden border-t border-gray-100 bg-gray-50 px-4 py-3">
+          <div class="flex items-center gap-2">
             <input
               type="number"
-              class="portion-input w-24 px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:border-teal-500 focus:outline-none"
-              placeholder="100"
+              class="portion-input w-20 px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:border-teal-500 focus:outline-none"
+              placeholder="${f.serving}"
               min="1"
             />
-            <span class="text-sm text-gray-500">গ্রাম / g</span>
-            <span class="portion-result text-base font-bold text-teal-700"></span>
+            <span class="text-sm text-gray-500">g</span>
+            <span class="portion-result text-sm font-bold text-teal-700 ml-1"></span>
           </div>
+          <p class="text-xs text-gray-400 mt-1">সাধারণ পরিমাণ ${f.serving}g = ${f.servingCal} kcal</p>
         </div>
       </div>
     `).join('');
 
-    // Toggle portion calculator on card header click
-    foodGrid.querySelectorAll('.food-card-header').forEach(header => {
+    // Toggle portion panel
+    foodList.querySelectorAll('.food-row-header').forEach(header => {
       header.addEventListener('click', () => {
-        const card = header.closest('div[class*="bg-white"]');
-        const portionSection = card.querySelector('.portion-calc');
-        const hint = header.querySelector('.portion-toggle-hint');
-        const isHidden = portionSection.classList.contains('hidden');
-        portionSection.classList.toggle('hidden', !isHidden);
+        const panel = header.nextElementSibling;
+        const isHidden = panel.classList.contains('hidden');
+        panel.classList.toggle('hidden', !isHidden);
         if (isHidden) {
-          hint.textContent = 'বন্ধ করুন / Close ▴';
-          // Focus the input for convenience
-          setTimeout(() => {
-            const inp = portionSection.querySelector('.portion-input');
-            if (inp) inp.focus();
-          }, 50);
-        } else {
-          hint.textContent = 'হিসাব করুন / Calculate ▾';
-          // Clear result when closing
-          const inp = portionSection.querySelector('.portion-input');
-          const res = portionSection.querySelector('.portion-result');
-          if (inp) inp.value = '';
-          if (res) res.textContent = '';
+          const inp = panel.querySelector('.portion-input');
+          if (inp) setTimeout(() => inp.focus(), 30);
         }
       });
     });
   }
 
-  // Event delegation for portion input calculation
-  foodGrid.addEventListener('input', (e) => {
+  // Portion calc via delegation
+  foodList.addEventListener('input', e => {
     if (!e.target.classList.contains('portion-input')) return;
-    const card = e.target.closest('div[class*="bg-white"]');
-    const header = card.querySelector('.food-card-header');
-    const calPer100 = parseFloat(header.dataset.calories);
-    const grams = parseFloat(e.target.value);
-    const resultSpan = card.querySelector('.portion-result');
-    if (!isNaN(grams) && grams > 0 && !isNaN(calPer100)) {
-      const cal = Math.round((grams / 100) * calPer100);
-      resultSpan.textContent = `= ${cal} kcal`;
-    } else {
-      resultSpan.textContent = '';
-    }
+    const panel  = e.target.closest('.portion-panel');
+    const header = panel.previousElementSibling;
+    const cal    = parseFloat(header.dataset.cal);
+    const g      = parseFloat(e.target.value);
+    const res    = panel.querySelector('.portion-result');
+    res.textContent = (!isNaN(g) && g > 0) ? `= ${Math.round(g / 100 * cal)} kcal` : '';
   });
 
   function filterAndRender() {
     let list = foodsData;
-    if (currentCat !== 'all') {
-      list = list.filter(f => f.category === currentCat);
-    }
-    if (currentQuery.trim() !== '') {
+    if (currentCat !== 'all') list = list.filter(f => f.category === currentCat);
+    if (currentQuery.trim()) {
       const q = currentQuery.toLowerCase().trim();
-      list = list.filter(f =>
-        f.bn.includes(currentQuery) ||
-        f.en.toLowerCase().includes(q) ||
-        f.category.toLowerCase().includes(q)
-      );
+      list = list.filter(f => f.bn.includes(currentQuery) || f.en.toLowerCase().includes(q));
     }
     renderFoods(list);
   }
@@ -395,36 +239,37 @@ import { foods } from '../../data/foods.js';
     btn.addEventListener('click', () => {
       currentCat = btn.dataset.cat;
       catBtns.forEach(b => {
-        b.className = b === btn
-          ? 'cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 text-white transition-all'
-          : 'cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all';
+        const active = b === btn;
+        b.className = b.className.replace(
+          active ? /bg-gray-100 text-gray-700/ : /bg-teal-600 text-white/,
+          active ? 'bg-teal-600 text-white'    : 'bg-gray-100 text-gray-700'
+        );
       });
       filterAndRender();
     });
   });
 
-  searchInput.addEventListener('input', (e) => {
+  searchInput.addEventListener('input', e => {
     currentQuery = e.target.value;
-    clearSearchBtn.classList.toggle('hidden', currentQuery === '');
+    clearBtn.classList.toggle('hidden', !currentQuery);
     filterAndRender();
   });
 
-  // Clear search button
-  clearSearchBtn.addEventListener('click', () => {
+  clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     currentQuery = '';
-    clearSearchBtn.classList.add('hidden');
-    // Reset category to "all"
+    clearBtn.classList.add('hidden');
     currentCat = 'all';
     catBtns.forEach(b => {
-      b.className = b.dataset.cat === 'all'
-        ? 'cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 text-white transition-all'
-        : 'cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700 hover:bg-teal-100 transition-all';
+      if (b.dataset.cat === 'all') {
+        b.className = b.className.replace('bg-gray-100 text-gray-700', 'bg-teal-600 text-white');
+      } else {
+        b.className = b.className.replace('bg-teal-600 text-white', 'bg-gray-100 text-gray-700');
+      }
     });
     filterAndRender();
     searchInput.focus();
   });
 
-  // Initial render
   filterAndRender();
 </script>
