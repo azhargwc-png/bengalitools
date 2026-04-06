@@ -180,7 +180,7 @@ import { foods } from '../../data/foods.js';
 
     foodGrid.innerHTML = list.map(f => `
       <div class="food-card bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
-        <div class="food-card-top p-5 cursor-pointer select-none" data-cal="${f.calories}">
+        <div class="food-card-top p-5 cursor-pointer select-none" data-cal="${f.calories}" data-protein="${f.protein || 0}" data-carbs="${f.carbs || 0}" data-fat="${f.fat || 0}">
           <div class="flex justify-between items-start gap-3">
             <div class="min-w-0 flex-1">
               <p class="font-bold text-gray-900 text-lg leading-tight">${f.bn}</p>
@@ -191,9 +191,14 @@ import { foods } from '../../data/foods.js';
               <p class="text-xs text-gray-400 mt-1">kcal / 100g</p>
             </div>
           </div>
-          <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+          <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
             <span class="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">${catLabels[f.category] || f.category}</span>
-            <span class="text-xs text-gray-400">পরিবেশন ${f.serving}g = ${f.servingCal} kcal ▾</span>
+            <div class="flex gap-2 text-xs text-gray-400">
+              <span title="Protein">P: ${f.protein || 0}g</span>
+              <span title="Carbs">C: ${f.carbs || 0}g</span>
+              <span title="Fat">F: ${f.fat || 0}g</span>
+              <span>▾</span>
+            </div>
           </div>
         </div>
         <div class="portion-panel hidden border-t border-gray-100 bg-gray-50 px-5 py-4">
@@ -207,6 +212,11 @@ import { foods } from '../../data/foods.js';
             />
             <span class="text-gray-500">g</span>
             <span class="portion-result text-base font-bold text-teal-600"></span>
+          </div>
+          <div class="portion-macros hidden mt-2 flex gap-3 text-xs text-gray-500">
+            <span class="text-blue-600 font-medium">প্রোটিন: <span class="macro-protein"></span>g</span>
+            <span class="text-orange-500 font-medium">কার্বস: <span class="macro-carbs"></span>g</span>
+            <span class="text-yellow-600 font-medium">ফ্যাট: <span class="macro-fat"></span>g</span>
           </div>
         </div>
       </div>
@@ -224,12 +234,25 @@ import { foods } from '../../data/foods.js';
 
   foodGrid.addEventListener('input', e => {
     if (!e.target.classList.contains('portion-input')) return;
-    const panel  = e.target.closest('.portion-panel');
-    const top    = panel.previousElementSibling;
-    const cal    = parseFloat(top.dataset.cal);
-    const g      = parseFloat(e.target.value);
-    const res    = panel.querySelector('.portion-result');
-    res.textContent = (!isNaN(g) && g > 0) ? `= ${Math.round(g / 100 * cal)} kcal` : '';
+    const panel   = e.target.closest('.portion-panel');
+    const top     = panel.previousElementSibling;
+    const cal     = parseFloat(top.dataset.cal);
+    const protein = parseFloat(top.dataset.protein) || 0;
+    const carbs   = parseFloat(top.dataset.carbs)   || 0;
+    const fat     = parseFloat(top.dataset.fat)     || 0;
+    const g       = parseFloat(e.target.value);
+    const res     = panel.querySelector('.portion-result');
+    const macros  = panel.querySelector('.portion-macros');
+    if (!isNaN(g) && g > 0) {
+      res.textContent = `= ${Math.round(g / 100 * cal)} kcal`;
+      panel.querySelector('.macro-protein').textContent = (g / 100 * protein).toFixed(1);
+      panel.querySelector('.macro-carbs').textContent   = (g / 100 * carbs).toFixed(1);
+      panel.querySelector('.macro-fat').textContent     = (g / 100 * fat).toFixed(1);
+      macros.classList.remove('hidden');
+    } else {
+      res.textContent = '';
+      macros.classList.add('hidden');
+    }
   });
 
   function filterAndRender() {

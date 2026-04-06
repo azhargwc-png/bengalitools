@@ -56,7 +56,7 @@ import { foods } from '../../data/foods.js';
 
     <!-- Total result -->
     <div id="recipe-result" class="hidden mt-5">
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-2 gap-4 mb-4">
         <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
           <p class="text-sm text-gray-500 mb-1">
             <span data-bn="রেসিপির মোট ক্যালরি" data-en="Total Recipe Calories">রেসিপির মোট ক্যালরি</span>
@@ -70,6 +70,24 @@ import { foods } from '../../data/foods.js';
           </p>
           <p id="per-serving-calories" class="text-4xl font-bold text-teal-700"></p>
           <p class="text-xs text-gray-400 mt-1" id="serving-label"></p>
+        </div>
+      </div>
+      <!-- Macro totals -->
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-500 mb-0.5"><span data-bn="প্রোটিন (মোট)" data-en="Protein (total)">প্রোটিন</span></p>
+          <p id="total-protein" class="text-xl font-bold text-blue-700"></p>
+          <p class="text-xs text-gray-400">g</p>
+        </div>
+        <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-500 mb-0.5"><span data-bn="কার্বস (মোট)" data-en="Carbs (total)">কার্বস</span></p>
+          <p id="total-carbs" class="text-xl font-bold text-orange-600"></p>
+          <p class="text-xs text-gray-400">g</p>
+        </div>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-500 mb-0.5"><span data-bn="ফ্যাট (মোট)" data-en="Fat (total)">ফ্যাট</span></p>
+          <p id="total-fat" class="text-xl font-bold text-yellow-600"></p>
+          <p class="text-xs text-gray-400">g</p>
         </div>
       </div>
       <!-- Ingredient breakdown -->
@@ -318,7 +336,7 @@ import { foods } from '../../data/foods.js';
   function addIngredientRow() {
     if (ingredients.length >= MAX_INGREDIENTS) return;
     const idx = ingredients.length;
-    ingredients.push({ foodId: null, foodName: '', caloriesPer100: 0, grams: 0 });
+    ingredients.push({ foodId: null, foodName: '', caloriesPer100: 0, proteinPer100: 0, carbsPer100: 0, fatPer100: 0, grams: 0 });
     renderIngredients();
     syncUI();
     setTimeout(() => document.getElementById(`food-input-${idx}`)?.focus(), 50);
@@ -374,8 +392,8 @@ import { foods } from '../../data/foods.js';
     if (matches.length === 0) { hideDropdown(); return; }
 
     const rect = inputEl.getBoundingClientRect();
-    dropdown.style.top   = (rect.bottom + window.scrollY + 4) + 'px';
-    dropdown.style.left  = (rect.left  + window.scrollX)     + 'px';
+    dropdown.style.top   = (rect.bottom + 4) + 'px';
+    dropdown.style.left  = rect.left        + 'px';
     dropdown.style.width = rect.width + 'px';
 
     dropdown.innerHTML = matches.map(f => `
@@ -383,6 +401,7 @@ import { foods } from '../../data/foods.js';
         class="w-full text-left px-3 py-2.5 hover:bg-teal-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center gap-2"
         data-food-id="${f.id}" data-food-bn="${f.bn.replace(/"/g, '&quot;')}"
         data-food-en="${f.en}" data-calories="${f.calories}"
+        data-protein="${f.protein || 0}" data-carbs="${f.carbs || 0}" data-fat="${f.fat || 0}"
       >
         <span class="min-w-0 truncate"><span class="font-medium">${f.bn}</span> <span class="text-gray-400 text-xs">${f.en}</span></span>
         <span class="shrink-0 text-teal-600 text-xs font-medium">${f.calories} kcal/100g</span>
@@ -392,17 +411,21 @@ import { foods } from '../../data/foods.js';
     dropdown.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('mousedown', e => {
         e.preventDefault();
-        selectFood(idx, btn.dataset.foodId, btn.dataset.foodBn, btn.dataset.foodEn, parseInt(btn.dataset.calories));
+        selectFood(idx, btn.dataset.foodId, btn.dataset.foodBn, btn.dataset.foodEn,
+          parseInt(btn.dataset.calories), parseFloat(btn.dataset.protein), parseFloat(btn.dataset.carbs), parseFloat(btn.dataset.fat));
       });
     });
 
     dropdown.classList.remove('hidden');
   }
 
-  function selectFood(idx, foodId, bn, en, calories) {
+  function selectFood(idx, foodId, bn, en, calories, protein, carbs, fat) {
     ingredients[idx].foodId        = foodId;
     ingredients[idx].foodName      = bn;
     ingredients[idx].caloriesPer100 = calories;
+    ingredients[idx].proteinPer100 = protein || 0;
+    ingredients[idx].carbsPer100   = carbs   || 0;
+    ingredients[idx].fatPer100     = fat     || 0;
     hideDropdown();
     // Update the food input field in-place
     const foodInput = document.getElementById(`food-input-${idx}`);
@@ -428,10 +451,17 @@ import { foods } from '../../data/foods.js';
 
     if (valid.length === 0) { recipeResult.classList.add('hidden'); return; }
 
-    const totalCal = valid.reduce((s, ing) => s + ing.caloriesPer100 * ing.grams / 100, 0);
-    document.getElementById('total-calories').textContent     = Math.round(totalCal).toLocaleString();
+    const totalCal     = valid.reduce((s, ing) => s + ing.caloriesPer100 * ing.grams / 100, 0);
+    const totalProtein = valid.reduce((s, ing) => s + ing.proteinPer100 * ing.grams / 100, 0);
+    const totalCarbs   = valid.reduce((s, ing) => s + ing.carbsPer100   * ing.grams / 100, 0);
+    const totalFat     = valid.reduce((s, ing) => s + ing.fatPer100     * ing.grams / 100, 0);
+
+    document.getElementById('total-calories').textContent       = Math.round(totalCal).toLocaleString();
     document.getElementById('per-serving-calories').textContent = Math.round(totalCal / servings).toLocaleString();
-    document.getElementById('serving-label').textContent     = `${servings} সার্ভিং / for ${servings} servings`;
+    document.getElementById('serving-label').textContent        = `${servings} সার্ভিং / for ${servings} servings`;
+    document.getElementById('total-protein').textContent        = Math.round(totalProtein);
+    document.getElementById('total-carbs').textContent          = Math.round(totalCarbs);
+    document.getElementById('total-fat').textContent            = Math.round(totalFat);
 
     document.getElementById('breakdown-list').innerHTML = valid.map(ing => {
       const cal = Math.round(ing.caloriesPer100 * ing.grams / 100);
