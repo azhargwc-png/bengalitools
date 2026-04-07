@@ -32,6 +32,12 @@ export const tools = {
       icon: '📐',
     },
     {
+      slug: '/converters/land-area',
+      name: { bn: 'জমির পরিমাণ কনভার্টার', en: 'Land Area Converter' },
+      desc: { bn: 'বিঘা, কাঠা, ডেসিমেল, একর রূপান্তর করুন', en: 'Convert Bigha, Katha, Decimal, Acre' },
+      icon: '🗺️',
+    },
+    {
       slug: '/converters/litre-to-gallon',
       name: { bn: 'লিটার থেকে গ্যালন', en: 'litre to gallon' },
       desc: { bn: 'লিটার ও গ্যালন রূপান্তর করুন', en: 'Convert litres to gallons' },

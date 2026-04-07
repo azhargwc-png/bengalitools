@@ -1,0 +1,350 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="জমির পরিমাণ কনভার্টার — বিঘা, কাঠা, ডেসিমেল, একর | BanglaTools"
+  titleBn="জমির পরিমাণ কনভার্টার — বিঘা, কাঠা, ডেসিমেল, একর | BanglaTools"
+  description="বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার — যেকোনো জমির মাপ রূপান্তর করুন। পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী।"
+  descriptionBn="বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার — যেকোনো জমির মাপ রূপান্তর করুন।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="জমির পরিমাণ কনভার্টার" data-en="Land Area Converter">জমির পরিমাণ কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="বিঘা, কাঠা, ডেসিমেল, একর — যেকোনো এককে লিখুন, সব এককে রূপান্তর দেখুন" data-en="Type in any unit — Bigha, Katha, Decimal, Acre — and see all conversions instantly">বিঘা, কাঠা, ডেসিমেল, একর — যেকোনো এককে লিখুন, সব এককে রূপান্তর দেখুন</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <!-- Tool -->
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Input row -->
+    <div class="flex gap-3 mb-6">
+      <div class="flex-1">
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="land-input">
+          <span data-bn="পরিমাণ" data-en="Amount">পরিমাণ</span>
+        </label>
+        <input
+          type="number"
+          id="land-input"
+          placeholder="যেমন: 1"
+          min="0"
+          step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[52px]"
+        />
+      </div>
+      <div class="w-44">
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="land-unit">
+          <span data-bn="একক" data-en="Unit">একক</span>
+        </label>
+        <select
+          id="land-unit"
+          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[52px] bg-white"
+        >
+          <option value="bigha">বিঘা (Bigha)</option>
+          <option value="katha">কাঠা (Katha)</option>
+          <option value="chhatak">ছটাক (Chhatak)</option>
+          <option value="decimal">ডেসিমেল (Decimal)</option>
+          <option value="acre">একর (Acre)</option>
+          <option value="sqft">বর্গফুট (Sqft)</option>
+          <option value="sqm">বর্গমিটার (Sqm)</option>
+          <option value="sqyard">বর্গ গজ (Sq Yard)</option>
+          <option value="hectare">হেক্টর (Hectare)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results grid -->
+    <div id="results-grid" class="hidden">
+      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+        <span data-bn="রূপান্তরের ফলাফল" data-en="Conversion Results">রূপান্তরের ফলাফল</span>
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div class="result-card bg-teal-600 text-white rounded-xl p-4" data-unit="bigha">
+          <p class="text-xs font-medium opacity-80 mb-1">বিঘা / Bigha</p>
+          <p class="result-val text-xl font-bold">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="katha">
+          <p class="text-xs font-medium text-gray-500 mb-1">কাঠা / Katha</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="chhatak">
+          <p class="text-xs font-medium text-gray-500 mb-1">ছটাক / Chhatak</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="decimal">
+          <p class="text-xs font-medium text-gray-500 mb-1">ডেসিমেল / Decimal</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="acre">
+          <p class="text-xs font-medium text-gray-500 mb-1">একর / Acre</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="sqft">
+          <p class="text-xs font-medium text-gray-500 mb-1">বর্গফুট / Sqft</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="sqm">
+          <p class="text-xs font-medium text-gray-500 mb-1">বর্গমিটার / Sqm</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="sqyard">
+          <p class="text-xs font-medium text-gray-500 mb-1">বর্গ গজ / Sq Yard</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+        <div class="result-card bg-white border-2 border-gray-200 rounded-xl p-4" data-unit="hectare">
+          <p class="text-xs font-medium text-gray-500 mb-1">হেক্টর / Hectare</p>
+          <p class="result-val text-xl font-bold text-gray-900">—</p>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="resetLand()" class="mt-4 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors">
+      <span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span>
+    </button>
+  </div>
+
+  <!-- Reference table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="দ্রুত রূপান্তর টেবিল (পশ্চিমবঙ্গ মান)" data-en="Quick Reference Table (West Bengal Standard)">দ্রুত রূপান্তর টেবিল (পশ্চিমবঙ্গ মান)</span>
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-teal-700 text-white">
+            <th class="p-3 text-left rounded-tl-xl"><span data-bn="একক" data-en="Unit">একক</span></th>
+            <th class="p-3 text-right">বিঘা</th>
+            <th class="p-3 text-right">কাঠা</th>
+            <th class="p-3 text-right">ডেসিমেল</th>
+            <th class="p-3 text-right rounded-tr-xl">বর্গফুট</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b border-gray-200">
+            <td class="p-3 font-medium">১ বিঘা</td>
+            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right">২০</td>
+            <td class="p-3 text-right">৩৩.০৬</td>
+            <td class="p-3 text-right">১৪,৪০০</td>
+          </tr>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <td class="p-3 font-medium">১ কাঠা</td>
+            <td class="p-3 text-right">০.০৫</td>
+            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right">১.৬৫</td>
+            <td class="p-3 text-right">৭২০</td>
+          </tr>
+          <tr class="bg-white border-b border-gray-200">
+            <td class="p-3 font-medium">১ ছটাক</td>
+            <td class="p-3 text-right">০.০০৩১</td>
+            <td class="p-3 text-right">০.০৬২৫</td>
+            <td class="p-3 text-right">০.১০৩</td>
+            <td class="p-3 text-right">৪৫</td>
+          </tr>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <td class="p-3 font-medium">১ ডেসিমেল</td>
+            <td class="p-3 text-right">০.০৩০২</td>
+            <td class="p-3 text-right">০.৬০৫</td>
+            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right">৪৩৫.৬</td>
+          </tr>
+          <tr class="bg-white border-b border-gray-200">
+            <td class="p-3 font-medium">১ একর</td>
+            <td class="p-3 text-right">৩.০২৫</td>
+            <td class="p-3 text-right">৬০.৫</td>
+            <td class="p-3 text-right">১০০</td>
+            <td class="p-3 text-right">৪৩,৫৬০</td>
+          </tr>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <td class="p-3 font-medium">১ হেক্টর</td>
+            <td class="p-3 text-right">৭.৪৭৮</td>
+            <td class="p-3 text-right">১৪৯.৫</td>
+            <td class="p-3 text-right">২৪৭.১</td>
+            <td class="p-3 text-right">১,০৭,৬৩৯</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="ড্রপডাউন থেকে আপনার এককটি বেছে নিন (যেমন: বিঘা)" data-en="Select your unit from the dropdown (e.g. Bigha)">ড্রপডাউন থেকে আপনার এককটি বেছে নিন (যেমন: বিঘা)</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="পরিমাণ লিখুন (যেমন: ২.৫)" data-en="Enter the amount (e.g. 2.5)">পরিমাণ লিখুন (যেমন: ২.৫)</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="সব এককে রূপান্তর তাৎক্ষণিকভাবে দেখুন" data-en="See all unit conversions instantly">সব এককে রূপান্তর তাৎক্ষণিকভাবে দেখুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- What this tool does -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="এই টুলটি কী করে" data-en="What This Tool Does">এই টুলটি কী করে</span>
+    </h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p data-lang-bn>
+        জমির পরিমাণ কনভার্টারটি পশ্চিমবঙ্গ ও বাংলাদেশে প্রচলিত সব জমি মাপার এককের মধ্যে রূপান্তর করে। বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার, বর্গ গজ ও হেক্টর — যেকোনো এককে পরিমাণ দিলে বাকি সব এককে ফলাফল একসাথে দেখা যায়। পশ্চিমবঙ্গের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। জমি কেনাবেচা, সরকারি দলিল যাচাই, কৃষি জমির হিসাব ও সম্পত্তির বিবাদ মেটাতে এই টুল বিশেষ কাজে আসে।
+      </p>
+      <p data-lang-en style="display:none">
+        This land area converter handles all the traditional Bengali land measurement units used in West Bengal and Bangladesh — Bigha, Katha, Chhatak, Decimal, Acre, Sqft, Sqm, Sq Yard, and Hectare. Enter a value in any unit and see all others instantly. Uses the West Bengal standard where 1 Bigha = 20 Katha = 14,400 sqft. Useful for property transactions, checking government land records, agricultural area calculations, and resolving land disputes.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ বিঘা সমান কত কাঠা?" data-en="How many Katha is 1 Bigha?">১ বিঘা সমান কত কাঠা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।" data-en="By West Bengal and Bangladesh standard: 1 Bigha = 20 Katha = 14,400 sqft.">পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ কাঠা সমান কত বর্গফুট?" data-en="How many sqft is 1 Katha?">১ কাঠা সমান কত বর্গফুট?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক। পশ্চিমবঙ্গ ও বাংলাদেশ উভয় জায়গায় এই মান প্রচলিত।" data-en="1 Katha = 720 sqft = 16 Chhatak. This is the standard used in both West Bengal and Bangladesh.">১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক। পশ্চিমবঙ্গ ও বাংলাদেশ উভয় জায়গায় এই মান প্রচলিত।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ডেসিমেল ও শতাংশ কি একই?" data-en="Are Decimal and Shotangso the same?">ডেসিমেল ও শতাংশ কি একই?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর। সরকারি কাগজে সাধারণত শতাংশ বা ডিসমিল লেখা হয়।" data-en="Yes, Decimal and Shotangso (Dismil) are the same unit. 1 Decimal = 435.6 sqft = 1/100 Acre. Government documents usually use Shotangso or Dismil.">হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর। সরকারি কাগজে সাধারণত শতাংশ বা ডিসমিল লেখা হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="১ একর সমান কত বিঘা?" data-en="How many Bigha is 1 Acre?">১ একর সমান কত বিঘা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।" data-en="1 Acre = 3.025 Bigha = 60.5 Katha = 100 Decimal = 43,560 sqft.">১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?" data-en="Is Bigha different in West Bengal and Bangladesh?">পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। তবে ভারতের অন্যান্য রাজ্যে (যেমন রাজস্থান, উত্তরপ্রদেশ) বিঘার মাপ আলাদা হতে পারে।" data-en="No, both use 1 Bigha = 20 Katha = 14,400 sqft. However, other Indian states (e.g. Rajasthan, UP) use different Bigha sizes.">না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। তবে ভারতের অন্যান্য রাজ্যে (যেমন রাজস্থান, উত্তরপ্রদেশ) বিঘার মাপ আলাদা হতে পারে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    {
+      url: "/converters/kg-to-lbs",
+      nameBn: "কেজি থেকে পাউন্ড",
+      nameEn: "kg to lbs",
+      descBn: "ওজন রূপান্তর করুন",
+      descEn: "Convert weight units",
+      icon: "⚖️"
+    },
+    {
+      url: "/india/gst-calculator",
+      nameBn: "জিএসটি ক্যালকুলেটর",
+      nameEn: "GST Calculator",
+      descBn: "সম্পত্তি কেনায় জিএসটি হিসাব করুন",
+      descEn: "Calculate GST on property purchase",
+      icon: "🧾"
+    },
+    {
+      url: "/calculators/percentage",
+      nameBn: "শতাংশ ক্যালকুলেটর",
+      nameEn: "Percentage Calculator",
+      descBn: "জমির দামের শতাংশ হিসাব করুন",
+      descEn: "Calculate percentage of land price",
+      icon: "%"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  // Conversion factors — all relative to sqft
+  const TO_SQFT: Record<string, number> = {
+    bigha:   14400,
+    katha:   720,
+    chhatak: 45,
+    decimal: 435.6,
+    acre:    43560,
+    sqft:    1,
+    sqm:     10.76391,
+    sqyard:  9,
+    hectare: 107639.104,
+  };
+
+  const input   = document.getElementById('land-input') as HTMLInputElement;
+  const unitSel = document.getElementById('land-unit') as HTMLSelectElement;
+  const grid    = document.getElementById('results-grid')!;
+  const cards   = document.querySelectorAll<HTMLElement>('.result-card');
+
+  function fmt(n: number): string {
+    if (n === 0) return '0';
+    if (n >= 1000000) return n.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+    if (n >= 1)       return parseFloat(n.toFixed(4)).toString();
+    return parseFloat(n.toPrecision(4)).toString();
+  }
+
+  function convert() {
+    const val  = parseFloat(input.value);
+    const unit = unitSel.value;
+    if (isNaN(val) || val < 0) { grid.classList.add('hidden'); return; }
+
+    const sqft = val * TO_SQFT[unit];
+
+    cards.forEach(card => {
+      const u = card.dataset.unit!;
+      const result = sqft / TO_SQFT[u];
+      card.querySelector('.result-val')!.textContent = fmt(result);
+
+      // Highlight active unit card in teal
+      if (u === unit) {
+        card.className = 'result-card bg-teal-600 text-white rounded-xl p-4';
+        card.querySelector('p:first-child')!.className = 'text-xs font-medium opacity-80 mb-1';
+        card.querySelector('.result-val')!.className = 'result-val text-xl font-bold';
+      } else {
+        card.className = 'result-card bg-white border-2 border-gray-200 rounded-xl p-4';
+        card.querySelector('p:first-child')!.className = 'text-xs font-medium text-gray-500 mb-1';
+        card.querySelector('.result-val')!.className = 'result-val text-xl font-bold text-gray-900';
+      }
+    });
+
+    grid.classList.remove('hidden');
+  }
+
+  input.addEventListener('input', convert);
+  unitSel.addEventListener('change', convert);
+
+  (window as any).resetLand = function () {
+    input.value = '';
+    grid.classList.add('hidden');
+  };
+</script>
