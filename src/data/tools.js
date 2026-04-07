@@ -140,6 +140,18 @@ export const tools = {
       icon: '🚗',
     },
     {
+      slug: '/calculators/cutoff-marks',
+      name: { bn: 'কাট-অফ মার্কস ক্যালকুলেটর', en: 'Cut-off Marks Calculator' },
+      desc: { bn: 'নম্বর থেকে শতাংশ ও কাট-অফ তুলনা', en: 'Calculate percentage and compare cut-offs' },
+      icon: '📊',
+    },
+    {
+      slug: '/calculators/marks-grade',
+      name: { bn: 'নম্বর থেকে গ্রেড', en: 'Marks to Grade' },
+      desc: { bn: 'WB Board ও CBSE গ্রেড দেখুন', en: 'See WB Board and CBSE grade' },
+      icon: '🎓',
+    },
+    {
       slug: '/calculators/fuel-cost',
       name: { bn: 'জ্বালানি খরচ', en: 'Fuel Cost' },
       desc: { bn: 'পেট্রোল খরচ হিসাব করুন', en: 'Calculate fuel cost for a trip' },

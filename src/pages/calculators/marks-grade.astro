@@ -1,0 +1,318 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="নম্বর থেকে গ্রেড কনভার্টার — WB Board ও CBSE | BanglaTools"
+  titleBn="নম্বর থেকে গ্রেড কনভার্টার — WB Board ও CBSE | BanglaTools"
+  description="মাধ্যমিক ও উচ্চমাধ্যমিকের শতাংশ থেকে WB Board বিভাগ, CBSE গ্রেড ও CGPA বের করুন। বিনামূল্যে অনলাইন টুল।"
+  descriptionBn="মাধ্যমিক ও উচ্চমাধ্যমিকের শতাংশ থেকে WB Board বিভাগ, CBSE গ্রেড ও CGPA বের করুন।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="নম্বর থেকে গ্রেড কনভার্টার" data-en="Marks to Grade Converter">নম্বর থেকে গ্রেড কনভার্টার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="শতাংশ থেকে WB Board বিভাগ ও CBSE গ্রেড একসাথে দেখুন" data-en="See your WB Board division and CBSE grade from your percentage">শতাংশ থেকে WB Board বিভাগ ও CBSE গ্রেড একসাথে দেখুন</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Input -->
+    <div class="grid grid-cols-2 gap-4 mb-2">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="mg-obtained">
+          <span data-bn="প্রাপ্ত নম্বর" data-en="Marks Obtained">প্রাপ্ত নম্বর</span>
+        </label>
+        <input type="number" id="mg-obtained" placeholder="যেমন: 432" min="0" step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[52px]" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="mg-total">
+          <span data-bn="পূর্ণমান" data-en="Total Marks">পূর্ণমান</span>
+        </label>
+        <input type="number" id="mg-total" placeholder="যেমন: 600" min="1" step="any"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[52px]" />
+      </div>
+    </div>
+    <p class="text-xs text-gray-500 mb-5">
+      <span data-bn="অথবা সরাসরি শতাংশ লিখুন:" data-en="Or enter percentage directly:">অথবা সরাসরি শতাংশ লিখুন:</span>
+    </p>
+    <div class="mb-5">
+      <input type="number" id="mg-pct" placeholder="যেমন: 72.5" min="0" max="100" step="any"
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[52px]" />
+    </div>
+
+    <!-- Result -->
+    <div id="mg-result" class="hidden space-y-4">
+
+      <!-- Percentage display -->
+      <div class="bg-teal-600 text-white rounded-xl p-4 text-center">
+        <p class="text-sm opacity-80 mb-1"><span data-bn="শতাংশ" data-en="Percentage">শতাংশ</span></p>
+        <p id="mg-pct-display" class="text-4xl font-bold">—</p>
+      </div>
+
+      <!-- WB Board result -->
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-4">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">WB Board (মাধ্যমিক / উচ্চমাধ্যমিক)</p>
+        <div class="flex items-center gap-4">
+          <div id="wb-badge" class="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-black text-2xl flex-shrink-0">—</div>
+          <div>
+            <p id="wb-division" class="text-xl font-bold text-gray-900 mb-1">—</p>
+            <p id="wb-desc" class="text-sm text-gray-600">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CBSE result -->
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-4">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">CBSE গ্রেড সিস্টেম</p>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div>
+            <p class="text-xs text-gray-500 mb-1"><span data-bn="গ্রেড" data-en="Grade">গ্রেড</span></p>
+            <p id="cbse-grade" class="text-2xl font-bold text-gray-900">—</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">CGPA</p>
+            <p id="cbse-cgpa" class="text-2xl font-bold text-gray-900">—</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1"><span data-bn="পয়েন্ট" data-en="Points">পয়েন্ট</span></p>
+            <p id="cbse-points" class="text-2xl font-bold text-gray-900">—</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button onclick="resetGrade()" class="mt-4 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors">
+      <span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span>
+    </button>
+  </div>
+
+  <!-- WB Board grade table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="WB Board গ্রেড সিস্টেম (মাধ্যমিক ও উচ্চমাধ্যমিক)" data-en="WB Board Grade System (Madhyamik & HS)">WB Board গ্রেড সিস্টেম (মাধ্যমিক ও উচ্চমাধ্যমিক)</span>
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-teal-700 text-white">
+            <th class="p-3 text-left rounded-tl-xl"><span data-bn="শতাংশ" data-en="Percentage">শতাংশ</span></th>
+            <th class="p-3 text-left"><span data-bn="বিভাগ" data-en="Division">বিভাগ</span></th>
+            <th class="p-3 text-left rounded-tr-xl"><span data-bn="বিবরণ" data-en="Description">বিবরণ</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b border-gray-200">
+            <td class="p-3 font-bold text-teal-700">৭৫% এবং তার উপরে</td>
+            <td class="p-3 font-bold">⭐ স্টার মার্কস</td>
+            <td class="p-3 text-gray-600"><span data-bn="অসাধারণ কৃতিত্ব" data-en="Outstanding achievement">অসাধারণ কৃতিত্ব</span></td>
+          </tr>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <td class="p-3 font-bold text-teal-700">৬০% – ৭৪.৯৯%</td>
+            <td class="p-3 font-bold">প্রথম বিভাগ</td>
+            <td class="p-3 text-gray-600"><span data-bn="খুব ভালো ফলাফল" data-en="Very good result">খুব ভালো ফলাফল</span></td>
+          </tr>
+          <tr class="bg-white border-b border-gray-200">
+            <td class="p-3 font-bold text-teal-700">৪৫% – ৫৯.৯৯%</td>
+            <td class="p-3 font-bold">দ্বিতীয় বিভাগ</td>
+            <td class="p-3 text-gray-600"><span data-bn="ভালো ফলাফল" data-en="Good result">ভালো ফলাফল</span></td>
+          </tr>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <td class="p-3 font-bold text-teal-700">৩৩% – ৪৪.৯৯%</td>
+            <td class="p-3 font-bold">তৃতীয় বিভাগ</td>
+            <td class="p-3 text-gray-600"><span data-bn="উত্তীর্ণ" data-en="Pass">উত্তীর্ণ</span></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="p-3 font-bold text-red-500 rounded-bl-xl">৩৩%-এর নিচে</td>
+            <td class="p-3 font-bold text-red-500">অনুত্তীর্ণ</td>
+            <td class="p-3 text-gray-600 rounded-br-xl"><span data-bn="পাস করেননি" data-en="Did not pass">পাস করেননি</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CBSE grade table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="CBSE গ্রেড সিস্টেম" data-en="CBSE Grade System">CBSE গ্রেড সিস্টেম</span>
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-teal-700 text-white">
+            <th class="p-3 text-left rounded-tl-xl"><span data-bn="শতাংশ" data-en="Percentage">শতাংশ</span></th>
+            <th class="p-3 text-center">গ্রেড</th>
+            <th class="p-3 text-center">CGPA</th>
+            <th class="p-3 text-left rounded-tr-xl"><span data-bn="বিবরণ" data-en="Description">বিবরণ</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ['৯১–১০০%', 'A1', '10', 'Outstanding'],
+            ['৮১–৯০%', 'A2', '9', 'Excellent'],
+            ['৭১–৮০%', 'B1', '8', 'Very Good'],
+            ['৬১–৭০%', 'B2', '7', 'Good'],
+            ['৫১–৬০%', 'C1', '6', 'Average'],
+            ['৪১–৫০%', 'C2', '5', 'Satisfactory'],
+            ['৩৩–৪০%', 'D', '4', 'Pass'],
+            ['৩৩%-এর নিচে', 'E', '—', 'Fail'],
+          ].map(([pct, grade, cgpa, desc], i) => (
+            <tr class={i % 2 === 0 ? 'bg-white border-b border-gray-200' : 'bg-gray-50 border-b border-gray-200'}>
+              <td class="p-3 font-medium">{pct}</td>
+              <td class="p-3 text-center font-bold text-teal-700">{grade}</td>
+              <td class="p-3 text-center font-bold">{cgpa}</td>
+              <td class="p-3 text-gray-600">{desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="CGPA থেকে শতাংশ কীভাবে বের করব?" data-en="How to convert CGPA to percentage?">CGPA থেকে শতাংশ কীভাবে বের করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="CBSE-র নিয়ম অনুযায়ী: শতাংশ = CGPA × ৯.৫। উদাহরণ: CGPA ৮.৫ হলে শতাংশ = ৮.৫ × ৯.৫ = ৮০.৭৫%।" data-en="As per CBSE: Percentage = CGPA × 9.5. Example: CGPA 8.5 = 8.5 × 9.5 = 80.75%.">CBSE-র নিয়ম অনুযায়ী: শতাংশ = CGPA × ৯.৫। উদাহরণ: CGPA ৮.৫ হলে শতাংশ = ৮.৫ × ৯.৫ = ৮০.৭৫%।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="মাধ্যমিকে স্টার মার্কস মানে কী?" data-en="What does Star Marks mean in Madhyamik?">মাধ্যমিকে স্টার মার্কস মানে কী?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="মাধ্যমিকে মোট নম্বরের ৭৫% বা তার বেশি পেলে স্টার মার্কস দেওয়া হয়। এটি প্রথম বিভাগের উপরে সর্বোচ্চ স্বীকৃতি।" data-en="Star Marks are awarded in Madhyamik when a student scores 75% or more of total marks. It is the highest recognition, above First Division.">মাধ্যমিকে মোট নম্বরের ৭৫% বা তার বেশি পেলে স্টার মার্কস দেওয়া হয়। এটি প্রথম বিভাগের উপরে সর্বোচ্চ স্বীকৃতি।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="WB Board ও CBSE গ্রেড কি আলাদা?" data-en="Are WB Board and CBSE grades different?">WB Board ও CBSE গ্রেড কি আলাদা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="হ্যাঁ। WB Board বিভাগ ব্যবহার করে (প্রথম, দ্বিতীয়, তৃতীয়) এবং ৭৫%+ হলে স্টার মার্কস দেয়। CBSE A1 থেকে E পর্যন্ত গ্রেড ও ১০-পয়েন্ট CGPA স্কেল ব্যবহার করে।" data-en="Yes. WB Board uses divisions (First, Second, Third) and awards Star Marks for 75%+. CBSE uses grades from A1 to E with a 10-point CGPA scale.">হ্যাঁ। WB Board বিভাগ ব্যবহার করে (প্রথম, দ্বিতীয়, তৃতীয়) এবং ৭৫%+ হলে স্টার মার্কস দেয়। CBSE A1 থেকে E পর্যন্ত গ্রেড ও ১০-পয়েন্ট CGPA স্কেল ব্যবহার করে।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    {
+      url: "/calculators/cutoff-marks",
+      nameBn: "কাট-অফ মার্কস ক্যালকুলেটর",
+      nameEn: "Cut-off Marks Calculator",
+      descBn: "নম্বর থেকে শতাংশ ও কাট-অফ তুলনা",
+      descEn: "Calculate percentage and compare cut-offs",
+      icon: "📊"
+    },
+    {
+      url: "/calculators/percentage",
+      nameBn: "শতাংশ ক্যালকুলেটর",
+      nameEn: "Percentage Calculator",
+      descBn: "তিন ধরনের শতাংশ হিসাব",
+      descEn: "Three types of percentage calculations",
+      icon: "%"
+    },
+    {
+      url: "/india/image-resizer",
+      nameBn: "ফর্মের ছবি রিসাইজার",
+      nameEn: "Form Photo Resizer",
+      descBn: "SSC, PSC ফর্মের ছবি তৈরি করুন",
+      descEn: "Resize photo for govt form applications",
+      icon: "🖼️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const WB_GRADES = [
+    { min: 75,  div: '⭐ স্টার মার্কস', divEn: '⭐ Star Marks', desc: 'অসাধারণ কৃতিত্ব', descEn: 'Outstanding', color: 'bg-yellow-500' },
+    { min: 60,  div: 'প্রথম বিভাগ',    divEn: 'First Division',  desc: 'খুব ভালো',       descEn: 'Very Good',    color: 'bg-teal-600' },
+    { min: 45,  div: 'দ্বিতীয় বিভাগ', divEn: 'Second Division', desc: 'ভালো',           descEn: 'Good',         color: 'bg-blue-500' },
+    { min: 33,  div: 'তৃতীয় বিভাগ',  divEn: 'Third Division',  desc: 'উত্তীর্ণ',       descEn: 'Pass',         color: 'bg-gray-500' },
+    { min: 0,   div: 'অনুত্তীর্ণ',     divEn: 'Fail',            desc: 'পাস করেননি',    descEn: 'Did not pass', color: 'bg-red-500'  },
+  ];
+
+  const CBSE_GRADES = [
+    { min: 91, grade: 'A1', cgpa: 10, pts: 10 },
+    { min: 81, grade: 'A2', cgpa: 9,  pts: 9  },
+    { min: 71, grade: 'B1', cgpa: 8,  pts: 8  },
+    { min: 61, grade: 'B2', cgpa: 7,  pts: 7  },
+    { min: 51, grade: 'C1', cgpa: 6,  pts: 6  },
+    { min: 41, grade: 'C2', cgpa: 5,  pts: 5  },
+    { min: 33, grade: 'D',  cgpa: 4,  pts: 4  },
+    { min: 0,  grade: 'E',  cgpa: 0,  pts: 0  },
+  ];
+
+  const obtainedEl = document.getElementById('mg-obtained') as HTMLInputElement;
+  const totalEl    = document.getElementById('mg-total') as HTMLInputElement;
+  const pctEl      = document.getElementById('mg-pct') as HTMLInputElement;
+
+  let lastSource = 'fields';
+
+  obtainedEl.addEventListener('input', () => { lastSource = 'fields'; tryCalc(); });
+  totalEl.addEventListener('input',    () => { lastSource = 'fields'; tryCalc(); });
+  pctEl.addEventListener('input',      () => { lastSource = 'pct';    tryCalc(); });
+
+  function tryCalc() {
+    let pct: number;
+    if (lastSource === 'pct') {
+      pct = parseFloat(pctEl.value);
+      if (isNaN(pct)) { hide(); return; }
+    } else {
+      const o = parseFloat(obtainedEl.value);
+      const t = parseFloat(totalEl.value);
+      if (isNaN(o) || isNaN(t) || t <= 0) { hide(); return; }
+      pct = (o / t) * 100;
+      pctEl.value = pct.toFixed(2);
+    }
+    pct = Math.min(100, Math.max(0, pct));
+    showGrades(pct);
+  }
+
+  function showGrades(pct: number) {
+    const lang = (window as any).getLang?.() || 'bn';
+
+    document.getElementById('mg-pct-display')!.textContent = pct.toFixed(2) + '%';
+
+    const wb = WB_GRADES.find(g => pct >= g.min)!;
+    const badge = document.getElementById('wb-badge')!;
+    badge.className = `w-20 h-20 rounded-2xl flex items-center justify-center text-white font-black text-lg flex-shrink-0 ${wb.color}`;
+    badge.textContent = pct >= 75 ? '⭐' : pct >= 60 ? 'I' : pct >= 45 ? 'II' : pct >= 33 ? 'III' : 'F';
+    document.getElementById('wb-division')!.textContent = lang === 'bn' ? wb.div : wb.divEn;
+    document.getElementById('wb-desc')!.textContent = lang === 'bn' ? wb.desc : wb.descEn;
+
+    const cbse = CBSE_GRADES.find(g => pct >= g.min)!;
+    document.getElementById('cbse-grade')!.textContent = cbse.grade;
+    document.getElementById('cbse-cgpa')!.textContent = cbse.cgpa > 0 ? cbse.cgpa.toString() : '—';
+    document.getElementById('cbse-points')!.textContent = cbse.pts > 0 ? cbse.pts.toString() : '—';
+
+    document.getElementById('mg-result')!.classList.remove('hidden');
+  }
+
+  function hide() {
+    document.getElementById('mg-result')!.classList.add('hidden');
+  }
+
+  (window as any).resetGrade = function () {
+    obtainedEl.value = '';
+    totalEl.value = '';
+    pctEl.value = '';
+    hide();
+  };
+</script>
