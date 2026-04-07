@@ -1,0 +1,467 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="সরকারি ফর্মের ছবি রিসাইজ করুন | BanglaTools"
+  titleBn="সরকারি ফর্মের ছবি রিসাইজ করুন | BanglaTools"
+  description="SSC, PSC, Railway, Bank PO ফর্মের জন্য ছবি নির্দিষ্ট সাইজ ও KB-তে রিসাইজ করুন। বিনামূল্যে, কোনো অ্যাপ ছাড়াই।"
+  descriptionBn="SSC, PSC, Railway, Bank PO ফর্মের জন্য ছবি নির্দিষ্ট সাইজ ও KB-তে রিসাইজ করুন। বিনামূল্যে, কোনো অ্যাপ ছাড়াই।"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn="সরকারি ফর্মের ছবি রিসাইজার" data-en="Govt. Form Photo Resizer">সরকারি ফর্মের ছবি রিসাইজার</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span data-bn="SSC, PSC, Railway, Bank — যেকোনো ফর্মের নির্দিষ্ট KB ও পিক্সেল সাইজে ছবি তৈরি করুন" data-en="Resize your photo to exact KB and pixel size for SSC, PSC, Railway, Bank forms">SSC, PSC, Railway, Bank — যেকোনো ফর্মের নির্দিষ্ট KB ও পিক্সেল সাইজে ছবি তৈরি করুন</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <div class="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-200">
+
+    <!-- Presets -->
+    <div class="mb-5">
+      <p class="text-sm font-medium text-gray-700 mb-2">
+        <span data-bn="ফর্মের ধরন বেছে নিন" data-en="Select Form Type">ফর্মের ধরন বেছে নিন</span>
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <button data-w="200" data-h="230" data-kb="50" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold">PSC / UPSC</span>
+          <span class="text-xs text-gray-500">200×230px, 50KB</span>
+        </button>
+        <button data-w="100" data-h="120" data-kb="20" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold">SSC / Staff</span>
+          <span class="text-xs text-gray-500">100×120px, 20KB</span>
+        </button>
+        <button data-w="100" data-h="120" data-kb="40" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold">Railway RRB</span>
+          <span class="text-xs text-gray-500">100×120px, 40KB</span>
+        </button>
+        <button data-w="200" data-h="200" data-kb="50" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold">Bank PO (IBPS)</span>
+          <span class="text-xs text-gray-500">200×200px, 50KB</span>
+        </button>
+        <button data-w="213" data-h="213" data-kb="50" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold" data-bn="পাসপোর্ট ছবি" data-en="Passport Photo">পাসপোর্ট ছবি</span>
+          <span class="text-xs text-gray-500">213×213px, 50KB</span>
+        </button>
+        <button id="custom-preset-btn" class="preset-btn py-2 px-3 rounded-xl text-sm font-semibold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px] text-left leading-tight">
+          <span class="block font-bold" data-bn="কাস্টম" data-en="Custom">কাস্টম</span>
+          <span class="text-xs text-gray-500" data-bn="নিজে মাপ দিন" data-en="Enter your own size">নিজে মাপ দিন</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dimension inputs -->
+    <div class="grid grid-cols-3 gap-3 mb-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="img-width">
+          <span data-bn="প্রস্থ (px)" data-en="Width (px)">প্রস্থ (px)</span>
+        </label>
+        <input type="number" id="img-width" value="200" min="10" max="2000"
+          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="img-height">
+          <span data-bn="উচ্চতা (px)" data-en="Height (px)">উচ্চতা (px)</span>
+        </label>
+        <input type="number" id="img-height" value="230" min="10" max="2000"
+          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="img-kb">
+          <span data-bn="সর্বোচ্চ সাইজ (KB)" data-en="Max Size (KB)">সর্বোচ্চ সাইজ (KB)</span>
+        </label>
+        <input type="number" id="img-kb" value="50" min="1" max="5000"
+          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+      </div>
+    </div>
+
+    <!-- Upload area -->
+    <div id="upload-area"
+      class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-teal-500 hover:bg-teal-50 transition-all mb-5">
+      <div class="text-4xl mb-2">📷</div>
+      <p class="font-semibold text-gray-700">
+        <span data-bn="ছবি আপলোড করুন" data-en="Upload Photo">ছবি আপলোড করুন</span>
+      </p>
+      <p class="text-sm text-gray-500 mt-1">
+        <span data-bn="ক্লিক করুন অথবা ছবি টেনে আনুন (JPG, PNG, WEBP)" data-en="Click or drag & drop (JPG, PNG, WEBP)">ক্লিক করুন অথবা ছবি টেনে আনুন (JPG, PNG, WEBP)</span>
+      </p>
+      <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp" class="hidden" />
+    </div>
+
+    <!-- Process button -->
+    <button id="process-btn" disabled
+      class="w-full py-4 rounded-xl font-bold text-lg bg-gray-300 text-gray-500 cursor-not-allowed transition-all min-h-[52px]">
+      <span data-bn="ছবি তৈরি করুন" data-en="Resize Photo">ছবি তৈরি করুন</span>
+    </button>
+
+    <!-- Result -->
+    <div id="result-area" class="hidden mt-6">
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <!-- Before -->
+        <div class="text-center">
+          <p class="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+            <span data-bn="আগে" data-en="Before">আগে</span>
+          </p>
+          <img id="preview-before" class="rounded-lg border border-gray-200 mx-auto max-h-48 object-contain" />
+          <p id="info-before" class="text-sm text-gray-600 mt-1"></p>
+        </div>
+        <!-- After -->
+        <div class="text-center">
+          <p class="text-xs font-semibold text-teal-700 mb-2 uppercase tracking-wide">
+            <span data-bn="পরে" data-en="After">পরে</span>
+          </p>
+          <img id="preview-after" class="rounded-lg border-2 border-teal-400 mx-auto max-h-48 object-contain" />
+          <p id="info-after" class="text-sm text-teal-700 font-medium mt-1"></p>
+        </div>
+      </div>
+
+      <div id="warning-msg" class="hidden bg-yellow-50 border border-yellow-300 rounded-xl p-3 mb-4 text-sm text-yellow-800"></div>
+
+      <a id="download-btn" href="#" download="resized-photo.jpg"
+        class="block w-full py-4 rounded-xl font-bold text-lg text-center bg-teal-600 hover:bg-teal-700 text-white transition-all min-h-[52px]">
+        <span data-bn="ডাউনলোড করুন ↓" data-en="Download ↓">ডাউনলোড করুন ↓</span>
+      </a>
+      <p class="text-xs text-gray-500 text-center mt-2">
+        <span data-bn="ছবি আপনার ডিভাইসেই প্রসেস হয় — কোনো সার্ভারে আপলোড হয় না।" data-en="Photo is processed on your device — never uploaded to any server.">ছবি আপনার ডিভাইসেই প্রসেস হয় — কোনো সার্ভারে আপলোড হয় না।</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span>
+    </h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span data-bn="ফর্মের ধরন বেছে নিন — SSC, PSC, Railway, Bank বা কাস্টম" data-en="Select form type — SSC, PSC, Railway, Bank or Custom">ফর্মের ধরন বেছে নিন — SSC, PSC, Railway, Bank বা কাস্টম</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span data-bn="প্রয়োজনে প্রস্থ, উচ্চতা ও সর্বোচ্চ KB পরিবর্তন করুন" data-en="Adjust width, height and max KB if needed">প্রয়োজনে প্রস্থ, উচ্চতা ও সর্বোচ্চ KB পরিবর্তন করুন</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span data-bn="ছবি আপলোড করুন (JPG, PNG বা WEBP)" data-en="Upload your photo (JPG, PNG or WEBP)">ছবি আপলোড করুন (JPG, PNG বা WEBP)</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span data-bn="'ছবি তৈরি করুন' বাটনে ক্লিক করুন ও ডাউনলোড করুন" data-en="Click 'Resize Photo' and download">'ছবি তৈরি করুন' বাটনে ক্লিক করুন ও ডাউনলোড করুন</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Common requirements table -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ সরকারি ফর্মের ছবির মাপ" data-en="Common Govt. Form Photo Requirements">সাধারণ সরকারি ফর্মের ছবির মাপ</span>
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-teal-700 text-white">
+            <th class="px-4 py-3 text-left rounded-tl-xl">
+              <span data-bn="পরীক্ষা / ফর্ম" data-en="Exam / Form">পরীক্ষা / ফর্ম</span>
+            </th>
+            <th class="px-4 py-3 text-center">
+              <span data-bn="পিক্সেল (প্রস্থ×উচ্চতা)" data-en="Pixels (W×H)">পিক্সেল (প্রস্থ×উচ্চতা)</span>
+            </th>
+            <th class="px-4 py-3 text-center rounded-tr-xl">
+              <span data-bn="সর্বোচ্চ সাইজ" data-en="Max Size">সর্বোচ্চ সাইজ</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-200 hover:bg-teal-50">
+            <td class="px-4 py-3 font-medium">PSC / WBPSC / UPSC</td>
+            <td class="px-4 py-3 text-center">200 × 230</td>
+            <td class="px-4 py-3 text-center">50 KB</td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-teal-50 bg-gray-50">
+            <td class="px-4 py-3 font-medium">SSC CGL / CHSL / MTS</td>
+            <td class="px-4 py-3 text-center">100 × 120</td>
+            <td class="px-4 py-3 text-center">20 KB</td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-teal-50">
+            <td class="px-4 py-3 font-medium">Railway RRB / RRC</td>
+            <td class="px-4 py-3 text-center">100 × 120</td>
+            <td class="px-4 py-3 text-center">40 KB</td>
+          </tr>
+          <tr class="border-b border-gray-200 hover:bg-teal-50 bg-gray-50">
+            <td class="px-4 py-3 font-medium">Bank PO (IBPS / SBI)</td>
+            <td class="px-4 py-3 text-center">200 × 200</td>
+            <td class="px-4 py-3 text-center">50 KB</td>
+          </tr>
+          <tr class="hover:bg-teal-50">
+            <td class="px-4 py-3 font-medium rounded-bl-xl">
+              <span data-bn="পাসপোর্ট ছবি" data-en="Passport Photo">পাসপোর্ট ছবি</span>
+            </td>
+            <td class="px-4 py-3 text-center">213 × 213</td>
+            <td class="px-4 py-3 text-center rounded-br-xl">50 KB</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">
+      <span data-bn="* মাপ পরিবর্তন হতে পারে। ফর্ম পূরণের আগে অফিশিয়াল নোটিফিকেশন দেখুন।" data-en="* Requirements may change. Always check the official notification before applying.">* মাপ পরিবর্তন হতে পারে। ফর্ম পূরণের আগে অফিশিয়াল নোটিফিকেশন দেখুন।</span>
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ছবি কি সার্ভারে আপলোড হয়?" data-en="Is my photo uploaded to a server?">ছবি কি সার্ভারে আপলোড হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="না। সব প্রসেসিং আপনার ব্রাউজারেই হয়। ছবি কোনো সার্ভারে পাঠানো হয় না, তাই সম্পূর্ণ নিরাপদ।" data-en="No. All processing happens in your browser. Your photo is never sent to any server, so it is completely private.">না। সব প্রসেসিং আপনার ব্রাউজারেই হয়। ছবি কোনো সার্ভারে পাঠানো হয় না, তাই সম্পূর্ণ নিরাপদ।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ছবির মান খারাপ হয়ে যাবে?" data-en="Will the photo quality be poor?">ছবির মান খারাপ হয়ে যাবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="টুলটি সর্বোচ্চ মান বজায় রেখে নির্দিষ্ট KB-এর মধ্যে ছবি তৈরি করে। ছোট KB লিমিটে (যেমন ১০KB-এর নিচে) মান কিছুটা কমতে পারে।" data-en="The tool maximises quality while fitting within the KB limit. Very low KB limits (under 10KB) may result in some visible compression.">টুলটি সর্বোচ্চ মান বজায় রেখে নির্দিষ্ট KB-এর মধ্যে ছবি তৈরি করে। ছোট KB লিমিটে (যেমন ১০KB-এর নিচে) মান কিছুটা কমতে পারে।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কোন ফরম্যাটে ছবি পাব?" data-en="What format will the output be?">কোন ফরম্যাটে ছবি পাব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="সরকারি ফর্মে সাধারণত JPEG চাওয়া হয়, তাই আউটপুট সবসময় JPEG (.jpg) ফরম্যাটে দেওয়া হয়।" data-en="Government forms almost always require JPEG, so the output is always saved as JPEG (.jpg).">সরকারি ফর্মে সাধারণত JPEG চাওয়া হয়, তাই আউটপুট সবসময় JPEG (.jpg) ফরম্যাটে দেওয়া হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="ছবি সাইজ মেলানো না গেলে কী করব?" data-en="What if the photo can't be compressed to the target size?">ছবি সাইজ মেলানো না গেলে কী করব?</span>
+        </summary>
+        <p class="mt-3 text-gray-700">
+          <span data-bn="টুলটি সর্বোচ্চ চেষ্টা করে। যদি একেবারে মেলানো না যায়, সতর্কতা দেখাবে। এক্ষেত্রে কাস্টম মোডে একটু বড় KB লিমিট দিয়ে আবার চেষ্টা করুন।" data-en="The tool tries its best. If the target cannot be reached, a warning is shown. Try increasing the KB limit slightly in Custom mode.">টুলটি সর্বোচ্চ চেষ্টা করে। যদি একেবারে মেলানো না যায়, সতর্কতা দেখাবে। এক্ষেত্রে কাস্টম মোডে একটু বড় KB লিমিট দিয়ে আবার চেষ্টা করুন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    {
+      url: "/india/gst-calculator",
+      nameBn: "জিএসটি ক্যালকুলেটর",
+      nameEn: "GST Calculator",
+      descBn: "পণ্যের জিএসটি হিসাব করুন",
+      descEn: "Calculate GST on goods and services",
+      icon: "🧾"
+    },
+    {
+      url: "/india/salary-to-hourly",
+      nameBn: "বেতন ক্যালকুলেটর",
+      nameEn: "Salary Calculator",
+      descBn: "বার্ষিক বেতন থেকে ঘণ্টার হার",
+      descEn: "Convert annual salary to hourly rate",
+      icon: "💰"
+    },
+    {
+      url: "/health/bmi-calculator",
+      nameBn: "বিএমআই ক্যালকুলেটর",
+      nameEn: "BMI Calculator",
+      descBn: "উচ্চতা ও ওজন দিয়ে BMI বের করুন",
+      descEn: "Calculate BMI from height and weight",
+      icon: "⚖️"
+    }
+  ]} />
+</ToolLayout>
+
+<script>
+  const uploadArea = document.getElementById('upload-area')!;
+  const imgInput = document.getElementById('img-input') as HTMLInputElement;
+  const processBtn = document.getElementById('process-btn') as HTMLButtonElement;
+  const resultArea = document.getElementById('result-area')!;
+  const previewBefore = document.getElementById('preview-before') as HTMLImageElement;
+  const previewAfter = document.getElementById('preview-after') as HTMLImageElement;
+  const infoBefore = document.getElementById('info-before')!;
+  const infoAfter = document.getElementById('info-after')!;
+  const downloadBtn = document.getElementById('download-btn') as HTMLAnchorElement;
+  const warningMsg = document.getElementById('warning-msg')!;
+  const widthInput = document.getElementById('img-width') as HTMLInputElement;
+  const heightInput = document.getElementById('img-height') as HTMLInputElement;
+  const kbInput = document.getElementById('img-kb') as HTMLInputElement;
+  const presetBtns = document.querySelectorAll('.preset-btn') as NodeListOf<HTMLButtonElement>;
+
+  let uploadedFile: File | null = null;
+  let originalDataUrl: string = '';
+
+  // Preset selection
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => {
+        b.className = b.className.replace('border-teal-500 bg-teal-50 text-teal-700', 'border-gray-300 bg-white text-gray-700');
+      });
+      btn.className = btn.className.replace('border-gray-300 bg-white text-gray-700', 'border-teal-500 bg-teal-50 text-teal-700');
+
+      const w = btn.dataset.w;
+      const h = btn.dataset.h;
+      const kb = btn.dataset.kb;
+      if (w) widthInput.value = w;
+      if (h) heightInput.value = h;
+      if (kb) kbInput.value = kb;
+    });
+  });
+
+  // Select PSC by default
+  (presetBtns[0] as HTMLButtonElement).click();
+
+  // Upload handlers
+  uploadArea.addEventListener('click', () => imgInput.click());
+
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('border-teal-500', 'bg-teal-50');
+  });
+
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('border-teal-500', 'bg-teal-50');
+  });
+
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('border-teal-500', 'bg-teal-50');
+    const file = e.dataTransfer?.files[0];
+    if (file && file.type.startsWith('image/')) handleFile(file);
+  });
+
+  imgInput.addEventListener('change', () => {
+    if (imgInput.files?.[0]) handleFile(imgInput.files[0]);
+  });
+
+  function handleFile(file: File) {
+    uploadedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      originalDataUrl = e.target?.result as string;
+      previewBefore.src = originalDataUrl;
+      const sizeKB = (file.size / 1024).toFixed(1);
+      const lang = (window as any).getLang?.() || 'bn';
+      infoBefore.textContent = lang === 'bn'
+        ? `${sizeKB} KB — মূল ছবি`
+        : `${sizeKB} KB — Original`;
+
+      // Enable button
+      processBtn.disabled = false;
+      processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-teal-600 hover:bg-teal-700 text-white cursor-pointer transition-all min-h-[52px]';
+
+      resultArea.classList.add('hidden');
+    };
+    reader.readAsDataURL(file);
+
+    // Update upload area label
+    uploadArea.querySelector('p.font-semibold span')!.textContent = file.name;
+  }
+
+  processBtn.addEventListener('click', async () => {
+    if (!uploadedFile || !originalDataUrl) return;
+
+    const targetW = parseInt(widthInput.value) || 200;
+    const targetH = parseInt(heightInput.value) || 230;
+    const targetKB = parseInt(kbInput.value) || 50;
+    const targetBytes = targetKB * 1024;
+
+    processBtn.textContent = '...';
+    processBtn.disabled = true;
+
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      const ctx = canvas.getContext('2d')!;
+      ctx.drawImage(img, 0, 0, targetW, targetH);
+
+      // Binary search for quality to hit target KB
+      compressToTarget(canvas, targetBytes).then(({ blob, quality, hitTarget }) => {
+        const url = URL.createObjectURL(blob);
+        previewAfter.src = url;
+        downloadBtn.href = url;
+        downloadBtn.download = 'resized-photo.jpg';
+
+        const actualKB = (blob.size / 1024).toFixed(1);
+        const lang = (window as any).getLang?.() || 'bn';
+        infoAfter.textContent = lang === 'bn'
+          ? `${actualKB} KB — ${targetW}×${targetH}px`
+          : `${actualKB} KB — ${targetW}×${targetH}px`;
+
+        if (!hitTarget) {
+          warningMsg.classList.remove('hidden');
+          warningMsg.textContent = lang === 'bn'
+            ? `⚠️ ${targetKB}KB-এর মধ্যে আনা সম্ভব হয়নি। ফলাফল ${actualKB}KB। KB লিমিট বাড়িয়ে আবার চেষ্টা করুন।`
+            : `⚠️ Could not compress to ${targetKB}KB. Result is ${actualKB}KB. Try increasing the KB limit.`;
+        } else {
+          warningMsg.classList.add('hidden');
+        }
+
+        resultArea.classList.remove('hidden');
+
+        processBtn.disabled = false;
+        const lang2 = (window as any).getLang?.() || 'bn';
+        processBtn.textContent = lang2 === 'bn' ? 'ছবি তৈরি করুন' : 'Resize Photo';
+        processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-teal-600 hover:bg-teal-700 text-white cursor-pointer transition-all min-h-[52px]';
+      });
+    };
+    img.src = originalDataUrl;
+  });
+
+  async function compressToTarget(
+    canvas: HTMLCanvasElement,
+    targetBytes: number
+  ): Promise<{ blob: Blob; quality: number; hitTarget: boolean }> {
+    let lo = 0.01;
+    let hi = 0.99;
+    let bestBlob: Blob | null = null;
+    let hitTarget = false;
+
+    // First check if full quality is already under target
+    const fullBlob = await canvasToBlob(canvas, 0.99);
+    if (fullBlob.size <= targetBytes) {
+      return { blob: fullBlob, quality: 0.99, hitTarget: true };
+    }
+
+    // Binary search
+    for (let i = 0; i < 16; i++) {
+      const mid = (lo + hi) / 2;
+      const blob = await canvasToBlob(canvas, mid);
+      if (blob.size <= targetBytes) {
+        bestBlob = blob;
+        hitTarget = true;
+        lo = mid;
+      } else {
+        hi = mid;
+      }
+      if (hi - lo < 0.005) break;
+    }
+
+    if (!bestBlob) {
+      // Can't fit — return lowest quality we have
+      bestBlob = await canvasToBlob(canvas, 0.01);
+    }
+
+    return { blob: bestBlob, quality: lo, hitTarget };
+  }
+
+  function canvasToBlob(canvas: HTMLCanvasElement, quality: number): Promise<Blob> {
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => resolve(blob!), 'image/jpeg', quality);
+    });
+  }
+</script>

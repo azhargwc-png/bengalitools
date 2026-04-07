@@ -185,5 +185,11 @@ export const tools = {
       desc: { bn: 'মাসিক বেতন থেকে ঘণ্টায় বেতন', en: 'Monthly salary to hourly rate' },
       icon: '💰',
     },
+    {
+      slug: '/india/image-resizer',
+      name: { bn: 'ফর্মের ছবি রিসাইজার', en: 'Form Photo Resizer' },
+      desc: { bn: 'SSC, PSC, Railway ফর্মের ছবি KB ও পিক্সেলে তৈরি করুন', en: 'Resize photo to exact KB and pixels for govt forms' },
+      icon: '🖼️',
+    },
   ],
 };
