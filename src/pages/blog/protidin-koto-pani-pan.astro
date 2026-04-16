@@ -1,0 +1,358 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+---
+
+<ToolLayout
+  title="প্রতিদিন কত পানি পান করা উচিত — সম্পূর্ণ গাইড | BanglaTools"
+  description="প্রতিদিন কতটুকু পানি পান করা উচিত? ওজন অনুযায়ী সঠিক পরিমাণ জানুন। ৮ গ্লাসের মিথ, পানিশূন্যতার লক্ষণ ও পানি পানের সঠিক সময় — বাংলায় সম্পূর্ণ গাইড।"
+>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog" class="hover:text-teal-700">ব্লগ</a> → প্রতিদিন কত পানি পান করা উচিত
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <span data-bn="প্রতিদিন কত পানি পান করা উচিত — সম্পূর্ণ গাইড" data-en="How Much Water Should You Drink Per Day — Complete Guide">প্রতিদিন কত পানি পান করা উচিত — সম্পূর্ণ গাইড</span>
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <!-- Key fact box -->
+  <div class="bg-blue-50 rounded-2xl p-5 border border-blue-200 mb-8">
+    <div class="text-center">
+      <div class="text-5xl mb-3">💧</div>
+      <p class="text-2xl font-bold text-blue-800" data-bn="৬০ কেজি → প্রতিদিন ২.১ লিটার (৮ গ্লাস)" data-en="60 kg → 2.1 litres (8 glasses) per day">৬০ কেজি → প্রতিদিন ২.১ লিটার (৮ গ্লাস)</p>
+      <p class="text-blue-700 mt-1 text-sm" data-bn="(সূত্র: ওজন × ৩৫ মিলি — WHO নির্দেশিকা অনুসরণ করে)" data-en="(Formula: weight × 35 ml — based on WHO guidance)">(সূত্র: ওজন × ৩৫ মিলি — WHO নির্দেশিকা অনুসরণ করে)</p>
+    </div>
+  </div>
+
+  <!-- Inline mini calculator -->
+  <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-4 text-lg">
+      <span data-bn="আপনার দৈনিক পানির চাহিদা বের করুন" data-en="Calculate Your Daily Water Needs">আপনার দৈনিক পানির চাহিদা বের করুন</span>
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          <span data-bn="ওজন (কেজি)" data-en="Weight (kg)">ওজন (কেজি)</span>
+        </label>
+        <input type="number" id="wp-weight" placeholder="60" min="10" max="200"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          <span data-bn="কার্যকলাপের মাত্রা" data-en="Activity Level">কার্যকলাপের মাত্রা</span>
+        </label>
+        <select id="wp-activity"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px] bg-white">
+          <option value="normal" data-bn="স্বাভাবিক (অফিস, হাঁটা)" data-en="Normal (office, walking)">স্বাভাবিক (অফিস, হাঁটা)</option>
+          <option value="active" data-bn="সক্রিয় (ব্যায়াম, শারীরিক কাজ)" data-en="Active (exercise, physical work)">সক্রিয় (ব্যায়াম, শারীরিক কাজ)</option>
+          <option value="very_active" data-bn="অত্যন্ত সক্রিয় (খেলাধুলা, কঠিন পরিশ্রম)" data-en="Very active (sports, heavy labour)">অত্যন্ত সক্রিয় (খেলাধুলা, কঠিন পরিশ্রম)</option>
+        </select>
+      </div>
+    </div>
+    <div id="wp-result" class="hidden rounded-xl p-5 border-2 border-blue-300 bg-blue-50 text-center">
+      <p class="text-3xl font-bold text-blue-700" id="wp-litres"></p>
+      <p class="text-blue-600 mt-1 text-sm" id="wp-glasses"></p>
+    </div>
+    <p class="text-center mt-3">
+      <a href="/health/water-intake" class="text-sm text-teal-700 hover:underline">→ <span data-bn="সম্পূর্ণ ক্যালকুলেটর (গরমের বিকল্পসহ)" data-en="Full calculator (with hot weather option)">সম্পূর্ণ ক্যালকুলেটর (গরমের বিকল্পসহ)</span></a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+    <div data-lang-bn>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">৮ গ্লাসের নিয়ম কোথা থেকে এলো?</h2>
+      <p>"প্রতিদিন ৮ গ্লাস পানি পান করুন" — এই পরামর্শটি আমরা সবাই ছোটবেলা থেকে শুনে আসছি। কিন্তু এই সংখ্যাটি কোথা থেকে এলো? ১৯৪৫ সালে আমেরিকার National Research Council একটি নির্দেশিকা প্রকাশ করেছিল যাতে বলা হয়েছিল প্রতি ক্যালরি খাবারের জন্য ১ মিলিলিটার পানি প্রয়োজন। গড়ে ২০০০ ক্যালরির ডায়েটে তা হয় ২ লিটার, যা প্রায় ৮ গ্লাসের সমান। কিন্তু ওই নির্দেশিকাতেই বলা ছিল খাবার থেকেও অনেকটা পানি আসে — যে অংশটি পরে প্রায়ই বাদ দেওয়া হয়েছে।</p>
+      <p class="mt-3">বাস্তবতা হলো, প্রতিটি মানুষের পানির চাহিদা আলাদা। এটি নির্ভর করে ওজন, উচ্চতা, বয়স, লিঙ্গ, আবহাওয়া এবং শারীরিক কার্যকলাপের উপর। তাই "৮ গ্লাস" একটি মোটামুটি নির্দেশিকা, সবার জন্য সঠিক নিয়ম নয়।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">পানি পানের সঠিক সূত্র</h2>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200 text-center">
+        <p class="text-xl font-bold text-teal-800">দৈনিক পানির চাহিদা = ওজন (কেজি) × ৩৫ মিলিলিটার</p>
+        <p class="text-sm text-teal-600 mt-2">উদাহরণ: ৭০ কেজি → ৭০ × ৩৫ = ২৪৫০ মিলি = ২.৪৫ লিটার = প্রায় ১০ গ্লাস</p>
+      </div>
+      <p class="mt-3">এই সূত্রটি প্রাপ্তবয়স্কদের জন্য একটি ভালো বেসলাইন। এরপর শারীরিক পরিশ্রম ও আবহাওয়া অনুযায়ী আরও যোগ করতে হয়।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ওজন অনুযায়ী দৈনিক পানির চাহিদা</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">ওজন</th>
+              <th class="p-3 text-center">মিলিলিটার</th>
+              <th class="p-3 text-center">লিটার</th>
+              <th class="p-3 text-center">গ্লাস (২৫০ মিলি)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">৪০ কেজি</td><td class="p-3 text-center">১৪০০ মিলি</td><td class="p-3 text-center">১.৪ লি</td><td class="p-3 text-center font-bold">৬ গ্লাস</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৫০ কেজি</td><td class="p-3 text-center">১৭৫০ মিলি</td><td class="p-3 text-center">১.৮ লি</td><td class="p-3 text-center font-bold">৭ গ্লাস</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৬০ কেজি</td><td class="p-3 text-center">২১০০ মিলি</td><td class="p-3 text-center">২.১ লি</td><td class="p-3 text-center font-bold">৮–৯ গ্লাস</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৭০ কেজি</td><td class="p-3 text-center">২৪৫০ মিলি</td><td class="p-3 text-center">২.৫ লি</td><td class="p-3 text-center font-bold">১০ গ্লাস</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৮০ কেজি</td><td class="p-3 text-center">২৮০০ মিলি</td><td class="p-3 text-center">২.৮ লি</td><td class="p-3 text-center font-bold">১১ গ্লাস</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৯০ কেজি</td><td class="p-3 text-center">৩১৫০ মিলি</td><td class="p-3 text-center">৩.২ লি</td><td class="p-3 text-center font-bold">১৩ গ্লাস</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">১০০ কেজি</td><td class="p-3 text-center">৩৫০০ মিলি</td><td class="p-3 text-center">৩.৫ লি</td><td class="p-3 text-center font-bold">১৪ গ্লাস</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-2">* স্বাভাবিক কার্যকলাপের জন্য। ব্যায়াম ও গরমে আরও ৫০০–১০০০ মিলি যোগ করুন।</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">শারীরিক পরিশ্রম ও আবহাওয়া অনুযায়ী অতিরিক্ত পানি</h2>
+      <div class="space-y-3">
+        <div class="bg-orange-50 rounded-xl p-4 border border-orange-200">
+          <p class="font-semibold text-orange-800">🏃 সক্রিয় ব্যক্তি (দৈনিক ব্যায়াম বা শারীরিক কাজ)</p>
+          <p class="text-gray-700 mt-1 text-sm">বেস পরিমাণের সাথে অতিরিক্ত <strong>৫০০ মিলি</strong> (২ গ্লাস) যোগ করুন।</p>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4 border border-red-200">
+          <p class="font-semibold text-red-800">🏋️ অত্যন্ত সক্রিয় (খেলাধুলা, কঠিন শ্রম)</p>
+          <p class="text-gray-700 mt-1 text-sm">বেস পরিমাণের সাথে অতিরিক্ত <strong>১০০০ মিলি</strong> (৪ গ্লাস) যোগ করুন।</p>
+        </div>
+        <div class="bg-yellow-50 rounded-xl p-4 border border-yellow-200">
+          <p class="font-semibold text-yellow-800">☀️ গরম মৌসুম বা উষ্ণ আবহাওয়া</p>
+          <p class="text-gray-700 mt-1 text-sm">ঘামের ক্ষতি পূরণে অতিরিক্ত <strong>৫০০ মিলি</strong> যোগ করুন।</p>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">পানিশূন্যতার লক্ষণ — কীভাবে বুঝবেন?</h2>
+      <p>প্রস্রাবের রঙ পানিশূন্যতার সবচেয়ে সহজ সূচক। হালকা হলুদ বা প্রায় রঙহীন প্রস্রাব মানে হাইড্রেশন ভালো। গাঢ় হলুদ বা কমলা রঙের প্রস্রাব মানে আরও পানি দরকার।</p>
+      <div class="space-y-2 mt-3">
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-3 border border-gray-200">
+          <span class="text-xl">🟡</span>
+          <div>
+            <p class="font-semibold text-gray-900">হালকা পানিশূন্যতা (১–২% ঘাটতি)</p>
+            <p class="text-sm text-gray-600">মাথাব্যথা, মনোযোগ কমে যাওয়া, মুখ সামান্য শুষ্ক অনুভব করা, প্রস্রাব গাঢ় হলুদ।</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-orange-50 rounded-xl p-3 border border-orange-200">
+          <span class="text-xl">🟠</span>
+          <div>
+            <p class="font-semibold text-gray-900">মাঝারি পানিশূন্যতা (৩–৪% ঘাটতি)</p>
+            <p class="text-sm text-gray-600">তীব্র তৃষ্ণা, ক্লান্তি, কর্মক্ষমতা উল্লেখযোগ্যভাবে কমে যাওয়া, মাথা ঘোরা।</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-red-50 rounded-xl p-3 border border-red-200">
+          <span class="text-xl">🔴</span>
+          <div>
+            <p class="font-semibold text-gray-900">তীব্র পানিশূন্যতা (৫%+ ঘাটতি)</p>
+            <p class="text-sm text-gray-600">দ্রুত হৃদস্পন্দন, শ্বাস নিতে কষ্ট, অজ্ঞান হওয়ার সম্ভাবনা — তাৎক্ষণিক চিকিৎসা নেওয়া উচিত।</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সঠিক সময়ে পানি পান — দিনের রুটিন</h2>
+      <div class="space-y-2">
+        <div class="bg-blue-50 rounded-xl p-3 border border-blue-200 flex gap-3 items-start">
+          <span class="text-lg font-bold text-blue-700 min-w-[60px]">সকাল</span>
+          <p class="text-sm text-gray-700">ঘুম থেকে ওঠার পর ১–২ গ্লাস পানি পান করুন। ঘুমের সময় শরীর থেকে পানি বের হয়ে যায়, তাই সকালে পানি পান বিপাকক্রিয়া শুরু করতে সাহায্য করে।</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-3 border border-blue-200 flex gap-3 items-start">
+          <span class="text-lg font-bold text-blue-700 min-w-[60px]">খাবারের আগে</span>
+          <p class="text-sm text-gray-700">প্রতি বেলা খাওয়ার ৩০ মিনিট আগে ১ গ্লাস পানি পান করলে হজম ভালো হয় এবং অতিরিক্ত খাওয়া কমে।</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-3 border border-blue-200 flex gap-3 items-start">
+          <span class="text-lg font-bold text-blue-700 min-w-[60px]">ব্যায়ামের সময়</span>
+          <p class="text-sm text-gray-700">ব্যায়ামের আগে ২৫০–৫০০ মিলি, মাঝে প্রতি ১৫–২০ মিনিটে ১৫০–২৫০ মিলি, এবং ব্যায়ামের পরে ৫০০ মিলি পানি পান করুন।</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-3 border border-blue-200 flex gap-3 items-start">
+          <span class="text-lg font-bold text-blue-700 min-w-[60px]">রাতে</span>
+          <p class="text-sm text-gray-700">ঘুমানোর ১–২ ঘণ্টা আগে বেশি পানি পান এড়িয়ে চলুন — ঘুম ভেঙে বারবার শৌচাগারে যেতে হবে।</p>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">পানি পানের উপকারিতা — বৈজ্ঞানিক তথ্য</h2>
+      <ul class="space-y-2 text-sm">
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">🧠</span> <span><strong>মস্তিষ্কের কার্যক্ষমতা:</strong> মাত্র ১–২% পানিশূন্যতা মনোযোগ ও স্মৃতিশক্তি উল্লেখযোগ্যভাবে কমিয়ে দেয় (Journal of Nutrition, 2012)।</span></li>
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">⚡</span> <span><strong>শক্তি ও ক্লান্তি:</strong> পর্যাপ্ত পানি পান শক্তির মাত্রা বজায় রাখে। পানিশূন্যতা শরীরের শক্তি উৎপাদন প্রক্রিয়া ধীর করে দেয়।</span></li>
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">🫘</span> <span><strong>কিডনির স্বাস্থ্য:</strong> পর্যাপ্ত পানি পান কিডনির পাথর হওয়ার সম্ভাবনা কমায়। প্রস্রাবের সাথে খনিজ ও বর্জ্য পদার্থ বেরিয়ে যায়।</span></li>
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">🫀</span> <span><strong>হজম ও কোষ্ঠকাঠিন্য:</strong> পানি হজমে সাহায্য করে এবং কোষ্ঠকাঠিন্য প্রতিরোধ করে। অন্ত্র সঠিকভাবে কাজ করতে পানির প্রয়োজন।</span></li>
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">✨</span> <span><strong>ত্বকের যত্ন:</strong> পর্যাপ্ত হাইড্রেশন ত্বক উজ্জ্বল ও আর্দ্র রাখে। পানিশূন্যতায় ত্বক শুষ্ক ও নিস্তেজ দেখায়।</span></li>
+        <li class="flex gap-2 items-start"><span class="text-teal-600 font-bold">⚖️</span> <span><strong>ওজন নিয়ন্ত্রণ:</strong> খাওয়ার আগে পানি পান করলে ক্ষুধা কিছুটা কমে এবং অতিরিক্ত খাওয়া এড়ানো যায়।</span></li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">কোন পানীয় পানির বিকল্প হতে পারে?</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">পানীয়</th>
+              <th class="p-3 text-center">হাইড্রেশনে গণনা</th>
+              <th class="p-3 text-left">মন্তব্য</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">বিশুদ্ধ পানি</td><td class="p-3 text-center text-green-600 font-bold">১০০%</td><td class="p-3">সর্বোত্তম বিকল্প</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">নারকেলের জল</td><td class="p-3 text-center text-green-600 font-bold">~৯৫%</td><td class="p-3">ইলেক্ট্রোলাইটসমৃদ্ধ, চমৎকার বিকল্প</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">ফলের রস (চিনি ছাড়া)</td><td class="p-3 text-center text-green-600 font-bold">~৮০–৯০%</td><td class="p-3">ভিটামিনও আছে, তবে ক্যালরি বেশি</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">সাধারণ চা/দুধ চা</td><td class="p-3 text-center text-yellow-600 font-bold">~৭০–৮০%</td><td class="p-3">কিছুটা গণনা করা যায়, অতিরিক্ত নয়</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">কফি</td><td class="p-3 text-center text-orange-600 font-bold">~৬০–৭০%</td><td class="p-3">ক্যাফেইন মূত্রবর্ধক — বেশি পান করলে ক্ষতি</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">কোল্ড ড্রিংক / সোডা</td><td class="p-3 text-center text-red-600 font-bold">গণনা নয়</td><td class="p-3">চিনি ও ক্যাফেইন বেশি — এড়িয়ে চলা ভালো</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">বিশেষ পরিস্থিতিতে পানির চাহিদা</h2>
+      <div class="space-y-3">
+        <div class="bg-pink-50 rounded-xl p-4 border border-pink-200">
+          <p class="font-semibold text-pink-800">🤰 গর্ভাবস্থায়</p>
+          <p class="text-gray-700 text-sm mt-1">গর্ভাবস্থায় অতিরিক্ত প্রায় ৩০০ মিলি পানি প্রয়োজন। মোট চাহিদা সাধারণত ২.৫–৩ লিটার। স্তন্যপান করানো মায়েদের প্রতিদিন ৩–৩.৫ লিটার পানি প্রয়োজন।</p>
+        </div>
+        <div class="bg-purple-50 rounded-xl p-4 border border-purple-200">
+          <p class="font-semibold text-purple-800">👴 বয়স্কদের ক্ষেত্রে</p>
+          <p class="text-gray-700 text-sm mt-1">বয়স বাড়ার সাথে তৃষ্ণার অনুভূতি কমে যায়। বয়স্করা প্রায়ই বুঝতে পারেন না যে তারা পানিশূন্য হয়ে পড়ছেন। তাই নিয়মিত পানি পানের অভ্যাস করা জরুরি।</p>
+        </div>
+        <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+          <p class="font-semibold text-green-800">🏃 অ্যাথলেট ও খেলোয়াড়</p>
+          <p class="text-gray-700 text-sm mt-1">তীব্র ব্যায়ামে প্রতি ঘণ্টায় ০.৫–১.৫ লিটার ঘামের মাধ্যমে বের হয়। দীর্ঘ সময়ের ব্যায়ামে শুধু পানি নয়, ইলেক্ট্রোলাইট (সোডিয়াম, পটাশিয়াম) পূরণও জরুরি।</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div data-lang-en style="display:none">
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Where did the "8 glasses a day" rule come from?</h2>
+      <p>The advice to drink 8 glasses of water a day is common, but where does it come from? In 1945, the US National Research Council published a guideline stating that the body needs 1 ml of water per calorie consumed. On a 2,000-calorie diet that equals about 2 litres — roughly 8 glasses. However, the same guideline noted that most of this water comes from food, a detail that was largely forgotten over time.</p>
+      <p class="mt-3">The reality is that water needs vary from person to person based on weight, height, age, sex, climate, and physical activity. The "8 glasses" figure is a rough baseline, not a universal rule.</p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">The correct water intake formula</h2>
+      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200 text-center">
+        <p class="text-xl font-bold text-teal-800">Daily water need = Weight (kg) × 35 ml</p>
+        <p class="text-sm text-teal-600 mt-2">Example: 70 kg → 70 × 35 = 2,450 ml = 2.45 litres = about 10 glasses</p>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Daily water needs by weight</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left">Weight</th><th class="p-3 text-center">Millilitres</th><th class="p-3 text-center">Litres</th><th class="p-3 text-center">Glasses (250 ml)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">40 kg</td><td class="p-3 text-center">1,400 ml</td><td class="p-3 text-center">1.4 L</td><td class="p-3 text-center font-bold">6 glasses</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">50 kg</td><td class="p-3 text-center">1,750 ml</td><td class="p-3 text-center">1.8 L</td><td class="p-3 text-center font-bold">7 glasses</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">60 kg</td><td class="p-3 text-center">2,100 ml</td><td class="p-3 text-center">2.1 L</td><td class="p-3 text-center font-bold">8–9 glasses</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">70 kg</td><td class="p-3 text-center">2,450 ml</td><td class="p-3 text-center">2.5 L</td><td class="p-3 text-center font-bold">10 glasses</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">80 kg</td><td class="p-3 text-center">2,800 ml</td><td class="p-3 text-center">2.8 L</td><td class="p-3 text-center font-bold">11 glasses</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">90 kg</td><td class="p-3 text-center">3,150 ml</td><td class="p-3 text-center">3.2 L</td><td class="p-3 text-center font-bold">13 glasses</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Signs of dehydration</h2>
+      <p>Urine colour is the simplest indicator of hydration. Pale or nearly clear urine means good hydration. Dark yellow or orange urine means you need more water.</p>
+      <ul class="mt-3 space-y-1 text-sm">
+        <li>🟡 <strong>Mild (1–2% deficit):</strong> Headache, reduced concentration, slightly dry mouth, darker urine.</li>
+        <li>🟠 <strong>Moderate (3–4% deficit):</strong> Strong thirst, fatigue, noticeably reduced performance, dizziness.</li>
+        <li>🔴 <strong>Severe (5%+ deficit):</strong> Rapid heartbeat, difficulty breathing, risk of fainting — seek medical attention immediately.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Best times to drink water</h2>
+      <ul class="space-y-2 text-sm">
+        <li>🌅 <strong>Morning:</strong> 1–2 glasses after waking up — replenishes water lost during sleep and kick-starts metabolism.</li>
+        <li>🍽️ <strong>Before meals:</strong> 1 glass 30 minutes before eating improves digestion and helps prevent overeating.</li>
+        <li>🏃 <strong>Exercise:</strong> 250–500 ml before, 150–250 ml every 15–20 minutes during, and 500 ml after exercise.</li>
+        <li>🌙 <strong>Evening:</strong> Avoid large amounts 1–2 hours before bed to prevent sleep disruption.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">Benefits of proper hydration</h2>
+      <ul class="space-y-1 text-sm">
+        <li>🧠 <strong>Brain function:</strong> Even 1–2% dehydration measurably reduces concentration and memory (Journal of Nutrition, 2012).</li>
+        <li>⚡ <strong>Energy levels:</strong> Adequate water keeps energy steady; dehydration slows energy production.</li>
+        <li>🫘 <strong>Kidney health:</strong> Proper hydration reduces kidney stone risk by flushing minerals and waste through urine.</li>
+        <li>🫀 <strong>Digestion:</strong> Water aids digestion and prevents constipation.</li>
+        <li>✨ <strong>Skin:</strong> Good hydration keeps skin bright and supple.</li>
+        <li>⚖️ <strong>Weight management:</strong> Drinking water before meals reduces appetite and helps avoid overeating.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
+    </h2>
+    <div class="space-y-3">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="প্রতিদিন ঠিক কত লিটার পানি পান করতে হবে?" data-en="How many litres of water should I drink per day exactly?">প্রতিদিন ঠিক কত লিটার পানি পান করতে হবে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="সঠিক পরিমাণ আপনার ওজনের উপর নির্ভর করে। সূত্র হলো: ওজন (কেজি) × ৩৫ মিলিলিটার। ৬০ কেজির মানুষের জন্য এটি ২.১ লিটার, ৭০ কেজির জন্য ২.৪৫ লিটার। শারীরিক পরিশ্রম ও গরম আবহাওয়ায় আরও ৫০০–১০০০ মিলি যোগ করুন।" data-en="The correct amount depends on your weight. The formula is: weight (kg) × 35 ml. For a 60 kg person this is 2.1 litres; for 70 kg it is 2.45 litres. Add 500–1,000 ml more for physical activity or hot weather.">সঠিক পরিমাণ আপনার ওজনের উপর নির্ভর করে। সূত্র হলো: ওজন (কেজি) × ৩৫ মিলিলিটার। ৬০ কেজির মানুষের জন্য এটি ২.১ লিটার, ৭০ কেজির জন্য ২.৪৫ লিটার। শারীরিক পরিশ্রম ও গরম আবহাওয়ায় আরও ৫০০–১০০০ মিলি যোগ করুন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="বেশি পানি পান কি ক্ষতিকর?" data-en="Can drinking too much water be harmful?">বেশি পানি পান কি ক্ষতিকর?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="হ্যাঁ, অতিরিক্ত পানি পান (ওভারহাইড্রেশন) বিরল কিন্তু সম্ভব। এটি হাইপোনেট্রিমিয়া ঘটাতে পারে যেখানে রক্তের সোডিয়াম মাত্রা বিপজ্জনকভাবে কমে যায়। তবে সাধারণ মানুষের ক্ষেত্রে এটি খুব কমই হয় — কিডনি অতিরিক্ত পানি প্রস্রাব হিসেবে বের করে দেয়।" data-en="Yes, overhydration is rare but possible. It can cause hyponatraemia, where blood sodium drops dangerously. However for most people this is extremely unlikely — healthy kidneys simply excrete excess water as urine.">হ্যাঁ, অতিরিক্ত পানি পান (ওভারহাইড্রেশন) বিরল কিন্তু সম্ভব। এটি হাইপোনেট্রিমিয়া ঘটাতে পারে যেখানে রক্তের সোডিয়াম মাত্রা বিপজ্জনকভাবে কমে যায়। তবে সাধারণ মানুষের ক্ষেত্রে এটি খুব কমই হয় — কিডনি অতিরিক্ত পানি প্রস্রাব হিসেবে বের করে দেয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="খাবার থেকে কি পানির চাহিদা পূরণ হয়?" data-en="Does food contribute to my daily water intake?">খাবার থেকে কি পানির চাহিদা পূরণ হয়?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="হ্যাঁ। ফল, সবজি এবং রান্না করা খাবার থেকে আমরা দৈনিক পানির চাহিদার প্রায় ২০–৩০% পূরণ করি। শশা, তরমুজ, কমলা ও টমেটোতে ৯০%+ পানি থাকে। তবে মূল পানীয় হিসেবে পানিই সেরা।" data-en="Yes. Fruits, vegetables, and cooked foods can meet 20–30% of your daily water needs. Cucumber, watermelon, orange, and tomato are 90%+ water. But plain water remains the best primary source.">হ্যাঁ। ফল, সবজি এবং রান্না করা খাবার থেকে আমরা দৈনিক পানির চাহিদার প্রায় ২০–৩০% পূরণ করি। শশা, তরমুজ, কমলা ও টমেটোতে ৯০%+ পানি থাকে। তবে মূল পানীয় হিসেবে পানিই সেরা।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="সকালে খালি পেটে পানি পানের কি উপকার আছে?" data-en="Are there benefits to drinking water on an empty stomach in the morning?">সকালে খালি পেটে পানি পানের কি উপকার আছে?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="হ্যাঁ। ঘুমের সময় শরীর ঘামে ও শ্বাসে পানি হারায়। সকালে উঠেই ১–২ গ্লাস পানি পান করলে বিপাকক্রিয়া শুরু হয়, কিডনি সক্রিয় হয় এবং সারারাত পেটে থাকা অ্যাসিড পাতলা হয়।" data-en="Yes. The body loses water through breathing and sweating during sleep. Drinking 1–2 glasses on waking kick-starts metabolism, activates the kidneys, and dilutes stomach acid that has built up overnight.">হ্যাঁ। ঘুমের সময় শরীর ঘামে ও শ্বাসে পানি হারায়। সকালে উঠেই ১–২ গ্লাস পানি পান করলে বিপাকক্রিয়া শুরু হয়, কিডনি সক্রিয় হয় এবং সারারাত পেটে থাকা অ্যাসিড পাতলা হয়।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="কীভাবে বুঝব আমি পর্যাপ্ত পানি পান করছি কিনা?" data-en="How do I know if I'm drinking enough water?">কীভাবে বুঝব আমি পর্যাপ্ত পানি পান করছি কিনা?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="সহজতম উপায় হলো প্রস্রাবের রঙ দেখা। হালকা লেবু রঙের (পেলো ইয়েলো) প্রস্রাব মানে হাইড্রেশন ভালো। গাঢ় হলুদ মানে আরও পানি দরকার। এছাড়া তৃষ্ণা অনুভব না করা, মাথাব্যথা না থাকা ও সতেজ বোধ করাও ভালো হাইড্রেশনের চিহ্ন।" data-en="The easiest check is urine colour. Pale lemon yellow means good hydration. Dark yellow means drink more. Other signs of good hydration include not feeling thirsty, no headaches, and feeling alert and energetic.">সহজতম উপায় হলো প্রস্রাবের রঙ দেখা। হালকা লেবু রঙের (পেলো ইয়েলো) প্রস্রাব মানে হাইড্রেশন ভালো। গাঢ় হলুদ মানে আরও পানি দরকার। এছাড়া তৃষ্ণা অনুভব না করা, মাথাব্যথা না থাকা ও সতেজ বোধ করাও ভালো হাইড্রেশনের চিহ্ন।</span>
+        </p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">
+          <span data-bn="শিশুদের প্রতিদিন কত পানি পান করা উচিত?" data-en="How much water should children drink daily?">শিশুদের প্রতিদিন কত পানি পান করা উচিত?</span>
+        </summary>
+        <p class="mt-3 text-gray-700 text-sm">
+          <span data-bn="শিশুদের পানির চাহিদা বয়স অনুযায়ী: ৪–৮ বছর: ১.২ লিটার/দিন, ৯–১৩ বছর: ১.৬–১.৮ লিটার/দিন, ১৪–১৮ বছর: ১.৮–২.৬ লিটার/দিন। সক্রিয় শিশু ও গরম আবহাওয়ায় আরও বেশি প্রয়োজন।" data-en="Children's water needs by age: 4–8 years: 1.2 litres/day; 9–13 years: 1.6–1.8 litres/day; 14–18 years: 1.8–2.6 litres/day. Active children and hot weather require more.">শিশুদের পানির চাহিদা বয়স অনুযায়ী: ৪–৮ বছর: ১.২ লিটার/দিন, ৯–১৩ বছর: ১.৬–১.৮ লিটার/দিন, ১৪–১৮ বছর: ১.৮–২.৬ লিটার/দিন। সক্রিয় শিশু ও গরম আবহাওয়ায় আরও বেশি প্রয়োজন।</span>
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <div class="mt-8 text-center">
+    <a href="/health/water-intake" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-xl transition-colors inline-block">
+      <span data-bn="আমার দৈনিক পানির পরিমাণ হিসাব করুন →" data-en="Calculate My Daily Water Intake →">আমার দৈনিক পানির পরিমাণ হিসাব করুন →</span>
+    </a>
+  </div>
+
+  <AdSlot slot="blog-bottom" />
+</ToolLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function () {
+  var wEl = document.getElementById('wp-weight');
+  var aEl = document.getElementById('wp-activity');
+  var resEl = document.getElementById('wp-result');
+  var litresEl = document.getElementById('wp-litres');
+  var glassesEl = document.getElementById('wp-glasses');
+
+  function calc() {
+    var w = parseFloat(wEl.value);
+    if (isNaN(w) || w <= 0) { resEl.classList.add('hidden'); return; }
+    var ml = w * 35;
+    var act = aEl.value;
+    if (act === 'active') ml += 500;
+    if (act === 'very_active') ml += 1000;
+    var litres = (ml / 1000).toFixed(1);
+    var glasses = Math.ceil(ml / 250);
+    var lang = localStorage.getItem('bt-lang') || 'bn';
+    litresEl.textContent = litres + ' ' + (lang === 'bn' ? 'লিটার' : 'litres');
+    glassesEl.textContent = glasses + ' ' + (lang === 'bn' ? 'গ্লাস প্রতিদিন (২৫০ মিলি করে)' : 'glasses per day (250 ml each)');
+    resEl.classList.remove('hidden');
+  }
+
+  wEl.addEventListener('input', calc);
+  aEl.addEventListener('change', calc);
+});
+</script>
