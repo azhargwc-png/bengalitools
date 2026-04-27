@@ -46,6 +46,7 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
 
     <!-- hreflang -->
     <link rel="alternate" hreflang="bn" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     <!-- Favicon -->
@@ -62,6 +63,9 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
     <!-- Data attributes for bilingual meta -->
     {titleBn && <meta name="title-bn" content={titleBn} />}
     {descriptionBn && <meta name="description-bn" content={descriptionBn} />}
+
+    <!-- Page-level schema injection -->
+    <slot name="head" />
 
     <!-- Google AdSense — Auto Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7942711962511546"

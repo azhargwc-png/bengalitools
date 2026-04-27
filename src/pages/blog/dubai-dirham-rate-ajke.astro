@@ -1,11 +1,12 @@
----
-import ToolLayout from '../../layouts/ToolLayout.astro';
+﻿---
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 ---
 
-<ToolLayout
+<BlogLayout
   title="দুবাই দিরহাম আজকের রেট — AED to INR | BanglaTools"
   description="আজকের দুবাই দিরহাম রেট লাইভ দেখুন। AED থেকে INR বিনিময় হার, প্রবাসী বাঙালিদের জন্য সেরা রেটে টাকা পাঠানোর গাইড ও কনভার্টার।"
+  datePublished="2026-03-25"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → দুবাই দিরহাম আজকের রেট
@@ -121,7 +122,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 var aedRate = null;

@@ -1,0 +1,39 @@
+---
+import ToolLayout from './ToolLayout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  canonical?: string;
+}
+
+const { title, description, datePublished, dateModified, canonical } = Astro.props;
+const rawPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const pageURL = canonical || `https://www.bengalitools.com${rawPath}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "url": pageURL,
+  "datePublished": datePublished,
+  "dateModified": dateModified || datePublished,
+  "publisher": {
+    "@type": "Organization",
+    "name": "BanglaTools",
+    "url": "https://www.bengalitools.com"
+  },
+  "inLanguage": "bn"
+};
+---
+
+<ToolLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+    <slot name="head" />
+  </Fragment>
+  <slot />
+</ToolLayout>

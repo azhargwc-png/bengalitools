@@ -2,12 +2,58 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "বিএমআই ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/health/bmi-calculator/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "স্বাস্থ্যকর BMI রেঞ্জ কত?",
+          "acceptedAnswer": { "@type": "Answer", "text": "বয়স্ক মানুষের জন্য ১৮.৫ থেকে ২৪.৯ স্বাস্থ্যকর BMI বলে বিবেচিত। তবে এশীয়দের জন্য সীমা কিছুটা কম, ১৮.৫ থেকে ২২.৯ সবচেয়ে উপযুক্ত বলে অনেক বিশেষজ্ঞ মনে করেন।" }
+        },
+        {
+          "@type": "Question",
+          "name": "পুরুষ ও মহিলার BMI কি আলাদা?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BMI সূত্র পুরুষ ও মহিলার জন্য একই। তবে শরীরে চর্বির বিতরণ ভিন্ন। একই BMI-তে মহিলাদের সাধারণত বেশি চর্বি থাকে। এই কারণে কোমরের মাপও গুরুত্বপূর্ণ।" }
+        },
+        {
+          "@type": "Question",
+          "name": "BMI কি সবসময় নির্ভুল?",
+          "acceptedAnswer": { "@type": "Answer", "text": "না। পেশিবহুল ব্যক্তিরা উচ্চ BMI দেখাতে পারেন অথচ সুস্বাস্থ্যের অধিকারী। শিশু, বৃদ্ধ, গর্ভবতী মহিলা ও অ্যাথলেটদের ক্ষেত্রে BMI সঠিক নাও হতে পারে।" }
+        },
+        {
+          "@type": "Question",
+          "name": "শিশুদের জন্য BMI কীভাবে হিসাব করে?",
+          "acceptedAnswer": { "@type": "Answer", "text": "শিশুদের BMI বয়স ও লিঙ্গ-নির্দিষ্ট পার্সেন্টাইল চার্টের সাহায্যে মূল্যায়ন করা হয়। এই টুলটি প্রাপ্তবয়স্কদের জন্য — শিশুদের ক্ষেত্রে শিশু-বিশেষজ্ঞের পরামর্শ নিন।" }
+        },
+        {
+          "@type": "Question",
+          "name": "BMI কমাতে কী করতে হবে?",
+          "acceptedAnswer": { "@type": "Answer", "text": "সুষম খাদ্যাভ্যাস ও নিয়মিত ব্যায়ামের মাধ্যমে ওজন কমানো যায়। প্রতিদিন ৩০ মিনিট হাঁটা, চিনি ও তৈলাক্ত খাবার কমানো এবং বেশি শাকসবজি খাওয়া কার্যকর।" }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="বিএমআই ক্যালকুলেটর বাংলা — BMI Calculator | BanglaTools"
   description="বিএমআই ক্যালকুলেটর দিয়ে আপনার উচ্চতা ও ওজন থেকে BMI বের করুন। বিনামূল্যে অনলাইন BMI চেকার।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="বিএমআই ক্যালকুলেটর বাংলা" data-en="BMI Calculator in Bengali">বিএমআই ক্যালকুলেটর বাংলা</span>

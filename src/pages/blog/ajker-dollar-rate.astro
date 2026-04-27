@@ -1,11 +1,12 @@
----
-import ToolLayout from '../../layouts/ToolLayout.astro';
+﻿---
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 ---
 
-<ToolLayout
+<BlogLayout
   title="আজকের ডলারের রেট — USD থেকে INR | BanglaTools"
   description="আজকের লাইভ ডলার রেট জানুন। USD থেকে INR বিনিময় হার প্রতিদিন আপডেট হয়। রেমিট্যান্স টিপস, রূপান্তর টেবিল ও সেরা রেটে টাকা পাঠানোর গাইড।"
+  datePublished="2026-03-25"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → আজকের ডলারের রেট
@@ -129,7 +130,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 var usdToInrRate = null;

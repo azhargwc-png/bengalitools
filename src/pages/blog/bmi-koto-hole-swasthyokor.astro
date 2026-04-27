@@ -1,12 +1,46 @@
 ---
-import ToolLayout from '../../layouts/ToolLayout.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "বিএমআই ১৮.৫-এর কম হলে কী করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BMI ১৮.৫-এর কম মানে কম ওজন। পুষ্টিকর খাবার বাড়ান — ভাত, ডাল, মাছ, ডিম, দুধ। প্রয়োজনে পুষ্টিবিদের পরামর্শ নিন। দ্রুত ওজন বাড়ানোর চেষ্টা না করে ধীরে সুষম খাবার খান।" }
+    },
+    {
+      "@type": "Question",
+      "name": "BMI ২৫-এর বেশি হলে কী করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BMI ২৫-২৯.৯ মানে অতিরিক্ত ওজন। খাবারে চিনি ও ভাজাপোড়া কমান, প্রতিদিন ৩০ মিনিট হাঁটুন এবং পর্যাপ্ত জল পান করুন। ডায়েট ক্র্যাশ না করে ধীরে ধীরে জীবনযাত্রা পরিবর্তন করুন।" }
+    },
+    {
+      "@type": "Question",
+      "name": "BMI ৩০ বা তার বেশি হলে কী হয়?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BMI ৩০-এর বেশি মানে স্থূলতা, যা ডায়াবেটিস, হৃদরোগ, উচ্চ রক্তচাপ ও হাঁটুর সমস্যার ঝুঁকি বাড়ায়। ডাক্তারের সাথে পরামর্শ করুন। চিকিৎসার পাশাপাশি খাদ্যাভ্যাস ও ব্যায়ামে পরিবর্তন আনুন।" }
+    },
+    {
+      "@type": "Question",
+      "name": "এশীয়দের জন্য BMI সীমা কি আলাদা?",
+      "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ। অনেক গবেষণা দেখায় যে এশীয়দের জন্য ২৩-এর বেশি BMI অতিরিক্ত ওজন ও ২৭.৫-এর বেশি স্থূলতা হিসাবে বিবেচনা করা উচিত। বাঙালিদের জন্য WHO-র সাধারণ সীমার চেয়ে কম সীমা আরও উপযুক্ত।" }
+    },
+    {
+      "@type": "Question",
+      "name": "BMI কমানোর সবচেয়ে কার্যকর উপায় কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "খাবারে ক্যালরি সামান্য কমান এবং নিয়মিত ব্যায়াম করুন। প্রতিদিন ৩০ মিনিট হাঁটা, চিনিযুক্ত পানীয় বাদ দেওয়া এবং রাতে কম খাওয়া — এই তিনটি পরিবর্তন সবচেয়ে বেশি কাজ করে।" }
+    }
+  ]
+};
 ---
 
-<ToolLayout
+<BlogLayout
   title="বিএমআই কত হলে স্বাস্থ্যকর | BanglaTools"
   description="WHO অনুযায়ী ১৮.৫ থেকে ২৪.৯ BMI স্বাস্থ্যকর। সম্পূর্ণ BMI চার্ট, চারটি ক্যাটাগরির বিস্তারিত ব্যাখ্যা, বাস্তব উদাহরণ ও বিনামূল্যে BMI ক্যালকুলেটর।"
+  datePublished="2026-03-25"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → বিএমআই কত হলে স্বাস্থ্যকর
   </div>
@@ -138,7 +172,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {

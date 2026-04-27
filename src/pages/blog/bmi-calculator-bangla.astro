@@ -1,11 +1,12 @@
----
-import ToolLayout from '../../layouts/ToolLayout.astro';
+﻿---
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 ---
 
-<ToolLayout
+<BlogLayout
   title="বিএমআই ক্যালকুলেটর বাংলা | BanglaTools"
   description="বিনামূল্যে বাংলা BMI ক্যালকুলেটর — উচ্চতা ও ওজন দিয়ে তাৎক্ষণিক ফলাফল পান। WHO গাইডলাইন, BMI চার্ট ও স্বাস্থ্য পরামর্শ সহ সম্পূর্ণ গাইড।"
+  datePublished="2026-03-25"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → বিএমআই ক্যালকুলেটর বাংলা
@@ -114,7 +115,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {

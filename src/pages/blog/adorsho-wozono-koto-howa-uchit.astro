@@ -1,11 +1,12 @@
----
-import ToolLayout from '../../layouts/ToolLayout.astro';
+﻿---
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 ---
 
-<ToolLayout
+<BlogLayout
   title="আদর্শ ওজন কত হওয়া উচিত | BanglaTools"
   description="উচ্চতা অনুযায়ী আদর্শ ওজন কত হওয়া উচিত জানুন। নারী ও পুরুষের আলাদা ওজন চার্ট, আদর্শ ওজন ক্যালকুলেটর ও ওজন নিয়ন্ত্রণের ব্যবহারিক পরামর্শ।"
+  datePublished="2026-03-25"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → আদর্শ ওজন কত হওয়া উচিত
@@ -124,7 +125,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 function calcIdealWeight() {

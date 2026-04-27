@@ -1,11 +1,12 @@
----
-import ToolLayout from '../../layouts/ToolLayout.astro';
+﻿---
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 ---
 
-<ToolLayout
+<BlogLayout
   title="বাংলাদেশি টাকা ভারতীয় রুপি রেট | BanglaTools"
   description="আজকের লাইভ BDT থেকে INR বিনিময় হার। বাংলাদেশ থেকে ভারতে টাকা পাঠানোর সেরা উপায়, রূপান্তর টেবিল ও সীমান্তবর্তী পরিবারের জন্য গাইড।"
+  datePublished="2026-03-25"
 >
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট
@@ -116,7 +117,7 @@ import AdSlot from '../../components/AdSlot.astro';
   </div>
 
   <AdSlot slot="blog-bottom" />
-</ToolLayout>
+</BlogLayout>
 
 <script is:inline>
 var bdtRate = null;
