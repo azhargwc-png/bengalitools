@@ -17,6 +17,9 @@ import ToolLayout from '../layouts/ToolLayout.astro';
     <!-- Contact Form -->
     <div class="md:col-span-2">
       <form id="contact-form" class="space-y-5 bg-gray-50 rounded-2xl p-6 border border-gray-200">
+        <input type="hidden" name="access_key" value="b16bdb6a-022f-4c34-8a31-e8ee2b9a2494" />
+        <input type="hidden" name="subject" value="BanglaTools Contact Form" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
             <span data-bn="আপনার নাম *" data-en="Your Name *">আপনার নাম *</span>
@@ -86,6 +89,9 @@ import ToolLayout from '../layouts/ToolLayout.astro';
         <div id="form-success" class="hidden bg-green-50 border border-green-300 rounded-xl p-4 text-green-800 text-center">
           <span data-bn="আপনার বার্তা পাঠানো হয়েছে। ধন্যবাদ!" data-en="Your message has been sent. Thank you!">আপনার বার্তা পাঠানো হয়েছে। ধন্যবাদ!</span>
         </div>
+        <div id="form-error" class="hidden bg-red-50 border border-red-300 rounded-xl p-4 text-red-800 text-center">
+          <span data-bn="কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।" data-en="Something went wrong. Please try again.">কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।</span>
+        </div>
       </form>
     </div>
 
@@ -121,15 +127,36 @@ import ToolLayout from '../layouts/ToolLayout.astro';
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const success = document.getElementById('form-success');
-  form?.addEventListener('submit', (e) => {
+  const error = document.getElementById('form-error');
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (success) {
-      success.classList.remove('hidden');
-      form.reset();
-      // Re-apply language after reset
-      if (typeof window.applyLang === 'function') {
-        window.applyLang(window.getLang());
+    submitBtn.disabled = true;
+    submitBtn.textContent = '...';
+
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.success) {
+        success?.classList.remove('hidden');
+        error?.classList.add('hidden');
+        form.reset();
+        if (typeof window.applyLang === 'function') window.applyLang(window.getLang());
+      } else {
+        throw new Error(json.message);
       }
+    } catch {
+      error?.classList.remove('hidden');
+      success?.classList.add('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      if (typeof window.applyLang === 'function') window.applyLang(window.getLang());
     }
   });
 </script>
