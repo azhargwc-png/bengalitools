@@ -25,6 +25,6 @@ export default {
       },
     },
   },
-  safelist: ['leading-normal', 'leading-relaxed', 'tracking-normal', 'tracking-wide'],
+  safelist: ['leading-normal', 'leading-relaxed', 'tracking-normal', 'tracking-wide', 'tracking-wider'],
   plugins: [],
 };
