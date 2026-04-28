@@ -54,15 +54,15 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
     <!-- Google Fonts — non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&family=Inter:wght@400;600&display=swap" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     </noscript>
 
     <!-- Data attributes for bilingual meta -->
@@ -149,7 +149,7 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
 <style is:global>
   /* ─── Font families ──────────────────────────────────── */
   body, body.font-bengali {
-    font-family: 'Noto Sans Bengali', 'Hind Siliguri', sans-serif;
+    font-family: 'Noto Sans Bengali', sans-serif;
     font-size: 1rem;        /* 16px base — Bengali needs this minimum */
     font-weight: 500;       /* Medium weight for readable strokes */
     line-height: 1.651;     /* Bengali glyphs are taller; extra leading helps */
@@ -175,7 +175,7 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
   /* font-mono falls back to a Latin monospace font that can't render Bengali.
      In Bengali mode, switch to the Bengali font so digits and script show correctly. */
   [data-lang="bn"] .font-mono {
-    font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+    font-family: 'Noto Sans Bengali', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01em;
   }
@@ -183,7 +183,7 @@ const canonicalURL = canonical || new URL(rawPath, Astro.site).href;
   /* ─── AdSense placeholder slots ────────────────────── */
   .adsense-slot {
     display: block;
-    min-height: 90px;
+    min-height: 100px;
     background: transparent;
     margin: 1rem 0;
   }
