@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "কেজি থেকে পাউন্ড কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/kg-to-lbs/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ কেজি সমান কত পাউন্ড?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ কেজি সমান ২.২০৪৬২ পাউন্ড। সহজে মনে রাখতে পারেন: প্রতি ১ কেজিতে প্রায় ২.২ পাউন্ড।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ পাউন্ড সমান কত কেজি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ পাউন্ড সমান ০.৪৫৩৫৯ কেজি। অর্থাৎ প্রায় আধা কেজির একটু কম।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বিমানের লাগেজ ২৩ কেজি মানে কত পাউন্ড?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "২৩ কেজি সমান ৫০.৭১ পাউন্ড। আন্তর্জাতিক ফ্লাইটে সাধারণত ২৩ কেজি লাগেজ বহনের অনুমতি দেওয়া হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কেজি থেকে পাউন্ড বের করার সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সূত্র হলো: পাউন্ড = কেজি × ২.২০৪৬২। উদাহরণ: ৫০ কেজি × ২.২০৪৬২ = ১১০.২৩ পাউন্ড।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "আমার ওজন ৭০ কেজি, পাউন্ডে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৭০ কেজি সমান ১৫৪.৩২ পাউন্ড। ৭০ × ২.২০৪৬২ = ১৫৪.৩২।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="কেজি থেকে পাউন্ড কনভার্টার | BanglaTools"
   description="কেজি থেকে পাউন্ড বা পাউন্ড থেকে কেজি তাৎক্ষণিকভাবে রূপান্তর করুন। বিনামূল্যে অনলাইন কনভার্টার।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="কেজি থেকে পাউন্ড কনভার্টার" data-en="kg to lbs Converter">কেজি থেকে পাউন্ড কনভার্টার</span>

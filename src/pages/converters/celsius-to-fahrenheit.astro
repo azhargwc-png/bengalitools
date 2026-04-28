@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "সেলসিয়াস থেকে ফারেনহাইট কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/celsius-to-fahrenheit/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "শরীরের স্বাভাবিক তাপমাত্রা ফারেনহাইটে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "শরীরের স্বাভাবিক তাপমাত্রা ৯৮.৬°F বা ৩৭°C। ৩৮°C (১০০.৪°F) বা তার বেশি হলে জ্বর বলে গণ্য করা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৩৭ ডিগ্রি সেলসিয়াস ফারেনহাইটে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৩৭ ডিগ্রি সেলসিয়াস = ৯৮.৬ ডিগ্রি ফারেনহাইট। হিসাব: (৩৭ × ৯/৫) + ৩২ = ৯৮.৬°F।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৯৮.৬°F সেলসিয়াসে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৯৮.৬°F সমান ৩৭°C। হিসাব: (৯৮.৬ - ৩২) × ৫/৯ = ৩৭°C। এটি শরীরের স্বাভাবিক তাপমাত্রা।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "সেলসিয়াস থেকে ফারেনহাইট রূপান্তরের সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সূত্র: °F = (°C × ৯/৫) + ৩২। বিপরীতে: °C = (°F - ৩২) × ৫/৯।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "সেলসিয়াস ও ফারেনহাইটের মধ্যে পার্থক্য কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সেলসিয়াস স্কেলে পানির জমার বিন্দু ০° এবং ফুটার বিন্দু ১০০°। ফারেনহাইট স্কেলে এগুলো যথাক্রমে ৩২° এবং ২১২°।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="সেলসিয়াস থেকে ফারেনহাইট কনভার্টার | BanglaTools"
   description="সেলসিয়াস থেকে ফারেনহাইট বা ফারেনহাইট থেকে সেলসিয়াস রূপান্তর করুন। শরীরের তাপমাত্রা পরীক্ষা করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="সেলসিয়াস থেকে ফারেনহাইট কনভার্টার" data-en="Celsius to Fahrenheit Converter">সেলসিয়াস থেকে ফারেনহাইট কনভার্টার</span>

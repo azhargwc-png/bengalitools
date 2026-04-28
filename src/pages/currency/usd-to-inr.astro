@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "USD থেকে INR কারেন্সি কনভার্টার",
+      "url": "https://www.bengalitools.com/currency/usd-to-inr/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "আজকে ১ ডলার সমান কত রুপি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ডলারের দাম প্রতিদিন বদলায়। এই পেজে লাইভ রেট দেখানো হয় যা frankfurter.app থেকে নেওয়া।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রেট কি সত্যিকারের লাইভ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "এই রেটটি ইউরোপিয়ান সেন্ট্রাল ব্যাংকের তথ্যের উপর ভিত্তি করে প্রতিদিন আপডেট হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ব্যাংক বা হুন্ডিতে কি একই রেট পাওয়া যায়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ব্যাংক ও মানি এক্সচেঞ্জ কমিশন ও মার্জিন যোগ করে, তাই তাদের রেট সামান্য বেশি বা কম হতে পারে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ডলারের দাম কেন বাড়ে বা কমে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "মার্কিন ফেডারেল রিজার্ভের সুদের হার, ভারতের বাণিজ্য ঘাটতি, তেলের দাম ও বৈশ্বিক অর্থনীতির উপর নির্ভর করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রুপি থেকে ডলারেও কনভার্ট করা যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ডলার স্বয়ংক্রিয়ভাবে দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="আজকের ডলার রেট — ডলার থেকে টাকা | BanglaTools"
   description="আজকের USD থেকে INR লাইভ রেট। ডলার থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="আজকের ডলার রেট — ডলার থেকে টাকা" data-en="USD to INR — Dollar to Rupee Live Rate">আজকের ডলার রেট — ডলার থেকে টাকা</span>

@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "শতাংশ ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/percentage/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "শতাংশ বের করার সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "শতাংশ = (অংশ ÷ মোট) × ১০০। যেমন ৫০ এর মধ্যে ২৫ হলো ৫০%।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "শতাংশ পরিবর্তন কীভাবে হিসাব করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "শতাংশ পরিবর্তন = ((নতুন মান - আগের মান) ÷ আগের মান) × ১০০।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৫০০ টাকার ১৮% কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৫০০ × (১৮ ÷ ১০০) = ৯০ টাকা।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "শতাংশ বৃদ্ধি ও হ্রাসের পার্থক্য কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "পরিবর্তনের সূত্রে ফলাফল ধনাত্মক (+) হলে বৃদ্ধি, ঋণাত্মক (-) হলে হ্রাস।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "পরীক্ষায় মোট নম্বর ৫০০, পেয়েছি ৩৮৫ — শতাংশ কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "(৩৮৫ ÷ ৫০০) × ১০০ = ৭৭%।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম | BanglaTools"
   description="শতাংশ ক্যালকুলেটর দিয়ে সহজে শতাংশ বের করুন। তিন ধরনের শতাংশ হিসাব এক পাতায়।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম" data-en="Percentage Calculator">শতাংশ ক্যালকুলেটর — শতাংশ বের করার নিয়ম</span>

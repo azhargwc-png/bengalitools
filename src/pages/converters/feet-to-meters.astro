@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ফুট থেকে মিটার কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/feet-to-meters/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ ফুট সমান কত মিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ ফুট সমান ০.৩০৪৮ মিটার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ মিটার সমান কত ফুট?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ মিটার সমান ৩.২৮০৮৪ ফুট। অর্থাৎ ১ মিটার প্রায় সাড়ে তিন ফুটের কাছাকাছি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৫ ফুট ৬ ইঞ্চি মানে কত মিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৫ ফুট ৬ ইঞ্চি মানে ১.৬৭৬ মিটার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ঘরের সাইজ ফুটে থেকে মিটারে কীভাবে বের করবো?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "প্রতিটি পরিমাপ আলাদাভাবে রূপান্তর করুন। যেমন ১০ ফুট = ১০ × ০.৩০৪৮ = ৩.০৫ মিটার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলাদেশে ফুট না মিটার কোনটি বেশি ব্যবহার হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "বাড়ি ও জমির পরিমাপে ফুট বেশি ব্যবহার হয়। তবে বৈজ্ঞানিক ও আন্তর্জাতিক কাজে মিটার ব্যবহার হয়।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="ফুট থেকে মিটার কনভার্টার | BanglaTools"
   description="ফুট থেকে মিটার বা মিটার থেকে ফুট রূপান্তর করুন। বাড়ির সাইজ ও উচ্চতা পরিমাপ করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="ফুট থেকে মিটার কনভার্টার" data-en="feet to meters Converter">ফুট থেকে মিটার কনভার্টার</span>

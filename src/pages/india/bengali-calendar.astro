@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "বাংলা ক্যালেন্ডার",
+      "url": "https://www.bengalitools.com/india/bengali-calendar/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "পহেলা বৈশাখ কবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "পহেলা বৈশাখ সাধারণত ১৪ এপ্রিল বা ১৫ এপ্রিল হয়। ভারতে সাধারণত ১৫ এপ্রিল এবং বাংলাদেশে ১৪ এপ্রিল পালিত হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলা সন কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "২০২৬ ইংরেজি বছরে বাংলা সন ১৪৩২-১৪৩৩। বৈশাখ (এপ্রিল) থেকে নতুন বছর শুরু হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলা বছরে কত দিন?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "বাংলা বছরে ৩৬৫ দিন (অধিবর্ষে ৩৬৬ দিন)।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলাদেশে বাংলা ক্যালেন্ডার কি ভারতের মতো?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "প্রায় একই, তবে সামান্য পার্থক্য আছে। বাংলাদেশে বাংলা একাডেমি সংস্করণ অনুসরণ করা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলা মাসের নাম কীভাবে মনে রাখব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ছড়া: বৈশাখ জ্যৈষ্ঠ আষাঢ় শ্রাবণ ভাদ্র আশ্বিন, কার্তিক অগ্রহায়ণ পৌষ মাঘ ফাল্গুন চৈত্র।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="বাংলা তারিখ কনভার্টার — ইংরেজি থেকে বাংলা তারিখ | BanglaTools"
   description="ইংরেজি তারিখ থেকে বাংলা তারিখ বের করুন। বাংলা মাসের নাম সহ। বিনামূল্যে বাংলা ক্যালেন্ডার কনভার্টার।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="বাংলা তারিখ কনভার্টার" data-en="Bengali Calendar Date Converter">বাংলা তারিখ কনভার্টার</span>
   </h1>

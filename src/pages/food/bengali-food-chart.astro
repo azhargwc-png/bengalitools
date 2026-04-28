@@ -29,12 +29,77 @@ const grouped = categoryOrder.reduce((acc, cat) => {
   if (items.length > 0) acc[cat] = items;
   return acc;
 }, {});
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "বাংলা খাবারের ক্যালরি চার্ট",
+      "url": "https://www.bengalitools.com/food/bengali-food-chart/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "বাংলা খাবারে কি সাধারণত বেশি ক্যালরি থাকে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না, ভাত-ডাল-মাছ-সবজির ঐতিহ্যবাহী বাংলা খাবার সাধারণত সুষম ও কম ক্যালরির।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কোন বাংলা খাবারে সবচেয়ে কম ক্যালরি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "তরমুজ (৩০ kcal/100g), শসা (১৬ kcal/100g), টমেটো (১৮ kcal/100g) সবচেয়ে কম ক্যালরির।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ওজন কমাতে বাংলা খাদ্যতালিকায় কোন খাবার রাখব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সিদ্ধ মাছ, শাক ভাজা, পালং শাক, ডাল, সবজির তরকারি ও দই কম ক্যালরি ও পুষ্টিগুণে ভরপুর।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "পান্তা ভাতে কি সাদা ভাতের চেয়ে কম ক্যালরি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, পান্তা ভাতে প্রতি ১০০g মাত্র ৭৩ ক্যালরি, যেখানে সাদা ভাতে ১৩০ ক্যালরি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "নারকেল নাড়ুতে কত ক্যালরি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "নারকেল নাড়ু প্রতি ১০০g = ৩৯০ kcal। একটি নারকেল নাড়ু (৩০g) = প্রায় ১১৭ kcal।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="বাংলা খাবারের ক্যালরি চার্ট | BanglaTools"
   description="সমস্ত বাংলা খাবারের ক্যালরি চার্ট। ১০০ গ্রামে ও সাধারণ পরিমাণে ক্যালরি।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="বাংলা খাবারের ক্যালরি চার্ট" data-en="Bengali Food Calorie Chart">বাংলা খাবারের ক্যালরি চার্ট</span>

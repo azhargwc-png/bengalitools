@@ -2,6 +2,70 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "জমি পরিমাপ কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/land-area/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ বিঘা সমান কত কাঠা?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ কাঠা সমান কত বর্গফুট?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ডেসিমেল ও শতাংশ কি একই?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ একর সমান কত বিঘা?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
@@ -10,6 +74,7 @@ import AdSlot from '../../components/AdSlot.astro';
   description="বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার — যেকোনো জমির মাপ রূপান্তর করুন। পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী।"
   descriptionBn="বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার — যেকোনো জমির মাপ রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="জমির পরিমাণ কনভার্টার" data-en="Land Area Converter">জমির পরিমাণ কনভার্টার</span>
   </h1>

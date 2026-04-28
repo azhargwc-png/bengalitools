@@ -1,0 +1,174 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ডিসকাউন্ট বের করার সূত্র কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "চূড়ান্ত দাম = মূল দাম × (১ - ছাড়% ÷ ১০০)। উদাহরণ: ₹১০০০ এর উপর ২০% ছাড় হলে চূড়ান্ত দাম = ১০০০ × ০.৮ = ₹৮০০।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ছাড়ের শতাংশ কীভাবে বের করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ছাড়% = ((মূল দাম - বিক্রয় দাম) ÷ মূল দাম) × ১০০। উদাহরণ: মূল দাম ₹২০০০, বিক্রয় দাম ₹১৫০০ হলে ছাড়% = ((২০০০-১৫০০) ÷ ২০০০) × ১০০ = ২৫%।" }
+    },
+    {
+      "@type": "Question",
+      "name": "৩০% ছাড়ে ₹৮০০ মানে কত টাকা দিতে হবে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "৩০% ছাড়ে ₹৮০০ মানে ₮৫৬০ দিতে হবে। হিসাব: ৮০০ × (১ - ৩০/১০০) = ৮০০ × ০.৭ = ৫৬০।" }
+    },
+    {
+      "@type": "Question",
+      "name": "দুটো ছাড় একসাথে কীভাবে হিসাব করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "দুটো ছাড় একসাথে যোগ করবেন না। প্রথম ছাড়ের পরের দামের উপর দ্বিতীয় ছাড় প্রযোজ্য। যেমন ২০% এবং ১০% ছাড় = ২৮% মোট ছাড়, ৩০% নয়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "অনলাইন শপিংয়ে ছাড় সত্যি কিনা কীভাবে বুঝব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "মূল (MRP) দাম ও বিক্রয় দাম আমাদের ডিসকাউন্ট ক্যালকুলেটরে দিন। সঠিক ছাড়% বেরিয়ে আসবে। ওয়েবসাইটের দাবি করা ছাড়ের সাথে মিলিয়ে নিন।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে | BanglaTools"
+  description="ডিসকাউন্ট বের করার সহজ সূত্র জানুন। ৩০%, ৫০% ছাড়ে আসলে কত দিতে হবে? বাংলায় সম্পূর্ণ গাইড ও বিনামূল্যে ছাড় ক্যালকুলেটর।"
+  datePublished="2026-04-28"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → ডিসকাউন্ট বের করার নিয়ম
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">তাৎক্ষণিক ছাড় হিসাব করুন</h2>
+    <p class="text-gray-700 mb-3">দাম ও ছাড়ের শতাংশ দিন — চূড়ান্ত দাম ও সাশ্রয় সঙ্গে সঙ্গে জানুন:</p>
+    <p class="text-center">
+      <a href="/calculators/discount/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → ছাড় ক্যালকুলেটর ব্যবহার করুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ডিসকাউন্ট বা ছাড় কী?</h2>
+      <p>ডিসকাউন্ট বা ছাড় হলো মূল দামের উপর থেকে কমানো একটি নির্দিষ্ট পরিমাণ বা শতাংশ। শপিং মলে "৩০% ছাড়" বা অনলাইনে "৫০% অফ" দেখলে বুঝতে হবে মূল দামের উপর থেকে সেই পরিমাণ কম দিতে হবে।</p>
+      <p>ছাড় হিসাব করতে না পারলে অনেক সময় দোকানে বা অনলাইনে ঠকে যাওয়ার সম্ভাবনা থাকে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ছাড়ের পরে দাম বের করার সূত্র</h2>
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 my-4">
+        <p class="font-bold text-teal-900 text-lg">চূড়ান্ত দাম = মূল দাম × (১ - ছাড়% ÷ ১০০)</p>
+      </div>
+      <p><strong>উদাহরণ:</strong></p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li>₹১,০০০ জামার উপর ২০% ছাড়: ১০০০ × (১ - ২০/১০০) = ১০০০ × ০.৮ = <strong>₹৮০০</strong></li>
+        <li>₹৫,০০০ ফোনের উপর ৩০% ছাড়: ৫০০০ × ০.৭ = <strong>₹৩,৫০০</strong></li>
+        <li>₹৫০০ জুতার উপর ৫০% ছাড়: ৫০০ × ০.৫ = <strong>₹২৫০</strong></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ছাড়ের শতাংশ বের করার সূত্র</h2>
+      <p>কোনো পণ্যের মূল দাম ও বিক্রয় দাম দেখে ছাড়ের শতাংশ বের করতে পারবেন:</p>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 my-4">
+        <p class="font-bold text-blue-900 text-lg">ছাড়% = ((মূল দাম - বিক্রয় দাম) ÷ মূল দাম) × ১০০</p>
+      </div>
+      <p><strong>উদাহরণ:</strong> একটি পণ্যের মূল দাম ₹২,০০০ এবং বিক্রয় দাম ₹১,৪০০। ছাড়% = ((২০০০ - ১৪০০) ÷ ২০০০) × ১০০ = (৬০০ ÷ ২০০০) × ১০০ = <strong>৩০%</strong></p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সাধারণ ছাড় রেফারেন্স টেবিল</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">মূল দাম</th><th class="p-3">২০% ছাড়</th><th class="p-3">৩০% ছাড়</th><th class="p-3">৫০% ছাড়</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">₹৫০০</td><td class="p-3 text-center font-bold">₹৪০০</td><td class="p-3 text-center font-bold">₹৩৫০</td><td class="p-3 text-center font-bold">₹২৫০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">₹১,০০০</td><td class="p-3 text-center font-bold">₹৮০০</td><td class="p-3 text-center font-bold">₹৭০০</td><td class="p-3 text-center font-bold">₹৫০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">₹২,০০০</td><td class="p-3 text-center font-bold">₹১,৬০০</td><td class="p-3 text-center font-bold">₹১,৪০০</td><td class="p-3 text-center font-bold">₹১,০০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">₹৫,০০০</td><td class="p-3 text-center font-bold">₹৪,০০০</td><td class="p-3 text-center font-bold">₹৩,৫০০</td><td class="p-3 text-center font-bold">₹২,৫০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">₹১০,০০০</td><td class="p-3 text-center font-bold">₹৮,০০০</td><td class="p-3 text-center font-bold">₹৭,০০০</td><td class="p-3 text-center font-bold">₹৫,০০০</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">দুটো ছাড় একসাথে থাকলে কীভাবে হিসাব করবেন?</h2>
+      <p>অনেক সময় দেখা যায় "অতিরিক্ত ১০% ছাড়" বা "আরও ৫% কুপন ডিসকাউন্ট" — এই ক্ষেত্রে দুটো ছাড় একসাথে যোগ করবেন না।</p>
+      <p class="mt-2"><strong>উদাহরণ:</strong> ₹২,০০০ পণ্যে প্রথমে ২০% ছাড়, তারপর আরও ১০% ছাড়:</p>
+      <ul class="list-disc pl-5 space-y-1 mt-2">
+        <li>প্রথম ছাড়ের পরে: ২০০০ × ০.৮ = ₹১,৬০০</li>
+        <li>দ্বিতীয় ছাড়ের পরে: ১৬০০ × ০.৯ = ₹১,৪৪০</li>
+        <li><strong>মোট সাশ্রয়: ₹৫৬০ (২৮% মোট ছাড়, ৩০% নয়)</strong></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">স্মার্ট শপিংয়ের টিপস</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>ছাড়ের দাবি সত্যিকারের কিনা যাচাই করতে আমাদের ক্যালকুলেটর ব্যবহার করুন।</li>
+        <li>MRP (Maximum Retail Price) ও বিক্রয় দামের তুলনা করুন।</li>
+        <li>বিভিন্ন দোকান বা ওয়েবসাইটে একই পণ্যের দাম তুলনা করুন।</li>
+        <li>শুধু ছাড়ের কারণে অপ্রয়োজনীয় জিনিস কিনবেন না।</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ডিসকাউন্ট বের করার সূত্র কী?</summary>
+        <p class="mt-3 text-gray-700">চূড়ান্ত দাম = মূল দাম × (১ - ছাড়% ÷ ১০০)। উদাহরণ: ₹১০০০ এর উপর ২০% ছাড় হলে চূড়ান্ত দাম = ১০০০ × ০.৮ = ₹৮০০।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ছাড়ের শতাংশ কীভাবে বের করব?</summary>
+        <p class="mt-3 text-gray-700">ছাড়% = ((মূল দাম - বিক্রয় দাম) ÷ মূল দাম) × ১০০।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">৩০% ছাড়ে ₹৮০০ মানে কত টাকা দিতে হবে?</summary>
+        <p class="mt-3 text-gray-700">৩০% ছাড়ে ₹৮০০ মানে ₹৫৬০ দিতে হবে। হিসাব: ৮০০ × ০.৭ = ৫৬০।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">দুটো ছাড় একসাথে কীভাবে হিসাব করব?</summary>
+        <p class="mt-3 text-gray-700">দুটো ছাড় একসাথে যোগ করবেন না। প্রথম ছাড়ের পরের দামের উপর দ্বিতীয় ছাড় প্রযোজ্য। যেমন ২০% এবং ১০% ছাড় = ২৮% মোট ছাড়, ৩০% নয়।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">অনলাইন শপিংয়ে ছাড় সত্যি কিনা কীভাবে বুঝব?</summary>
+        <p class="mt-3 text-gray-700">মূল (MRP) দাম ও বিক্রয় দাম আমাদের ডিসকাউন্ট ক্যালকুলেটরে দিন। সঠিক ছাড়% বেরিয়ে আসবে।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/calculators/discount/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🏷️ ছাড় ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">দাম ও ছাড়% দিন — চূড়ান্ত দাম জানুন</div>
+      </a>
+      <a href="/calculators/percentage/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">% শতাংশ ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">যেকোনো শতাংশ হিসাব করুন</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>

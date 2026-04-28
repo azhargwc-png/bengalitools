@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "বেতন ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/india/salary-to-hourly/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "মাসিক বেতন থেকে ঘণ্টায় বেতন কীভাবে বের করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সূত্র: ঘণ্টায় বেতন = মাসিক বেতন ÷ (কাজের দিন × ঘণ্টা)।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ভারতে মাসে কতদিন কাজ ধরা হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ভারতে সাধারণত মাসে ২২টি কাজের দিন ধরা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "CTC ও নেট বেতন কি এক?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না। CTC হলো কোম্পানির মোট খরচ। নেট বেতন হলো PF, TDS ইত্যাদি কাটার পরে হাতে আসা টাকা।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ফ্রিল্যান্সারদের জন্য ঘণ্টায় রেট কত হওয়া উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সমতুল্য চাকরির ঘণ্টা হারের ১.৫ থেকে ২ গুণ চার্জ করা উচিত।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বার্ষিক বেতন কীভাবে হিসাব হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "বার্ষিক বেতন = মাসিক বেতন × ১২।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="মাসিক বেতন থেকে ঘণ্টায় বেতন ক্যালকুলেটর | BanglaTools"
   description="মাসিক বেতন থেকে ঘণ্টায়, দৈনিক, সাপ্তাহিক ও বার্ষিক বেতন বের করুন। বিনামূল্যে বেতন ক্যালকুলেটর।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="মাসিক বেতন থেকে ঘণ্টায় বেতন ক্যালকুলেটর" data-en="Salary to Hourly Calculator">মাসিক বেতন থেকে ঘণ্টায় বেতন ক্যালকুলেটর</span>
   </h1>

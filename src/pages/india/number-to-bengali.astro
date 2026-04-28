@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "সংখ্যা থেকে বাংলা কনভার্টার",
+      "url": "https://www.bengalitools.com/india/number-to-bengali/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ লক্ষ মানে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ লক্ষ = ১,০০,০০০ = এক লক্ষ। ইংরেজিতে one hundred thousand।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ কোটি মানে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ কোটি = ১,০০,০০,০০০ = এক কোটি। ইংরেজিতে ten million।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "চেকে সংখ্যা বাংলায় লেখার নিয়ম কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "চেকে সংখ্যা শব্দে লিখতে হয়। যেমন ₹৫০,০০০ হলে লিখবেন \"পঞ্চাশ হাজার টাকা মাত্র\"।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলায় শূন্য কীভাবে লেখে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "বাংলায় শূন্য লেখা হয় \"শূন্য\"।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "এই টুল কত বড় সংখ্যা সমর্থন করে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "এই টুল ৯৯ কোটি ৯৯ লক্ষ ৯৯ হাজার ৯৯৯ পর্যন্ত সংখ্যাকে বাংলায় রূপান্তর করতে পারে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="সংখ্যা বাংলায় — ইংরেজি সংখ্যা বাংলা কথায় | BanglaTools"
   description="যেকোনো সংখ্যা বাংলা শব্দে লিখুন। চেক লেখা, আনুষ্ঠানিক কাগজপত্রের জন্য সংখ্যাকে বাংলায় রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="সংখ্যা বাংলায় — ইংরেজি সংখ্যা বাংলা কথায়" data-en="Number to Bengali Words Converter">সংখ্যা বাংলায় — ইংরেজি সংখ্যা বাংলা কথায়</span>
   </h1>

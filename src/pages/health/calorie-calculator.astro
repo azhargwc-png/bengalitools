@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ক্যালরি ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/health/calorie-calculator/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "প্রতিদিন কত ক্যালরি খাওয়া উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "একজন গড় পুরুষের প্রতিদিন প্রায় ২০০০-২৫০০ ক্যালরি এবং মহিলার ১৬০০-২০০০ ক্যালরি দরকার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ওজন কমাতে কত ক্যালরি কমাতে হবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "প্রতিদিন ৫০০ ক্যালরি কমালে সপ্তাহে প্রায় ০.৫ কেজি ওজন কমে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "TDEE মানে কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TDEE হলো Total Daily Energy Expenditure — আপনার দৈনিক মোট শক্তি খরচ।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ক্যালরি ঘাটতি কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "যখন আপনি যত ক্যালরি খরচ করেন তার চেয়ে কম ক্যালরি খাচ্ছেন তখন ক্যালরি ঘাটতি তৈরি হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলাদেশি খাবারে কত ক্যালরি থাকে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ কাপ সাদা ভাত (১৮০গ্রাম) ≈ ২৪০ kcal, মাছের ঝোল (১ বাটি) ≈ ১৫০ kcal, ডাল (১ বাটি) ≈ ১১৫ kcal।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="দৈনিক ক্যালরি ক্যালকুলেটর | BanglaTools"
   description="দৈনিক ক্যালরির চাহিদা জানুন। বয়স, ওজন, উচ্চতা ও কাজের পরিমাণ অনুযায়ী ক্যালরি হিসাব করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="দৈনিক ক্যালরি ক্যালকুলেটর" data-en="Daily Calorie Calculator">দৈনিক ক্যালরি ক্যালকুলেটর</span>

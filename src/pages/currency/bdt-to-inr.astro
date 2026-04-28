@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BDT থেকে INR বাংলাদেশি টাকা কনভার্টার",
+      "url": "https://www.bengalitools.com/currency/bdt-to-inr/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ বাংলাদেশি টাকা সমান কত ভারতীয় রুপি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ১ BDT = প্রায় ₹০.৭৫ থেকে ₹০.৮০।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বাংলাদেশ থেকে ভারতে কীভাবে টাকা পাঠানো যায়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ব্যাংক ওয়্যার ট্রান্সফার, ওয়েস্টার্ন ইউনিয়ন বা অনুমোদিত মানি এক্সচেঞ্জের মাধ্যমে পাঠানো যায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "BDT রেট কি স্থিতিশীল?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "বাংলাদেশি টাকার মান সরকারি নীতি ও বৈদেশিক মুদ্রার রিজার্ভের উপর নির্ভর করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কলকাতায় বাংলাদেশি টাকা ভাঙানো যায়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, কলকাতার অনুমোদিত ব্যাংক ও মানি এক্সচেঞ্জ কাউন্টারে BDT থেকে INR ভাঙানো যায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ভারতীয় রুপি থেকে বাংলাদেশি টাকাও কনভার্ট করা যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য বাংলাদেশি টাকা স্বয়ংক্রিয়ভাবে দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট | BanglaTools"
   description="আজকের BDT থেকে INR লাইভ রেট। বাংলাদেশি টাকা থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট" data-en="BDT to INR — Bangladesh Taka to Indian Rupee">বাংলাদেশি টাকা থেকে ভারতীয় রুপি রেট</span>

@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "তারিখের পার্থক্য ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/date-difference/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "দুটি তারিখের মধ্যে দিন সংখ্যা কীভাবে গণনা করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "দুটি তারিখকে মিলিসেকেন্ডে রূপান্তর করে বিয়োগ করুন। এই টুল স্বয়ংক্রিয়ভাবে হিসাব করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "লিপ ইয়ার কি সঠিকভাবে হিসাব হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, JavaScript-এর Date অবজেক্ট লিপ ইয়ার স্বয়ংক্রিয়ভাবে সঠিকভাবে সামলায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কোন তারিখ কোন বারে পড়েছিল জানতে পারব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, এই টুলটি শুরু ও শেষ উভয় তারিখের বার স্বয়ংক্রিয়ভাবে দেখায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ভিসার মেয়াদ বা পাসপোর্টের বৈধতা হিসাব করতে পারব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, ইস্যু তারিখ শুরুতে ও মেয়াদ শেষের তারিখ শেষে দিলে মোট বৈধতার দিন সংখ্যা পাবেন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "আজ থেকে ১০০ দিন পরে কোন তারিখ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "আজ থেকে বাটনে ক্লিক করে শুরুর তারিখ সেট করুন। তারপর শেষের তারিখ বাড়িয়ে দেখুন।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="দুই তারিখের মধ্যে কত দিন | BanglaTools"
   description="দুটি তারিখের মধ্যে পার্থক্য বের করুন। বছর, মাস, সপ্তাহ ও দিনে দেখুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="দুই তারিখের মধ্যে কত দিন" data-en="Date Difference Calculator">দুই তারিখের মধ্যে কত দিন</span>

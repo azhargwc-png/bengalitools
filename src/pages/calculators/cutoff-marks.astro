@@ -2,6 +2,54 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "কাট-অফ মার্কস ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/cutoff-marks/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "শতাংশ বের করার সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "শতাংশ = (প্রাপ্ত নম্বর ÷ মোট নম্বর) × ১০০। উদাহরণ: ৪৫০ ÷ ৬০০ × ১০০ = ৭৫%।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "মাধ্যমিকে প্রথম বিভাগ পেতে কত নম্বর লাগে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "মাধ্যমিকে ৬০০ নম্বরের মধ্যে ৩৬০ বা তার বেশি (৬০%) পেলে প্রথম বিভাগ।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কাট-অফ মার্কস মানে কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "কাট-অফ মার্কস হল সেই ন্যূনতম নম্বর যা পেলে পরবর্তী ধাপে যাওয়া যায়।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
@@ -10,6 +58,7 @@ import AdSlot from '../../components/AdSlot.astro';
   description="মাধ্যমিক, উচ্চমাধ্যমিক, SSC, PSC পরীক্ষার প্রাপ্ত নম্বর থেকে শতাংশ বের করুন। বিষয়ভিত্তিক নম্বর যোগ করুন, কাট-অফ তুলনা করুন।"
   descriptionBn="মাধ্যমিক, উচ্চমাধ্যমিক, SSC, PSC পরীক্ষার প্রাপ্ত নম্বর থেকে শতাংশ বের করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="কাট-অফ মার্কস ক্যালকুলেটর" data-en="Cut-off Marks Calculator">কাট-অফ মার্কস ক্যালকুলেটর</span>
   </h1>

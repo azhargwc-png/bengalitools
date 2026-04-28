@@ -3,12 +3,77 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { foods } from '../../data/foods.js';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "রেসিপি ক্যালরি ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/food/recipe-calculator/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "রান্নার পরে ক্যালরি কি পরিবর্তন হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, রান্নার পদ্ধতির উপর নির্ভর করে ক্যালরি পরিবর্তন হতে পারে। তেলে ভাজলে ক্যালরি বাড়ে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "আমার খাবারের ক্যালরি ডেটাবেজে নেই, কী করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সবচেয়ে কাছের বিকল্প খাবার বেছে নিন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "প্রতিদিন কত ক্যালরি খাওয়া উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত পুরুষদের জন্য ২০০০-২৫০০ kcal এবং মহিলাদের জন্য ১৬০০-২০০০ kcal দৈনিক প্রয়োজন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ক্যালরি হিসাব কতটা সঠিক?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "এই তথ্যগুলো গড় মান। বাস্তব ক্যালরি ±১০-২০% পরিবর্তিত হতে পারে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "তেল ও মশলার ক্যালরি কীভাবে হিসাব করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "রান্নায় ব্যবহৃত তেলের পরিমাণ আনুমানিক ধরুন — ১ টেবিল চামচ তেল = প্রায় ১৫ মিলি = প্রায় ১২০ ক্যালরি।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="রেসিপি ক্যালরি ক্যালকুলেটর | BanglaTools"
   description="রান্নার রেসিপির মোট ক্যালরি হিসাব করুন। উপকরণ ও পরিমাণ দিয়ে প্রতি সার্ভিংয়ের ক্যালরি জানুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="রেসিপি ক্যালরি ক্যালকুলেটর" data-en="Recipe Calorie Calculator">রেসিপি ক্যালরি ক্যালকুলেটর</span>

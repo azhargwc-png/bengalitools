@@ -2,6 +2,62 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ছবি রিসাইজার",
+      "url": "https://www.bengalitools.com/india/image-resizer/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ছবি কি সার্ভারে আপলোড হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না। সব প্রসেসিং আপনার ব্রাউজারেই হয়। ছবি কোনো সার্ভারে পাঠানো হয় না।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ছবির মান খারাপ হয়ে যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "টুলটি সর্বোচ্চ মান বজায় রেখে নির্দিষ্ট KB-এর মধ্যে ছবি তৈরি করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কোন ফরম্যাটে ছবি পাব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সরকারি ফর্মে সাধারণত JPEG চাওয়া হয়, তাই আউটপুট সবসময় JPEG (.jpg) ফরম্যাটে দেওয়া হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ছবি সাইজ মেলানো না গেলে কী করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "টুলটি সর্বোচ্চ চেষ্টা করে। যদি একেবারে মেলানো না যায়, সতর্কতা দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
@@ -10,6 +66,7 @@ import AdSlot from '../../components/AdSlot.astro';
   description="SSC, PSC, Railway, Bank PO ফর্মের জন্য ছবি নির্দিষ্ট সাইজ ও KB-তে রিসাইজ করুন। বিনামূল্যে, কোনো অ্যাপ ছাড়াই।"
   descriptionBn="SSC, PSC, Railway, Bank PO ফর্মের জন্য ছবি নির্দিষ্ট সাইজ ও KB-তে রিসাইজ করুন। বিনামূল্যে, কোনো অ্যাপ ছাড়াই।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="সরকারি ফর্মের ছবি রিসাইজার" data-en="Govt. Form Photo Resizer">সরকারি ফর্মের ছবি রিসাইজার</span>
   </h1>

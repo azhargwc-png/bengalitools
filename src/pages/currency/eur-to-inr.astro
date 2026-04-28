@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "EUR থেকে INR ইউরো কনভার্টার",
+      "url": "https://www.bengalitools.com/currency/eur-to-inr/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "আজকে ১ ইউরো সমান কত রুপি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ১ EUR = ₹৮৮ থেকে ₹৯৫ এর মধ্যে থাকে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কোন কোন দেশে ইউরো ব্যবহার হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "জার্মানি, ফ্রান্স, ইতালি, স্পেন, নেদারল্যান্ডস সহ ২০+ ইউরোপীয় দেশ ইউরো ব্যবহার করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ইউরো কি ডলারের চেয়ে শক্তিশালী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত হ্যাঁ — ১ ইউরো ১.০৫ থেকে ১.১৫ ডলারের সমতুল্য।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ইউরোপে পড়তে গেলে কত টাকা লাগে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "জার্মানিতে অনেক পাবলিক বিশ্ববিদ্যালয়ে বিনামূল্যে পড়া যায়। থাকা-খাওয়া মিলিয়ে মাসে প্রায় ৬০০-১০০০ ইউরো লাগে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রুপি থেকে ইউরোতেও কনভার্ট করা যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য ইউরো স্বয়ংক্রিয়ভাবে দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="ইউরো রেট আজকে — ইউরো থেকে টাকা | BanglaTools"
   description="আজকের EUR থেকে INR লাইভ রেট। ইউরো থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="ইউরো রেট আজকে — ইউরো থেকে ভারতীয় টাকা" data-en="EUR to INR — Euro to Rupee Live Rate">ইউরো রেট আজকে — ইউরো থেকে ভারতীয় টাকা</span>

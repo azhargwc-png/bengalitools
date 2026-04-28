@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "সেন্টিমিটার থেকে ইঞ্চি কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/cm-to-inches/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ সেন্টিমিটার সমান কত ইঞ্চি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ সেন্টিমিটার সমান ০.৩৯৩৭ ইঞ্চি। সহজে মনে রাখতে পারেন: প্রতি ১ সেন্টিমিটার প্রায় ০.৪ ইঞ্চির সমান।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ ইঞ্চি সমান কত সেন্টিমিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ ইঞ্চি সমান ২.৫৪ সেন্টিমিটার। এটি একটি প্রমাণিত রূপান্তর হার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১৫৮ সেমি মানে ফুট-ইঞ্চিতে কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১৫৮ সেন্টিমিটার মানে ৫ ফুট ২.২ ইঞ্চি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৫ ফুট মানে কত সেন্টিমিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৫ ফুট মানে ১৫২.৪ সেন্টিমিটার। হিসাব: ৫ × ৩০.৪৮ = ১৫২.৪ সেমি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "টিভির স্ক্রিন সাইজ ইঞ্চিতে কেন মাপা হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "টিভি শিল্পের শুরু যুক্তরাষ্ট্রে হয়েছিল যেখানে ইঞ্চি ব্যবহার হয়। সেই ঐতিহ্য এখনো বজায় আছে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="সেন্টিমিটার থেকে ইঞ্চি কনভার্টার | BanglaTools"
   description="সেন্টিমিটার থেকে ইঞ্চি বা ইঞ্চি থেকে সেন্টিমিটার রূপান্তর করুন। উচ্চতা ও পর্দার সাইজ পরিমাপ করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="সেন্টিমিটার থেকে ইঞ্চি কনভার্টার" data-en="cm to inches Converter">সেন্টিমিটার থেকে ইঞ্চি কনভার্টার</span>

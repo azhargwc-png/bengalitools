@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "টিপ ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/tip/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "রেস্তোরাঁয় কত শতাংশ টিপ দেওয়া উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ভারত ও বাংলাদেশে সাধারণত ১০% থেকে ১৫% টিপ দেওয়া হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ভারতে টিপ দেওয়া কি বাধ্যতামূলক?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না, ভারতে টিপ দেওয়া বাধ্যতামূলক নয়। তবে ভালো সেবার জন্য টিপ দেওয়া শিষ্টাচার হিসেবে ধরা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বিলে ট্যাক্স থাকলে টিপ কিসের উপর হিসাব করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ট্যাক্স বাদ দিয়ে মূল বিলের উপর টিপ হিসাব করা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "বন্ধুদের মধ্যে বিল সমানভাবে ভাগ হয় না কেন?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "মোট বিল (টিপসহ) কে জনসংখ্যা দিয়ে ভাগ করলে দশমিক আসতে পারে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ডেলিভারি অর্ডারে টিপ দেওয়া উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, ডেলিভারি কর্মীকে সাধারণত ১০-১৫% বা নির্দিষ্ট পরিমাণ টিপ দেওয়া হয়।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="টিপ ক্যালকুলেটর | BanglaTools"
   description="রেস্তোরাঁ বিলে টিপ হিসাব করুন। বিল, টিপ শতাংশ ও জনসংখ্যা দিয়ে প্রতি জনের ভাগ বের করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="টিপ ক্যালকুলেটর" data-en="Tip Calculator">টিপ ক্যালকুলেটর</span>

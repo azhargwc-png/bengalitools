@@ -1,0 +1,171 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "প্রতিদিন কত ক্যালরি খাওয়া উচিত?",
+      "acceptedAnswer": { "@type": "Answer", "text": "একজন গড় সক্রিয় পুরুষের প্রতিদিন ২০০০-২৫০০ kcal এবং মহিলার ১৬০০-২০০০ kcal দরকার। তবে বয়স, ওজন, উচ্চতা ও দৈনিক কার্যকলাপের উপর নির্ভর করে এটি পরিবর্তন হয়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ওজন কমাতে কত ক্যালরি কমাতে হবে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "প্রতিদিন ৫০০ kcal ঘাটতি রাখলে সপ্তাহে প্রায় ০.৫ কেজি ওজন কমে। তবে ১২০০ kcal-এর কম খাওয়া স্বাস্থ্যকর নয়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ভাত খেলে কি মোটা হওয়া যায়?",
+      "acceptedAnswer": { "@type": "Answer", "text": "পরিমিত পরিমাণে ভাত খেলে মোটা হওয়ার কারণ নেই। ১ কাপ সাদা ভাত (১৮০g) = মাত্র ২৪০ kcal। সমস্যা হয় যখন মোট ক্যালরি চাহিদার বেশি খাওয়া হয়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "বাচ্চাদের প্রতিদিন কত ক্যালরি দরকার?",
+      "acceptedAnswer": { "@type": "Answer", "text": "৪-৮ বছর বয়সী শিশুদের ১২০০-১৪০০ kcal, ৯-১৩ বছরের ছেলেদের ১৬০০-২০০০ kcal এবং মেয়েদের ১৪০০-১৮০০ kcal দরকার।" }
+    },
+    {
+      "@type": "Question",
+      "name": "কোন বাংলা খাবারে সবচেয়ে বেশি ক্যালরি?",
+      "acceptedAnswer": { "@type": "Answer", "text": "পরোটা (প্রতিটি ≈ ২৫০ kcal), মিষ্টি (প্রতি পিস ১০০-১৫০ kcal), ভাজাপোড়া খাবারে সবচেয়ে বেশি ক্যালরি। ভাত, ডাল, মাছের তরকারি তুলনামূলক কম ক্যালরির।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত — বয়স ও লিঙ্গ অনুযায়ী | BanglaTools"
+  description="প্রতিদিন কত ক্যালরি খাওয়া উচিত? বয়স, ওজন ও কার্যকলাপ অনুযায়ী ক্যালরির চাহিদা জানুন। বাংলা খাবারের ক্যালরি তালিকা ও ফ্রি ক্যালকুলেটর।"
+  datePublished="2026-04-28"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → প্রতিদিন কত ক্যালরি
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত — বয়স ও লিঙ্গ অনুযায়ী
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">আপনার দৈনিক ক্যালরির চাহিদা জানুন</h2>
+    <p class="text-gray-700 mb-3">আপনার বয়স, ওজন, উচ্চতা ও কার্যকলাপ অনুযায়ী সঠিক ক্যালরির চাহিদা বের করুন:</p>
+    <p class="text-center">
+      <a href="/health/calorie-calculator/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → ক্যালরি ক্যালকুলেটর ব্যবহার করুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ক্যালরি কী এবং কেন দরকার?</h2>
+      <p>ক্যালরি হলো শক্তির পরিমাপ। আমরা যা খাই তা শরীরের জন্য শক্তিতে পরিণত হয়। শরীর চলাফেরা, শ্বাস-প্রশ্বাস, হৃদস্পন্দন — সব কিছুর জন্য ক্যালরি দরকার। খুব কম ক্যালরি খেলে ক্লান্তি, পুষ্টিহীনতা। আবার বেশি ক্যালরি খেলে ওজন বাড়ে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">বয়স ও লিঙ্গ অনুযায়ী দৈনিক ক্যালরির চাহিদা</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">বয়স</th><th class="p-3">পুরুষ (kcal)</th><th class="p-3">মহিলা (kcal)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">৪-৮ বছর</td><td class="p-3 text-center">১৪০০-১৬০০</td><td class="p-3 text-center">১২০০-১৪০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৯-১৩ বছর</td><td class="p-3 text-center">১৬০০-২০০০</td><td class="p-3 text-center">১৪০০-১৮০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">১৪-১৮ বছর</td><td class="p-3 text-center">২০০০-২৬০০</td><td class="p-3 text-center">১৮০০-২০০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">১৯-৩০ বছর</td><td class="p-3 text-center">২৪০০-২৬০০</td><td class="p-3 text-center">১৮০০-২০০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৩১-৫০ বছর</td><td class="p-3 text-center">২২০০-২৪০০</td><td class="p-3 text-center">১৮০০-২০০০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৫১+ বছর</td><td class="p-3 text-center">২০০০-২২০০</td><td class="p-3 text-center">১৬০০-১৮০০</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">* মাঝারি সক্রিয়তার জন্য। বেশি পরিশ্রম হলে চাহিদা আরও বাড়বে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সাধারণ বাংলা খাবারে কত ক্যালরি?</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">খাবার</th><th class="p-3">পরিমাণ</th><th class="p-3">ক্যালরি (kcal)</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">সাদা ভাত</td><td class="p-3 text-center">১ কাপ (১৮০g)</td><td class="p-3 text-center font-bold">২৪০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">রুটি</td><td class="p-3 text-center">১ টি</td><td class="p-3 text-center font-bold">৭০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">মাছের তরকারি</td><td class="p-3 text-center">১ বাটি</td><td class="p-3 text-center font-bold">১৫০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">মুসুর ডাল</td><td class="p-3 text-center">১ বাটি</td><td class="p-3 text-center font-bold">১১৫</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">ডিম ভাজা</td><td class="p-3 text-center">১টি</td><td class="p-3 text-center font-bold">৯০</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">আলু ভর্তা</td><td class="p-3 text-center">২ চামচ</td><td class="p-3 text-center font-bold">৮০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">পালং শাক ভাজা</td><td class="p-3 text-center">১ বাটি</td><td class="p-3 text-center font-bold">৫৫</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">মিষ্টি দই</td><td class="p-3 text-center">১ কাপ</td><td class="p-3 text-center font-bold">১২০</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ওজন নিয়ন্ত্রণে ক্যালরির ভূমিকা</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>ওজন কমাতে:</strong> প্রতিদিন ৩০০-৫০০ kcal কম খান। সপ্তাহে ০.৩-০.৫ কেজি কমবে।</li>
+        <li><strong>ওজন বজায় রাখতে:</strong> আপনার TDEE (দৈনিক শক্তি খরচ) এর সমান ক্যালরি খান।</li>
+        <li><strong>ওজন বাড়াতে:</strong> প্রতিদিন ৩০০-৫০০ kcal বেশি খান। পুষ্টিকর খাবার বেছে নিন।</li>
+      </ul>
+      <p class="mt-3">আমাদের <a href="/health/calorie-calculator/" class="text-teal-700 underline">ক্যালরি ক্যালকুলেটর</a> দিয়ে আপনার সঠিক চাহিদা বের করুন।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সুস্থ থাকার পরামর্শ</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>শুধু ক্যালরি গোনা নয় — পুষ্টিগুণও গুরুত্বপূর্ণ। ভিটামিন, প্রোটিন, আঁশযুক্ত খাবার রাখুন।</li>
+        <li>দিনে ৩ বেলা নিয়মিত খান। খুব বেশি সময় না খেয়ে থাকবেন না।</li>
+        <li>প্রতিদিন পর্যাপ্ত জল পান করুন। <a href="/health/water-intake/" class="text-teal-700 underline">জলের পরিমাণ হিসাব করুন</a>।</li>
+        <li>রাতে হালকা খাবার খান। ঘুমের কমপক্ষে ২ ঘণ্টা আগে খাওয়া শেষ করুন।</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">প্রতিদিন কত ক্যালরি খাওয়া উচিত?</summary>
+        <p class="mt-3 text-gray-700">একজন গড় সক্রিয় পুরুষের প্রতিদিন ২০০০-২৫০০ kcal এবং মহিলার ১৬০০-২০০০ kcal দরকার।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ওজন কমাতে কত ক্যালরি কমাতে হবে?</summary>
+        <p class="mt-3 text-gray-700">প্রতিদিন ৫০০ kcal ঘাটতি রাখলে সপ্তাহে প্রায় ০.৫ কেজি ওজন কমে।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ভাত খেলে কি মোটা হওয়া যায়?</summary>
+        <p class="mt-3 text-gray-700">পরিমিত পরিমাণে ভাত খেলে মোটা হওয়ার কারণ নেই। ১ কাপ সাদা ভাত (১৮০g) = মাত্র ২৪০ kcal।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">বাচ্চাদের প্রতিদিন কত ক্যালরি দরকার?</summary>
+        <p class="mt-3 text-gray-700">৪-৮ বছর বয়সী শিশুদের ১২০০-১৪০০ kcal, ৯-১৩ বছরের ছেলেদের ১৬০০-২০০০ kcal এবং মেয়েদের ১৪০০-১৮০০ kcal দরকার।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">কোন বাংলা খাবারে সবচেয়ে বেশি ক্যালরি?</summary>
+        <p class="mt-3 text-gray-700">পরোটা (প্রতিটি ≈ ২৫০ kcal), মিষ্টি (প্রতি পিস ১০০-১৫০ kcal), ভাজাপোড়া খাবারে সবচেয়ে বেশি ক্যালরি।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/health/calorie-calculator/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🔥 ক্যালরি ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">দৈনিক ক্যালরির চাহিদা বের করুন</div>
+      </a>
+      <a href="/food/bengali-food-chart/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🍚 বাংলা খাবারের ক্যালরি চার্ট</div>
+        <div class="text-sm text-gray-500 mt-1">১২০+ খাবারের ক্যালরি তালিকা</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>

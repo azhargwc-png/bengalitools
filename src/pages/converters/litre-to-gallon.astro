@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "লিটার থেকে গ্যালন কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/litre-to-gallon/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ লিটার সমান কত গ্যালন?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ লিটার সমান ০.২৬৪১৭ US গ্যালন বা ০.২১৯৯৭ UK গ্যালন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ গ্যালন সমান কত লিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ US গ্যালন সমান ৩.৭৮৫৪১ লিটার। ১ UK গ্যালন সমান ৪.৫৪৬০৯ লিটার।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "গাড়ির ৪০ লিটার ট্যাঙ্ক মানে কত গ্যালন?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৪০ লিটার সমান ১০.৫৭ US গ্যালন বা ৮.৮০ UK গ্যালন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "US গ্যালন ও UK গ্যালনের মধ্যে পার্থক্য কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "US গ্যালন = ৩.৭৮৫৪১ লিটার। UK গ্যালন = ৪.৫৪৬০৯ লিটার। UK গ্যালন US গ্যালনের চেয়ে প্রায় ২০% বড়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "লিটার থেকে গ্যালন বের করার সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "US গ্যালন: গ্যালন = লিটার ÷ ৩.৭৮৫৪১। উদাহরণ: ১০ লিটার ÷ ৩.৭৮৫৪১ = ২.৬৪ US গ্যালন।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="লিটার থেকে গ্যালন কনভার্টার | BanglaTools"
   description="লিটার থেকে গ্যালন বা গ্যালন থেকে লিটার রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="লিটার থেকে গ্যালন কনভার্টার" data-en="litre to gallon Converter">লিটার থেকে গ্যালন কনভার্টার</span>

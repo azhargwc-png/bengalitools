@@ -1,0 +1,175 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "৩৭ ডিগ্রি সেলসিয়াস ফারেনহাইটে কত?",
+      "acceptedAnswer": { "@type": "Answer", "text": "৩৭ ডিগ্রি সেলসিয়াস = ৯৮.৬ ডিগ্রি ফারেনহাইট। এটি মানবদেহের স্বাভাবিক তাপমাত্রা। হিসাব: (৩৭ × ৯/৫) + ৩২ = ৯৮.৬°F।" }
+    },
+    {
+      "@type": "Question",
+      "name": "সেলসিয়াস থেকে ফারেনহাইট বের করার সূত্র কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "সূত্র: °F = (°C × ৯/৫) + ৩২। অথবা সহজে: °F = (°C × ১.৮) + ৩২।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ফারেনহাইট থেকে সেলসিয়াস বের করার সূত্র কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "সূত্র: °C = (°F - ৩২) × ৫/৯। উদাহরণ: ৯৮.৬°F থেকে সেলসিয়াস = (৯৮.৬ - ৩২) × ৫/৯ = ৩৭°C।" }
+    },
+    {
+      "@type": "Question",
+      "name": "জ্বর হলে তাপমাত্রা কত হয়?",
+      "acceptedAnswer": { "@type": "Answer", "text": "৩৮°C (১০০.৪°F) বা তার বেশি হলে জ্বর বলে ধরা হয়। ৩৯°C (১০২.২°F) হলে উচ্চ জ্বর এবং ৪০°C (১০৪°F) হলে অবিলম্বে ডাক্তারের পরামর্শ নেওয়া উচিত।" }
+    },
+    {
+      "@type": "Question",
+      "name": "পানি কত ডিগ্রি সেলসিয়াসে ফোটে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "পানি ১০০ ডিগ্রি সেলসিয়াস (২১২ ডিগ্রি ফারেনহাইট) তাপমাত্রায় ফোটে এবং ০ ডিগ্রি সেলসিয়াস (৩২ ডিগ্রি ফারেনহাইট) তাপমাত্রায় জমে।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ | BanglaTools"
+  description="সেলসিয়াস থেকে ফারেনহাইট রূপান্তরের সহজ সূত্র জানুন। শরীরের তাপমাত্রা, আবহাওয়া ও রান্নার তাপমাত্রা — বাংলায় সম্পূর্ণ গাইড।"
+  datePublished="2026-04-28"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → সেলসিয়াস থেকে ফারেনহাইট
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">তাৎক্ষণিক তাপমাত্রা রূপান্তর</h2>
+    <p class="text-gray-700 mb-3">সেলসিয়াস ও ফারেনহাইটের মধ্যে যেকোনো তাপমাত্রা রূপান্তর করুন:</p>
+    <p class="text-center">
+      <a href="/converters/celsius-to-fahrenheit/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → সেলসিয়াস ↔ ফারেনহাইট কনভার্টার ব্যবহার করুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সেলসিয়াস ও ফারেনহাইট — দুটো কী?</h2>
+      <p>তাপমাত্রা পরিমাপের দুটি প্রধান পদ্ধতি হলো সেলসিয়াস এবং ফারেনহাইট। ভারত, বাংলাদেশ সহ বিশ্বের বেশিরভাগ দেশে সেলসিয়াস স্কেল ব্যবহার হয়। যুক্তরাষ্ট্রে এখনো ফারেনহাইট ব্যবহার করা হয়।</p>
+      <p>সেলসিয়াস স্কেলে পানির জমার বিন্দু ০°C এবং ফুটার বিন্দু ১০০°C। ফারেনহাইট স্কেলে এগুলো যথাক্রমে ৩২°F এবং ২১২°F।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সেলসিয়াস থেকে ফারেনহাইট রূপান্তরের সূত্র</h2>
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 my-4">
+        <p class="font-bold text-teal-900 text-lg">°F = (°C × ৯/৫) + ৩২</p>
+        <p class="text-teal-700 text-sm mt-1">অথবা: °F = (°C × ১.৮) + ৩২</p>
+      </div>
+      <p><strong>উদাহরণ:</strong> ৩৭°C কে ফারেনহাইটে রূপান্তর করতে: (৩৭ × ১.৮) + ৩২ = ৬৬.৬ + ৩২ = ৯৮.৬°F</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ফারেনহাইট থেকে সেলসিয়াস রূপান্তরের সূত্র</h2>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 my-4">
+        <p class="font-bold text-blue-900 text-lg">°C = (°F - ৩২) × ৫/৯</p>
+      </div>
+      <p><strong>উদাহরণ:</strong> ৯৮.৬°F কে সেলসিয়াসে রূপান্তর করতে: (৯৮.৬ - ৩২) × ৫/৯ = ৬৬.৬ × ০.৫৫৫৬ = ৩৭°C</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সাধারণ তাপমাত্রা রূপান্তর টেবিল</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">সেলসিয়াস (°C)</th><th class="p-3">ফারেনহাইট (°F)</th><th class="p-3">পরিস্থিতি</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center">০°C</td><td class="p-3 text-center font-bold">৩২°F</td><td class="p-3">পানি জমার বিন্দু</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">১০°C</td><td class="p-3 text-center font-bold">৫০°F</td><td class="p-3">শীতের সকাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">২০°C</td><td class="p-3 text-center font-bold">৬৮°F</td><td class="p-3">আরামদায়ক ঘরের তাপমাত্রা</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">৩৭°C</td><td class="p-3 text-center font-bold">৯৮.৬°F</td><td class="p-3">শরীরের স্বাভাবিক তাপমাত্রা</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">৩৮°C</td><td class="p-3 text-center font-bold">১০০.৪°F</td><td class="p-3">জ্বর শুরু</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">৪০°C</td><td class="p-3 text-center font-bold">১০৪°F</td><td class="p-3">উচ্চ জ্বর</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center">১০০°C</td><td class="p-3 text-center font-bold">২১২°F</td><td class="p-3">পানির ফুটার বিন্দু</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center">১৮০°C</td><td class="p-3 text-center font-bold">৩৫৬°F</td><td class="p-3">ওভেনের তাপমাত্রা (মাঝারি)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">শরীরের তাপমাত্রা বোঝার গাইড</h2>
+      <p>থার্মোমিটারে তাপমাত্রা দেখে বুঝবেন কীভাবে?</p>
+      <ul class="list-disc pl-5 space-y-2 mt-3">
+        <li><strong>৩৬-৩৭°C (৯৬.৮-৯৮.৬°F):</strong> স্বাভাবিক তাপমাত্রা</li>
+        <li><strong>৩৭.১-৩৭.৯°C (৯৮.৮-১০০.২°F):</strong> সামান্য বেশি — পর্যবেক্ষণ করুন</li>
+        <li><strong>৩৮-৩৮.৯°C (১০০.৪-১০২°F):</strong> মাঝারি জ্বর — বিশ্রাম ও পানি পান করুন</li>
+        <li><strong>৩৯-৪০°C (১০২.২-১০৪°F):</strong> উচ্চ জ্বর — ডাক্তার দেখান</li>
+        <li><strong>৪০°C+ (১০৪°F+):</strong> অতি উচ্চ জ্বর — জরুরি চিকিৎসা দরকার</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">রান্নায় তাপমাত্রা রূপান্তর</h2>
+      <p>বিদেশি রেসিপিতে তাপমাত্রা ফারেনহাইটে দেওয়া থাকলে সেলসিয়াসে রূপান্তর করুন:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-3">
+        <li><strong>৩০০°F = ১৪৮.৯°C:</strong> কম তাপে রান্না</li>
+        <li><strong>৩৫০°F = ১৭৬.৭°C:</strong> মাঝারি তাপ</li>
+        <li><strong>৪০০°F = ২০৪.৪°C:</strong> গরম ওভেন</li>
+        <li><strong>৪৫০°F = ২৩২.২°C:</strong> অতি গরম</li>
+      </ul>
+      <p class="mt-3">আমাদের <a href="/converters/celsius-to-fahrenheit/" class="text-teal-700 underline">সেলসিয়াস ↔ ফারেনহাইট কনভার্টার</a> ব্যবহার করে যেকোনো তাপমাত্রা তাৎক্ষণিকভাবে রূপান্তর করুন।</p>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">৩৭ ডিগ্রি সেলসিয়াস ফারেনহাইটে কত?</summary>
+        <p class="mt-3 text-gray-700">৩৭ ডিগ্রি সেলসিয়াস = ৯৮.৬ ডিগ্রি ফারেনহাইট। হিসাব: (৩৭ × ৯/৫) + ৩২ = ৯৮.৬°F। এটি মানবদেহের স্বাভাবিক তাপমাত্রা।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">সেলসিয়াস থেকে ফারেনহাইট বের করার সূত্র কী?</summary>
+        <p class="mt-3 text-gray-700">সূত্র: °F = (°C × ৯/৫) + ৩২। অথবা সহজে: °F = (°C × ১.৮) + ৩২।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ফারেনহাইট থেকে সেলসিয়াস বের করার সূত্র কী?</summary>
+        <p class="mt-3 text-gray-700">সূত্র: °C = (°F - ৩২) × ৫/৯। উদাহরণ: ৯৮.৬°F থেকে সেলসিয়াস = (৯৮.৬ - ৩২) × ৫/৯ = ৩৭°C।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">জ্বর হলে তাপমাত্রা কত হয়?</summary>
+        <p class="mt-3 text-gray-700">৩৮°C (১০০.৪°F) বা তার বেশি হলে জ্বর বলে ধরা হয়। ৩৯°C (১০২.২°F) হলে উচ্চ জ্বর এবং ৪০°C (১০৪°F) হলে অবিলম্বে ডাক্তারের পরামর্শ নেওয়া উচিত।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">পানি কত ডিগ্রি সেলসিয়াসে ফোটে?</summary>
+        <p class="mt-3 text-gray-700">পানি ১০০ ডিগ্রি সেলসিয়াস (২১২ ডিগ্রি ফারেনহাইট) তাপমাত্রায় ফোটে এবং ০ ডিগ্রি সেলসিয়াস (৩২ ডিগ্রি ফারেনহাইট) তাপমাত্রায় জমে।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/converters/celsius-to-fahrenheit/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🌡️ সেলসিয়াস ↔ ফারেনহাইট কনভার্টার</div>
+        <div class="text-sm text-gray-500 mt-1">তাৎক্ষণিক তাপমাত্রা রূপান্তর</div>
+      </a>
+      <a href="/health/water-intake/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">💧 দৈনিক জল পান ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">প্রতিদিন কতটুকু জল পান করবেন</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>

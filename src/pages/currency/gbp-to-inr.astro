@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GBP থেকে INR পাউন্ড কনভার্টার",
+      "url": "https://www.bengalitools.com/currency/gbp-to-inr/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "আজকে ১ পাউন্ড সমান কত রুপি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ১ GBP = ₹১০৫ থেকে ₹১১৫।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "পাউন্ড কি ডলার বা ইউরোর চেয়ে দামি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ, সাধারণত ১ পাউন্ড = ১.২৫-১.৩০ ডলার। পাউন্ড প্রধান মুদ্রাগুলোর মধ্যে সবচেয়ে মূল্যবান।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "যুক্তরাজ্য কি ইউরো ব্যবহার করে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না। যুক্তরাজ্য তাদের নিজস্ব মুদ্রা পাউন্ড স্টার্লিং ব্যবহার করে। Brexit-এর পরেও এটি পরিবর্তন হয়নি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "UK থেকে ভারতে টাকা পাঠানোর সেরা উপায় কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wise, Remitly, Western Union, বা ব্যাংক ট্রান্সফার ব্যবহার করতে পারেন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রুপি থেকে পাউন্ডেও কনভার্ট করা যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য পাউন্ড স্বয়ংক্রিয়ভাবে দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="পাউন্ড রেট আজকে — পাউন্ড থেকে টাকা | BanglaTools"
   description="আজকের GBP থেকে INR লাইভ রেট। ব্রিটিশ পাউন্ড থেকে ভারতীয় রুপিতে রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="পাউন্ড রেট আজকে — পাউন্ড থেকে ভারতীয় টাকা" data-en="GBP to INR — British Pound to Rupee Live Rate">পাউন্ড রেট আজকে — পাউন্ড থেকে ভারতীয় টাকা</span>

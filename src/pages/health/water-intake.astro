@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "দৈনিক জল পান ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/health/water-intake/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "প্রতিদিন কত গ্লাস জল পান করা উচিত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ৬০-৭০ কেজি ওজনের একজন প্রাপ্তবয়স্কের জন্য প্রতিদিন ৮-১০ গ্লাস (২-২.৫ লিটার) জল পান করা উচিত।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "৮ গ্লাসের নিয়ম কি সবার জন্য প্রযোজ্য?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না, ৮ গ্লাসের নিয়মটি একটি সাধারণ নির্দেশিকা মাত্র। প্রকৃত চাহিদা ওজন, আবহাওয়া ও ব্যায়ামের উপর নির্ভর করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "পানিশূন্যতার লক্ষণ কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ঘন হলুদ প্রস্রাব, মাথাব্যথা, ক্লান্তি, মুখ শুকিয়ে যাওয়া ও মাথা ঘোরা পানিশূন্যতার লক্ষণ।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "গরমে বেশি জল পান করতে হয় কেন?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "গরমে ঘামের মাধ্যমে শরীর থেকে বেশি জল বেরিয়ে যায়। তাই গরমে জলের চাহিদা বাড়ে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "চা বা কফি কি জলের বিকল্প হতে পারে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণ চা কিছুটা হিসেবে ধরা যায়, তবে বেশি ক্যাফেইনযুক্ত পানীয় প্রস্রাব বাড়িয়ে শরীর থেকে জল বের করতে পারে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="দৈনিক জল পান ক্যালকুলেটর | BanglaTools"
   description="প্রতিদিন কতটুকু জল পান করা উচিত জানুন। ওজন অনুযায়ী জল পানের পরিমাণ হিসাব করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="দৈনিক জল পান ক্যালকুলেটর" data-en="Daily Water Intake Calculator">দৈনিক জল পান ক্যালকুলেটর</span>

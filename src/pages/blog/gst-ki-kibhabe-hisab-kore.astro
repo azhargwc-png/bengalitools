@@ -1,0 +1,170 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "জিএসটি কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "জিএসটি (Goods and Services Tax) হলো ভারতের একটি পরোক্ষ কর যা পণ্য ও পরিষেবার উপর আরোপ করা হয়। ২০১৭ সালে এটি চালু হয়। কেন্দ্রীয় ও রাজ্য সরকারের একাধিক কর একত্রিত করে এই একক কর ব্যবস্থা চালু করা হয়েছে।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ভারতে জিএসটির হার কত?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ভারতে চারটি মূল জিএসটি স্ল্যাব আছে: ৫%, ১২%, ১৮% এবং ২৮%। প্রয়োজনীয় খাদ্যপণ্য ও কৃষিজ পণ্যে ০% জিএসটি।" }
+    },
+    {
+      "@type": "Question",
+      "name": "জিএসটি যুক্ত দাম কীভাবে বের করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "জিএসটি যুক্ত দাম = মূল দাম × (১ + জিএসটি হার/১০০)। উদাহরণ: ₹১০০০ পণ্যে ১৮% জিএসটি = ১০০০ × ১.১৮ = ₹১,১৮০।" }
+    },
+    {
+      "@type": "Question",
+      "name": "জিএসটি ছাড়া দাম কীভাবে বের করব?",
+      "acceptedAnswer": { "@type": "Answer", "text": "মূল দাম = জিএসটি যুক্ত দাম ÷ (১ + জিএসটি হার/১০০)। উদাহরণ: ₹১,১৮০ তে ১৮% জিএসটি থাকলে মূল দাম = ১১৮০ ÷ ১.১৮ = ₹১,০০০।" }
+    },
+    {
+      "@type": "Question",
+      "name": "CGST ও SGST মানে কী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CGST হলো Central GST (কেন্দ্রীয় জিএসটি) এবং SGST হলো State GST (রাজ্য জিএসটি)। ১৮% জিএসটিতে CGST ৯% এবং SGST ৯% করে ভাগ হয়।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="জিএসটি কী এবং কীভাবে হিসাব করে — সম্পূর্ণ গাইড | BanglaTools"
+  description="জিএসটি (GST) কী, ভারতে কত হার, কীভাবে যোগ বা বাদ দিতে হয় — বাংলায় সম্পূর্ণ গাইড ও বিনামূল্যে জিএসটি ক্যালকুলেটর।"
+  datePublished="2026-04-28"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → জিএসটি হিসাব
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    জিএসটি কী এবং কীভাবে হিসাব করে — সম্পূর্ণ গাইড
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">তাৎক্ষণিক জিএসটি হিসাব করুন</h2>
+    <p class="text-gray-700 mb-3">দাম ও জিএসটি হার দিন — জিএসটি যুক্ত বা বাদ দেওয়া দাম সঙ্গে সঙ্গে পাবেন:</p>
+    <p class="text-center">
+      <a href="/india/gst-calculator/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → জিএসটি ক্যালকুলেটর ব্যবহার করুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">জিএসটি কী?</h2>
+      <p>GST বা Goods and Services Tax হলো ভারতের একটি পরোক্ষ কর ব্যবস্থা যা ২০১৭ সালের ১ জুলাই চালু হয়েছে। এর আগে ভ্যাট, সার্ভিস ট্যাক্স, এক্সাইজ ডিউটি সহ অনেক আলাদা কর ছিল — সেগুলো একত্রিত করে জিএসটি আনা হয়েছে।</p>
+      <p>জিএসটি মূলনীতি হলো "এক দেশ, এক কর"। পণ্য তৈরি থেকে ভোক্তার কাছে পৌঁছানো পর্যন্ত প্রতিটি ধাপে জিএসটি যোগ হয়, কিন্তু আগের ধাপের কর ফেরত (Input Tax Credit) পাওয়া যায়।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ভারতে জিএসটির হার</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead><tr class="bg-teal-700 text-white"><th class="p-3">জিএসটি হার</th><th class="p-3">উদাহরণ পণ্য</th></tr></thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3 text-center font-bold">০%</td><td class="p-3">তাজা সবজি, দুধ, ডিম, শস্য</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center font-bold">৫%</td><td class="p-3">চা, চিনি, তেল, সাধারণ রেস্তোরাঁ</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center font-bold">১২%</td><td class="p-3">প্রক্রিয়াজাত খাবার, মোবাইল ফোন</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 text-center font-bold">১৮%</td><td class="p-3">বেশিরভাগ পরিষেবা, ইলেকট্রনিক্স, AC রেস্তোরাঁ</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 text-center font-bold">২৮%</td><td class="p-3">বিলাসবহুল পণ্য, গাড়ি, সিগারেট</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">জিএসটি হিসাবের সূত্র</h2>
+
+      <h3 class="text-lg font-bold text-gray-800 mt-4 mb-2">জিএসটি যোগ করতে (মূল দাম জানা থাকলে)</h3>
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 my-3">
+        <p class="font-bold text-teal-900">জিএসটি যুক্ত দাম = মূল দাম × (১ + জিএসটি%/১০০)</p>
+      </div>
+      <p><strong>উদাহরণ:</strong> ₹২,০০০ পণ্যে ১৮% জিএসটি = ২০০০ × ১.১৮ = <strong>₹২,৩৬০</strong></p>
+      <p class="text-sm text-gray-600 mt-1">জিএসটির পরিমাণ: ₹২,৩৬০ - ₹২,০০০ = ₹৩৬০</p>
+
+      <h3 class="text-lg font-bold text-gray-800 mt-4 mb-2">জিএসটি বাদ দিতে (মোট দাম জানা থাকলে)</h3>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 my-3">
+        <p class="font-bold text-blue-900">মূল দাম = মোট দাম ÷ (১ + জিএসটি%/১০০)</p>
+      </div>
+      <p><strong>উদাহরণ:</strong> বিল এসেছে ₹২,৩৬০, জিএসটি ১৮% হলে মূল দাম = ২৩৬০ ÷ ১.১৮ = <strong>₹২,০০০</strong></p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">CGST ও SGST বোঝার সহজ উপায়</h2>
+      <p>প্রতিটি রাজ্যের মধ্যে বিক্রির ক্ষেত্রে জিএসটি দুভাগে ভাগ হয়:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-3">
+        <li><strong>CGST</strong> (Central GST): কেন্দ্রীয় সরকারের অংশ — মোট জিএসটির অর্ধেক</li>
+        <li><strong>SGST</strong> (State GST): রাজ্য সরকারের অংশ — মোট জিএসটির অর্ধেক</li>
+      </ul>
+      <p class="mt-2"><strong>উদাহরণ:</strong> ১৮% জিএসটিতে CGST = ৯% এবং SGST = ৯%। পশ্চিমবঙ্গে বিক্রি হলে কেন্দ্র পাবে ৯% এবং রাজ্য পাবে ৯%।</p>
+      <p class="mt-2">এক রাজ্য থেকে অন্য রাজ্যে বিক্রির ক্ষেত্রে IGST (Integrated GST) প্রযোজ্য।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">দৈনন্দিন জীবনে জিএসটির উদাহরণ</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>মুদিখানা দোকানে:</strong> সবজি, দুধ, ডিম — ০% জিএসটি</li>
+        <li><strong>রেস্তোরাঁতে খাওয়া:</strong> সাধারণ রেস্তোরাঁয় ৫%, AC রেস্তোরাঁয় ১২-১৮%</li>
+        <li><strong>মোবাইল কিনলে:</strong> ১২% জিএসটি</li>
+        <li><strong>ইন্টারনেট বিল:</strong> ১৮% জিএসটি</li>
+        <li><strong>জামাকাপড়:</strong> ₹১,০০০-এর বেশি হলে ১২% জিএসটি</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">জিএসটি কী?</summary>
+        <p class="mt-3 text-gray-700">জিএসটি (Goods and Services Tax) হলো ভারতের একটি পরোক্ষ কর যা পণ্য ও পরিষেবার উপর আরোপ করা হয়। ২০১৭ সালে চালু হয়েছে।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ভারতে জিএসটির হার কত?</summary>
+        <p class="mt-3 text-gray-700">ভারতে চারটি মূল জিএসটি স্ল্যাব আছে: ৫%, ১২%, ১৮% এবং ২৮%। প্রয়োজনীয় খাদ্যপণ্যে ০%।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">জিএসটি যুক্ত দাম কীভাবে বের করব?</summary>
+        <p class="mt-3 text-gray-700">জিএসটি যুক্ত দাম = মূল দাম × (১ + জিএসটি হার/১০০)। উদাহরণ: ₹১০০০ তে ১৮% = ₹১,১৮০।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">জিএসটি ছাড়া দাম কীভাবে বের করব?</summary>
+        <p class="mt-3 text-gray-700">মূল দাম = জিএসটি যুক্ত দাম ÷ (১ + জিএসটি হার/১০০)। উদাহরণ: ₹১,১৮০ তে ১৮% = ₹১,০০০।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">CGST ও SGST মানে কী?</summary>
+        <p class="mt-3 text-gray-700">CGST হলো কেন্দ্রীয় জিএসটি এবং SGST হলো রাজ্য জিএসটি। ১৮% জিএসটিতে CGST ৯% এবং SGST ৯%।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/india/gst-calculator/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🧾 জিএসটি ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">জিএসটি যোগ বা বাদ দিন</div>
+      </a>
+      <a href="/calculators/discount/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🏷️ ছাড় ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">ডিসকাউন্টের পরে দাম বের করুন</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>

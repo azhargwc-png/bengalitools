@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "কিলোমিটার থেকে মাইল কনভার্টার",
+      "url": "https://www.bengalitools.com/converters/km-to-miles/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "১ কিলোমিটার সমান কত মাইল?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ কিলোমিটার সমান ০.৬২১৩৭১ মাইল। সহজে মনে রাখতে পারেন: ১ কিলোমিটার প্রায় ০.৬২ মাইলের সমান।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "১ মাইল সমান কত কিলোমিটার?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "১ মাইল সমান ১.৬০৯৩৪ কিলোমিটার। অর্থাৎ ১ মাইল প্রায় দেড় কিলোমিটারের বেশি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ম্যারাথনের দূরত্ব কত কিলোমিটার ও মাইল?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "একটি পূর্ণ ম্যারাথনের দূরত্ব ৪২.১৯৫ কিলোমিটার, যা ২৬.২১৯ মাইলের সমান।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কলকাতা থেকে ঢাকার দূরত্ব কত কিলোমিটার ও মাইল?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "কলকাতা থেকে ঢাকার সড়কপথে দূরত্ব প্রায় ৩০০ কিলোমিটার, যা প্রায় ১৮৬ মাইল।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "কিলোমিটার থেকে মাইল বের করার সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সূত্র: মাইল = কিলোমিটার × ০.৬২১৩৭১। উদাহরণ: ১০ কিলোমিটার × ০.৬২১৩৭১ = ৬.২১ মাইল।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="কিলোমিটার থেকে মাইল কনভার্টার | BanglaTools"
   description="কিলোমিটার থেকে মাইল বা মাইল থেকে কিলোমিটার রূপান্তর করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="কিলোমিটার থেকে মাইল কনভার্টার" data-en="km to miles Converter">কিলোমিটার থেকে মাইল কনভার্টার</span>

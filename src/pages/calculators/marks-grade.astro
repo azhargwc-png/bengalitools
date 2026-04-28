@@ -2,6 +2,54 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "নম্বর ও গ্রেড ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/marks-grade/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "CGPA থেকে শতাংশ কীভাবে বের করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CBSE-র নিয়ম অনুযায়ী: শতাংশ = CGPA × ৯.৫। উদাহরণ: CGPA ৮.৫ হলে শতাংশ = ৮০.৭৫%।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "মাধ্যমিকে স্টার মার্কস মানে কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "মাধ্যমিকে মোট নম্বরের ৭৫% বা তার বেশি পেলে স্টার মার্কস দেওয়া হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "WB Board ও CBSE গ্রেড কি আলাদা?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। WB Board বিভাগ ব্যবহার করে। CBSE A1 থেকে E পর্যন্ত গ্রেড ব্যবহার করে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
@@ -10,6 +58,7 @@ import AdSlot from '../../components/AdSlot.astro';
   description="মাধ্যমিক ও উচ্চমাধ্যমিকের শতাংশ থেকে WB Board বিভাগ, CBSE গ্রেড ও CGPA বের করুন। বিনামূল্যে অনলাইন টুল।"
   descriptionBn="মাধ্যমিক ও উচ্চমাধ্যমিকের শতাংশ থেকে WB Board বিভাগ, CBSE গ্রেড ও CGPA বের করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="নম্বর থেকে গ্রেড কনভার্টার" data-en="Marks to Grade Converter">নম্বর থেকে গ্রেড কনভার্টার</span>
   </h1>

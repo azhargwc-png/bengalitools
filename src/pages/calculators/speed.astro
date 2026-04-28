@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "গতি ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/calculators/speed/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "গতি, দূরত্ব ও সময়ের সূত্র কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "গতি = দূরত্ব ÷ সময় | দূরত্ব = গতি × সময় | সময় = দূরত্ব ÷ গতি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "km/h থেকে m/s কীভাবে রূপান্তর করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "km/h কে ০.২৭৭৮ দিয়ে গুণ করুন। যেমন ৭২ km/h = ২০ m/s।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "গড় গতি বলতে কী বোঝায়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "গড় গতি = মোট দূরত্ব ÷ মোট সময়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ঢাকা থেকে কলকাতা যেতে কতক্ষণ লাগে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "দূরত্ব প্রায় ২৮০ km। গড় ৬০ km/h হলে প্রায় ৪-৫ ঘণ্টা লাগে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "mph কি ভারতে ব্যবহার হয়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না, ভারত ও বাংলাদেশে km/h ব্যবহার হয়। mph মূলত যুক্তরাষ্ট্র ও যুক্তরাজ্যে ব্যবহার হয়।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="গতি ক্যালকুলেটর — দূরত্ব সময় গতি | BanglaTools"
   description="গতি, দূরত্ব ও সময় হিসাব করুন। তিনটি মোডে সহজে হিসাব করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="গতি ক্যালকুলেটর — দূরত্ব সময় গতি" data-en="Speed Distance Time Calculator">গতি ক্যালকুলেটর — দূরত্ব সময় গতি</span>

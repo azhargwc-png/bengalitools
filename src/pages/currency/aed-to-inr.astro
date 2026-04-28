@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "AED থেকে INR দিরহাম কনভার্টার",
+      "url": "https://www.bengalitools.com/currency/aed-to-inr/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "আজকে ১ দিরহাম সমান কত রুপি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণত ১ AED = প্রায় ₹২২-২৩। এই পেজে লাইভ রেট দেখানো হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "দিরহাম কি ডলারের সাথে পেগড?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। UAE দিরহাম মার্কিন ডলারের সাথে ৩.৬৭২৫ AED = ১ USD হারে পেগড।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "দুবাই থেকে ভারতে টাকা পাঠানোর সেরা উপায় কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ব্যাংক ট্রান্সফার, Western Union বা Wise-এর মাধ্যমে পাঠানো যায়। পাঠানোর আগে রেট তুলনা করুন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "দিরহামের রেট কি প্রতিদিন বদলায়?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "দিরহাম ডলারের সাথে পেগড হওয়ায় AED-USD রেট স্থির থাকে, কিন্তু ডলার-রুপি রেট বদলানোয় AED-INR রেটও বদলায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রুপি থেকে দিরহামেও কনভার্ট করা যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "হ্যাঁ। INR ঘরে রুপির পরিমাণ টাইপ করলে সমতুল্য দিরহাম স্বয়ংক্রিয়ভাবে দেখাবে।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="দুবাই দিরহাম রেট আজকে — দিরহাম থেকে টাকা | BanglaTools"
   description="আজকের AED থেকে INR লাইভ রেট। দুবাই দিরহাম থেকে ভারতীয় রুপিতে রূপান্তর।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="দুবাই দিরহাম রেট আজকে — দিরহাম থেকে টাকা" data-en="AED to INR — Dubai Dirham to Rupee Live Rate">দুবাই দিরহাম রেট আজকে — দিরহাম থেকে টাকা</span>

@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "আদর্শ ওজন ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/health/ideal-weight/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "আদর্শ ওজন কি সবার জন্য একই?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "না। আদর্শ ওজন উচ্চতা, লিঙ্গ, হাড়ের গঠন ও পেশির পরিমাণের উপর নির্ভর করে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "BMI পদ্ধতি ও Hamwi পদ্ধতির মধ্যে পার্থক্য কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMI পদ্ধতি উচ্চতার বর্গের সাথে ওজনের অনুপাত ব্যবহার করে। Hamwi পদ্ধতি একটি সরলরেখার সূত্র।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "উচ্চতা ৫ ফুট হলে আদর্শ ওজন কত?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "৫ ফুট = ১৫২.৪ সেমি। পুরুষের জন্য আদর্শ ওজন প্রায় ৪৩-৫৬ কেজি এবং মহিলার জন্য ৪৩-৫৪ কেজি।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ওজন কমাতে কতদিন সময় লাগে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "নিরাপদ হারে সপ্তাহে ০.৫-১ কেজি ওজন কমানো যায়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "আমি আদর্শ ওজনে আছি কিনা কীভাবে বুঝব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "এই টুলে আপনার উচ্চতা দিলে আদর্শ ওজনের পরিসীমা জানতে পারবেন।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="আদর্শ ওজন ক্যালকুলেটর | BanglaTools"
   description="উচ্চতা অনুযায়ী আদর্শ ওজন কত হওয়া উচিত জানুন। বিনামূল্যে আদর্শ ওজন ক্যালকুলেটর।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <!-- H1 -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="আদর্শ ওজন ক্যালকুলেটর" data-en="Ideal Weight Calculator">আদর্শ ওজন ক্যালকুলেটর</span>

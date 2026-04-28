@@ -2,12 +2,77 @@
 import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "জিএসটি ক্যালকুলেটর",
+      "url": "https://www.bengalitools.com/india/gst-calculator/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "জিএসটি কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "জিএসটি (Goods and Services Tax) হলো ভারতের একটি পরোক্ষ কর যা পণ্য ও পরিষেবার উপর আরোপ করা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ভারতে জিএসটি স্ল্যাব কতটি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ভারতে মূলত চারটি জিএসটি স্ল্যাব রয়েছে: ৫%, ১২%, ১৮% এবং ২৮%।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "রেস্তোরাঁতে কত জিএসটি?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সাধারণ রেস্তোরাঁতে ৫% জিএসটি প্রযোজ্য। এসি রেস্তোরাঁতে ১২% বা ১৮% হতে পারে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "জিএসটি ছাড়া দাম কীভাবে বের করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সূত্র: মূল দাম = মোট দাম ÷ (১ + জিএসটি হার/১০০)। যেমন ১১৮ টাকায় ১৮% জিএসটি থাকলে মূল দাম = ১০০ টাকা।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "CGST ও SGST কী?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CGST হলো কেন্দ্রীয় সরকারের অংশ এবং SGST হলো রাজ্য সরকারের অংশ।"
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <ToolLayout
   title="জিএসটি ক্যালকুলেটর — GST Calculator India | BanglaTools"
   description="জিএসটি যোগ করুন বা বাদ দিন। ৫%, ১২%, ১৮%, ২৮% সব রেটে। বিনামূল্যে জিএসটি হিসাব করুন।"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
     <span data-bn="জিএসটি ক্যালকুলেটর" data-en="GST Calculator India">জিএসটি ক্যালকুলেটর</span>
   </h1>
