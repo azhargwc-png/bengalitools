@@ -1,0 +1,360 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the easiest way to type Bengali on a PC?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The easiest way is to install Avro Keyboard (free, open-source). It lets you type Bengali phonetically in English — for example, typing 'ami' automatically produces 'আমি'. Download it from omicronlab.com and it works on all Windows versions." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I type Bengali on Android?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open Settings → General Management → Keyboard → On-screen Keyboard → Gboard. Tap 'Add keyboard', search for Bengali, and add it. Then while typing, tap the globe icon to switch to Bengali. You can type phonetically or use the Bengali keyboard layout." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I type Bengali on iPhone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings → General → Keyboard → Keyboards → Add New Keyboard. Scroll to Bengali and add it. While typing, press and hold the globe icon to switch to Bengali. iOS supports both Bengali (India) and Bengali (Bangladesh) layouts." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I type Bengali on Mac without any extra software?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Go to System Settings → Keyboard → Input Sources → click + → search Bengali → add it. A language menu appears in your menu bar. Click it to switch to Bengali anytime. No extra software needed." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Avro and Google Input Tools?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Avro is a standalone software that works offline — great for heavy writers. Google Input Tools is a browser extension that works inside Chrome only but requires no installation. For offline work or dedicated Bengali typing, Avro is better. For occasional use in a browser, Google Input Tools is more convenient." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Bengali keyboard app is best for Android?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ridmik Keyboard is the most popular Bengali keyboard app in Bangladesh, with phonetic and fixed-layout modes. Gboard (Google) also has solid Bengali support with swipe typing. Both are free on the Play Store." }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="How to Type Bengali on PC, Mac, Android & iPhone — Complete 2026 Guide"
+  description="Step-by-step guide to type Bengali on any device. Windows, Mac, Android, iPhone — all covered. Free tools, phonetic typing, and keyboard shortcuts explained."
+  datePublished="2026-05-07"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">Blog</a> → How to Type Bengali on Any Device
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    How to Type Bengali on PC, Mac, Android &amp; iPhone — Complete 2026 Guide
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">Need Bengali numbers or text converted instantly?</h2>
+    <p class="text-gray-700 mb-3">Use our free Bengali number converter — type any number and get it in Bengali digits immediately:</p>
+    <p class="text-center">
+      <a href="/india/number-to-bengali/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → Bengali Number Converter
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <p>
+      Bengali (বাংলা) is the 5th most spoken language in the world — used by over 230 million people across Bangladesh, West Bengal, Assam, and the Bengali diaspora worldwide. Whether you are writing to family, working on documents, or posting on social media, typing Bengali on your device is easier than you think.
+    </p>
+    <p>
+      This guide covers every platform: <strong>Windows PC, Mac, Android, and iPhone</strong>. Each section gives you the fastest method and any free software you need.
+    </p>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-teal-700 text-white">
+            <th class="p-3 text-left">Device</th>
+            <th class="p-3 text-left">Best Method</th>
+            <th class="p-3 text-left">Software Needed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b">
+            <td class="p-3 font-semibold">Windows PC</td>
+            <td class="p-3">Avro Keyboard (phonetic)</td>
+            <td class="p-3">Free — Avro Keyboard</td>
+          </tr>
+          <tr class="bg-gray-50 border-b">
+            <td class="p-3 font-semibold">Mac</td>
+            <td class="p-3">Built-in Bengali input</td>
+            <td class="p-3">None — already built in</td>
+          </tr>
+          <tr class="bg-white border-b">
+            <td class="p-3 font-semibold">Android</td>
+            <td class="p-3">Ridmik Keyboard or Gboard</td>
+            <td class="p-3">Free — Play Store</td>
+          </tr>
+          <tr class="bg-gray-50 border-b">
+            <td class="p-3 font-semibold">iPhone / iPad</td>
+            <td class="p-3">Built-in Bengali keyboard</td>
+            <td class="p-3">None — add via Settings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. How to Type Bengali on Windows PC</h2>
+      <p>
+        Windows does not ship with a Bengali phonetic input method that most people find comfortable, so the community-favourite solution is <strong>Avro Keyboard</strong> — free, open-source, and trusted by millions since 2003.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Method A: Avro Keyboard (Recommended)</h3>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Download Avro Keyboard from <strong>omicronlab.com</strong> (search "Avro Keyboard download").</li>
+        <li>Install it — no special permissions needed, works on Windows 10 and 11.</li>
+        <li>After installation, look for the Avro icon in your system tray (bottom-right).</li>
+        <li>Press <strong>F12</strong> to toggle between English and Bengali at any time.</li>
+        <li>Type phonetically in English — Avro converts it live. For example: <code>ami bangla likhi</code> → <strong>আমি বাংলা লিখি</strong></li>
+      </ol>
+
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mt-4">
+        <p class="font-semibold text-yellow-800">Avro Phonetic Quick Reference</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2 text-sm">
+          <span><code>a</code> → আ</span>
+          <span><code>i</code> → ই</span>
+          <span><code>u</code> → উ</span>
+          <span><code>k</code> → ক</span>
+          <span><code>g</code> → গ</span>
+          <span><code>ch</code> → চ</span>
+          <span><code>t</code> → ত</span>
+          <span><code>d</code> → দ</span>
+          <span><code>n</code> → ন</span>
+          <span><code>p</code> → প</span>
+          <span><code>b</code> → ব</span>
+          <span><code>m</code> → ম</span>
+          <span><code>sh</code> → শ</span>
+          <span><code>r</code> → র</span>
+          <span><code>l</code> → ল</span>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-6 mb-2">Method B: Google Input Tools (Browser Only)</h3>
+      <p>
+        If you only need to type Bengali inside Chrome, install the <strong>Google Input Tools</strong> Chrome extension. No software installation is required — just add it from the Chrome Web Store, click the extension icon, select Bengali, and type phonetically in any text field.
+      </p>
+      <p class="mt-2">
+        This is convenient for Gmail, Google Docs, or Facebook — but it does not work outside the browser.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-6 mb-2">Method C: Windows Built-in Bengali Keyboard</h3>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Go to <strong>Settings → Time &amp; Language → Language &amp; Region</strong>.</li>
+        <li>Click <strong>Add a language</strong>, search "Bengali", and add it.</li>
+        <li>Press <strong>Windows + Space</strong> to switch between English and Bengali.</li>
+      </ol>
+      <p class="mt-2">
+        The Windows built-in layout is a fixed (Inscript) layout — each key maps to a specific Bengali letter. It requires memorising key positions, so most users prefer Avro's phonetic mode instead.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">2. How to Type Bengali on Mac</h2>
+      <p>
+        macOS includes a Bengali input method out of the box — no downloads needed.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Enable Bengali on Mac</h3>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Open <strong>System Settings → Keyboard → Input Sources</strong>.</li>
+        <li>Click the <strong>+</strong> button at the bottom left.</li>
+        <li>In the search box, type "Bengali" and select <strong>Bengali</strong> or <strong>Bengali — Transliteration</strong>.</li>
+        <li>Click <strong>Add</strong>.</li>
+        <li>In the menu bar at the top right, you will see a language icon. Click it to switch between English and Bengali.</li>
+      </ol>
+
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 mt-4">
+        <p class="font-semibold text-teal-800">Mac Shortcut</p>
+        <p class="text-gray-700 mt-1">Press <strong>Control + Space</strong> (or <strong>Command + Space</strong> depending on your settings) to quickly cycle between input languages without going to the menu bar.</p>
+      </div>
+
+      <p class="mt-4">
+        The <strong>Bengali — Transliteration</strong> option works like Avro: you type phonetically in English and it converts to Bengali. This is the most comfortable option for Mac users who are not familiar with fixed Bengali layouts.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">3. How to Type Bengali on Android</h2>
+      <p>
+        Android has the best Bengali typing experience of all mobile platforms, with two excellent options.
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Method A: Gboard (Google Keyboard)</h3>
+      <p>Gboard is already installed on most Android phones. To add Bengali:</p>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Open <strong>Settings → General Management → Language and Input → On-screen Keyboard → Gboard</strong>.</li>
+        <li>Tap <strong>Languages → Add Keyboard</strong>.</li>
+        <li>Search for <strong>Bengali</strong> and select your preferred layout (phonetic or QWERTY transliteration).</li>
+        <li>Tap <strong>Done</strong>.</li>
+        <li>While typing anywhere, tap the <strong>globe icon</strong> at the bottom of the keyboard to switch to Bengali.</li>
+      </ol>
+      <p class="mt-2">Gboard also supports swipe-to-type in Bengali and voice input in Bengali — say your text aloud and it transcribes it.</p>
+
+      <h3 class="text-lg font-bold text-gray-900 mt-6 mb-2">Method B: Ridmik Keyboard (Most Popular in Bangladesh)</h3>
+      <p>
+        Ridmik Keyboard is the #1 Bengali keyboard app in Bangladesh with over 10 million downloads. It offers:
+      </p>
+      <ul class="list-disc pl-5 space-y-1 mt-2">
+        <li>Phonetic mode (type English, get Bengali)</li>
+        <li>National (fixed Bijoy-style layout)</li>
+        <li>English mode with one tap switch</li>
+        <li>Emoji and sticker support</li>
+      </ul>
+      <p class="mt-2">Search <strong>"Ridmik Keyboard"</strong> on Google Play Store and install it for free. Set it as your default keyboard in Settings.</p>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4">
+        <p class="font-semibold text-blue-800">Which one to choose?</p>
+        <p class="text-gray-700 mt-1">Use <strong>Gboard</strong> if you want one keyboard for all languages with swipe support. Use <strong>Ridmik</strong> if you write Bengali heavily and want a dedicated, feature-rich experience.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">4. How to Type Bengali on iPhone &amp; iPad</h2>
+      <p>
+        iOS includes Bengali keyboard support natively since iOS 8. Here is how to enable it:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Open <strong>Settings → General → Keyboard → Keyboards</strong>.</li>
+        <li>Tap <strong>Add New Keyboard</strong>.</li>
+        <li>Scroll down and tap <strong>Bengali</strong>. You will see two options:
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><strong>Bengali (India)</strong> — uses the standard Indian Bengali layout</li>
+            <li><strong>Bengali (Bangladesh)</strong> — uses the Bangladesh National layout</li>
+          </ul>
+        </li>
+        <li>Add the one that suits you (or add both).</li>
+        <li>While typing, press and hold the <strong>globe icon</strong> at the bottom-left of the keyboard to switch to Bengali.</li>
+      </ol>
+
+      <p class="mt-4">
+        iOS also supports <strong>Bengali voice dictation</strong>: tap the microphone icon and speak in Bengali — it transcribes your speech in real time (requires an internet connection).
+      </p>
+
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 mt-4">
+        <p class="font-semibold text-teal-800">iPhone Tip</p>
+        <p class="text-gray-700 mt-1">If you add only one language, the globe icon may not appear. Add at least two keyboards (Bengali + English) and the globe icon will show up automatically.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Comparison: Phonetic vs Fixed Layout</h2>
+      <p>
+        When setting up Bengali typing on any platform, you will often choose between two input styles:
+      </p>
+      <div class="overflow-x-auto mt-4">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left"></th>
+              <th class="p-3 text-left">Phonetic (Avro style)</th>
+              <th class="p-3 text-left">Fixed Layout (Inscript/Bijoy)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b">
+              <td class="p-3 font-semibold">How it works</td>
+              <td class="p-3">Type English sounds → Bengali appears</td>
+              <td class="p-3">Each key = specific Bengali letter</td>
+            </tr>
+            <tr class="bg-gray-50 border-b">
+              <td class="p-3 font-semibold">Learning curve</td>
+              <td class="p-3">Very easy — start immediately</td>
+              <td class="p-3">Steep — must memorise layout</td>
+            </tr>
+            <tr class="bg-white border-b">
+              <td class="p-3 font-semibold">Speed (once learned)</td>
+              <td class="p-3">Fast</td>
+              <td class="p-3">Faster</td>
+            </tr>
+            <tr class="bg-gray-50 border-b">
+              <td class="p-3 font-semibold">Best for</td>
+              <td class="p-3">Beginners, diaspora users</td>
+              <td class="p-3">Professional typesetters, journalists</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4">
+        <strong>Recommendation:</strong> Start with phonetic. If you write Bengali for several hours a day professionally, invest time in learning the fixed layout for higher speed.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Bengali Unicode vs ANSI — What You Need to Know</h2>
+      <p>
+        All modern methods described above use <strong>Unicode Bengali</strong> — the international standard. Unicode text works everywhere: WhatsApp, Facebook, Google Docs, emails, and websites.
+      </p>
+      <p class="mt-2">
+        The older <strong>ANSI (Bijoy)</strong> format was used in the 1990s–2000s for printed newspapers. If someone sends you ANSI Bengali text, it may appear as garbled characters on modern devices. You need a converter to turn it into Unicode — Avro Keyboard includes one.
+      </p>
+      <p class="mt-2">
+        Unless you are working with legacy newspaper or print files, always use Unicode. Every app and website today expects Unicode Bengali.
+      </p>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">What is the easiest way to type Bengali on a PC?</summary>
+        <p class="mt-3 text-gray-700">Install Avro Keyboard (free). Press F12 to toggle Bengali on/off. Type phonetically in English — for example, "ami" becomes "আমি" automatically.</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">How do I type Bengali on Android?</summary>
+        <p class="mt-3 text-gray-700">Open Settings → Keyboard → Gboard → Languages → Add Keyboard → search Bengali. Or install Ridmik Keyboard from the Play Store. Tap the globe icon while typing to switch languages.</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">How do I type Bengali on iPhone?</summary>
+        <p class="mt-3 text-gray-700">Settings → General → Keyboard → Keyboards → Add New Keyboard → Bengali. Press and hold the globe icon while typing to switch to Bengali. No extra app needed.</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">Can I type Bengali on Mac without extra software?</summary>
+        <p class="mt-3 text-gray-700">Yes. System Settings → Keyboard → Input Sources → + → search Bengali → Add. Use Bengali Transliteration to type phonetically.</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">What is the difference between Avro and Google Input Tools?</summary>
+        <p class="mt-3 text-gray-700">Avro works system-wide offline. Google Input Tools only works inside the Chrome browser but requires no installation. For serious Bengali typing, Avro is better.</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">Which Bengali keyboard app is best for Android?</summary>
+        <p class="mt-3 text-gray-700">Ridmik Keyboard for dedicated Bengali typing. Gboard if you want one keyboard for all languages with swipe support. Both are free.</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">Related Bengali Tools</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/india/number-to-bengali/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🔢 Number to Bengali Converter</div>
+        <div class="text-sm text-gray-500 mt-1">Convert any number to Bengali digits instantly</div>
+      </a>
+      <a href="/india/bengali-calendar/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">📅 Bengali Calendar</div>
+        <div class="text-sm text-gray-500 mt-1">Convert English dates to Bengali dates</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>

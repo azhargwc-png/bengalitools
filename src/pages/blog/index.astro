@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 
 const posts = [
+  { slug: 'how-to-type-bengali', titleBn: 'বাংলা টাইপ করুন PC, Mac, Android ও iPhone-এ — সম্পূর্ণ গাইড', titleEn: 'How to Type Bengali on PC, Mac, Android & iPhone — Complete 2026 Guide', category: 'Guides', icon: '⌨️' },
   { slug: 'celsius-fahrenheit-hisab', titleBn: 'সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ', titleEn: 'Celsius to Fahrenheit — Formula and Examples', category: 'Converters', icon: '🌡️' },
   { slug: 'discount-ber-korar-niyom', titleBn: 'ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে', titleEn: 'How to Calculate Discount — Save on Shopping', category: 'Calculators', icon: '🏷️' },
   { slug: 'protidin-koto-calorie-khaoa-uchit', titleBn: 'প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত — বয়স ও লিঙ্গ অনুযায়ী', titleEn: 'How Many Calories Should You Eat Daily', category: 'Health', icon: '🔥' },
@@ -28,6 +29,7 @@ const posts = [
 ];
 
 const categoryColors: Record<string, string> = {
+  'Guides': 'bg-teal-100 text-teal-700',
   'Converters': 'bg-blue-100 text-blue-700',
   'Health': 'bg-green-100 text-green-700',
   'Currency': 'bg-yellow-100 text-yellow-700',
