@@ -1,0 +1,272 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "এক থালা ভাতে কত ক্যালরি?",
+      "acceptedAnswer": { "@type": "Answer", "text": "একটি মাঝারি থালায় সাধারণত ৩০০–৩৫০ গ্রাম রান্না করা ভাত থাকে, যাতে প্রায় ৩৯০–৪৫৫ ক্যালরি থাকে। বড় থালায় ৪০০–৪৫০ গ্রাম হলে ক্যালরি ৫২০–৫৮৫ পর্যন্ত যায়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ভাত খেলে কি মোটা হয়?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ভাত নিজে মোটা করে না — অতিরিক্ত ক্যালরি খাওয়া মোটা করে। পরিমাণমতো ভাত খেলে ওজন নিয়ন্ত্রণে রাখা সম্পূর্ণ সম্ভব।" }
+    },
+    {
+      "@type": "Question",
+      "name": "সাদা চাল নাকি বাদামি চাল বেশি স্বাস্থ্যকর?",
+      "acceptedAnswer": { "@type": "Answer", "text": "বাদামি চালে বেশি ফাইবার, বেশি ভিটামিন ও কম গ্লাইসেমিক ইনডেক্স থাকায় এটি বেশি স্বাস্থ্যকর। তবে সাদা চালও পরিমাণমতো খাওয়া যায়।" }
+    },
+    {
+      "@type": "Question",
+      "name": "রাতে ভাত খাওয়া কি ঠিক?",
+      "acceptedAnswer": { "@type": "Answer", "text": "রাতে ভাত খাওয়া যায়, তবে পরিমাণ কম রাখুন। দুপুরের চেয়ে রাতে কম পরিশ্রম হয়, তাই অর্ধেক পরিমাণ ভাত খাওয়া ভালো অভ্যাস।" }
+    },
+    {
+      "@type": "Question",
+      "name": "ডায়েটে কি ভাত খাওয়া যায়?",
+      "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ, ডায়েটে ভাত রাখা যায়। প্রতিদিন ১৫০–২০০ গ্রাম রান্না ভাত (প্রায় ১৯৫–২৬০ ক্যালরি) একটি সুষম ডায়েটের অংশ হতে পারে। বাদামি চাল বা সেদ্ধ চাল বেছে নিলে আরও ভালো।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="ভাতে কত ক্যালরি — এক থালায় কতটুকু?"
+  description="ভাত খেলে কত ক্যালরি হয়? এক থালা বা এক কাপ রান্না সাদা ভাতে ক্যালরির পরিমাণ, বাদামি চাল ও পোলাওয়ের তুলনা জানুন।"
+  datePublished="2026-05-24"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → ভাতে কত ক্যালরি
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    ভাতে কত ক্যালরি — এক থালা, এক বাটি, এক মুঠোতে কতটুকু?
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">যেকোনো খাবারের ক্যালরি জানুন</h2>
+    <p class="text-gray-700 mb-3">ভাত থেকে শুরু করে ডাল, তরকারি — ১২০+ বাংলা খাবারের ক্যালরি এক জায়গায়:</p>
+    <p class="text-center">
+      <a href="/food/calorie-lookup/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → খাবারের ক্যালরি দেখুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <p>"ভাত খাব না, মোটা হয়ে যাব" — এই কথা কমবেশি সবাই বলেন বা শুনেছেন। কিন্তু সত্যিটা কী? ভাত কি সত্যিই মোটা করে, নাকি আমরা ভাতের ব্যাপারে একটু বেশিই ভয় পাচ্ছি? বাংলাদেশ ও পশ্চিমবঙ্গে দিনে দুই-তিনবার ভাত খাওয়া স্বাভাবিক — তাই ভাতে ঠিক কতটুকু ক্যালরি আছে, সেটা জানাটা খুবই জরুরি।</p>
+      <p class="mt-2">এই গাইডে পরিমাণ অনুযায়ী বিস্তারিত ক্যালরির তালিকা, সাদা ও বাদামি চালের তুলনা, এবং ডায়েটে ভাত রাখার সঠিক উপায় নিয়ে আলোচনা করা হয়েছে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ভাতের পুষ্টিগুণ কী কী?</h2>
+      <p>অনেকে মনে করেন ভাত শুধু কার্বোহাইড্রেট — কিন্তু এটি পুরোপুরি সত্যি নয়। রান্না করা সাদা ভাতের ১০০ গ্রামে থাকে:</p>
+      <div class="overflow-x-auto mt-3">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">পুষ্টিগুণ</th>
+              <th class="p-3 text-center">সাদা ভাত (১০০গ্রা)</th>
+              <th class="p-3 text-center">বাদামি চাল (১০০গ্রা)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">ক্যালরি</td><td class="p-3 text-center font-bold">১৩০ kcal</td><td class="p-3 text-center font-bold">১১১ kcal</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">কার্বোহাইড্রেট</td><td class="p-3 text-center">২৮ গ্রাম</td><td class="p-3 text-center">২৩ গ্রাম</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">প্রোটিন</td><td class="p-3 text-center">২.৭ গ্রাম</td><td class="p-3 text-center">২.৬ গ্রাম</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">ফ্যাট</td><td class="p-3 text-center">০.৩ গ্রাম</td><td class="p-3 text-center">০.৯ গ্রাম</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">ফাইবার</td><td class="p-3 text-center">০.৪ গ্রাম</td><td class="p-3 text-center">১.৮ গ্রাম</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">গ্লাইসেমিক ইনডেক্স</td><td class="p-3 text-center">৭০–৭৩ (উচ্চ)</td><td class="p-3 text-center">৫৫–৬৮ (মাঝারি)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">* তথ্যসূত্র: USDA FoodData Central। রান্নার পদ্ধতি ও চালের ধরনভেদে সামান্য পার্থক্য হতে পারে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">পরিমাণ অনুযায়ী ভাতের ক্যালরি</h2>
+      <p>বাড়িতে কতটুকু ভাত খাচ্ছেন তার উপর নির্ভর করে আসল ক্যালরির হিসাব। নিচে সাধারণ পরিমাপে সাদা ভাতের ক্যালরি দেওয়া হলো:</p>
+      <div class="overflow-x-auto mt-3">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">পরিমাণ</th>
+              <th class="p-3 text-center">আনুমানিক ওজন</th>
+              <th class="p-3 text-center">ক্যালরি</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">এক মুঠো ভাত</td><td class="p-3 text-center">~১০০ গ্রাম</td><td class="p-3 text-center font-bold">~১৩০ kcal</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">এক বাটি ভাত</td><td class="p-3 text-center">~১৫০ গ্রাম</td><td class="p-3 text-center font-bold">~১৯৫ kcal</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">এক কাপ রান্না ভাত</td><td class="p-3 text-center">~১৮৫ গ্রাম</td><td class="p-3 text-center font-bold">~২৪০ kcal</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 font-medium">ছোট থালা ভাত</td><td class="p-3 text-center">~২০০ গ্রাম</td><td class="p-3 text-center font-bold text-orange-600">~২৬০ kcal</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 font-medium">মাঝারি থালা ভাত</td><td class="p-3 text-center">~৩০০ গ্রাম</td><td class="p-3 text-center font-bold text-orange-600">~৩৯০ kcal</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 font-medium">বড় থালা ভাত</td><td class="p-3 text-center">~৪০০–৪৫০ গ্রাম</td><td class="p-3 text-center font-bold text-red-600">~৫২০–৫৮৫ kcal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm bg-amber-50 border border-amber-200 rounded-xl p-3">একজন গড় বাংলাদেশি বা পশ্চিমবঙ্গের মানুষ দুপুরে এবং রাতে মিলিয়ে প্রায় ৬০০–৯০০ গ্রাম ভাত খান, অর্থাৎ শুধু ভাত থেকেই ৭৮০–১,১৭০ ক্যালরি আসে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">বিভিন্ন ধরনের চালে ক্যালরির পার্থক্য</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">মিনিকেট বনাম আতপ চাল বনাম সেদ্ধ চাল</h3>
+      <p>বাংলাদেশ ও পশ্চিমবঙ্গে সবচেয়ে বেশি প্রচলিত কয়েকটি চাল এবং তাদের ক্যালরি তুলনামূলকভাবে কাছাকাছি। প্রতি ১০০ গ্রাম রান্না করা অবস্থায়:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li><strong>মিনিকেট চাল:</strong> ~১২৮–১৩২ ক্যালরি</li>
+        <li><strong>আতপ চাল (সাদা):</strong> ~১২৯–১৩৫ ক্যালরি</li>
+        <li><strong>সেদ্ধ চাল (পারবয়েলড):</strong> ~১২২–১৩০ ক্যালরি — গ্লাইসেমিক ইনডেক্স কম থাকায় ডায়াবেটিক রোগীদের জন্য তুলনামূলক ভালো</li>
+        <li><strong>বাসমতি চাল:</strong> ~১২০–১২৮ ক্যালরি — GI সবচেয়ে কম (~৫০–৫৮)</li>
+        <li><strong>বাদামি চাল (ব্রাউন রাইস):</strong> ~১১০–১১৫ ক্যালরি — সবচেয়ে বেশি ফাইবার</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-5 mb-2">ভাত থেকে বানানো অন্য খাবারে ক্যালরি</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">খাবার</th>
+              <th class="p-3 text-center">প্রতি ১০০ গ্রামে</th>
+              <th class="p-3 text-center">কারণ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">সাদা ভাত (রান্না)</td><td class="p-3 text-center font-bold">~১৩০ kcal</td><td class="p-3 text-center text-gray-500">মানদণ্ড</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">খিচুড়ি</td><td class="p-3 text-center font-bold">~১০৫–১৩০ kcal</td><td class="p-3 text-center text-gray-500">ডাল মিশ্রিত</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">পোলাও / ঘি ভাত</td><td class="p-3 text-center font-bold">~১৮০–২২০ kcal</td><td class="p-3 text-center text-gray-500">ঘি ও তেল যোগ</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">ফ্রাইড রাইস</td><td class="p-3 text-center font-bold">~১৬০–২০০ kcal</td><td class="p-3 text-center text-gray-500">তেল ও ডিম যোগ</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">পায়েস (চালের)</td><td class="p-3 text-center font-bold">~১৩০–১৭০ kcal</td><td class="p-3 text-center text-gray-500">দুধ ও চিনি যোগ</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">মুড়ি (শুকনো)</td><td class="p-3 text-center font-bold">~৩৮৫ kcal</td><td class="p-3 text-center text-gray-500">পানি সরে গেছে</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ভাত খেলে কি সত্যিই মোটা হয়?</h2>
+      <p>এটি সবচেয়ে বেশি জিজ্ঞাসিত প্রশ্ন। সংক্ষিপ্ত উত্তর হলো — <strong>না, ভাত নিজে মোটা করে না।</strong> মোটা হওয়ার মূল কারণ হলো প্রতিদিন শরীরের চাহিদার চেয়ে বেশি ক্যালরি খাওয়া।</p>
+      <p class="mt-2">কিন্তু ভাতে দোষের জায়গা হলো এটি খেতে বসলে পরিমাণে বেশি হয়ে যায়, এবং এর সাথে ভাজাভুজি, তরকারি ও ডাল মিলিয়ে মোট ক্যালরি হঠাৎ অনেক বেড়ে যায়।</p>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 my-4">
+        <p class="font-semibold text-blue-900">উদাহরণ: দুপুরের খাবার হিসাব</p>
+        <ul class="mt-2 space-y-1 text-blue-800 text-sm">
+          <li>মাঝারি থালা ভাত (৩০০ গ্রাম): ~৩৯০ kcal</li>
+          <li>মাছের তরকারি (১ পিস + ঝোল): ~১২০ kcal</li>
+          <li>ডাল (১ বাটি): ~১১০ kcal</li>
+          <li>সবজি ভাজি: ~৮০ kcal</li>
+          <li><strong>মোট: ~৭০০ kcal — দুপুরের জন্য যথেষ্ট স্বাভাবিক।</strong></li>
+        </ul>
+      </div>
+      <p>কিন্তু ভাতের সাথে ভাজাভুজি, ঘি বা অতিরিক্ত তেলযুক্ত তরকারি যোগ হলে মোট ক্যালরি ৯০০–১২০০ পর্যন্ত যেতে পারে। সমস্যাটা আসলে ভাতের নয়, পুরো পাতের।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ডায়েটে প্রতিদিন কতটুকু ভাত খাওয়া উচিত?</h2>
+      <p>সুষম খাদ্যাভ্যাসে ভাত রাখা সম্পূর্ণ সম্ভব। সাধারণ নির্দেশিকা হলো:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li><strong>হালকা কাজের মানুষ (অফিস, বাড়ি):</strong> দিনে ২–৩ বার মিলিয়ে মোট ৩০০–৪০০ গ্রাম রান্না ভাত (৩৯০–৫২০ kcal) যথেষ্ট।</li>
+        <li><strong>মাঝারি পরিশ্রমের মানুষ:</strong> ৪০০–৫০০ গ্রাম (৫২০–৬৫০ kcal) খাওয়া যায়।</li>
+        <li><strong>ওজন কমাতে চাইলে:</strong> ১৫০–২০০ গ্রাম প্রতি বেলায় (এক বাটি), বাদামি চাল বা সেদ্ধ চাল হলে আরও ভালো।</li>
+        <li><strong>ডায়াবেটিস থাকলে:</strong> সেদ্ধ চাল বা বাসমতি বেছে নিন, পরিমাণ কমিয়ে বেশি সবজি যোগ করুন।</li>
+      </ul>
+      <p class="mt-3">আপনার শরীরের ওজন ও দৈনিক ক্যালরির চাহিদা বের করতে আমাদের <a href="/health/calorie-calculator/" class="text-teal-700 underline font-medium">ক্যালরি ক্যালকুলেটর</a> ব্যবহার করুন — তাহলে বুঝতে পারবেন মোট বরাদ্দের মধ্যে ভাত কতটা রাখা যাবে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ভাত খাওয়ার স্মার্ট অভ্যাস</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">১. ঠান্ডা হওয়া ভাত খান (রেসিস্ট্যান্ট স্টার্চ)</h3>
+      <p>রান্না করা ভাত ঠান্ডা হলে এর স্টার্চের একটি অংশ "রেসিস্ট্যান্ট স্টার্চ"-এ পরিণত হয়। এই ধরনের স্টার্চ হজমে বেশি সময় লাগে, ক্যালরি শোষণ কম হয় এবং রক্তে শর্করা ধীরে বাড়ে। পান্তা ভাত এর একটি ভালো উদাহরণ।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">২. প্রথমে সবজি খান, তারপর ভাত</h3>
+      <p>খাওয়া শুরু করুন সালাদ বা সবজি দিয়ে, তারপর ভাত খান। এতে পেট আগে ভরে যায় এবং ভাত কম খাওয়া হয়।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">৩. ছোট থালায় পরিবেশন করুন</h3>
+      <p>গবেষণায় দেখা গেছে, বড় পাত্রে বেশি পরিমাণ খাওয়া হয়। ছোট থালায় ভাত দিলে একই তৃপ্তিতে কম ক্যালরি খাওয়া হয়।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">৪. সাথে প্রোটিন রাখুন</h3>
+      <p>ভাতের সাথে মাছ, ডিম বা ডাল রাখলে প্রোটিন থাকায় পেট দীর্ঘক্ষণ ভরা থাকে এবং ক্ষুধা কম লাগে। শুধু ভাত ও ভাজি খেলে দ্রুত ক্ষুধা লাগে।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">৫. রাতে পরিমাণ কমান</h3>
+      <p>রাতে ঘুমের আগে শরীরের কার্যক্রম কম থাকে। তাই রাতের ভাত দুপুরের অর্ধেক রাখাই ভালো।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সাদা চাল ছেড়ে বাদামি চালে কেন যাবেন?</h2>
+      <p>বাদামি চালে (ব্রাউন রাইস) চালের বাইরের আস্তরণ (ব্র্যান) অক্ষুণ্ণ থাকায় এতে আরও বেশি পুষ্টিগুণ পাওয়া যায়:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li><strong>৪ গুণ বেশি ফাইবার</strong> — হজম ভালো হয়, কোষ্ঠকাঠিন্য কমে</li>
+        <li><strong>কম গ্লাইসেমিক ইনডেক্স</strong> — রক্তে শর্করা ধীরে বাড়ে, ডায়াবেটিস নিয়ন্ত্রণে সহায়ক</li>
+        <li><strong>বেশি ম্যাগনেসিয়াম ও ভিটামিন B</strong> — শরীরের শক্তি উৎপাদনে সাহায্য করে</li>
+        <li><strong>প্রতি ১০০ গ্রামে ১৯ kcal কম</strong> — দীর্ঘমেয়াদে পার্থক্য তৈরি করে</li>
+      </ul>
+      <p class="mt-3">তবে বাদামি চাল হঠাৎ পেটে সইতে না পারলে প্রথমে সাদা ও বাদামি চাল ৫০:৫০ মিশিয়ে রান্না করুন।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">আরও সব খাবারের ক্যালরি জানুন</h2>
+      <p>ভাতের পাশাপাশি ডাল, মাছ, মাংস, সবজি — সব কিছু মিলিয়ে দিনের মোট ক্যালরি জানতে চাইলে আমাদের <a href="/food/calorie-lookup/" class="text-teal-700 underline font-medium">খাবারের ক্যালরি লুকআপ টুল</a> ব্যবহার করুন। এখানে ১২০+ বাংলা ও ভারতীয় খাবারের বিস্তারিত ক্যালরি তথ্য পাবেন।</p>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">এক থালা ভাতে কত ক্যালরি?</summary>
+        <p class="mt-3 text-gray-700">একটি মাঝারি থালায় সাধারণত ৩০০–৩৫০ গ্রাম রান্না করা ভাত থাকে, যাতে প্রায় ৩৯০–৪৫৫ ক্যালরি থাকে। বড় থালায় ৪০০–৪৫০ গ্রাম হলে ক্যালরি ৫২০–৫৮৫ পর্যন্ত যায়।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ভাত খেলে কি মোটা হয়?</summary>
+        <p class="mt-3 text-gray-700">ভাত নিজে মোটা করে না — অতিরিক্ত ক্যালরি খাওয়া মোটা করে। পরিমাণমতো ভাত খেলে ওজন নিয়ন্ত্রণে রাখা সম্পূর্ণ সম্ভব।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">সাদা চাল নাকি বাদামি চাল বেশি স্বাস্থ্যকর?</summary>
+        <p class="mt-3 text-gray-700">বাদামি চালে বেশি ফাইবার, বেশি ভিটামিন ও কম গ্লাইসেমিক ইনডেক্স থাকায় এটি বেশি স্বাস্থ্যকর। তবে সাদা চালও পরিমাণমতো খাওয়া যায়।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">রাতে ভাত খাওয়া কি ঠিক?</summary>
+        <p class="mt-3 text-gray-700">রাতে ভাত খাওয়া যায়, তবে পরিমাণ কম রাখুন। দুপুরের চেয়ে রাতে কম পরিশ্রম হয়, তাই অর্ধেক পরিমাণ ভাত খাওয়া ভালো অভ্যাস।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">ডায়েটে কি ভাত খাওয়া যায়?</summary>
+        <p class="mt-3 text-gray-700">হ্যাঁ, ডায়েটে ভাত রাখা যায়। প্রতিদিন ১৫০–২০০ গ্রাম রান্না ভাত (প্রায় ১৯৫–২৬০ ক্যালরি) একটি সুষম ডায়েটের অংশ হতে পারে। বাদামি চাল বা সেদ্ধ চাল বেছে নিলে আরও ভালো।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস ও গাইড</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/food/calorie-lookup/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🍽️ খাবারের ক্যালরি লুকআপ</div>
+        <div class="text-sm text-gray-500 mt-1">১২০+ বাংলা খাবারের ক্যালরি তথ্য</div>
+      </a>
+      <a href="/health/calorie-calculator/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🔥 দৈনিক ক্যালরি ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">আপনার শরীরের ক্যালরির চাহিদা বের করুন</div>
+      </a>
+      <a href="/blog/hatale-koto-calorie-burn-hoy/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🚶 হাঁটলে কত ক্যালরি পোড়ে</div>
+        <div class="text-sm text-gray-500 mt-1">হাঁটার মাধ্যমে ক্যালরি খরচের হিসাব</div>
+      </a>
+      <a href="/blog/biryani-calorie/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🍛 বিরিয়ানিতে কত ক্যালরি</div>
+        <div class="text-sm text-gray-500 mt-1">চিকেন, মাটন ও কাচ্চি বিরিয়ানি</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>
