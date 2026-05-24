@@ -1,0 +1,259 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "হাঁটলে প্রতি ঘণ্টায় কত ক্যালরি পোড়ে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "৬০ কেজি ওজনের একজন মানুষ ঘণ্টায় ৫ কিমি গতিতে হাঁটলে প্রায় ২৮০–৩২০ ক্যালরি পোড়। ওজন যত বেশি, ক্যালরি খরচও তত বেশি।" }
+    },
+    {
+      "@type": "Question",
+      "name": "১০,০০০ কদম হাঁটলে কত ক্যালরি পোড়ে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "গড়ে ১০,০০০ কদম হাঁটলে প্রায় ৩৫০–৫০০ ক্যালরি পোড়। সঠিক পরিমাণ নির্ভর করে আপনার ওজন, উচ্চতা ও হাঁটার গতির উপর।" }
+    },
+    {
+      "@type": "Question",
+      "name": "প্রতিদিন কতক্ষণ হাঁটলে ওজন কমবে?",
+      "acceptedAnswer": { "@type": "Answer", "text": "প্রতিদিন ৪৫–৬০ মিনিট দ্রুতগতিতে হাঁটলে এবং খাবারে সংযম রাখলে মাসে ১–২ কেজি ওজন কমানো সম্ভব।" }
+    },
+    {
+      "@type": "Question",
+      "name": "সকালে না বিকালে হাঁটা বেশি উপকারী?",
+      "acceptedAnswer": { "@type": "Answer", "text": "উভয়ই উপকারী। সকালে খালি পেটে হাঁটলে ফ্যাট বার্ন বেশি হয়। বিকালে শরীর বেশি সক্রিয় থাকায় বেশি ক্যালরি পোড়া সম্ভব। নিজের সুবিধামতো সময় বেছে নিন।" }
+    },
+    {
+      "@type": "Question",
+      "name": "হাঁটার সময় কি পানি পান করা উচিত?",
+      "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ, হাঁটার আগে, মাঝে ও পরে পানি পান করা জরুরি। ডিহাইড্রেশন এড়াতে প্রতি ১৫–২০ মিনিটে ১–২ ঢোক পানি পান করুন।" }
+    }
+  ]
+};
+---
+
+<BlogLayout
+  title="হাঁটলে কত ক্যালরি বার্ন হয় — ওজন কমানোর গাইড"
+  description="হাঁটলে কত ক্যালরি পোড়ে? ওজন ও গতি অনুযায়ী সম্পূর্ণ তালিকা, ১০,০০০ কদমের হিসাব ও ওজন কমাতে হাঁটার সঠিক নিয়ম।"
+  datePublished="2026-05-24"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)}></script>
+  <div class="text-sm text-gray-500 mb-4">
+    <a href="/blog/" class="hover:text-teal-700">ব্লগ</a> → হাঁটলে কত ক্যালরি বার্ন হয়
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    হাঁটলে কত ক্যালরি বার্ন হয় — ওজন ও গতি অনুযায়ী সম্পূর্ণ গাইড
+  </h1>
+
+  <AdSlot slot="blog-top" />
+
+  <div class="bg-teal-50 rounded-2xl p-5 border border-teal-200 mb-8">
+    <h2 class="font-bold text-teal-800 mb-3">আপনার দৈনিক ক্যালরি জানুন</h2>
+    <p class="text-gray-700 mb-3">শরীরের ওজন ও উচ্চতা দিয়ে আপনার প্রয়োজনীয় দৈনিক ক্যালরি বের করুন:</p>
+    <p class="text-center">
+      <a href="/health/calorie-calculator/" class="inline-block bg-teal-700 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-800 transition-colors">
+        → ক্যালরি ক্যালকুলেটর ব্যবহার করুন
+      </a>
+    </p>
+  </div>
+
+  <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+
+    <div>
+      <p>ওজন কমাতে চান? বিশেষজ্ঞরা বলেন, হাঁটা হলো সবচেয়ে সহজ, সবচেয়ে নিরাপদ এবং খরচহীন ব্যায়াম। কিন্তু অনেকেই জানেন না — প্রতিদিনের হাঁটায় আসলে কতটুকু ক্যালরি খরচ হচ্ছে। "৩০ মিনিট হাঁটলাম, কত ক্যালরি পুড়লো?" — এই প্রশ্নের সঠিক উত্তর না জানলে ওজন কমানোর পরিকল্পনা করা কঠিন।</p>
+      <p>এই গাইডে আমরা বিস্তারিত জানব — ওজন ও গতি অনুযায়ী হাঁটায় কত ক্যালরি পোড়ে, ১০,০০০ কদম হাঁটলে কী হয়, এবং ওজন কমাতে হাঁটার সঠিক কৌশল কী।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">হাঁটায় ক্যালরি পোড়া কীভাবে হিসাব হয়?</h2>
+      <p>হাঁটায় কত ক্যালরি পোড়ে তা মূলত তিনটি বিষয়ের উপর নির্ভর করে:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li><strong>শরীরের ওজন:</strong> ওজন যত বেশি, একই দূরত্ব হাঁটতে তত বেশি শক্তি লাগে, তাই ক্যালরিও বেশি পোড়ে।</li>
+        <li><strong>হাঁটার গতি:</strong> ধীরে হাঁটার চেয়ে দ্রুত হাঁটলে প্রায় ৩০–৫০% বেশি ক্যালরি খরচ হয়।</li>
+        <li><strong>সময় ও দূরত্ব:</strong> যত বেশি হাঁটবেন, তত বেশি ক্যালরি পোড়বে।</li>
+      </ul>
+      <p class="mt-3">বিজ্ঞানীরা MET (Metabolic Equivalent of Task) পদ্ধতিতে এটি হিসাব করেন। ধীর হাঁটার MET প্রায় ২.৫–৩.০, আর দ্রুত হাঁটার MET ৪.০–৫.০ পর্যন্ত হতে পারে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">ওজন ও গতি অনুযায়ী ক্যালরি বার্নের তালিকা</h2>
+      <p>নিচের তালিকায় বিভিন্ন ওজনের মানুষ ৩০ মিনিট হাঁটলে কত ক্যালরি পোড়ে তা দেখানো হলো:</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">ধীরে হাঁটা (৩–৪ কিমি/ঘণ্টা)</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">শরীরের ওজন</th>
+              <th class="p-3 text-center">৩০ মিনিট</th>
+              <th class="p-3 text-center">৪৫ মিনিট</th>
+              <th class="p-3 text-center">৬০ মিনিট</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">৫০ কেজি</td><td class="p-3 text-center font-bold">~৯০ ক্যাল</td><td class="p-3 text-center font-bold">~১৩৫ ক্যাল</td><td class="p-3 text-center font-bold">~১৮০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৬০ কেজি</td><td class="p-3 text-center font-bold">~১১০ ক্যাল</td><td class="p-3 text-center font-bold">~১৬৫ ক্যাল</td><td class="p-3 text-center font-bold">~২২০ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৭০ কেজি</td><td class="p-3 text-center font-bold">~১২৫ ক্যাল</td><td class="p-3 text-center font-bold">~১৯০ ক্যাল</td><td class="p-3 text-center font-bold">~২৫০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৮০ কেজি</td><td class="p-3 text-center font-bold">~১৪৫ ক্যাল</td><td class="p-3 text-center font-bold">~২১৫ ক্যাল</td><td class="p-3 text-center font-bold">~২৮৫ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৯০ কেজি</td><td class="p-3 text-center font-bold">~১৬০ ক্যাল</td><td class="p-3 text-center font-bold">~২৪০ ক্যাল</td><td class="p-3 text-center font-bold">~৩২০ ক্যাল</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-5 mb-2">দ্রুত হাঁটা (৫–৬ কিমি/ঘণ্টা — ব্রিস্ক ওয়াক)</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">শরীরের ওজন</th>
+              <th class="p-3 text-center">৩০ মিনিট</th>
+              <th class="p-3 text-center">৪৫ মিনিট</th>
+              <th class="p-3 text-center">৬০ মিনিট</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">৫০ কেজি</td><td class="p-3 text-center font-bold">~১৩০ ক্যাল</td><td class="p-3 text-center font-bold">~১৯৫ ক্যাল</td><td class="p-3 text-center font-bold">~২৬০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৬০ কেজি</td><td class="p-3 text-center font-bold">~১৫৫ ক্যাল</td><td class="p-3 text-center font-bold">~২৩০ ক্যাল</td><td class="p-3 text-center font-bold">~৩১০ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৭০ কেজি</td><td class="p-3 text-center font-bold">~১৮০ ক্যাল</td><td class="p-3 text-center font-bold">~২৭০ ক্যাল</td><td class="p-3 text-center font-bold">~৩৬০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৮০ কেজি</td><td class="p-3 text-center font-bold">~২০৫ ক্যাল</td><td class="p-3 text-center font-bold">~৩০৫ ক্যাল</td><td class="p-3 text-center font-bold">~৪১০ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৯০ কেজি</td><td class="p-3 text-center font-bold">~২৩০ ক্যাল</td><td class="p-3 text-center font-bold">~৩৪৫ ক্যাল</td><td class="p-3 text-center font-bold">~৪৬০ ক্যাল</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">* মানগুলো আনুমানিক। সঠিক পরিমাণ ব্যক্তিভেদে কিছুটা ভিন্ন হতে পারে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">কদম অনুযায়ী ক্যালরি বার্ন</h2>
+      <p>স্মার্টফোন বা স্মার্টওয়াচ দিয়ে অনেকে কদম গোনেন। নিচে ৬০–৭০ কেজি ওজনের একজন মানুষের জন্য আনুমানিক হিসাব:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-teal-700 text-white">
+              <th class="p-3 text-left">প্রতিদিনের কদম</th>
+              <th class="p-3 text-center">আনুমানিক দূরত্ব</th>
+              <th class="p-3 text-center">ক্যালরি বার্ন</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b"><td class="p-3">২,০০০ কদম</td><td class="p-3 text-center">~১.৫ কিমি</td><td class="p-3 text-center font-bold">৭০–১০০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">৫,০০০ কদম</td><td class="p-3 text-center">~৩.৮ কিমি</td><td class="p-3 text-center font-bold">১৭৫–২৫০ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">৮,০০০ কদম</td><td class="p-3 text-center">~৬ কিমি</td><td class="p-3 text-center font-bold">২৮০–৪০০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3 font-bold text-teal-700">১০,০০০ কদম</td><td class="p-3 text-center">~৭.৫ কিমি</td><td class="p-3 text-center font-bold text-teal-700">৩৫০–৫০০ ক্যাল</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">১২,০০০ কদম</td><td class="p-3 text-center">~৯ কিমি</td><td class="p-3 text-center font-bold">৪২০–৬০০ ক্যাল</td></tr>
+            <tr class="bg-gray-50 border-b"><td class="p-3">১৫,০০০ কদম</td><td class="p-3 text-center">~১১ কিমি</td><td class="p-3 text-center font-bold">৫২৫–৭৫০ ক্যাল</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3">স্বাস্থ্য বিশেষজ্ঞরা প্রতিদিন <strong>৭,০০০–১০,০০০ কদম</strong> হাঁটাকে স্বাস্থ্যকর লক্ষ্য হিসেবে নির্ধারণ করেছেন।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">হাঁটা দিয়ে কি সত্যিই ওজন কমানো যায়?</h2>
+      <p>হ্যাঁ, অবশ্যই। তবে শুধু হাঁটলেই হবে না — খাবারের দিকেও নজর দিতে হবে।</p>
+      <p class="mt-2">১ কেজি ফ্যাট বার্ন করতে প্রায় ৭,৭০০ ক্যালরি খরচ করতে হয়। এর মানে:</p>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 my-4">
+        <p class="font-bold text-blue-900">প্রতিদিন ৩০০–৫০০ ক্যালরি ঘাটতি তৈরি করতে পারলে মাসে ১–২ কেজি ওজন কমানো সম্ভব।</p>
+      </div>
+      <p>উদাহরণ হিসেবে ধরুন, আপনি ৭০ কেজি ওজনের মানুষ। প্রতিদিন ৪৫ মিনিট দ্রুত হাঁটলে প্রায় ২৭০ ক্যালরি বার্ন হবে। সপ্তাহে ৫ দিন এভাবে হাঁটলে সপ্তাহে প্রায় ১,৩৫০ ক্যালরি খরচ হবে। এক মাসে এটি প্রায় ৫,৪০০ ক্যালরি — যা প্রায় ০.৭ কেজি ফ্যাটের সমান।</p>
+      <p class="mt-2">এর সাথে খাবারে যদি প্রতিদিন ২০০–৩০০ ক্যালরি কমান, তাহলে মাসে ১.৫–২ কেজি ওজন কমানো একটু কঠিন নয়।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">হাঁটায় আরও বেশি ক্যালরি পোড়ানোর উপায়</h2>
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">১. ইন্টারভাল ওয়াকিং করুন</h3>
+      <p>৫ মিনিট সাধারণ গতিতে, তারপর ২ মিনিট দ্রুতগতিতে — এভাবে পর্যায়ক্রমে হাঁটলে একই সময়ে ২০–৩০% বেশি ক্যালরি পোড়ে।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">২. ঢালু রাস্তায় হাঁটুন</h3>
+      <p>সমতল রাস্তার বদলে একটু উঁচু-নিচু বা ঢালু পথে হাঁটলে পায়ের পেশিতে বেশি চাপ পড়ে। ফলে সমতলের চেয়ে ৩০–৫০% বেশি ক্যালরি খরচ হয়।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">৩. হাত দুলিয়ে হাঁটুন</h3>
+      <p>হাত দুলিয়ে হাঁটলে পুরো শরীর সক্রিয় থাকে এবং বাড়তি ৫–১০% ক্যালরি বার্ন হয়।</p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">৪. লিফটের বদলে সিঁড়ি</h3>
+      <p>অফিস বা বাড়িতে লিফটের বদলে সিঁড়ি ব্যবহার করুন। সিঁড়ি ভাঙলে হাঁটার চেয়ে প্রায় ৩ গুণ বেশি ক্যালরি পোড়ে।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">সকালে না বিকালে হাঁটবেন?</h2>
+      <p>এই প্রশ্নের উত্তর নির্ভর করে আপনার লক্ষ্যের উপর:</p>
+      <ul class="list-disc pl-5 space-y-2 mt-2">
+        <li><strong>সকালে খালি পেটে:</strong> রাতের ঘুমের পর শরীরের গ্লাইকোজেন কম থাকে, তাই ফ্যাট থেকে বেশি শক্তি নেওয়া হয়। ওজন কমাতে এটি বেশি কার্যকর।</li>
+        <li><strong>বিকালে:</strong> শরীর সারাদিনের পর বেশি উষ্ণ ও সক্রিয় থাকে, তাই পারফরম্যান্স ভালো হয় এবং বেশি ক্যালরি পোড়ানো সম্ভব।</li>
+        <li><strong>রাতে খাওয়ার পরে:</strong> রাতের খাবারের ৩০ মিনিট পরে হালকা হাঁটলে রক্তে শর্করা নিয়ন্ত্রণে থাকে এবং হজম ভালো হয়।</li>
+      </ul>
+      <p class="mt-3">সত্যি কথা হলো — যে সময়ে আপনার হাঁটার অভ্যাস গড়ে উঠবে, সেই সময়ই আপনার জন্য সেরা।</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">হাঁটার সময় যা মনে রাখবেন</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>হাঁটার আগে ৫ মিনিট হালকা স্ট্রেচিং করুন।</li>
+        <li>প্রতি ১৫–২০ মিনিটে ১–২ ঢোক পানি পান করুন — বিশেষত গরমে।</li>
+        <li>আরামদায়ক জুতা পরুন — হাঁটুর চোটের অন্যতম কারণ বেমানান জুতা।</li>
+        <li>শুরুতে প্রতিদিন ২০–৩০ মিনিট হাঁটুন, ধীরে ধীরে বাড়ান।</li>
+        <li>হৃদরোগ বা হাঁটুর সমস্যা থাকলে চিকিৎসকের পরামর্শ নিয়ে শুরু করুন।</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mt-6 mb-3">হাঁটার পাশাপাশি ক্যালরি নজরে রাখুন</h2>
+      <p>ওজন কমানো মানে শুধু ক্যালরি পোড়ানো নয় — কত ক্যালরি খাচ্ছেন তাও গুরুত্বপূর্ণ। আমাদের <a href="/health/calorie-calculator/" class="text-teal-700 underline font-medium">ক্যালরি ক্যালকুলেটর</a> দিয়ে আপনার দৈনিক ক্যালরির চাহিদা বের করুন এবং হাঁটার মাধ্যমে কতটুকু ঘাটতি তৈরি করতে পারছেন তা হিসাব করুন। এই দুটো মিলিয়ে কাজ করলে ফলাফল অনেক দ্রুত পাবেন।</p>
+    </div>
+
+  </div>
+
+  <section class="mb-8 mt-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">সাধারণ প্রশ্নোত্তর</h2>
+    <div class="space-y-4">
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">হাঁটলে প্রতি ঘণ্টায় কত ক্যালরি পোড়ে?</summary>
+        <p class="mt-3 text-gray-700">৬০ কেজি ওজনের একজন মানুষ ঘণ্টায় ৫ কিমি গতিতে হাঁটলে প্রায় ২৮০–৩২০ ক্যালরি পোড়। ওজন যত বেশি, ক্যালরি খরচও তত বেশি।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">১০,০০০ কদম হাঁটলে কত ক্যালরি পোড়ে?</summary>
+        <p class="mt-3 text-gray-700">গড়ে ১০,০০০ কদম হাঁটলে প্রায় ৩৫০–৫০০ ক্যালরি পোড়। সঠিক পরিমাণ নির্ভর করে আপনার ওজন, উচ্চতা ও হাঁটার গতির উপর।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">প্রতিদিন কতক্ষণ হাঁটলে ওজন কমবে?</summary>
+        <p class="mt-3 text-gray-700">প্রতিদিন ৪৫–৬০ মিনিট দ্রুতগতিতে হাঁটলে এবং খাবারে সংযম রাখলে মাসে ১–২ কেজি ওজন কমানো সম্ভব।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">সকালে না বিকালে হাঁটা বেশি উপকারী?</summary>
+        <p class="mt-3 text-gray-700">উভয়ই উপকারী। সকালে খালি পেটে হাঁটলে ফ্যাট বার্ন বেশি হয়। বিকালে শরীর বেশি সক্রিয় থাকায় বেশি ক্যালরি পোড়া সম্ভব। নিজের সুবিধামতো সময় বেছে নিন।</p>
+      </details>
+      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <summary class="font-semibold text-gray-900 cursor-pointer">হাঁটার সময় কি পানি পান করা উচিত?</summary>
+        <p class="mt-3 text-gray-700">হ্যাঁ, হাঁটার আগে, মাঝে ও পরে পানি পান করা জরুরি। ডিহাইড্রেশন এড়াতে প্রতি ১৫–২০ মিনিটে ১–২ ঢোক পানি পান করুন।</p>
+      </details>
+    </div>
+  </section>
+
+  <AdSlot slot="blog-bottom" />
+
+  <div class="mt-8 p-5 bg-teal-50 rounded-2xl border border-teal-200">
+    <h3 class="font-bold text-teal-800 mb-3">সম্পর্কিত টুলস ও গাইড</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <a href="/health/calorie-calculator/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🔥 ক্যালরি ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">দৈনিক ক্যালরির চাহিদা জানুন</div>
+      </a>
+      <a href="/health/ideal-weight/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">⚖️ আদর্শ ওজন ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">উচ্চতা অনুযায়ী সঠিক ওজন জানুন</div>
+      </a>
+      <a href="/health/bmi-calculator/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">🏃 বিএমআই ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">আপনার BMI এখনই বের করুন</div>
+      </a>
+      <a href="/health/water-intake/" class="block bg-white border border-teal-200 rounded-xl p-3 hover:border-teal-400 transition-colors">
+        <div class="font-semibold text-gray-900">💧 পানির পরিমাণ ক্যালকুলেটর</div>
+        <div class="text-sm text-gray-500 mt-1">প্রতিদিন কতটুকু পানি পান করবেন</div>
+      </a>
+    </div>
+  </div>
+</BlogLayout>
