@@ -1,0 +1,364 @@
+---
+// TITLE CONTAINS CURRENT YEAR — this site is statically built, so the year in
+// <title> only updates on rebuild/redeploy. Rebuild at least once every April
+// after Poila Boishakh to keep this accurate.
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import {
+  BENGALI_DAY_NAMES,
+  GREGORIAN_MONTHS_BN,
+  ENGLISH_MONTH_NAMES,
+  buildBengaliYear,
+  formatBengaliDate,
+  toBengaliDigits,
+  toIsoDate,
+} from '../../utils/bengaliCalendar.js';
+
+// The displayed year is the Bengali year today falls in. Everything else on the
+// page — headings, the grids, and the year in <title> — is derived from this one
+// value, so an April rebuild rolls the whole page over together.
+const today = formatBengaliDate(new Date());
+const bnYear = today.year;
+const gregYear = bnYear + 593;        // Gregorian year Boishakh 1 falls in
+const gregYearNext = gregYear + 1;    // the year Choitro runs out in
+
+const months = buildBengaliYear(bnYear);
+
+// Flatten each month into calendar cells once, at build time, so the template
+// stays markup-only.
+const shortDayNames = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহঃ', 'শুক্র', 'শনি'];
+
+const monthViews = months.map((m) => {
+  const cells = [];
+  for (let d = 1; d <= m.days; d++) {
+    const g = new Date(m.start);
+    g.setDate(g.getDate() + (d - 1));
+    cells.push({
+      bnDay: toBengaliDigits(d),
+      // Spell out the Gregorian month on the 1st so each grid says which
+      // English months it straddles without a separate legend.
+      greg: g.getDate() === 1
+        ? toBengaliDigits(g.getDate()) + ' ' + GREGORIAN_MONTHS_BN[g.getMonth()]
+        : toBengaliDigits(g.getDate()),
+      iso: toIsoDate(g),
+      isSunday: g.getDay() === 0,
+    });
+  }
+  return {
+    ...m,
+    leading: m.start.getDay(),
+    cells,
+    rangeBn: `${toBengaliDigits(m.start.getDate())} ${GREGORIAN_MONTHS_BN[m.start.getMonth()]} – ${toBengaliDigits(m.end.getDate())} ${GREGORIAN_MONTHS_BN[m.end.getMonth()]}`,
+    rangeEn: `${m.start.getDate()} ${ENGLISH_MONTH_NAMES[m.start.getMonth()]} – ${m.end.getDate()} ${ENGLISH_MONTH_NAMES[m.end.getMonth()]}`,
+    daysBn: toBengaliDigits(m.days),
+  };
+});
+
+const totalDays = months.reduce((sum, m) => sum + m.days, 0);
+const boishakhStart = months[0].start;
+const choitroEnd = months[11].end;
+
+// Folded in from the retired /blog/bangla-calendar-2026/ post, but derived from
+// the month spans above instead of hardcoded, so these roll over with the year.
+const gregLabel = (d) => `${toBengaliDigits(d.getDate())} ${GREGORIAN_MONTHS_BN[d.getMonth()]} ${toBengaliDigits(d.getFullYear())}`;
+const boishakhStartBd = new Date(boishakhStart);
+boishakhStartBd.setDate(boishakhStartBd.getDate() - 1); // Bangladesh keeps 14 April
+
+const keyDates = [
+  {
+    nameBn: `পহেলা বৈশাখ ${toBengaliDigits(bnYear)}`,
+    nameEn: `Pohela Boishakh ${bnYear}`,
+    dateBn: `${gregLabel(boishakhStart)} (পশ্চিমবঙ্গ) / ${gregLabel(boishakhStartBd)} (বাংলাদেশ)`,
+    dateEn: `${boishakhStart.getDate()} ${ENGLISH_MONTH_NAMES[boishakhStart.getMonth()]} (West Bengal) / ${boishakhStartBd.getDate()} ${ENGLISH_MONTH_NAMES[boishakhStartBd.getMonth()]} (Bangladesh)`,
+  },
+  {
+    nameBn: 'নবান্ন — অগ্রহায়ণের শুরু',
+    nameEn: 'Nabanna — start of Ogrohayon',
+    dateBn: gregLabel(months[7].start),
+    dateEn: `${months[7].start.getDate()} ${ENGLISH_MONTH_NAMES[months[7].start.getMonth()]} ${months[7].start.getFullYear()}`,
+  },
+  {
+    nameBn: 'পৌষ সংক্রান্তি — পৌষের শেষ দিন',
+    nameEn: 'Poush Sankranti — last day of Poush',
+    dateBn: gregLabel(months[8].end),
+    dateEn: `${months[8].end.getDate()} ${ENGLISH_MONTH_NAMES[months[8].end.getMonth()]} ${months[8].end.getFullYear()}`,
+  },
+  {
+    nameBn: 'পহেলা ফাল্গুন — বসন্ত উৎসব',
+    nameEn: 'Pohela Falgun — spring festival',
+    dateBn: gregLabel(months[10].start),
+    dateEn: `${months[10].start.getDate()} ${ENGLISH_MONTH_NAMES[months[10].start.getMonth()]} ${months[10].start.getFullYear()}`,
+  },
+  {
+    nameBn: 'চৈত্র সংক্রান্তি — বাংলা বছরের শেষ দিন',
+    nameEn: 'Choitro Sankranti — last day of the Bengali year',
+    dateBn: gregLabel(choitroEnd),
+    dateEn: `${choitroEnd.getDate()} ${ENGLISH_MONTH_NAMES[choitroEnd.getMonth()]} ${choitroEnd.getFullYear()}`,
+  },
+];
+
+const faqs = [
+  {
+    q: { bn: `${toBengaliDigits(gregYear)} সালে বাংলা সন কত?`, en: `What is the Bengali year in ${gregYear}?` },
+    a: {
+      bn: `${toBengaliDigits(gregYear)} সালের পহেলা বৈশাখ থেকে বাংলা ${toBengaliDigits(bnYear)} বঙ্গাব্দ শুরু হয়েছে, যা চলবে ${toBengaliDigits(choitroEnd.getDate())} ${GREGORIAN_MONTHS_BN[choitroEnd.getMonth()]} ${toBengaliDigits(gregYearNext)} পর্যন্ত। ইংরেজি বছর থেকে ৫৯৩ বিয়োগ করলে বাংলা সন পাওয়া যায় (পহেলা বৈশাখ পেরিয়ে গেলে)।`,
+      en: `The Bengali year ${bnYear} began on Pohela Boishakh ${gregYear} and runs to ${choitroEnd.getDate()} ${ENGLISH_MONTH_NAMES[choitroEnd.getMonth()]} ${gregYearNext}. Subtract 593 from the English year to get the Bengali year, once Pohela Boishakh has passed.`,
+    },
+  },
+  {
+    q: { bn: `পহেলা বৈশাখ ${toBengaliDigits(gregYear)} কবে ছিল?`, en: `When was Pohela Boishakh ${gregYear}?` },
+    a: {
+      bn: `এই ক্যালেন্ডারে পশ্চিমবঙ্গের প্রচলিত হিসাব অনুযায়ী পহেলা বৈশাখ ${toBengaliDigits(boishakhStart.getDate())} এপ্রিল ${toBengaliDigits(gregYear)}। বাংলাদেশে বাংলা একাডেমির হিসাবে নববর্ষ ১৪ এপ্রিল পালিত হয়।`,
+      en: `This calendar uses the traditional West Bengal reckoning, so Pohela Boishakh is ${boishakhStart.getDate()} April ${gregYear}. Bangladesh follows the Bangla Academy version, where New Year falls on 14 April.`,
+    },
+  },
+  {
+    q: { bn: 'বাংলা বছরের কোন মাসে কত দিন?', en: 'How many days are in each Bengali month?' },
+    a: {
+      bn: `বৈশাখ থেকে ভাদ্র — প্রথম পাঁচ মাসে ৩১ দিন, আশ্বিন থেকে চৈত্র — বাকি সাত মাসে ৩০ দিন। অধিবর্ষে ফাল্গুন ৩১ দিনের হয়। ${toBengaliDigits(bnYear)} বঙ্গাব্দে মোট ${toBengaliDigits(totalDays)} দিন।`,
+      en: `The first five months (Boishakh–Bhadro) have 31 days and the remaining seven (Ashwin–Choitro) have 30. Falgun gains a day in a leap year. Bengali year ${bnYear} has ${totalDays} days in total.`,
+    },
+  },
+  {
+    q: { bn: 'এই বাংলা ক্যালেন্ডারে ইংরেজি তারিখ কীভাবে মেলাব?', en: 'How do I match English dates in this Bengali calendar?' },
+    a: {
+      bn: 'প্রতিটি ঘরে বড় করে বাংলা তারিখ এবং তার নিচে ছোট করে সংশ্লিষ্ট ইংরেজি তারিখ দেওয়া আছে। কোনো নির্দিষ্ট তারিখ রূপান্তর করতে চাইলে আজকের বাংলা তারিখ পাতার কনভার্টার ব্যবহার করুন।',
+      en: 'Every cell shows the Bengali date in large type with its English date underneath. To convert one specific date, use the converter on the today\'s Bengali date page.',
+    },
+  },
+  {
+    q: { bn: 'বাংলা বছরের ক্যালেন্ডার কি ছাপিয়ে নেওয়া যায়?', en: 'Can I print this Bengali year calendar?' },
+    a: {
+      bn: 'হ্যাঁ। পুরো বছরের ১২ মাস এক পাতাতেই আছে, তাই ব্রাউজারের প্রিন্ট (Ctrl+P) দিয়ে সরাসরি ছাপানো বা PDF হিসেবে সংরক্ষণ করা যায়।',
+      en: 'Yes. All 12 months are on this one page, so your browser\'s print dialog (Ctrl+P) will print it or save it as a PDF.',
+    },
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": `বাংলা বছরের ক্যালেন্ডার ${toBengaliDigits(bnYear)} — Bengali Year Calendar ${gregYear}`,
+      "url": "https://www.bengalitools.com/india/bengali-year-calendar/",
+      "description": `বাংলা ${toBengaliDigits(bnYear)} বঙ্গাব্দের পূর্ণ ক্যালেন্ডার — বৈশাখ থেকে চৈত্র পর্যন্ত ১২ মাসের তারিখ, সঙ্গে ${toBengaliDigits(gregYear)}–${toBengaliDigits(gregYearNext)} ইংরেজি তারিখ।`,
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "inLanguage": "bn",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q.bn,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a.bn }
+      }))
+    }
+  ]
+};
+---
+
+<ToolLayout
+  title={`Bengali Year Calendar ${gregYear} — বাংলা বছরের ক্যালেন্ডার | BanglaTools`}
+  description={`The full ${gregYear} Bengali calendar for ${bnYear} বঙ্গাব্দ — all 12 months from Boishakh to Choitro with matching English dates. বাংলা বছরের ক্যালেন্ডার, প্রতিটি মাসের তারিখ এক পাতায়।`}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">
+    <span data-bn={`বাংলা বছরের ক্যালেন্ডার ${toBengaliDigits(bnYear)}`} data-en={`Bengali Year Calendar ${bnYear}`}>বাংলা বছরের ক্যালেন্ডার {toBengaliDigits(bnYear)}</span>
+  </h1>
+  <p class="text-gray-600 mb-6 text-lg">
+    <span
+      data-bn={`বৈশাখ থেকে চৈত্র — ১২ মাসের পূর্ণ তালিকা, সঙ্গে ${toBengaliDigits(gregYear)}–${toBengaliDigits(gregYearNext)} ইংরেজি তারিখ`}
+      data-en={`Boishakh to Choitro — all 12 months, with matching ${gregYear}–${gregYearNext} English dates`}
+    >বৈশাখ থেকে চৈত্র — ১২ মাসের পূর্ণ তালিকা, সঙ্গে {toBengaliDigits(gregYear)}–{toBengaliDigits(gregYearNext)} ইংরেজি তারিখ</span>
+  </p>
+
+  <AdSlot slot="above-tool" />
+
+  <!-- Year summary -->
+  <section class="mb-8">
+    <div class="bg-saffron-50 rounded-2xl p-6 border-2 border-saffron-200">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white rounded-xl p-4 border border-gray-200">
+          <p class="text-sm text-gray-500 mb-1" data-bn="বাংলা বছর" data-en="Bengali Year">বাংলা বছর</p>
+          <p class="text-xl font-bold text-saffron-800">{toBengaliDigits(bnYear)} বঙ্গাব্দ</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 border border-gray-200">
+          <p class="text-sm text-gray-500 mb-1" data-bn="ইংরেজি বছর" data-en="English Year">ইংরেজি বছর</p>
+          <p class="text-xl font-bold text-saffron-800">{toBengaliDigits(gregYear)}–{toBengaliDigits(gregYearNext)}</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 border border-gray-200">
+          <p class="text-sm text-gray-500 mb-1" data-bn="পহেলা বৈশাখ" data-en="Pohela Boishakh">পহেলা বৈশাখ</p>
+          <p class="text-lg font-semibold text-gray-900">{toBengaliDigits(boishakhStart.getDate())} {GREGORIAN_MONTHS_BN[boishakhStart.getMonth()]} {toBengaliDigits(gregYear)}</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 border border-gray-200">
+          <p class="text-sm text-gray-500 mb-1" data-bn="মোট দিন" data-en="Total Days">মোট দিন</p>
+          <p class="text-lg font-semibold text-gray-900">{toBengaliDigits(totalDays)}</p>
+        </div>
+      </div>
+      <p class="text-sm text-saffron-800 mt-4 text-center">
+        <span data-bn="আজকের তারিখ নিচের ক্যালেন্ডারে চিহ্নিত করা আছে" data-en="Today's date is highlighted in the calendar below">আজকের তারিখ নিচের ক্যালেন্ডারে চিহ্নিত করা আছে</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Month-by-month overview -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="১২ মাসের তারিখ এক নজরে" data-en="All 12 Months at a Glance">১২ মাসের তারিখ এক নজরে</span>
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-saffron-700 text-white">
+            <th class="p-3 text-left rounded-tl-lg"><span data-bn="বাংলা মাস" data-en="Bengali Month">বাংলা মাস</span></th>
+            <th class="p-3 text-left"><span data-bn="ইংরেজি তারিখ" data-en="English Dates">ইংরেজি তারিখ</span></th>
+            <th class="p-3 text-left rounded-tr-lg"><span data-bn="দিন" data-en="Days">দিন</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {monthViews.map((m, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="p-3 font-bold text-saffron-700">
+                <a href={`#month-${m.index + 1}`} class="hover:underline">{m.nameBn}</a>
+                <span class="block text-xs font-normal text-gray-500">{m.nameEn}</span>
+              </td>
+              <td class="p-3 text-gray-700">
+                {m.rangeBn}
+                <span class="block text-xs text-gray-500">{m.rangeEn}</span>
+              </td>
+              <td class="p-3 text-gray-700">{m.daysBn}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Full-year grids -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn="পুরো বছরের ক্যালেন্ডার" data-en="Full Year Calendar">পুরো বছরের ক্যালেন্ডার</span>
+    </h2>
+    <div class="space-y-6">
+      {monthViews.map((m) => (
+        <div id={`month-${m.index + 1}`} class="bg-white rounded-2xl border border-gray-200 p-4 scroll-mt-4">
+          <div class="flex items-baseline justify-between mb-3 gap-2 flex-wrap">
+            <h3 class="text-lg font-bold text-saffron-700">
+              {m.nameBn} <span class="text-sm font-normal text-gray-500">{m.nameEn}</span>
+            </h3>
+            <p class="text-xs text-gray-500">{m.rangeEn} · {m.daysBn} দিন</p>
+          </div>
+          <div class="grid grid-cols-7 gap-1 text-center">
+            {shortDayNames.map((d, i) => (
+              <div class={`text-xs font-semibold py-1 ${i === 0 ? 'text-saffron-700' : 'text-gray-500'}`} title={BENGALI_DAY_NAMES[i]}>{d}</div>
+            ))}
+            {Array.from({ length: m.leading }).map(() => <div></div>)}
+            {m.cells.map((c) => (
+              <div
+                data-date={c.iso}
+                class={`rounded-lg border border-gray-100 py-1 leading-tight ${c.isSunday ? 'bg-saffron-50' : 'bg-gray-50'}`}
+              >
+                <span class={`block text-base font-bold ${c.isSunday ? 'text-saffron-800' : 'text-gray-900'}`}>{c.bnDay}</span>
+                <span class="block text-[10px] text-gray-500">{c.greg}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Key dates -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">
+      <span data-bn={`${toBengaliDigits(bnYear)} বঙ্গাব্দের গুরুত্বপূর্ণ দিন`} data-en={`Key Dates in Bengali Year ${bnYear}`}>{toBengaliDigits(bnYear)} বঙ্গাব্দের গুরুত্বপূর্ণ দিন</span>
+    </h2>
+    <ul class="space-y-3">
+      {keyDates.map((k) => (
+        <li class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <p class="font-semibold text-saffron-700"><span data-bn={k.nameBn} data-en={k.nameEn}>{k.nameBn}</span></p>
+          <p class="text-gray-700 mt-1"><span data-bn={k.dateBn} data-en={k.dateEn}>{k.dateBn}</span></p>
+        </li>
+      ))}
+    </ul>
+    <p class="text-sm text-gray-500 mt-3">
+      <span data-bn="তারিখগুলো পশ্চিমবঙ্গের প্রচলিত হিসাব অনুযায়ী; তিথি-নির্ভর পূজার তারিখ পঞ্জিকা দেখে মিলিয়ে নিন" data-en="Dates follow the traditional West Bengal reckoning; check a panjika for tithi-based festival dates">তারিখগুলো পশ্চিমবঙ্গের প্রচলিত হিসাব অনুযায়ী; তিথি-নির্ভর পূজার তারিখ পঞ্জিকা দেখে মিলিয়ে নিন</span>
+    </p>
+  </section>
+
+  <!-- How to use -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span></h2>
+    <ol class="space-y-3 text-gray-700">
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">১.</span><span data-bn="উপরের তালিকা থেকে বাংলা মাস বেছে নিন — সরাসরি সেই মাসের ক্যালেন্ডারে পৌঁছে যাবেন" data-en="Pick a Bengali month in the table — it jumps straight to that month's grid">উপরের তালিকা থেকে বাংলা মাস বেছে নিন — সরাসরি সেই মাসের ক্যালেন্ডারে পৌঁছে যাবেন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">২.</span><span data-bn="প্রতিটি ঘরে বাংলা তারিখের নিচে সংশ্লিষ্ট ইংরেজি তারিখ দেখুন" data-en="Each cell shows the Bengali date with its English date underneath">প্রতিটি ঘরে বাংলা তারিখের নিচে সংশ্লিষ্ট ইংরেজি তারিখ দেখুন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">৩.</span><span data-bn="একটি নির্দিষ্ট তারিখ রূপান্তর করতে আজকের বাংলা তারিখ পাতার কনভার্টার ব্যবহার করুন" data-en="To convert one specific date, use the converter on the today's Bengali date page">একটি নির্দিষ্ট তারিখ রূপান্তর করতে আজকের বাংলা তারিখ পাতার কনভার্টার ব্যবহার করুন</span></li>
+    </ol>
+  </section>
+
+  <!-- Description -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="এই পাতাটি কী দেখায়" data-en="What This Page Shows">এই পাতাটি কী দেখায়</span></h2>
+    <div class="text-gray-700 leading-relaxed">
+      <p>
+        এই পাতায় বাংলা {toBengaliDigits(bnYear)} বঙ্গাব্দের পূর্ণ ক্যালেন্ডার দেওয়া আছে — বৈশাখ থেকে চৈত্র পর্যন্ত ১২ মাসের প্রতিটি তারিখ, সঙ্গে মিলিয়ে দেওয়া ইংরেজি তারিখ। বাংলা বছর শুরু হয় পহেলা বৈশাখে ({toBengaliDigits(boishakhStart.getDate())} এপ্রিল {toBengaliDigits(gregYear)}, পশ্চিমবঙ্গের হিসাব) এবং শেষ হয় চৈত্র সংক্রান্তিতে ({toBengaliDigits(choitroEnd.getDate())} {GREGORIAN_MONTHS_BN[choitroEnd.getMonth()]} {toBengaliDigits(gregYearNext)})। তাই একটি বাংলা বছর দুটি ইংরেজি বছরে ছড়িয়ে থাকে — {toBengaliDigits(gregYear)} ও {toBengaliDigits(gregYearNext)}। পূজা, বিয়ে, অন্নপ্রাশন বা অন্য কোনো অনুষ্ঠানের তারিখ ঠিক করতে পুরো বছরের এই তালিকা কাজে লাগবে।
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span></h2>
+    <div class="space-y-4">
+      {faqs.map((f) => (
+        <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn={f.q.bn} data-en={f.q.en}>{f.q.bn}</span></summary>
+          <p class="mt-3 text-gray-700"><span data-bn={f.a.bn} data-en={f.a.en}>{f.a.bn}</span></p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <AdSlot slot="below-faq" />
+
+  <RelatedTools tools={[
+    { url: "/india/bengali-calendar", nameBn: "আজকের বাংলা তারিখ", nameEn: "Bengali Calendar Today", descBn: "আজকের তারিখ ও কনভার্টার", descEn: "Today's date and converter", icon: "📆" },
+    { url: "/calculators/date-difference", nameBn: "দুই তারিখের ব্যবধান", nameEn: "Date Difference", descBn: "দুই তারিখের মধ্যে দিন", descEn: "Days between dates", icon: "📅" },
+    { url: "/india/number-to-bengali", nameBn: "সংখ্যা বাংলায়", nameEn: "Number to Bengali", descBn: "সংখ্যা বাংলা শব্দে", descEn: "Number to Bengali words", icon: "🔢" }
+  ]} />
+</ToolLayout>
+
+<script>
+  // The grids are build-time static; only "today" needs the visitor's clock.
+  function highlightToday() {
+    const now = new Date();
+    const iso = now.getFullYear() + '-' +
+      String(now.getMonth() + 1).padStart(2, '0') + '-' +
+      String(now.getDate()).padStart(2, '0');
+
+    const cell = document.querySelector('[data-date="' + iso + '"]');
+    if (!cell) return; // today falls outside the Bengali year this build rendered
+
+    cell.classList.remove('bg-gray-50', 'bg-saffron-50', 'border-gray-100');
+    cell.classList.add('bg-saffron-700', 'border-saffron-700', 'ring-2', 'ring-saffron-300');
+    cell.querySelectorAll('span').forEach((s) => {
+      s.classList.remove('text-gray-900', 'text-gray-500', 'text-saffron-800');
+      s.classList.add('text-white');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', highlightToday);
+  } else {
+    highlightToday();
+  }
+</script>

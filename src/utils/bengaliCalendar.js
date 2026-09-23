@@ -18,6 +18,7 @@ export const MONTH_LENGTHS = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30, 30];
 export const BENGALI_DAY_NAMES = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
 export const ENGLISH_DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 export const ENGLISH_MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+export const GREGORIAN_MONTHS_BN = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
 
 const BENGALI_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
 
@@ -85,4 +86,36 @@ export function formatBengaliDate(date) {
     gregorianBn: toBengaliDigits(date.getDate()) + ' ' + ENGLISH_MONTH_NAMES[date.getMonth()] + ' ' + toBengaliDigits(date.getFullYear()),
     gregorianEn: ENGLISH_DAY_NAMES[date.getDay()] + ', ' + date.getDate() + ' ' + ENGLISH_MONTH_NAMES[date.getMonth()] + ' ' + date.getFullYear(),
   };
+}
+
+/**
+ * Lay out a whole Bengali year as 12 months with their real Gregorian spans.
+ *
+ * Walks forward from the same April 15 epoch gregorianToBengali uses, so the
+ * year view and the single-date converter can never disagree about where a
+ * month starts.
+ *
+ * @param {number} bnYear Bengali year (e.g. 1433)
+ * @returns {Array<{index:number,nameBn:string,nameEn:string,days:number,start:Date,end:Date}>}
+ */
+export function buildBengaliYear(bnYear) {
+  const gregStartYear = bnYear + 593;
+  const monthLengths = MONTH_LENGTHS.slice();
+  monthLengths[10] = isGregorianLeapYear(gregStartYear + 1) ? 31 : 30;
+
+  const cursor = new Date(gregStartYear, 3, 15); // Boishakh 1
+  return BENGALI_MONTHS.map((nameBn, i) => {
+    const start = new Date(cursor);
+    const end = new Date(cursor);
+    end.setDate(end.getDate() + monthLengths[i] - 1);
+    cursor.setDate(cursor.getDate() + monthLengths[i]);
+    return { index: i, nameBn, nameEn: BENGALI_MONTHS_EN[i], days: monthLengths[i], start, end };
+  });
+}
+
+/** Local-time YYYY-MM-DD, for matching build-time cells against the visitor's today. */
+export function toIsoDate(date) {
+  return date.getFullYear() + '-' +
+    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getDate()).padStart(2, '0');
 }

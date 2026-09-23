@@ -192,6 +192,12 @@ export const tools = {
       icon: '📆',
     },
     {
+      slug: '/india/bengali-year-calendar/',
+      name: { bn: 'বাংলা বছরের ক্যালেন্ডার', en: 'Bengali Year Calendar' },
+      desc: { bn: 'পুরো বছরের ১২ মাসের তারিখ', en: 'Full year calendar, all 12 Bengali months' },
+      icon: '🗓️',
+    },
+    {
       slug: '/india/number-to-bengali/',
       name: { bn: 'সংখ্যা বাংলায়', en: 'Number to Bengali' },
       desc: { bn: 'ইংরেজি সংখ্যা বাংলা কথায়', en: 'Convert numbers to Bengali words' },

@@ -75,7 +75,7 @@ const pageSchema = {
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "আজকের বাংলা তারিখ — Bengali Calendar Today",
+      "name": "আজকের বাংলা তারিখ — Bengali Calendar Today Date",
       "url": "https://www.bengalitools.com/india/bengali-calendar/",
       "description": `আজকের বাংলা তারিখ, বাংলা মাস ও বঙ্গাব্দ স্বয়ংক্রিয়ভাবে দেখুন। যেকোনো ইংরেজি তারিখও বাংলা তারিখে রূপান্তর করুন। বাংলা মাস: ${monthListBn}।`,
       "applicationCategory": "UtilitiesApplication",
@@ -100,8 +100,8 @@ const pageSchema = {
 ---
 
 <ToolLayout
-  title="Bengali Calendar Today — আজকের বাংলা তারিখ | BanglaTools"
-  description="See today's Bengali date, month and year instantly. আজকের বাংলা তারিখ, বাংলা মাস ও বঙ্গাব্দ। Bengali Calendar Today — plus convert any English date to the Bengali calendar."
+  title="Bengali Calendar Today Date — আজকের বাংলা তারিখ | BanglaTools"
+  description="Check today's Bengali calendar date, month and year at a glance — আজকের বাংলা তারিখ, বাংলা মাস ও বঙ্গাব্দ। You can also convert any English date to its Bengali calendar date."
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
 
@@ -255,7 +255,7 @@ const pageSchema = {
   <AdSlot slot="below-faq" />
 
   <RelatedTools tools={[
-    { url: "/health/age-calculator", nameBn: "বয়স ক্যালকুলেটর", nameEn: "Age Calculator", descBn: "সঠিক বয়স বের করুন", descEn: "Calculate exact age", icon: "🎂" },
+    { url: "/india/bengali-year-calendar", nameBn: "বাংলা বছরের ক্যালেন্ডার", nameEn: "Bengali Year Calendar", descBn: "পুরো বছরের ১২ মাসের তারিখ", descEn: "All 12 months of the year", icon: "🗓️" },
     { url: "/calculators/date-difference", nameBn: "দুই তারিখের ব্যবধান", nameEn: "Date Difference", descBn: "দুই তারিখের মধ্যে দিন", descEn: "Days between dates", icon: "📅" },
     { url: "/india/number-to-bengali", nameBn: "সংখ্যা বাংলায়", nameEn: "Number to Bengali", descBn: "সংখ্যা বাংলা শব্দে", descEn: "Number to Bengali words", icon: "🔢" }
   ]} />

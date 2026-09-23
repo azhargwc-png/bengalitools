@@ -1,5 +1,17 @@
 {
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/blog/bangla-calendar-2026",
+      "destination": "/india/bengali-year-calendar/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/bangla-calendar-2026/",
+      "destination": "/india/bengali-year-calendar/",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/_astro/:file*",
