@@ -1,6 +1,109 @@
 ﻿---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import { toBengaliDigits } from '../../utils/bengaliCalendar.js';
+
+// Single source for every calorie figure on this page. The comparison box,
+// both tables and the FAQ answers all read from here, so a correction only
+// needs to be made once.
+const sweets = {
+  rasgolla:   { bn: 'রসগোল্লা', en: 'Rasgolla', serving: '১ পিস (~৫০গ্রাম)', piece: [100, 125], per100: [200, 250], tone: 'orange',
+                nutrition: { carbs: [36, 44], protein: [6, 10], fat: [4, 8], sugar: [30, 40] } },
+  sandesh:    { bn: 'সন্দেশ', en: 'Sandesh', serving: '১ পিস (~৩০গ্রাম)', piece: [120, 150], per100: [400, 500], tone: 'orange',
+                nutrition: { carbs: [45, 60], protein: [10, 15], fat: [12, 18], sugar: [40, 55] } },
+  mishtiDoi:  { bn: 'মিষ্টি দই', en: 'Mishti Doi', serving: '১ ভাঁড় (~১০০গ্রাম)', piece: [90, 110], per100: [90, 110], tone: 'green',
+                nutrition: { carbs: [14, 18], protein: [3, 5], fat: [2, 4], sugar: [13, 16] } },
+  rasmalai:   { bn: 'রসমালাই', en: 'Rasmalai', serving: '১ পিস (~৫০গ্রাম)', piece: [130, 150], per100: [260, 300], tone: 'orange' },
+  gulabJamun: { bn: 'গুলাব জামুন', en: 'Gulab Jamun', serving: '১ পিস (~৪০গ্রাম)', piece: [150, 180], per100: [375, 450], tone: 'red',
+                nutrition: { carbs: [50, 65], protein: [5, 8], fat: [14, 18], sugar: [45, 55] } },
+  chomchom:   { bn: 'চমচম', en: 'Chomchom', serving: '১ পিস (~৫০গ্রাম)', piece: [130, 160], per100: [260, 320], tone: 'orange' },
+  pantua:     { bn: 'পান্তুয়া', en: 'Pantua', serving: '১ পিস (~৫০গ্রাম)', piece: [140, 170], per100: [280, 340], tone: 'orange' },
+  payesh:     { bn: 'পায়েস / ক্ষীর', shortBn: 'পায়েস', en: 'Payesh / Kheer', serving: '১ বাটি (~১০০গ্রাম)', piece: [150, 180], per100: [150, 180], tone: 'orange',
+                nutrition: { carbs: [25, 35], protein: [3, 5], fat: [3, 7], sugar: [18, 28] } },
+  jilapi:     { bn: 'জিলাপি', en: 'Jilapi', serving: '৩–৪ পিস (~৫০গ্রাম)', piece: [150, 175], per100: [300, 350], tone: 'orange' },
+  laddu:      { bn: 'লাড্ডু (বেসনের)', en: 'Besan Laddu', serving: '১ পিস (~৪০গ্রাম)', piece: [150, 200], per100: [375, 500], tone: 'red' },
+  kalakand:   { bn: 'কালাকান্দ', en: 'Kalakand', serving: '১ টুকরো (~৫০গ্রাম)', piece: [170, 200], per100: [340, 380], tone: 'red' },
+  malpua:     { bn: 'মালপোয়া', en: 'Malpua', serving: '১ পিস (~৬০গ্রাম)', piece: [180, 220], per100: [300, 365], tone: 'red' },
+  patishapta: { bn: 'পাটিসাপটা', en: 'Patishapta', serving: '১ পিস (~৬০গ্রাম)', piece: [120, 150], per100: [200, 250], tone: 'orange' },
+  narkelNaru: { bn: 'নারকেল নাড়ু', en: 'Narkel Naru', serving: '১ পিস (~৩০গ্রাম)', piece: [120, 140], per100: [400, 470], tone: 'orange' },
+  tilNaru:    { bn: 'তিলের নাড়ু', en: 'Til Naru', serving: '১ পিস (~৩০গ্রাম)', piece: [135, 165], per100: [450, 550], tone: 'orange' },
+  bhapaPitha: { bn: 'পিঠা (ভাপা)', en: 'Bhapa Pitha', serving: '১ পিস (~৬০গ্রাম)', piece: [130, 160], per100: [215, 265], tone: 'orange' },
+};
+const sweetList = Object.values(sweets);
+const nutritionList = sweetList.filter((s) => s.nutrition);
+
+const range = ([min, max]) => `${toBengaliDigits(min)}–${toBengaliDigits(max)}`;
+const rangeEn = ([min, max]) => `${min}–${max}`;
+const mid = ([min, max]) => Math.floor((min + max) / 2);
+const toneClass = { green: 'text-green-600', orange: 'text-orange-600', red: 'text-red-600' };
+
+// Comparison box: lowest and highest are picked from the data by per-100g midpoint.
+const byPer100 = [...sweetList].sort((a, b) => mid(a.per100) - mid(b.per100));
+const lowest = byPer100[0];
+const highest = byPer100[byPer100.length - 1];
+const moderate = sweets.rasgolla;
+
+const { rasgolla, sandesh, mishtiDoi, rasmalai, patishapta, bhapaPitha } = sweets;
+
+// One FAQ source feeding both the FAQPage schema and the rendered <details>.
+const faqs = [
+  {
+    q: { bn: 'কোন বাংলা মিষ্টিতে সবচেয়ে কম ক্যালরি?', en: 'Which Bengali sweet has the fewest calories?' },
+    a: {
+      bn: `মিষ্টি দই সবচেয়ে কম ক্যালরির — ১০০ গ্রামে মাত্র ${range(mishtiDoi.per100)} ক্যালরি। এরপরে আসে রসগোল্লা (${range(rasgolla.piece)} ক্যালরি/পিস) এবং পাটিসাপটা (${range(patishapta.piece)} ক্যালরি/পিস)।`,
+      en: `Mishti doi has the fewest calories — just ${rangeEn(mishtiDoi.per100)} cal per 100g. Next are rasgolla (${rangeEn(rasgolla.piece)} cal/piece) and patishapta (${rangeEn(patishapta.piece)} cal/piece).`,
+    },
+  },
+  {
+    q: { bn: 'রসগোল্লা ও রসমালাইয়ের মধ্যে কোনটা বেশি ক্যালরির?', en: 'Which has more calories — rasgolla or rasmalai?' },
+    a: {
+      bn: `রসমালাই বেশি ক্যালরির। রসগোল্লায় প্রতি পিসে ${range(rasgolla.piece)} ক্যালরি, আর রসমালাইয়ে ${range(rasmalai.piece)} ক্যালরি। রসমালাইয়ে ঘন দুধের ক্ষীর থাকায় ক্যালরি বেশি।`,
+      en: `Rasmalai has more calories. Rasgolla has ${rangeEn(rasgolla.piece)} cal per piece, while rasmalai has ${rangeEn(rasmalai.piece)} cal. The thick reduced milk (rabri) in rasmalai accounts for the higher calorie count.`,
+    },
+  },
+  {
+    q: { bn: 'ওজন কমানোর সময় কি মিষ্টি খাওয়া যাবে?', en: 'Can I eat sweets while trying to lose weight?' },
+    a: {
+      bn: 'হ্যাঁ, মাঝেমাঝে ১টি রসগোল্লা বা মিষ্টি দই খাওয়া ওজন কমানোর পথে বাধা নয়। মোট ক্যালরি ঘাটতিই ওজন কমানোর মূল চাবিকাঠি। তবে প্রতিদিন বা বেশি পরিমাণে খেলে সমস্যা হবে।',
+      en: 'Yes, occasionally eating one rasgolla or mishti doi is not a barrier to losing weight. Overall calorie deficit is the key to weight loss. Problems arise when sweets are eaten daily or in large quantities.',
+    },
+  },
+  {
+    q: { bn: 'সন্দেশে কি রসগোল্লার চেয়ে বেশি ক্যালরি?', en: 'Does sandesh have more calories than rasgolla?' },
+    a: {
+      bn: `হ্যাঁ, প্রতি ১০০ গ্রামে সন্দেশ (${range(sandesh.per100)} ক্যালরি) রসগোল্লার (${range(rasgolla.per100)} ক্যালরি) প্রায় দ্বিগুণ। কারণ রসগোল্লায় চিনির সিরাপ বেশিরভাগ জায়গা নেয়, আর সন্দেশ ঘন ছানা ও চিনির মিশ্রণে তৈরি।`,
+      en: `Yes. Per 100g, sandesh (${rangeEn(sandesh.per100)} cal) has roughly double the calories of rasgolla (${rangeEn(rasgolla.per100)} cal). This is because rasgolla is soaked in a light sugar syrup, while sandesh is a dense mixture of paneer and sugar.`,
+    },
+  },
+  {
+    q: { bn: 'মিষ্টি দইয়ে কি প্রোটিন আছে?', en: 'Does mishti doi contain protein?' },
+    a: {
+      bn: `হ্যাঁ, মিষ্টি দইয়ে প্রতি ১০০ গ্রামে ${range(mishtiDoi.nutrition.protein)} গ্রাম প্রোটিন আছে। দুধ থেকে আসে এই প্রোটিন। এছাড়া ক্যালসিয়াম ও প্রোবায়োটিকও থাকে। এই কারণেই মিষ্টি দই অন্য মিষ্টির তুলনায় পুষ্টিগুণে এগিয়ে।`,
+      en: `Yes, mishti doi contains ${rangeEn(mishtiDoi.nutrition.protein)}g of protein per 100g, derived from the milk. It also provides calcium and probiotics. This is why mishti doi is nutritionally superior to most other Bengali sweets.`,
+    },
+  },
+  {
+    q: { bn: 'পিঠা কি মিষ্টির মতো ক্যালরির?', en: 'Are pithas (rice cakes) as high in calories as sweets?' },
+    a: {
+      bn: `ভাপা পিঠায় প্রতি পিসে ${range(bhapaPitha.piece)} ক্যালরি — রসগোল্লার কাছাকাছি। তবে পিঠায় চালের গুঁড়ি ও নারকেল থেকে কার্বোহাইড্রেট ও ফাইবার আসে, শুধু চিনি নয়। ভাজা পিঠা (চিতই ভাজা, তেলের পিঠা) অনেক বেশি ক্যালরির।`,
+      en: `Steamed pitha (bhapa) has ${rangeEn(bhapaPitha.piece)} cal per piece — similar to rasgolla. But pitha contains carbohydrates and fibre from rice flour and coconut, not just sugar. Fried pithas have significantly more calories.`,
+    },
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q.bn,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a.bn }
+      }))
+    }
+  ]
+};
 ---
 
 <BlogLayout
@@ -8,6 +111,8 @@ import AdSlot from '../../components/AdSlot.astro';
   description="রসগোল্লা, সন্দেশ, মিষ্টি দই, চমচম, জিলাপি সহ ১৫+ বাংলা মিষ্টির সম্পূর্ণ ক্যালরি তালিকা। কোন মিষ্টিতে কত ক্যালরি — পুষ্টি তথ্য ও ডায়েট পরামর্শ সহ।"
   datePublished="2026-04-16"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
+
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-saffron-700">ব্লগ</a> → বাংলা মিষ্টির ক্যালরি তালিকা
   </div>
@@ -26,18 +131,18 @@ import AdSlot from '../../components/AdSlot.astro';
       <div class="grid grid-cols-3 gap-3 text-sm">
         <div class="bg-green-100 rounded-xl p-3">
           <p class="font-bold text-green-700" data-bn="সবচেয়ে কম" data-en="Lowest">সবচেয়ে কম</p>
-          <p class="text-green-800 font-semibold" data-bn="মিষ্টি দই" data-en="Mishti Doi">মিষ্টি দই</p>
-          <p class="text-green-600 text-xs" data-bn="~১০০ ক্যালরি/১০০গ্রাম" data-en="~100 cal/100g">~১০০ ক্যালরি/১০০গ্রাম</p>
+          <p class="text-green-800 font-semibold" data-bn={lowest.bn} data-en={lowest.en}>{lowest.bn}</p>
+          <p class="text-green-600 text-xs" data-bn={`~${toBengaliDigits(mid(lowest.per100))} ক্যালরি/১০০গ্রাম`} data-en={`~${mid(lowest.per100)} cal/100g`}>~{toBengaliDigits(mid(lowest.per100))} ক্যালরি/১০০গ্রাম</p>
         </div>
         <div class="bg-orange-100 rounded-xl p-3">
           <p class="font-bold text-orange-700" data-bn="মাঝারি" data-en="Moderate">মাঝারি</p>
-          <p class="text-orange-800 font-semibold" data-bn="রসগোল্লা" data-en="Rasgolla">রসগোল্লা</p>
-          <p class="text-orange-600 text-xs" data-bn="~১১২ ক্যালরি/পিস" data-en="~112 cal/piece">~১১২ ক্যালরি/পিস</p>
+          <p class="text-orange-800 font-semibold" data-bn={moderate.bn} data-en={moderate.en}>{moderate.bn}</p>
+          <p class="text-orange-600 text-xs" data-bn={`~${toBengaliDigits(mid(moderate.piece))} ক্যালরি/পিস`} data-en={`~${mid(moderate.piece)} cal/piece`}>~{toBengaliDigits(mid(moderate.piece))} ক্যালরি/পিস</p>
         </div>
         <div class="bg-red-100 rounded-xl p-3">
           <p class="font-bold text-red-700" data-bn="সবচেয়ে বেশি" data-en="Highest">সবচেয়ে বেশি</p>
-          <p class="text-red-800 font-semibold" data-bn="কালাকান্দ" data-en="Kalakand">কালাকান্দ</p>
-          <p class="text-red-600 text-xs" data-bn="~৩৮০ ক্যালরি/১০০গ্রাম" data-en="~380 cal/100g">~৩৮০ ক্যালরি/১০০গ্রাম</p>
+          <p class="text-red-800 font-semibold" data-bn={highest.bn} data-en={highest.en}>{highest.bn}</p>
+          <p class="text-red-600 text-xs" data-bn={`~${toBengaliDigits(mid(highest.per100))} ক্যালরি/১০০গ্রাম`} data-en={`~${mid(highest.per100)} cal/100g`}>~{toBengaliDigits(mid(highest.per100))} ক্যালরি/১০০গ্রাম</p>
         </div>
       </div>
     </div>
@@ -59,102 +164,14 @@ import AdSlot from '../../components/AdSlot.astro';
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">রসগোল্লা</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১০০–১২৫</td>
-              <td class="p-3 text-center text-gray-600">২০০–২৫০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">সন্দেশ</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৩০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১২০–১৫০</td>
-              <td class="p-3 text-center text-gray-600">৪০০–৫০০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">মিষ্টি দই</td>
-              <td class="p-3 text-center text-gray-500">১ ভাঁড় (~১০০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-green-600">৯০–১১০</td>
-              <td class="p-3 text-center text-gray-600">৯০–১১০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">রসমালাই</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৩০–১৫০</td>
-              <td class="p-3 text-center text-gray-600">২৬০–৩০০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">গুলাব জামুন</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৪০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-red-600">১৫০–১৮০</td>
-              <td class="p-3 text-center text-gray-600">৩৭৫–৪৫০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">চমচম</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৩০–১৬০</td>
-              <td class="p-3 text-center text-gray-600">২৬০–৩২০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">পান্তুয়া</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৪০–১৭০</td>
-              <td class="p-3 text-center text-gray-600">২৮০–৩৪০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">পায়েস / ক্ষীর</td>
-              <td class="p-3 text-center text-gray-500">১ বাটি (~১০০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৫০–১৮০</td>
-              <td class="p-3 text-center text-gray-600">১৫০–১৮০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">জিলাপি</td>
-              <td class="p-3 text-center text-gray-500">৩–৪ পিস (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৫০–১৭৫</td>
-              <td class="p-3 text-center text-gray-600">৩০০–৩৫০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">লাড্ডু (বেসনের)</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৪০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-red-600">১৫০–২০০</td>
-              <td class="p-3 text-center text-gray-600">৩৭৫–৫০০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">কালাকান্দ</td>
-              <td class="p-3 text-center text-gray-500">১ টুকরো (~৫০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-red-600">১৭০–২০০</td>
-              <td class="p-3 text-center text-gray-600">৩৪০–৩৮০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">মালপোয়া</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৬০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-red-600">১৮০–২২০</td>
-              <td class="p-3 text-center text-gray-600">৩০০–৩৬৫</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">পাটিসাপটা</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৬০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১২০–১৫০</td>
-              <td class="p-3 text-center text-gray-600">২০০–২৫০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">নারকেল নাড়ু</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৩০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১২০–১৪০</td>
-              <td class="p-3 text-center text-gray-600">৪০০–৪৭০</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">তিলের নাড়ু</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৩০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৩৫–১৬৫</td>
-              <td class="p-3 text-center text-gray-600">৪৫০–৫৫০</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">পিঠা (ভাপা)</td>
-              <td class="p-3 text-center text-gray-500">১ পিস (~৬০গ্রাম)</td>
-              <td class="p-3 text-center font-bold text-orange-600">১৩০–১৬০</td>
-              <td class="p-3 text-center text-gray-600">২১৫–২৬৫</td>
-            </tr>
+            {sweetList.map((s, i) => (
+              <tr class={`${i % 2 ? 'bg-gray-50' : 'bg-white'} border-b`}>
+                <td class="p-3 font-medium">{s.bn}</td>
+                <td class="p-3 text-center text-gray-500">{s.serving}</td>
+                <td class={`p-3 text-center font-bold ${toneClass[s.tone]}`}>{range(s.piece)}</td>
+                <td class="p-3 text-center text-gray-600">{range(s.per100)}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -174,46 +191,16 @@ import AdSlot from '../../components/AdSlot.astro';
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">রসগোল্লা</td>
-              <td class="p-3 text-center font-bold">২০০–২৫০</td>
-              <td class="p-3 text-center">৩৬–৪৪গ্রাম</td>
-              <td class="p-3 text-center">৬–১০গ্রাম</td>
-              <td class="p-3 text-center">৪–৮গ্রাম</td>
-              <td class="p-3 text-center">৩০–৪০গ্রাম</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">সন্দেশ</td>
-              <td class="p-3 text-center font-bold">৪০০–৫০০</td>
-              <td class="p-3 text-center">৪৫–৬০গ্রাম</td>
-              <td class="p-3 text-center">১০–১৫গ্রাম</td>
-              <td class="p-3 text-center">১২–১৮গ্রাম</td>
-              <td class="p-3 text-center">৪০–৫৫গ্রাম</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">মিষ্টি দই</td>
-              <td class="p-3 text-center font-bold">৯০–১১০</td>
-              <td class="p-3 text-center">১৪–১৮গ্রাম</td>
-              <td class="p-3 text-center">৩–৫গ্রাম</td>
-              <td class="p-3 text-center">২–৪গ্রাম</td>
-              <td class="p-3 text-center">১৩–১৬গ্রাম</td>
-            </tr>
-            <tr class="bg-gray-50 border-b">
-              <td class="p-3 font-medium">গুলাব জামুন</td>
-              <td class="p-3 text-center font-bold">৩৭৫–৪৫০</td>
-              <td class="p-3 text-center">৫০–৬৫গ্রাম</td>
-              <td class="p-3 text-center">৫–৮গ্রাম</td>
-              <td class="p-3 text-center">১৪–১৮গ্রাম</td>
-              <td class="p-3 text-center">৪৫–৫৫গ্রাম</td>
-            </tr>
-            <tr class="bg-white border-b">
-              <td class="p-3 font-medium">পায়েস</td>
-              <td class="p-3 text-center font-bold">১৫০–১৮০</td>
-              <td class="p-3 text-center">২৫–৩৫গ্রাম</td>
-              <td class="p-3 text-center">৩–৫গ্রাম</td>
-              <td class="p-3 text-center">৩–৭গ্রাম</td>
-              <td class="p-3 text-center">১৮–২৮গ্রাম</td>
-            </tr>
+            {nutritionList.map((s, i) => (
+              <tr class={`${i % 2 ? 'bg-gray-50' : 'bg-white'} border-b`}>
+                <td class="p-3 font-medium">{s.shortBn ?? s.bn}</td>
+                <td class="p-3 text-center font-bold">{range(s.per100)}</td>
+                <td class="p-3 text-center">{range(s.nutrition.carbs)}গ্রাম</td>
+                <td class="p-3 text-center">{range(s.nutrition.protein)}গ্রাম</td>
+                <td class="p-3 text-center">{range(s.nutrition.fat)}গ্রাম</td>
+                <td class="p-3 text-center">{range(s.nutrition.sugar)}গ্রাম</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -312,54 +299,16 @@ import AdSlot from '../../components/AdSlot.astro';
       <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
     </h2>
     <div class="space-y-3">
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="কোন বাংলা মিষ্টিতে সবচেয়ে কম ক্যালরি?" data-en="Which Bengali sweet has the fewest calories?">কোন বাংলা মিষ্টিতে সবচেয়ে কম ক্যালরি?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="মিষ্টি দই সবচেয়ে কম ক্যালরির — ১০০ গ্রামে মাত্র ৯০–১১০ ক্যালরি। এরপরে আসে পাটিসাপটা (১২০–১৫০ ক্যালরি/পিস) এবং রসগোল্লা (১০০–১২৫ ক্যালরি/পিস)।" data-en="Mishti doi has the fewest calories — just 90–110 cal per 100g. Next are patishapta (120–150 cal/piece) and rasgolla (100–125 cal/piece).">মিষ্টি দই সবচেয়ে কম ক্যালরির — ১০০ গ্রামে মাত্র ৯০–১১০ ক্যালরি। এরপরে আসে পাটিসাপটা (১২০–১৫০ ক্যালরি/পিস) এবং রসগোল্লা (১০০–১২৫ ক্যালরি/পিস)।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="রসগোল্লা ও রসমালাইয়ের মধ্যে কোনটা বেশি ক্যালরির?" data-en="Which has more calories — rasgolla or rasmalai?">রসগোল্লা ও রসমালাইয়ের মধ্যে কোনটা বেশি ক্যালরির?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="রসমালাই বেশি ক্যালরির। রসগোল্লায় প্রতি পিসে ১০০–১২৫ ক্যালরি, আর রসমালাইয়ে ১৩০–১৫০ ক্যালরি। রসমালাইয়ে ঘন দুধের ক্ষীর থাকায় ক্যালরি বেশি।" data-en="Rasmalai has more calories. Rasgolla has 100–125 cal per piece, while rasmalai has 130–150 cal. The thick reduced milk (rabri) in rasmalai accounts for the higher calorie count.">রসমালাই বেশি ক্যালরির। রসগোল্লায় প্রতি পিসে ১০০–১২৫ ক্যালরি, আর রসমালাইয়ে ১৩০–১৫০ ক্যালরি। রসমালাইয়ে ঘন দুধের ক্ষীর থাকায় ক্যালরি বেশি।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="ওজন কমানোর সময় কি মিষ্টি খাওয়া যাবে?" data-en="Can I eat sweets while trying to lose weight?">ওজন কমানোর সময় কি মিষ্টি খাওয়া যাবে?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="হ্যাঁ, মাঝেমাঝে ১টি রসগোল্লা বা মিষ্টি দই খাওয়া ওজন কমানোর পথে বাধা নয়। মোট ক্যালরি ঘাটতিই ওজন কমানোর মূল চাবিকাঠি। তবে প্রতিদিন বা বেশি পরিমাণে খেলে সমস্যা হবে।" data-en="Yes, occasionally eating one rasgolla or mishti doi is not a barrier to losing weight. Overall calorie deficit is the key to weight loss. Problems arise when sweets are eaten daily or in large quantities.">হ্যাঁ, মাঝেমাঝে ১টি রসগোল্লা বা মিষ্টি দই খাওয়া ওজন কমানোর পথে বাধা নয়। মোট ক্যালরি ঘাটতিই ওজন কমানোর মূল চাবিকাঠি। তবে প্রতিদিন বা বেশি পরিমাণে খেলে সমস্যা হবে।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="সন্দেশে কি রসগোল্লার চেয়ে বেশি ক্যালরি?" data-en="Does sandesh have more calories than rasgolla?">সন্দেশে কি রসগোল্লার চেয়ে বেশি ক্যালরি?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="হ্যাঁ, প্রতি ১০০ গ্রামে সন্দেশ (৪০০–৫০০ ক্যালরি) রসগোল্লার (২০০–২৫০ ক্যালরি) প্রায় দ্বিগুণ। কারণ রসগোল্লায় চিনির সিরাপ বেশিরভাগ জায়গা নেয়, আর সন্দেশ ঘন ছানা ও চিনির মিশ্রণে তৈরি।" data-en="Yes. Per 100g, sandesh (400–500 cal) has roughly double the calories of rasgolla (200–250 cal). This is because rasgolla is soaked in a light sugar syrup, while sandesh is a dense mixture of paneer and sugar.">হ্যাঁ, প্রতি ১০০ গ্রামে সন্দেশ (৪০০–৫০০ ক্যালরি) রসগোল্লার (২০০–২৫০ ক্যালরি) প্রায় দ্বিগুণ। কারণ রসগোল্লায় চিনির সিরাপ বেশিরভাগ জায়গা নেয়, আর সন্দেশ ঘন ছানা ও চিনির মিশ্রণে তৈরি।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="মিষ্টি দইয়ে কি প্রোটিন আছে?" data-en="Does mishti doi contain protein?">মিষ্টি দইয়ে কি প্রোটিন আছে?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="হ্যাঁ, মিষ্টি দইয়ে প্রতি ১০০ গ্রামে ৩–৫ গ্রাম প্রোটিন আছে। দুধ থেকে আসে এই প্রোটিন। এছাড়া ক্যালসিয়াম ও প্রোবায়োটিকও থাকে। এই কারণেই মিষ্টি দই অন্য মিষ্টির তুলনায় পুষ্টিগুণে এগিয়ে।" data-en="Yes, mishti doi contains 3–5g of protein per 100g, derived from the milk. It also provides calcium and probiotics. This is why mishti doi is nutritionally superior to most other Bengali sweets.">হ্যাঁ, মিষ্টি দইয়ে প্রতি ১০০ গ্রামে ৩–৫ গ্রাম প্রোটিন আছে। দুধ থেকে আসে এই প্রোটিন। এছাড়া ক্যালসিয়াম ও প্রোবায়োটিকও থাকে। এই কারণেই মিষ্টি দই অন্য মিষ্টির তুলনায় পুষ্টিগুণে এগিয়ে।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="পিঠা কি মিষ্টির মতো ক্যালরির?" data-en="Are pithas (rice cakes) as high in calories as sweets?">পিঠা কি মিষ্টির মতো ক্যালরির?</span>
-        </summary>
-        <p class="mt-3 text-gray-700 text-sm">
-          <span data-bn="ভাপা পিঠায় প্রতি পিসে ১৩০–১৬০ ক্যালরি — রসগোল্লার কাছাকাছি। তবে পিঠায় চালের গুঁড়ি ও নারকেল থেকে কার্বোহাইড্রেট ও ফাইবার আসে, শুধু চিনি নয়। ভাজা পিঠা (চিতই ভাজা, তেলের পিঠা) অনেক বেশি ক্যালরির।" data-en="Steamed pitha (bhapa) has 130–160 cal per piece — similar to rasgolla. But pitha contains carbohydrates and fibre from rice flour and coconut, not just sugar. Fried pithas have significantly more calories.">ভাপা পিঠায় প্রতি পিসে ১৩০–১৬০ ক্যালরি — রসগোল্লার কাছাকাছি। তবে পিঠায় চালের গুঁড়ি ও নারকেল থেকে কার্বোহাইড্রেট ও ফাইবার আসে, শুধু চিনি নয়। ভাজা পিঠা (চিতই ভাজা, তেলের পিঠা) অনেক বেশি ক্যালরির।</span>
-        </p>
-      </details>
+      {faqs.map((f) => (
+        <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <summary class="font-semibold text-gray-900 cursor-pointer">
+            <span data-bn={f.q.bn} data-en={f.q.en}>{f.q.bn}</span>
+          </summary>
+          <p class="mt-3 text-gray-700 text-sm">
+            <span data-bn={f.a.bn} data-en={f.a.en}>{f.a.bn}</span>
+          </p>
+        </details>
+      ))}
     </div>
   </section>
 
