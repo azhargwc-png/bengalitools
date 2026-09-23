@@ -42,7 +42,7 @@ import { foods } from '../../data/foods.js';
 
     <!-- Category chips -->
     <div class="flex gap-2 overflow-x-auto pb-3 mb-6 scrollbar-hide" id="cat-filters">
-      <button data-cat="all"           class="cat-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-saffron-600 text-white whitespace-nowrap"><span data-bn="সব" data-en="All">সব</span></button>
+      <button data-cat="all"           class="cat-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-saffron-700 text-white whitespace-nowrap"><span data-bn="সব" data-en="All">সব</span></button>
       <button data-cat="staple"        class="cat-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 hover:bg-saffron-50 whitespace-nowrap"><span data-bn="ভাত-রুটি" data-en="Staples">ভাত-রুটি</span></button>
       <button data-cat="fish"          class="cat-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 hover:bg-saffron-50 whitespace-nowrap"><span data-bn="মাছ" data-en="Fish">মাছ</span></button>
       <button data-cat="egg"           class="cat-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 hover:bg-saffron-50 whitespace-nowrap"><span data-bn="ডিম" data-en="Egg">ডিম</span></button>
@@ -271,9 +271,9 @@ import { foods } from '../../data/foods.js';
       catBtns.forEach(b => {
         if (b === btn) {
           b.classList.remove('bg-gray-100', 'text-gray-600');
-          b.classList.add('bg-saffron-600', 'text-white');
+          b.classList.add('bg-saffron-700', 'text-white');
         } else {
-          b.classList.remove('bg-saffron-600', 'text-white');
+          b.classList.remove('bg-saffron-700', 'text-white');
           b.classList.add('bg-gray-100', 'text-gray-600');
         }
       });
@@ -295,9 +295,9 @@ import { foods } from '../../data/foods.js';
     catBtns.forEach(b => {
       if (b.dataset.cat === 'all') {
         b.classList.remove('bg-gray-100', 'text-gray-600');
-        b.classList.add('bg-saffron-600', 'text-white');
+        b.classList.add('bg-saffron-700', 'text-white');
       } else {
-        b.classList.remove('bg-saffron-600', 'text-white');
+        b.classList.remove('bg-saffron-700', 'text-white');
         b.classList.add('bg-gray-100', 'text-gray-600');
       }
     });

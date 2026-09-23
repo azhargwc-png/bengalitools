@@ -89,7 +89,7 @@ const pageSchema = {
 
     <!-- Mode Selector -->
     <div class="grid grid-cols-3 gap-2 mb-6">
-      <button id="mode-speed" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all min-h-[44px]">
+      <button id="mode-speed" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-700 text-white transition-all min-h-[44px]">
         <span data-bn="গতি বের করুন" data-en="Find Speed">গতি বের করুন</span>
       </button>
       <button id="mode-dist" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]">
@@ -375,7 +375,7 @@ const pageSchema = {
     modeBtns.forEach(btn => {
       const btnMode = btn.id.replace('mode-', '');
       if (btnMode === mode) {
-        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all min-h-[44px]';
+        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-700 text-white transition-all min-h-[44px]';
       } else {
         btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]';
       }

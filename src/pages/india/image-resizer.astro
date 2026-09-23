@@ -179,7 +179,7 @@ const pageSchema = {
       <div id="warning-msg" class="hidden bg-yellow-50 border border-yellow-300 rounded-xl p-3 mb-4 text-sm text-yellow-800"></div>
 
       <a id="download-btn" href="#" download="resized-photo.jpg"
-        class="block w-full py-4 rounded-xl font-bold text-lg text-center bg-saffron-600 hover:bg-saffron-700 text-white transition-all min-h-[52px]">
+        class="block w-full py-4 rounded-xl font-bold text-lg text-center bg-saffron-700 hover:bg-saffron-800 text-white transition-all min-h-[52px]">
         <span data-bn="ডাউনলোড করুন ↓" data-en="Download ↓">ডাউনলোড করুন ↓</span>
       </a>
       <p class="text-xs text-gray-500 text-center mt-2">
@@ -417,7 +417,7 @@ const pageSchema = {
 
       // Enable button
       processBtn.disabled = false;
-      processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-saffron-600 hover:bg-saffron-700 text-white cursor-pointer transition-all min-h-[52px]';
+      processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-saffron-700 hover:bg-saffron-800 text-white cursor-pointer transition-all min-h-[52px]';
 
       resultArea.classList.add('hidden');
     };
@@ -473,7 +473,7 @@ const pageSchema = {
         processBtn.disabled = false;
         const lang2 = (window as any).getLang?.() || 'bn';
         processBtn.textContent = lang2 === 'bn' ? 'ছবি তৈরি করুন' : 'Resize Photo';
-        processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-saffron-600 hover:bg-saffron-700 text-white cursor-pointer transition-all min-h-[52px]';
+        processBtn.className = 'w-full py-4 rounded-xl font-bold text-lg bg-saffron-700 hover:bg-saffron-800 text-white cursor-pointer transition-all min-h-[52px]';
       });
     };
     img.src = originalDataUrl;

@@ -89,13 +89,13 @@ const pageSchema = {
 
     <div class="flex items-center gap-3 mb-6">
       <span class="text-sm font-medium text-gray-700" data-bn="মুদ্রা:" data-en="Currency:">মুদ্রা:</span>
-      <button id="btn-inr" class="px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all">₹ INR</button>
+      <button id="btn-inr" class="px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-700 text-white transition-all">₹ INR</button>
       <button id="btn-bdt" class="px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all">৳ BDT</button>
     </div>
 
     <!-- Mode Tabs -->
     <div class="flex gap-2 mb-6">
-      <button id="tab-mode1" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all">
+      <button id="tab-mode1" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-700 text-white transition-all">
         <span data-bn="দাম + ছাড়% → চূড়ান্ত দাম" data-en="Price + Discount% → Final Price">দাম + ছাড়% → চূড়ান্ত দাম</span>
       </button>
       <button id="tab-mode2" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all">
@@ -360,12 +360,12 @@ const pageSchema = {
   }
 
   btnInr.addEventListener('click', () => {
-    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all';
+    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-700 text-white transition-all';
     btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     setCurrency('₹');
   });
   btnBdt.addEventListener('click', () => {
-    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all';
+    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-700 text-white transition-all';
     btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     setCurrency('৳');
   });
@@ -377,13 +377,13 @@ const pageSchema = {
   const mode2 = document.getElementById('mode2')!;
 
   tabMode1.addEventListener('click', () => {
-    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all';
+    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-700 text-white transition-all';
     tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     mode1.classList.remove('hidden');
     mode2.classList.add('hidden');
   });
   tabMode2.addEventListener('click', () => {
-    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all';
+    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-700 text-white transition-all';
     tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     mode2.classList.remove('hidden');
     mode1.classList.add('hidden');
