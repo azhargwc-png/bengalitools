@@ -96,7 +96,7 @@ const pageSchema = {
         type="number"
         id="bill-amount"
         placeholder="যেমন: 850"
-        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[44px]"
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none min-h-[44px]"
       />
     </div>
 
@@ -106,10 +106,10 @@ const pageSchema = {
         <span data-bn="টিপের হার বেছে নিন" data-en="Select Tip Percentage">টিপের হার বেছে নিন</span>
       </p>
       <div class="grid grid-cols-4 gap-2 mb-3">
-        <button data-tip="10" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">10%</button>
-        <button data-tip="15" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">15%</button>
-        <button data-tip="20" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">20%</button>
-        <button data-tip="25" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]">25%</button>
+        <button data-tip="10" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]">10%</button>
+        <button data-tip="15" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]">15%</button>
+        <button data-tip="20" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]">20%</button>
+        <button data-tip="25" class="tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]">25%</button>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-500 mb-1" for="custom-tip">
@@ -121,7 +121,7 @@ const pageSchema = {
           placeholder="যেমন: 12"
           min="0"
           max="100"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
     </div>
@@ -137,24 +137,24 @@ const pageSchema = {
         value="1"
         min="1"
         max="20"
-        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[44px]"
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none min-h-[44px]"
       />
     </div>
 
     <!-- Result -->
     <div id="tip-result" class="hidden">
       <div class="grid grid-cols-3 gap-3">
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
           <p class="text-xs text-gray-500 mb-1"><span data-bn="টিপের পরিমাণ" data-en="Tip Amount">টিপের পরিমাণ</span></p>
-          <p id="tip-amount" class="text-2xl font-bold text-teal-700"></p>
+          <p id="tip-amount" class="text-2xl font-bold text-saffron-700"></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
           <p class="text-xs text-gray-500 mb-1"><span data-bn="মোট বিল" data-en="Total Bill">মোট বিল</span></p>
-          <p id="total-bill" class="text-2xl font-bold text-teal-700"></p>
+          <p id="total-bill" class="text-2xl font-bold text-saffron-700"></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
           <p class="text-xs text-gray-500 mb-1"><span data-bn="প্রতি জন" data-en="Per Person">প্রতি জন</span></p>
-          <p id="per-person" class="text-2xl font-bold text-teal-700"></p>
+          <p id="per-person" class="text-2xl font-bold text-saffron-700"></p>
         </div>
       </div>
       <p class="text-center text-sm text-gray-500 mt-3" id="tip-breakdown"></p>
@@ -169,19 +169,19 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="বিলের মোট পরিমাণ লিখুন" data-en="Enter the total bill amount">বিলের মোট পরিমাণ লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="১০%, ১৫%, ২০%, ২৫% বাটনে ক্লিক করুন অথবা নিজের পছন্দের শতাংশ লিখুন" data-en="Click 10%, 15%, 20%, 25% buttons or enter a custom percentage">১০%, ১৫%, ২০%, ২৫% বাটনে ক্লিক করুন অথবা নিজের পছন্দের শতাংশ লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="কতজন বিল ভাগ করবেন তা লিখুন (১ থেকে ২০)" data-en="Enter how many people will split the bill (1 to 20)">কতজন বিল ভাগ করবেন তা লিখুন (১ থেকে ২০)</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৪.</span>
         <span data-bn="টিপের পরিমাণ, মোট বিল ও প্রতিজনের ভাগ দেখুন" data-en="View tip amount, total bill and per person share">টিপের পরিমাণ, মোট বিল ও প্রতিজনের ভাগ দেখুন</span>
       </li>
     </ol>
@@ -205,8 +205,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: দুজনে খাওয়া" data-en="Example 1: Dining for two">উদাহরণ ১: দুজনে খাওয়া</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -216,8 +216,8 @@ const pageSchema = {
           <span data-bn="টিপ: ₹৯০ | মোট: ₹৬৯০ | প্রতিজন: ₹৩৪৫" data-en="Tip: ₹90 | Total: ₹690 | Per person: ₹345">টিপ: ₹৯০ | মোট: ₹৬৯০ | প্রতিজন: ₹৩৪৫</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: বন্ধুদের দলে খাওয়া" data-en="Example 2: Group dinner with friends">উদাহরণ ২: বন্ধুদের দলে খাওয়া</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -227,8 +227,8 @@ const pageSchema = {
           <span data-bn="টিপ: ₹৪৮০ | মোট: ₹২,৮৮০ | প্রতিজন: ₹৪৮০" data-en="Tip: ₹480 | Total: ₹2,880 | Per person: ₹480">টিপ: ₹৪৮০ | মোট: ₹২,৮৮০ | প্রতিজন: ₹৪৮০</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: একা খাওয়া, ১০% টিপ" data-en="Example 3: Solo dining, 10% tip">উদাহরণ ৩: একা খাওয়া, ১০% টিপ</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -336,9 +336,9 @@ const pageSchema = {
     customTip.value = '';
     tipButtons.forEach(btn => {
       if (parseInt(btn.dataset.tip || '0') === val) {
-        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-teal-500 bg-teal-500 text-white transition-all min-h-[44px]';
+        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-saffron-500 bg-saffron-500 text-white transition-all min-h-[44px]';
       } else {
-        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]';
+        btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]';
       }
     });
     calculate();
@@ -353,7 +353,7 @@ const pageSchema = {
   customTip.addEventListener('input', () => {
     selectedTip = parseFloat(customTip.value) || 0;
     tipButtons.forEach(btn => {
-      btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all min-h-[44px]';
+      btn.className = 'tip-btn py-3 rounded-xl text-sm font-bold border-2 border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all min-h-[44px]';
     });
     calculate();
   });

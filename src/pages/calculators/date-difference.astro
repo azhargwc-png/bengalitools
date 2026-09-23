@@ -92,16 +92,16 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700" for="start-date">
             <span data-bn="শুরুর তারিখ" data-en="Start Date">শুরুর তারিখ</span>
           </label>
-          <button id="btn-today" class="text-xs text-teal-600 font-semibold hover:underline">
+          <button id="btn-today" class="text-xs text-saffron-600 font-semibold hover:underline">
             <span data-bn="আজ থেকে" data-en="From Today">আজ থেকে</span>
           </button>
         </div>
         <input
           type="date"
           id="start-date"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
-        <p id="start-weekday" class="text-xs text-teal-600 mt-1 font-medium"></p>
+        <p id="start-weekday" class="text-xs text-saffron-600 mt-1 font-medium"></p>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1" for="end-date">
@@ -110,34 +110,34 @@ const pageSchema = {
         <input
           type="date"
           id="end-date"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
-        <p id="end-weekday" class="text-xs text-teal-600 mt-1 font-medium"></p>
+        <p id="end-weekday" class="text-xs text-saffron-600 mt-1 font-medium"></p>
       </div>
     </div>
 
     <!-- Result -->
     <div id="diff-result" class="hidden">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="diff-years" class="text-3xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="diff-years" class="text-3xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1"><span data-bn="বছর" data-en="Years">বছর</span></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="diff-months" class="text-3xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="diff-months" class="text-3xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1"><span data-bn="মাস" data-en="Months">মাস</span></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="diff-weeks" class="text-3xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="diff-weeks" class="text-3xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1"><span data-bn="সপ্তাহ" data-en="Weeks">সপ্তাহ</span></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="diff-days" class="text-3xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="diff-days" class="text-3xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1"><span data-bn="দিন (মোট)" data-en="Days (total)">দিন (মোট)</span></p>
         </div>
       </div>
-      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center mb-3">
-        <p id="diff-hours" class="text-3xl font-bold text-teal-700">0</p>
+      <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center mb-3">
+        <p id="diff-hours" class="text-3xl font-bold text-saffron-700">0</p>
         <p class="text-sm text-gray-600 mt-1"><span data-bn="ঘণ্টা (মোট)" data-en="Hours (total)">ঘণ্টা (মোট)</span></p>
       </div>
       <div class="bg-white rounded-xl p-4 border border-gray-200 text-sm text-gray-700 space-y-1">
@@ -163,15 +163,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="শুরুর তারিখ বেছে নিন — 'আজ থেকে' বাটনে ক্লিক করলে আজকের তারিখ বসে যাবে" data-en="Select start date — click 'From Today' to set today's date automatically">শুরুর তারিখ বেছে নিন — 'আজ থেকে' বাটনে ক্লিক করলে আজকের তারিখ বসে যাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="শেষের তারিখ বেছে নিন" data-en="Select the end date">শেষের তারিখ বেছে নিন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="বছর, মাস, সপ্তাহ ও মোট দিন স্বয়ংক্রিয়ভাবে দেখাবে। প্রতিটি তারিখের বারও দেখাবে।" data-en="Years, months, weeks and total days appear automatically, along with the day of the week for each date.">বছর, মাস, সপ্তাহ ও মোট দিন স্বয়ংক্রিয়ভাবে দেখাবে। প্রতিটি তারিখের বারও দেখাবে।</span>
       </li>
     </ol>
@@ -195,8 +195,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: স্বাধীনতা দিবস থেকে নববর্ষ" data-en="Example 1: Independence Day to New Year">উদাহরণ ১: স্বাধীনতা দিবস থেকে নববর্ষ</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -206,8 +206,8 @@ const pageSchema = {
           <span data-bn="পার্থক্য: ০ বছর ৪ মাস ১৭ দিন = মোট ১৩৯ দিন" data-en="Difference: 0 years 4 months 17 days = 139 total days">পার্থক্য: ০ বছর ৪ মাস ১৭ দিন = মোট ১৩৯ দিন</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: চুক্তির মেয়াদ" data-en="Example 2: Contract duration">উদাহরণ ২: চুক্তির মেয়াদ</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -217,8 +217,8 @@ const pageSchema = {
           <span data-bn="পার্থক্য: ১১ মাস ৩০ দিন = মোট ৩৬৫ দিন (লিপ ইয়ার)" data-en="Difference: 11 months 30 days = 365 total days (leap year)">পার্থক্য: ১১ মাস ৩০ দিন = মোট ৩৬৫ দিন (লিপ ইয়ার)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: পরীক্ষার আগে কতদিন বাকি" data-en="Example 3: Days left before exam">উদাহরণ ৩: পরীক্ষার আগে কতদিন বাকি</span>
         </p>
         <p class="text-gray-700 mt-1">

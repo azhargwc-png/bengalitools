@@ -99,7 +99,7 @@ const pageSchema = {
           min="10"
           max="300"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
 
@@ -110,7 +110,7 @@ const pageSchema = {
         </label>
         <select
           id="water-activity"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px] bg-white"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px] bg-white"
         >
           <option value="normal" data-bn="স্বাভাবিক (হাঁটাচলা, অফিস)" data-en="Normal (walking, office)">স্বাভাবিক (হাঁটাচলা, অফিস)</option>
           <option value="active" data-bn="সক্রিয় (ব্যায়াম, শারীরিক কাজ)" data-en="Active (exercise, physical work)">সক্রিয় (ব্যায়াম, শারীরিক কাজ)</option>
@@ -121,7 +121,7 @@ const pageSchema = {
 
     <!-- Hot climate option -->
     <div class="flex items-center gap-3 mb-4">
-      <input type="checkbox" id="hot-climate" class="w-5 h-5 accent-teal-600" />
+      <input type="checkbox" id="hot-climate" class="w-5 h-5 accent-saffron-600" />
       <label class="text-sm font-medium text-gray-700" for="hot-climate">
         <span data-bn="গরমের মৌসুম / গরম আবহাওয়া (+৫০০ মিলি যোগ হবে)" data-en="Hot season / hot climate (+500 ml will be added)">গরমের মৌসুম / গরম আবহাওয়া (+৫০০ মিলি যোগ হবে)</span>
       </label>
@@ -137,11 +137,11 @@ const pageSchema = {
           <p id="water-ml" class="text-3xl font-bold text-blue-700"></p>
           <p class="text-xs text-gray-400 mt-1">ml</p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p class="text-xs text-teal-600 font-medium mb-1">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-saffron-600 font-medium mb-1">
             <span data-bn="লিটারে" data-en="In litres">লিটারে</span>
           </p>
-          <p id="water-litres" class="text-3xl font-bold text-teal-700"></p>
+          <p id="water-litres" class="text-3xl font-bold text-saffron-700"></p>
           <p class="text-xs text-gray-400 mt-1">L</p>
         </div>
         <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 text-center">
@@ -172,15 +172,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="আপনার ওজন কেজিতে লিখুন" data-en="Enter your weight in kilograms">আপনার ওজন কেজিতে লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="আপনার শারীরিক কার্যকলাপের মাত্রা বেছে নিন" data-en="Select your physical activity level">আপনার শারীরিক কার্যকলাপের মাত্রা বেছে নিন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="গরমের মৌসুমে থাকলে গরমের চেকবক্সে টিক দিন" data-en="Check the hot climate box if it is summer or very warm">গরমের মৌসুমে থাকলে গরমের চেকবক্সে টিক দিন</span>
       </li>
     </ol>
@@ -204,8 +204,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" ৬০ কেজি, স্বাভাবিক কার্যকলাপ" data-en=" 60 kg, normal activity"> ৬০ কেজি, স্বাভাবিক কার্যকলাপ</span>
         </p>
@@ -216,8 +216,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ২.১ লিটার = ৮ গ্লাস প্রতিদিন" data-en="Result: 2.1 litres = 8 glasses per day">ফলাফল: ২.১ লিটার = ৮ গ্লাস প্রতিদিন</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" ৭৫ কেজি, সক্রিয় ব্যক্তি" data-en=" 75 kg, active person"> ৭৫ কেজি, সক্রিয় ব্যক্তি</span>
         </p>
@@ -228,8 +228,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ৩.১ লিটার = ১৩ গ্লাস প্রতিদিন" data-en="Result: 3.1 litres = 13 glasses per day">ফলাফল: ৩.১ লিটার = ১৩ গ্লাস প্রতিদিন</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" ৮০ কেজি, গরমে অত্যন্ত সক্রিয়" data-en=" 80 kg, very active in hot weather"> ৮০ কেজি, গরমে অত্যন্ত সক্রিয়</span>
         </p>

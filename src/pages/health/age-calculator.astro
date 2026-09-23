@@ -94,7 +94,7 @@ const pageSchema = {
         <input
           type="date"
           id="dob-input"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
       <div>
@@ -104,7 +104,7 @@ const pageSchema = {
         <input
           type="date"
           id="calc-date-input"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
         <p class="text-xs text-gray-400 mt-1">
           <span data-bn="খালি রাখলে আজকের তারিখ ব্যবহার হবে" data-en="Leave blank to use today's date">খালি রাখলে আজকের তারিখ ব্যবহার হবে</span>
@@ -121,26 +121,26 @@ const pageSchema = {
     <div id="age-result" class="hidden mt-4">
       <!-- Main age display -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="age-years" class="text-4xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="age-years" class="text-4xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1">
             <span data-bn="বছর" data-en="Years">বছর</span>
           </p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="age-months" class="text-4xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="age-months" class="text-4xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1">
             <span data-bn="মাস" data-en="Months">মাস</span>
           </p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="age-days" class="text-4xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="age-days" class="text-4xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1">
             <span data-bn="দিন" data-en="Days">দিন</span>
           </p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
-          <p id="age-hours" class="text-4xl font-bold text-teal-700">0</p>
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
+          <p id="age-hours" class="text-4xl font-bold text-saffron-700">0</p>
           <p class="text-sm text-gray-600 mt-1">
             <span data-bn="ঘণ্টা" data-en="Hours">ঘণ্টা</span>
           </p>
@@ -153,25 +153,25 @@ const pageSchema = {
           <span class="font-medium text-gray-500">
             <span data-bn="জন্মদিন ছিল:" data-en="Born on:">জন্মদিন ছিল:</span>
           </span>
-          <span id="born-weekday" class="font-semibold text-teal-700 ml-2"></span>
+          <span id="born-weekday" class="font-semibold text-saffron-700 ml-2"></span>
         </p>
         <p>
           <span class="font-medium text-gray-500">
             <span data-bn="মোট দিন বেঁচে আছেন:" data-en="Total days lived:">মোট দিন বেঁচে আছেন:</span>
           </span>
-          <span id="total-days" class="font-semibold text-teal-700 ml-2"></span>
+          <span id="total-days" class="font-semibold text-saffron-700 ml-2"></span>
         </p>
         <p>
           <span class="font-medium text-gray-500">
             <span data-bn="পরবর্তী জন্মদিন:" data-en="Next birthday:">পরবর্তী জন্মদিন:</span>
           </span>
-          <span id="next-birthday" class="font-semibold text-teal-700 ml-2"></span>
+          <span id="next-birthday" class="font-semibold text-saffron-700 ml-2"></span>
         </p>
         <p>
           <span class="font-medium text-gray-500">
             <span data-bn="জন্মদিনের বাকি:" data-en="Days until birthday:">জন্মদিনের বাকি:</span>
           </span>
-          <span id="days-to-birthday" class="font-semibold text-teal-700 ml-2"></span>
+          <span id="days-to-birthday" class="font-semibold text-saffron-700 ml-2"></span>
         </p>
       </div>
     </div>
@@ -184,15 +184,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="জন্মতারিখের ঘরে আপনার জন্ম তারিখ বেছে নিন" data-en="Select your date of birth in the Date of Birth field">জন্মতারিখের ঘরে আপনার জন্ম তারিখ বেছে নিন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="বয়স হিসাবের তারিখ খালি রাখলে আজকের তারিখ ব্যবহার হবে" data-en="Leave the calculation date blank to use today's date">বয়স হিসাবের তারিখ খালি রাখলে আজকের তারিখ ব্যবহার হবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="বছর, মাস, দিন এবং অতিরিক্ত তথ্য স্বয়ংক্রিয়ভাবে দেখাবে" data-en="Years, months, days and extra details appear automatically">বছর, মাস, দিন এবং অতিরিক্ত তথ্য স্বয়ংক্রিয়ভাবে দেখাবে</span>
       </li>
     </ol>
@@ -216,8 +216,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" জন্মতারিখ ১৫ আগস্ট ১৯৯০" data-en=" Date of birth: 15 August 1990"> জন্মতারিখ ১৫ আগস্ট ১৯৯০</span>
         </p>
@@ -228,8 +228,8 @@ const pageSchema = {
           <span data-bn="বয়স: ৩৫ বছর ৭ মাস ৯ দিন" data-en="Age: 35 years 7 months 9 days">বয়স: ৩৫ বছর ৭ মাস ৯ দিন</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" ২৯ ফেব্রুয়ারি ২০০০ (লিপ ইয়ার)" data-en=" 29 February 2000 (Leap Year)"> ২৯ ফেব্রুয়ারি ২০০০ (লিপ ইয়ার)</span>
         </p>
@@ -240,8 +240,8 @@ const pageSchema = {
           <span data-bn="বয়স: ২৬ বছর ০ মাস ২৩ দিন (লিপ ইয়ার সঠিকভাবে হিসাব হয়)" data-en="Age: 26 years 0 months 23 days (leap year handled correctly)">বয়স: ২৬ বছর ০ মাস ২৩ দিন (লিপ ইয়ার সঠিকভাবে হিসাব হয়)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" স্কুলে ভর্তির বয়স যাচাই (জন্ম ১ জানুয়ারি ২০২০)" data-en=" School admission age check (born 1 January 2020)"> স্কুলে ভর্তির বয়স যাচাই (জন্ম ১ জানুয়ারি ২০২০)</span>
         </p>

@@ -61,24 +61,24 @@ const categories = [
 
   <main>
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-teal-700 to-teal-900 text-white py-12 px-4">
+    <section class="bg-gradient-to-br from-saffron-700 to-saffron-900 text-white py-12 px-4">
       <div class="max-w-3xl mx-auto text-center">
         <h1 class="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
           <span data-bn="বাংলায় বিনামূল্যে টুলস" data-en="Free Tools in Bengali">বাংলায় বিনামূল্যে টুলস</span>
         </h1>
-        <p class="text-lg text-teal-100 mb-6">
+        <p class="text-lg text-saffron-100 mb-6">
           <span data-bn="কনভার্টার, ক্যালকুলেটর, মুদ্রা রেট, স্বাস্থ্য টুলস — সব এক জায়গায়, বাংলায়" data-en="Converters, calculators, currency rates, health tools — all in one place, in Bengali">কনভার্টার, ক্যালকুলেটর, মুদ্রা রেট, স্বাস্থ্য টুলস — সব এক জায়গায়, বাংলায়</span>
         </p>
         <div class="flex flex-wrap justify-center gap-3 text-sm">
-          <span class="bg-teal-900 px-3 py-1 rounded-full" data-bn="✓ লগইন লাগে না" data-en="✓ No Login Needed">✓ লগইন লাগে না</span>
-          <span class="bg-teal-900 px-3 py-1 rounded-full" data-bn="✓ সম্পূর্ণ বিনামূল্যে" data-en="✓ Completely Free">✓ সম্পূর্ণ বিনামূল্যে</span>
-          <span class="bg-teal-900 px-3 py-1 rounded-full" data-bn="✓ মোবাইলে কাজ করে" data-en="✓ Works on Mobile">✓ মোবাইলে কাজ করে</span>
+          <span class="bg-saffron-900 px-3 py-1 rounded-full" data-bn="✓ লগইন লাগে না" data-en="✓ No Login Needed">✓ লগইন লাগে না</span>
+          <span class="bg-saffron-900 px-3 py-1 rounded-full" data-bn="✓ সম্পূর্ণ বিনামূল্যে" data-en="✓ Completely Free">✓ সম্পূর্ণ বিনামূল্যে</span>
+          <span class="bg-saffron-900 px-3 py-1 rounded-full" data-bn="✓ মোবাইলে কাজ করে" data-en="✓ Works on Mobile">✓ মোবাইলে কাজ করে</span>
         </div>
       </div>
     </section>
 
     <!-- Mobile Search -->
-    <div class="bg-teal-800 px-4 pb-4 pt-2 md:hidden">
+    <div class="bg-saffron-800 px-4 pb-4 pt-2 md:hidden">
       <div class="relative max-w-md mx-auto">
         <input
           type="text"
@@ -108,10 +108,10 @@ const categories = [
             {tools.converters.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -128,10 +128,10 @@ const categories = [
             {tools.currency.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -148,10 +148,10 @@ const categories = [
             {tools.health.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -168,10 +168,10 @@ const categories = [
             {tools.calculators.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -188,10 +188,10 @@ const categories = [
             {tools.food.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -208,10 +208,10 @@ const categories = [
             {tools.india.map((tool) => (
               <a
                 href={tool.slug}
-                class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
+                class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 text-center transition-all group"
               >
                 <div class="text-3xl mb-2">{tool.icon}</div>
-                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
+                <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn={tool.name.bn} data-en={tool.name.en}>{tool.name.bn}</div>
                 <div class="text-sm text-gray-500 mt-1" data-bn={tool.desc.bn} data-en={tool.desc.en}>{tool.desc.bn}</div>
               </a>
             ))}
@@ -225,29 +225,29 @@ const categories = [
             <span data-bn="সাম্প্রতিক ব্লগ পোস্ট" data-en="Recent Blog Posts">সাম্প্রতিক ব্লগ পোস্ট</span>
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href="/blog/celsius-fahrenheit-hisab/" class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group">
+            <a href="/blog/celsius-fahrenheit-hisab/" class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group">
               <div class="text-2xl mb-2">🌡️</div>
-              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn="সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ" data-en="Celsius to Fahrenheit — Formula and Examples">সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ</div>
+              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn="সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ" data-en="Celsius to Fahrenheit — Formula and Examples">সেলসিয়াস থেকে ফারেনহাইট হিসাব — সূত্র ও উদাহরণ</div>
             </a>
-            <a href="/blog/discount-ber-korar-niyom/" class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group">
+            <a href="/blog/discount-ber-korar-niyom/" class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group">
               <div class="text-2xl mb-2">🏷️</div>
-              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn="ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে" data-en="How to Calculate Discount — Save on Shopping">ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে</div>
+              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn="ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে" data-en="How to Calculate Discount — Save on Shopping">ডিসকাউন্ট বের করার নিয়ম — শপিংয়ে কত সাশ্রয় হবে</div>
             </a>
-            <a href="/blog/protidin-koto-calorie-khaoa-uchit/" class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group">
+            <a href="/blog/protidin-koto-calorie-khaoa-uchit/" class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group">
               <div class="text-2xl mb-2">🔥</div>
-              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn="প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত" data-en="How Many Calories Should You Eat Daily">প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত</div>
+              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn="প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত" data-en="How Many Calories Should You Eat Daily">প্রতিদিন কতটুকু ক্যালরি খাওয়া উচিত</div>
             </a>
-            <a href="/blog/km-to-mile-hisab/" class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group">
+            <a href="/blog/km-to-mile-hisab/" class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group">
               <div class="text-2xl mb-2">🛣️</div>
-              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn="কিলোমিটার থেকে মাইল রূপান্তর — সম্পূর্ণ গাইড" data-en="Kilometres to Miles — Complete Guide">কিলোমিটার থেকে মাইল রূপান্তর — সম্পূর্ণ গাইড</div>
+              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn="কিলোমিটার থেকে মাইল রূপান্তর — সম্পূর্ণ গাইড" data-en="Kilometres to Miles — Complete Guide">কিলোমিটার থেকে মাইল রূপান্তর — সম্পূর্ণ গাইড</div>
             </a>
-            <a href="/blog/gst-ki-kibhabe-hisab-kore/" class="bg-white border-2 border-gray-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group">
+            <a href="/blog/gst-ki-kibhabe-hisab-kore/" class="bg-white border-2 border-gray-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group">
               <div class="text-2xl mb-2">🧾</div>
-              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-teal-700" data-bn="জিএসটি কী এবং কীভাবে হিসাব করে" data-en="What is GST and How to Calculate It">জিএসটি কী এবং কীভাবে হিসাব করে</div>
+              <div class="font-semibold text-gray-900 text-base leading-snug group-hover:text-saffron-700" data-bn="জিএসটি কী এবং কীভাবে হিসাব করে" data-en="What is GST and How to Calculate It">জিএসটি কী এবং কীভাবে হিসাব করে</div>
             </a>
-            <a href="/blog/" class="bg-teal-50 border-2 border-teal-200 hover:border-teal-500 hover:shadow-md rounded-xl p-4 transition-all group flex items-center justify-center">
+            <a href="/blog/" class="bg-saffron-50 border-2 border-saffron-200 hover:border-saffron-500 hover:shadow-md rounded-xl p-4 transition-all group flex items-center justify-center">
               <div class="text-center">
-                <div class="font-semibold text-teal-700 text-base" data-bn="সব পোস্ট দেখুন →" data-en="View all posts →">সব পোস্ট দেখুন →</div>
+                <div class="font-semibold text-saffron-700 text-base" data-bn="সব পোস্ট দেখুন →" data-en="View all posts →">সব পোস্ট দেখুন →</div>
               </div>
             </a>
           </div>
@@ -257,7 +257,7 @@ const categories = [
         <AdSlot slot="homepage-bottom" />
 
         <!-- Why BanglaTools -->
-        <section class="bg-teal-50 rounded-2xl p-8 border border-teal-100">
+        <section class="bg-saffron-50 rounded-2xl p-8 border border-saffron-100">
           <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
             <span data-bn="কেন BanglaTools?" data-en="Why BanglaTools?">কেন BanglaTools?</span>
           </h2>

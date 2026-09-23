@@ -97,7 +97,7 @@ const pageSchema = {
           placeholder="যেমন: 170"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none"
         />
       </div>
       <div>
@@ -110,12 +110,12 @@ const pageSchema = {
           placeholder="যেমন: 66.93"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none"
         />
       </div>
     </div>
     <div id="result-display" class="mt-4 text-center hidden">
-      <p class="text-4xl font-bold text-teal-700" id="result-main"></p>
+      <p class="text-4xl font-bold text-saffron-700" id="result-main"></p>
       <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
     </div>
     <div id="feet-inches-display" class="mt-2 text-sm text-amber-700 font-medium text-center bg-amber-50 rounded-lg py-2 px-4 hidden"></div>
@@ -127,7 +127,7 @@ const pageSchema = {
     <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="দ্রুত রূপান্তর টেবিল" data-en="Quick Reference Table">দ্রুত রূপান্তর টেবিল</span></h2>
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
-        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="সেন্টিমিটার (cm)" data-en="cm">সেন্টিমিটার (cm)</span></th><th class="p-3 text-left"><span data-bn="ইঞ্চি (inches)" data-en="inches">ইঞ্চি (inches)</span></th><th class="p-3 text-left"><span data-bn="ফুট-ইঞ্চি" data-en="Feet-Inches">ফুট-ইঞ্চি</span></th></tr></thead>
+        <thead><tr class="bg-saffron-700 text-white"><th class="p-3 text-left"><span data-bn="সেন্টিমিটার (cm)" data-en="cm">সেন্টিমিটার (cm)</span></th><th class="p-3 text-left"><span data-bn="ইঞ্চি (inches)" data-en="inches">ইঞ্চি (inches)</span></th><th class="p-3 text-left"><span data-bn="ফুট-ইঞ্চি" data-en="Feet-Inches">ফুট-ইঞ্চি</span></th></tr></thead>
         <tbody>
           <tr class="bg-white border-b border-gray-200"><td class="p-3">150 cm</td><td class="p-3 font-bold">59.1 in</td><td class="p-3">4'11"</td></tr>
           <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">155 cm</td><td class="p-3 font-bold">61.0 in</td><td class="p-3">5'1"</td></tr>
@@ -151,15 +151,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="সেন্টিমিটার ঘরে আপনার পরিমাপ লিখুন" data-en="Enter your measurement in the cm box">সেন্টিমিটার ঘরে আপনার পরিমাপ লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="ইঞ্চি তাৎক্ষণিকভাবে দেখাবে এবং ফুট-ইঞ্চি ফরম্যাটও দেখাবে" data-en="Inches appear instantly along with feet and inches format">ইঞ্চি তাৎক্ষণিকভাবে দেখাবে এবং ফুট-ইঞ্চি ফরম্যাটও দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="ইঞ্চি থেকে সেন্টিমিটারও বের করতে পারবেন" data-en="You can also convert from inches to cm">ইঞ্চি থেকে সেন্টিমিটারও বের করতে পারবেন</span>
       </li>
     </ol>
@@ -183,8 +183,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" মহিলার গড় উচ্চতা ১৫৮ সেন্টিমিটার" data-en=" Average women's height 158 cm"> মহিলার গড় উচ্চতা ১৫৮ সেন্টিমিটার</span>
         </p>
@@ -195,8 +195,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ৬২.২ ইঞ্চি (৫ ফুট ২ ইঞ্চি)" data-en="Result: 62.2 inches (5 feet 2 inches)">ফলাফল: ৬২.২ ইঞ্চি (৫ ফুট ২ ইঞ্চি)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" পুরুষের গড় উচ্চতা ১৭০ সেন্টিমিটার" data-en=" Average men's height 170 cm"> পুরুষের গড় উচ্চতা ১৭০ সেন্টিমিটার</span>
         </p>
@@ -207,8 +207,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ৬৬.৯৩ ইঞ্চি (৫ ফুট ৭ ইঞ্চি)" data-en="Result: 66.93 inches (5 feet 7 inches)">ফলাফল: ৬৬.৯৩ ইঞ্চি (৫ ফুট ৭ ইঞ্চি)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" স্কেলের দৈর্ঘ্য ৩০ সেন্টিমিটার" data-en=" Standard ruler length 30 cm"> স্কেলের দৈর্ঘ্য ৩০ সেন্টিমিটার</span>
         </p>

@@ -93,7 +93,7 @@ const pageSchema = {
       <label class="text-sm font-medium text-gray-700">
         <span data-bn="কতজনের জন্য রান্না?" data-en="Number of servings:">কতজনের জন্য রান্না?</span>
       </label>
-      <select id="servings-select" class="px-4 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none">
+      <select id="servings-select" class="px-4 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-saffron-500 focus:outline-none">
         <option value="2">২ জন</option>
         <option value="4" selected>৪ জন</option>
         <option value="6">৬ জন</option>
@@ -105,7 +105,7 @@ const pageSchema = {
     <div id="ingredients-list" class="space-y-3 mb-4"></div>
 
     <!-- Add ingredient button -->
-    <button id="add-ingredient-btn" class="w-full py-3 border-2 border-dashed border-teal-300 rounded-xl text-teal-700 font-semibold hover:border-teal-500 hover:bg-teal-50 transition-all flex items-center justify-center gap-2">
+    <button id="add-ingredient-btn" class="w-full py-3 border-2 border-dashed border-saffron-300 rounded-xl text-saffron-700 font-semibold hover:border-saffron-500 hover:bg-saffron-50 transition-all flex items-center justify-center gap-2">
       <span class="text-xl leading-none">+</span>
       <span data-bn="উপকরণ যোগ করুন" data-en="Add Ingredient">উপকরণ যোগ করুন</span>
     </button>
@@ -122,18 +122,18 @@ const pageSchema = {
     <!-- Total result -->
     <div id="recipe-result" class="hidden mt-5">
       <div class="grid grid-cols-2 gap-4 mb-4">
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
           <p class="text-sm text-gray-500 mb-1">
             <span data-bn="রেসিপির মোট ক্যালরি" data-en="Total Recipe Calories">রেসিপির মোট ক্যালরি</span>
           </p>
-          <p id="total-calories" class="text-4xl font-bold text-teal-700"></p>
+          <p id="total-calories" class="text-4xl font-bold text-saffron-700"></p>
           <p class="text-xs text-gray-400 mt-1">kcal</p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
           <p class="text-sm text-gray-500 mb-1">
             <span data-bn="প্রতি সার্ভিংয়ে ক্যালরি" data-en="Calories Per Serving">প্রতি সার্ভিংয়ে ক্যালরি</span>
           </p>
-          <p id="per-serving-calories" class="text-4xl font-bold text-teal-700"></p>
+          <p id="per-serving-calories" class="text-4xl font-bold text-saffron-700"></p>
           <p class="text-xs text-gray-400 mt-1" id="serving-label"></p>
         </div>
       </div>
@@ -173,19 +173,19 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="রেসিপিটি কতজনের জন্য তা সিলেক্ট করুন" data-en="Select how many servings the recipe makes">রেসিপিটি কতজনের জন্য তা সিলেক্ট করুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="'উপকরণ যোগ করুন' বাটনে ক্লিক করুন এবং খাবারের নাম টাইপ করুন — অটোকমপ্লিট সাজেশন দেখাবে" data-en="Click 'Add Ingredient' and type the food name — autocomplete suggestions will appear">  'উপকরণ যোগ করুন' বাটনে ক্লিক করুন এবং খাবারের নাম টাইপ করুন — অটোকমপ্লিট সাজেশন দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="পরিমাণ গ্রামে দিন — ক্যালরি স্বয়ংক্রিয়ভাবে হিসাব হবে" data-en="Enter quantity in grams — calories calculate automatically">পরিমাণ গ্রামে দিন — ক্যালরি স্বয়ংক্রিয়ভাবে হিসাব হবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৪.</span>
         <span data-bn="সর্বোচ্চ ১৫টি উপকরণ যোগ করা যাবে। মোট ও প্রতি সার্ভিংয়ের ক্যালরি দেখাবে।" data-en="Up to 15 ingredients can be added. Total and per-serving calories are shown.">সর্বোচ্চ ১৫টি উপকরণ যোগ করা যাবে। মোট ও প্রতি সার্ভিংয়ের ক্যালরি দেখাবে।</span>
       </li>
     </ol>
@@ -209,8 +209,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: খিচুড়ির রেসিপি" data-en="Example 1: Khichuri recipe">উদাহরণ ১: খিচুড়ির রেসিপি</span>
         </p>
         <p class="text-gray-700 mt-1 text-sm">
@@ -220,8 +220,8 @@ const pageSchema = {
           <span data-bn="মোট: প্রায় ৬০০ kcal | প্রতি জন: ১৫০ kcal" data-en="Total: approx 600 kcal | Per serving: 150 kcal">মোট: প্রায় ৬০০ kcal | প্রতি জন: ১৫০ kcal</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: মুরগির ঝোল" data-en="Example 2: Chicken curry">উদাহরণ ২: মুরগির ঝোল</span>
         </p>
         <p class="text-gray-700 mt-1 text-sm">
@@ -231,8 +231,8 @@ const pageSchema = {
           <span data-bn="মোট: প্রায় ১১০০ kcal | প্রতি জন: ২৭৫ kcal" data-en="Total: approx 1100 kcal | Per serving: 275 kcal">মোট: প্রায় ১১০০ kcal | প্রতি জন: ২৭৫ kcal</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: সকালের নাস্তা হিসাব" data-en="Example 3: Breakfast calorie tracking">উদাহরণ ৩: সকালের নাস্তা হিসাব</span>
         </p>
         <p class="text-gray-700 mt-1 text-sm">
@@ -349,7 +349,7 @@ const pageSchema = {
             value="${ing.foodName.replace(/"/g, '&quot;')}"
             placeholder="খাবারের নাম / food name..."
             autocomplete="off"
-            class="w-full px-3 py-2.5 border-2 ${ing.foodId ? 'border-teal-400 bg-teal-50' : 'border-gray-300'} rounded-xl text-sm focus:border-teal-500 focus:outline-none"
+            class="w-full px-3 py-2.5 border-2 ${ing.foodId ? 'border-saffron-400 bg-saffron-50' : 'border-gray-300'} rounded-xl text-sm focus:border-saffron-500 focus:outline-none"
             data-idx="${idx}"
           />
         </div>
@@ -360,12 +360,12 @@ const pageSchema = {
             value="${ing.grams || ''}"
             placeholder="গ্রাম / g"
             min="1"
-            class="w-full px-3 py-2.5 border-2 border-gray-300 rounded-xl text-sm focus:border-teal-500 focus:outline-none"
+            class="w-full px-3 py-2.5 border-2 border-gray-300 rounded-xl text-sm focus:border-saffron-500 focus:outline-none"
             data-idx="${idx}"
           />
         </div>
         <div class="w-16 shrink-0 text-right" id="cal-display-${idx}">
-          ${ing.foodId && ing.grams > 0 ? `<span class="text-sm font-bold text-teal-700">${Math.round(ing.caloriesPer100 * ing.grams / 100)}</span><span class="text-xs text-gray-400"> kcal</span>` : ''}
+          ${ing.foodId && ing.grams > 0 ? `<span class="text-sm font-bold text-saffron-700">${Math.round(ing.caloriesPer100 * ing.grams / 100)}</span><span class="text-xs text-gray-400"> kcal</span>` : ''}
         </div>
         <button class="remove-btn shrink-0 text-gray-400 hover:text-red-500 text-xl leading-none px-1" data-idx="${idx}">×</button>
       </div>
@@ -417,7 +417,7 @@ const pageSchema = {
     ingredients[idx].foodId      = null;
     ingredients[idx].caloriesPer100 = 0;
     // Reset border without re-rendering the whole list
-    e.target.className = e.target.className.replace('border-teal-400 bg-teal-50', 'border-gray-300');
+    e.target.className = e.target.className.replace('border-saffron-400 bg-saffron-50', 'border-gray-300');
     updateCalDisplay(idx);
     showDropdown(e.target.value, idx, e.target);
     updateResult();
@@ -437,7 +437,7 @@ const pageSchema = {
     if (!el) return;
     if (ing.foodId && ing.grams > 0) {
       const cal = Math.round(ing.caloriesPer100 * ing.grams / 100);
-      el.innerHTML = `<span class="text-sm font-bold text-teal-700">${cal}</span><span class="text-xs text-gray-400"> kcal</span>`;
+      el.innerHTML = `<span class="text-sm font-bold text-saffron-700">${cal}</span><span class="text-xs text-gray-400"> kcal</span>`;
     } else {
       el.innerHTML = '';
     }
@@ -460,13 +460,13 @@ const pageSchema = {
 
     dropdown.innerHTML = matches.map(f => `
       <button
-        class="w-full text-left px-3 py-2.5 hover:bg-teal-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center gap-2"
+        class="w-full text-left px-3 py-2.5 hover:bg-saffron-50 text-sm border-b border-gray-100 last:border-0 flex justify-between items-center gap-2"
         data-food-id="${f.id}" data-food-bn="${f.bn.replace(/"/g, '&quot;')}"
         data-food-en="${f.en}" data-calories="${f.calories}"
         data-protein="${f.protein || 0}" data-carbs="${f.carbs || 0}" data-fat="${f.fat || 0}"
       >
         <span class="min-w-0 truncate"><span class="font-medium">${f.bn}</span> <span class="text-gray-400 text-xs">${f.en}</span></span>
-        <span class="shrink-0 text-teal-600 text-xs font-medium">${f.calories} kcal/100g</span>
+        <span class="shrink-0 text-saffron-600 text-xs font-medium">${f.calories} kcal/100g</span>
       </button>
     `).join('');
 
@@ -495,7 +495,7 @@ const pageSchema = {
       foodInput.value = bn + ' (' + en + ')';
       foodInput.className = foodInput.className
         .replace('border-gray-300', '')
-        .replace('border-teal-400 bg-teal-50', '') + ' border-teal-400 bg-teal-50';
+        .replace('border-saffron-400 bg-saffron-50', '') + ' border-saffron-400 bg-saffron-50';
     }
     updateCalDisplay(idx);
     updateResult();
@@ -534,12 +534,12 @@ const pageSchema = {
             <span class="text-gray-800 font-medium truncate max-w-[60%]">${ing.foodName}</span>
             <span class="flex gap-3 items-center shrink-0">
               <span class="text-gray-400 text-xs">${ing.grams}g</span>
-              <span class="font-bold text-teal-700">${cal} kcal</span>
+              <span class="font-bold text-saffron-700">${cal} kcal</span>
               <span class="text-gray-400 text-xs w-8 text-right">${pct}%</span>
             </span>
           </div>
           <div class="w-full bg-gray-100 rounded-full h-1.5">
-            <div class="bg-teal-500 h-1.5 rounded-full" style="width:${pct}%"></div>
+            <div class="bg-saffron-500 h-1.5 rounded-full" style="width:${pct}%"></div>
           </div>
         </div>`;
     }).join('');

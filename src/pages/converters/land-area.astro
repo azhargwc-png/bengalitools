@@ -99,7 +99,7 @@ const pageSchema = {
           placeholder="যেমন: 1"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none min-h-[52px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none min-h-[52px]"
         />
       </div>
       <div class="w-44">
@@ -108,7 +108,7 @@ const pageSchema = {
         </label>
         <select
           id="land-unit"
-          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[52px] bg-white"
+          class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-base focus:border-saffron-500 focus:outline-none min-h-[52px] bg-white"
         >
           <option value="bigha">বিঘা (Bigha)</option>
           <option value="katha">কাঠা (Katha)</option>
@@ -129,7 +129,7 @@ const pageSchema = {
         <span data-bn="রূপান্তরের ফলাফল" data-en="Conversion Results">রূপান্তরের ফলাফল</span>
       </p>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <div class="result-card bg-teal-600 text-white rounded-xl p-4" data-unit="bigha">
+        <div class="result-card bg-saffron-600 text-white rounded-xl p-4" data-unit="bigha">
           <p class="text-xs font-medium opacity-80 mb-1">বিঘা / Bigha</p>
           <p class="result-val text-xl font-bold">—</p>
         </div>
@@ -181,7 +181,7 @@ const pageSchema = {
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
         <thead>
-          <tr class="bg-teal-700 text-white">
+          <tr class="bg-saffron-700 text-white">
             <th class="p-3 text-left rounded-tl-xl"><span data-bn="একক" data-en="Unit">একক</span></th>
             <th class="p-3 text-right">বিঘা</th>
             <th class="p-3 text-right">কাঠা</th>
@@ -192,7 +192,7 @@ const pageSchema = {
         <tbody>
           <tr class="bg-white border-b border-gray-200">
             <td class="p-3 font-medium">১ বিঘা</td>
-            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right font-bold text-saffron-700">১</td>
             <td class="p-3 text-right">২০</td>
             <td class="p-3 text-right">৩৩.০৬</td>
             <td class="p-3 text-right">১৪,৪০০</td>
@@ -200,7 +200,7 @@ const pageSchema = {
           <tr class="bg-gray-50 border-b border-gray-200">
             <td class="p-3 font-medium">১ কাঠা</td>
             <td class="p-3 text-right">০.০৫</td>
-            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right font-bold text-saffron-700">১</td>
             <td class="p-3 text-right">১.৬৫</td>
             <td class="p-3 text-right">৭২০</td>
           </tr>
@@ -215,7 +215,7 @@ const pageSchema = {
             <td class="p-3 font-medium">১ ডেসিমেল</td>
             <td class="p-3 text-right">০.০৩০২</td>
             <td class="p-3 text-right">০.৬০৫</td>
-            <td class="p-3 text-right font-bold text-teal-700">১</td>
+            <td class="p-3 text-right font-bold text-saffron-700">১</td>
             <td class="p-3 text-right">৪৩৫.৬</td>
           </tr>
           <tr class="bg-white border-b border-gray-200">
@@ -244,15 +244,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="ড্রপডাউন থেকে আপনার এককটি বেছে নিন (যেমন: বিঘা)" data-en="Select your unit from the dropdown (e.g. Bigha)">ড্রপডাউন থেকে আপনার এককটি বেছে নিন (যেমন: বিঘা)</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="পরিমাণ লিখুন (যেমন: ২.৫)" data-en="Enter the amount (e.g. 2.5)">পরিমাণ লিখুন (যেমন: ২.৫)</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="সব এককে রূপান্তর তাৎক্ষণিকভাবে দেখুন" data-en="See all unit conversions instantly">সব এককে রূপান্তর তাৎক্ষণিকভাবে দেখুন</span>
       </li>
     </ol>
@@ -389,7 +389,7 @@ const pageSchema = {
 
       // Highlight active unit card in teal
       if (u === unit) {
-        card.className = 'result-card bg-teal-600 text-white rounded-xl p-4';
+        card.className = 'result-card bg-saffron-600 text-white rounded-xl p-4';
         card.querySelector('p:first-child')!.className = 'text-xs font-medium opacity-80 mb-1';
         card.querySelector('.result-val')!.className = 'result-val text-xl font-bold';
       } else {

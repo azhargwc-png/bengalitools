@@ -96,7 +96,7 @@ const pageSchema = {
           id="celsius-input"
           placeholder="যেমন: 37"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none"
         />
       </div>
       <div>
@@ -108,12 +108,12 @@ const pageSchema = {
           id="fahrenheit-input"
           placeholder="যেমন: 98.6"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-teal-500 focus:outline-none"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-xl focus:border-saffron-500 focus:outline-none"
         />
       </div>
     </div>
     <div id="result-display" class="mt-4 text-center hidden">
-      <p class="text-4xl font-bold text-teal-700" id="result-main"></p>
+      <p class="text-4xl font-bold text-saffron-700" id="result-main"></p>
       <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
     </div>
     <div id="temp-context-display" class="mt-2 text-sm text-amber-700 font-medium text-center bg-amber-50 rounded-lg py-2 px-4 hidden"></div>
@@ -162,7 +162,7 @@ const pageSchema = {
     <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="সাধারণ তাপমাত্রা রেফারেন্স" data-en="Common Temperature Reference">সাধারণ তাপমাত্রা রেফারেন্স</span></h2>
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
-        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="সেলসিয়াস (°C)" data-en="°C">সেলসিয়াস (°C)</span></th><th class="p-3 text-left"><span data-bn="ফারেনহাইট (°F)" data-en="°F">ফারেনহাইট (°F)</span></th><th class="p-3 text-left"><span data-bn="প্রসঙ্গ" data-en="Context">প্রসঙ্গ</span></th></tr></thead>
+        <thead><tr class="bg-saffron-700 text-white"><th class="p-3 text-left"><span data-bn="সেলসিয়াস (°C)" data-en="°C">সেলসিয়াস (°C)</span></th><th class="p-3 text-left"><span data-bn="ফারেনহাইট (°F)" data-en="°F">ফারেনহাইট (°F)</span></th><th class="p-3 text-left"><span data-bn="প্রসঙ্গ" data-en="Context">প্রসঙ্গ</span></th></tr></thead>
         <tbody>
           <tr class="bg-white border-b border-gray-200"><td class="p-3">-10°C</td><td class="p-3 font-bold">14°F</td><td class="p-3"><span data-bn="ঠান্ডা ঘর" data-en="Cold room">ঠান্ডা ঘর</span></td></tr>
           <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">0°C</td><td class="p-3 font-bold">32°F</td><td class="p-3"><span data-bn="পানি জমার বিন্দু" data-en="Water freezing point">পানি জমার বিন্দু</span></td></tr>
@@ -186,15 +186,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="সেলসিয়াস ঘরে তাপমাত্রা লিখুন" data-en="Enter temperature in the Celsius box">সেলসিয়াস ঘরে তাপমাত্রা লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="ফারেনহাইট তাৎক্ষণিকভাবে দেখাবে" data-en="Fahrenheit appears instantly">ফারেনহাইট তাৎক্ষণিকভাবে দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="উপরের বাটনগুলো ক্লিক করে সাধারণ তাপমাত্রা সরাসরি দেখুন" data-en="Click the quick-reference buttons above for common temperatures">উপরের বাটনগুলো ক্লিক করে সাধারণ তাপমাত্রা সরাসরি দেখুন</span>
       </li>
     </ol>
@@ -218,8 +218,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" শরীরের স্বাভাবিক তাপমাত্রা ৩৭°C" data-en=" Normal body temperature 37°C"> শরীরের স্বাভাবিক তাপমাত্রা ৩৭°C</span>
         </p>
@@ -230,8 +230,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ৯৮.৬°F" data-en="Result: 98.6°F">ফলাফল: ৯৮.৬°F</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" পানি ফুটার তাপমাত্রা ১০০°C" data-en=" Water boiling point 100°C"> পানি ফুটার তাপমাত্রা ১০০°C</span>
         </p>
@@ -242,8 +242,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ২১২°F" data-en="Result: 212°F">ফলাফল: ২১২°F</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" পানি জমার তাপমাত্রা ০°C" data-en=" Water freezing point 0°C"> পানি জমার তাপমাত্রা ০°C</span>
         </p>

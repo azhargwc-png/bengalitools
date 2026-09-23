@@ -98,7 +98,7 @@ const pageSchema = {
           placeholder="যেমন: 5.5"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
       <div>
@@ -111,7 +111,7 @@ const pageSchema = {
           placeholder="যেমন: 1.68"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
     </div>
@@ -131,7 +131,7 @@ const pageSchema = {
             placeholder="5"
             min="0"
             step="1"
-            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[44px]"
+            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-saffron-500 focus:outline-none min-h-[44px]"
           />
         </div>
         <div>
@@ -145,14 +145,14 @@ const pageSchema = {
             min="0"
             max="11"
             step="any"
-            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-teal-500 focus:outline-none min-h-[44px]"
+            class="w-full px-3 py-2 border-2 border-gray-300 rounded-xl text-base focus:border-saffron-500 focus:outline-none min-h-[44px]"
           />
         </div>
       </div>
       <div id="ft-in-result" class="mt-2 text-sm text-amber-700 font-medium bg-amber-50 rounded-lg py-2 px-4 min-h-[36px]"></div>
     </div>
     <div id="result-display" class="mt-4 text-center hidden">
-      <p class="text-4xl font-bold text-teal-700 text-center" id="result-main"></p>
+      <p class="text-4xl font-bold text-saffron-700 text-center" id="result-main"></p>
       <p class="text-sm text-gray-500 mt-1" id="formula-display"></p>
     </div>
     <button onclick="resetTool()" class="mt-3 w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors text-sm"><span data-bn="পরিষ্কার করুন ✕" data-en="Clear ✕">পরিষ্কার করুন ✕</span></button>
@@ -163,7 +163,7 @@ const pageSchema = {
     <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="দ্রুত রূপান্তর টেবিল" data-en="Quick Reference Table">দ্রুত রূপান্তর টেবিল</span></h2>
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
-        <thead><tr class="bg-teal-700 text-white"><th class="p-3 text-left"><span data-bn="ফুট (feet)" data-en="Feet">ফুট (feet)</span></th><th class="p-3 text-left"><span data-bn="মিটার (meters)" data-en="Meters">মিটার (meters)</span></th></tr></thead>
+        <thead><tr class="bg-saffron-700 text-white"><th class="p-3 text-left"><span data-bn="ফুট (feet)" data-en="Feet">ফুট (feet)</span></th><th class="p-3 text-left"><span data-bn="মিটার (meters)" data-en="Meters">মিটার (meters)</span></th></tr></thead>
         <tbody>
           <tr class="bg-white border-b border-gray-200"><td class="p-3">1 ft</td><td class="p-3 font-bold">0.305 m</td></tr>
           <tr class="bg-gray-50 border-b border-gray-200"><td class="p-3">2 ft</td><td class="p-3 font-bold">0.610 m</td></tr>
@@ -184,15 +184,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="ফুট ঘরে পরিমাপ লিখুন, মিটার তাৎক্ষণিকভাবে দেখাবে" data-en="Enter feet — meters appear instantly">ফুট ঘরে পরিমাপ লিখুন, মিটার তাৎক্ষণিকভাবে দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="মিটার ঘরে লিখলে ফুটে রূপান্তর হবে" data-en="Enter meters to convert to feet">মিটার ঘরে লিখলে ফুটে রূপান্তর হবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="নিচের বক্সে ফুট ও ইঞ্চি আলাদাভাবে লিখে মিটার বের করুন (যেমন: ৫ ফুট ৬ ইঞ্চি)" data-en="Use the feet + inches boxes for height like 5 feet 6 inches">নিচের বক্সে ফুট ও ইঞ্চি আলাদাভাবে লিখে মিটার বের করুন (যেমন: ৫ ফুট ৬ ইঞ্চি)</span>
       </li>
     </ol>
@@ -216,8 +216,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" একজন ব্যক্তির উচ্চতা ৫.৫ ফুট" data-en=" Person's height 5.5 feet"> একজন ব্যক্তির উচ্চতা ৫.৫ ফুট</span>
         </p>
@@ -228,8 +228,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ১.৬৮ মিটার" data-en="Result: 1.68 meters">ফলাফল: ১.৬৮ মিটার</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" ঘরের দৈর্ঘ্য ১০ ফুট" data-en=" Room length 10 feet"> ঘরের দৈর্ঘ্য ১০ ফুট</span>
         </p>
@@ -240,8 +240,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: ৩.০৫ মিটার" data-en="Result: 3.05 meters">ফলাফল: ৩.০৫ মিটার</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" একটি বিল্ডিংয়ের উচ্চতা ১০০ ফুট" data-en=" Building height 100 feet"> একটি বিল্ডিংয়ের উচ্চতা ১০০ ফুট</span>
         </p>

@@ -92,14 +92,14 @@ const pageSchema = {
         <input
           type="date"
           id="date-input"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
 
       <!-- Today button -->
       <button
         onclick="setToday()"
-        class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-sm font-medium transition-colors"
+        class="px-4 py-2 bg-saffron-700 hover:bg-saffron-800 text-white rounded-lg text-sm font-medium transition-colors"
       >
         <span data-bn="আজকের তারিখ" data-en="Today's Date">আজকের তারিখ</span>
       </button>
@@ -107,10 +107,10 @@ const pageSchema = {
 
     <!-- Result -->
     <div id="calendar-result" class="mt-6 hidden space-y-3">
-      <div class="bg-teal-50 rounded-xl p-5 border border-teal-200 text-center">
-        <p class="text-sm text-teal-600 mb-1" data-bn="বাংলা তারিখ" data-en="Bengali Date">বাংলা তারিখ</p>
-        <p id="bn-date" class="text-3xl font-bold text-teal-800"></p>
-        <p id="bn-month-name" class="text-lg text-teal-700 mt-1"></p>
+      <div class="bg-saffron-50 rounded-xl p-5 border border-saffron-200 text-center">
+        <p class="text-sm text-saffron-600 mb-1" data-bn="বাংলা তারিখ" data-en="Bengali Date">বাংলা তারিখ</p>
+        <p id="bn-date" class="text-3xl font-bold text-saffron-800"></p>
+        <p id="bn-month-name" class="text-lg text-saffron-700 mt-1"></p>
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div class="bg-white rounded-xl p-4 border border-gray-200 text-center">
@@ -135,7 +135,7 @@ const pageSchema = {
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-sm">
         <thead>
-          <tr class="bg-teal-700 text-white">
+          <tr class="bg-saffron-700 text-white">
             <th class="p-3 text-left rounded-tl-lg"><span data-bn="বাংলা মাস" data-en="Bengali Month">বাংলা মাস</span></th>
             <th class="p-3 text-left"><span data-bn="ইংরেজি উচ্চারণ" data-en="English Pronunciation">ইংরেজি উচ্চারণ</span></th>
             <th class="p-3 text-left rounded-tr-lg"><span data-bn="আনুমানিক সময়" data-en="Approx. Period">আনুমানিক সময়</span></th>
@@ -157,7 +157,7 @@ const pageSchema = {
             ['চৈত্র', 'Choitro', 'মার্চ–এপ্রিল / March–April'],
           ].map((row, i) => (
             <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-              <td class="p-3 font-bold text-teal-700">{row[0]}</td>
+              <td class="p-3 font-bold text-saffron-700">{row[0]}</td>
               <td class="p-3 text-gray-700">{row[1]}</td>
               <td class="p-3 text-gray-600 text-xs">{row[2]}</td>
             </tr>
@@ -171,9 +171,9 @@ const pageSchema = {
   <section class="mb-8">
     <h2 class="text-xl font-bold text-gray-900 mb-4"><span data-bn="কীভাবে ব্যবহার করবেন" data-en="How to Use">কীভাবে ব্যবহার করবেন</span></h2>
     <ol class="space-y-3 text-gray-700">
-      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">১.</span><span data-bn="ইংরেজি তারিখ নির্বাচন করুন" data-en="Select an English date">ইংরেজি তারিখ নির্বাচন করুন</span></li>
-      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">২.</span><span data-bn="বা 'আজকের তারিখ' বাটনে ক্লিক করুন" data-en="Or click the 'Today's Date' button">বা 'আজকের তারিখ' বাটনে ক্লিক করুন</span></li>
-      <li class="flex gap-3"><span class="font-bold text-teal-700 min-w-[24px]">৩.</span><span data-bn="বাংলা তারিখ, মাস ও বছর দেখুন" data-en="See the Bengali date, month and year">বাংলা তারিখ, মাস ও বছর দেখুন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">১.</span><span data-bn="ইংরেজি তারিখ নির্বাচন করুন" data-en="Select an English date">ইংরেজি তারিখ নির্বাচন করুন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">২.</span><span data-bn="বা 'আজকের তারিখ' বাটনে ক্লিক করুন" data-en="Or click the 'Today's Date' button">বা 'আজকের তারিখ' বাটনে ক্লিক করুন</span></li>
+      <li class="flex gap-3"><span class="font-bold text-saffron-700 min-w-[24px]">৩.</span><span data-bn="বাংলা তারিখ, মাস ও বছর দেখুন" data-en="See the Bengali date, month and year">বাংলা তারিখ, মাস ও বছর দেখুন</span></li>
     </ol>
   </section>
 

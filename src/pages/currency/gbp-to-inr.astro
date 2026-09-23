@@ -90,7 +90,7 @@ const pageSchema = {
     <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
       <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
       <div>
-        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p id="live-rate" class="text-2xl font-bold text-saffron-700">লোড হচ্ছে...</p>
         <div id="rate-change" class="text-sm mt-1 min-h-[20px]"></div>
         <p class="text-sm text-gray-500">
           <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
@@ -108,7 +108,7 @@ const pageSchema = {
           placeholder="যেমন: 100"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
       <div>
@@ -119,7 +119,7 @@ const pageSchema = {
           placeholder="রুপি"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
     </div>
@@ -137,15 +137,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="GBP ঘরে পাউন্ডের পরিমাণ লিখুন" data-en="Enter the pound amount in the GBP box">GBP ঘরে পাউন্ডের পরিমাণ লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="রুপি থেকে পাউন্ডও বের করতে INR ঘরে টাইপ করুন" data-en="Type in the INR box to convert rupees back to pounds">রুপি থেকে পাউন্ডও বের করতে INR ঘরে টাইপ করুন</span>
       </li>
     </ol>
@@ -169,8 +169,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" লন্ডন থেকে ১০০ পাউন্ড রেমিট্যান্স" data-en=" £100 remittance from London"> লন্ডন থেকে ১০০ পাউন্ড রেমিট্যান্স</span>
         </p>
@@ -181,8 +181,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: প্রায় ₹১০,৮০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹10,800 (at current rate)">ফলাফল: প্রায় ₹১০,৮০০ (বর্তমান রেট অনুযায়ী)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" যুক্তরাজ্যে ৫০০ পাউন্ড মাসিক বাজেট" data-en=" £500 monthly budget in UK"> যুক্তরাজ্যে ৫০০ পাউন্ড মাসিক বাজেট</span>
         </p>
@@ -193,8 +193,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: প্রায় ₹৫৪,০০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹54,000 (at current rate)">ফলাফল: প্রায় ₹৫৪,০০০ (বর্তমান রেট অনুযায়ী)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" ইউকে ভিসার ১০০০ পাউন্ড ফি" data-en=" £1,000 UK visa fee"> ইউকে ভিসার ১০০০ পাউন্ড ফি</span>
         </p>

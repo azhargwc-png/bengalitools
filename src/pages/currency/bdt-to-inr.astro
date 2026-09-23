@@ -90,7 +90,7 @@ const pageSchema = {
     <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
       <span id="rate-status" class="text-gray-500 text-sm">লোড হচ্ছে...</span>
       <div>
-        <p id="live-rate" class="text-2xl font-bold text-teal-700">লোড হচ্ছে...</p>
+        <p id="live-rate" class="text-2xl font-bold text-saffron-700">লোড হচ্ছে...</p>
         <p class="text-xs text-gray-500">
           <span data-bn="সর্বশেষ আপডেট:" data-en="Last updated:">সর্বশেষ আপডেট:</span>
           <span id="last-updated">—</span>
@@ -109,7 +109,7 @@ const pageSchema = {
           placeholder="যেমন: 1000"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
       <div>
@@ -120,7 +120,7 @@ const pageSchema = {
           placeholder="রুপি"
           min="0"
           step="any"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
     </div>
@@ -138,15 +138,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="BDT ঘরে বাংলাদেশি টাকার পরিমাণ লিখুন" data-en="Enter the taka amount in the BDT box">BDT ঘরে বাংলাদেশি টাকার পরিমাণ লিখুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="লাইভ রেট অনুযায়ী ভারতীয় রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে" data-en="The Indian Rupee amount appears instantly based on the live rate">লাইভ রেট অনুযায়ী ভারতীয় রুপির পরিমাণ তাৎক্ষণিকভাবে দেখাবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="ভারতীয় রুপি থেকে বাংলাদেশি টাকাও বের করতে INR ঘরে টাইপ করুন" data-en="Type in the INR box to convert Indian Rupees to Bangladesh Taka">ভারতীয় রুপি থেকে বাংলাদেশি টাকাও বের করতে INR ঘরে টাইপ করুন</span>
       </li>
     </ol>
@@ -170,8 +170,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১:" data-en="Example 1:">উদাহরণ ১:</span>
           <span data-bn=" কলকাতায় চিকিৎসার জন্য ৫,০০০ টাকা" data-en=" ৳5,000 for medical trip to Kolkata"> কলকাতায় চিকিৎসার জন্য ৫,০০০ টাকা</span>
         </p>
@@ -182,8 +182,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: প্রায় ₹৩,৮০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹3,800 (at current rate)">ফলাফল: প্রায় ₹৩,৮০০ (বর্তমান রেট অনুযায়ী)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২:" data-en="Example 2:">উদাহরণ ২:</span>
           <span data-bn=" ভারতে ভ্রমণের ১০,০০০ টাকা বাজেট" data-en=" ৳10,000 travel budget for India"> ভারতে ভ্রমণের ১০,০০০ টাকা বাজেট</span>
         </p>
@@ -194,8 +194,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: প্রায় ₹৭,৬০০ (বর্তমান রেট অনুযায়ী)" data-en="Result: approx ₹7,600 (at current rate)">ফলাফল: প্রায় ₹৭,৬০০ (বর্তমান রেট অনুযায়ী)</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩:" data-en="Example 3:">উদাহরণ ৩:</span>
           <span data-bn=" আন্তর্জাতিক লেনদেনে ৫০,০০০ টাকা" data-en=" ৳50,000 international transaction"> আন্তর্জাতিক লেনদেনে ৫০,০০০ টাকা</span>
         </p>

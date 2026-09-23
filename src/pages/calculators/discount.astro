@@ -89,13 +89,13 @@ const pageSchema = {
 
     <div class="flex items-center gap-3 mb-6">
       <span class="text-sm font-medium text-gray-700" data-bn="মুদ্রা:" data-en="Currency:">মুদ্রা:</span>
-      <button id="btn-inr" class="px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all">₹ INR</button>
+      <button id="btn-inr" class="px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all">₹ INR</button>
       <button id="btn-bdt" class="px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all">৳ BDT</button>
     </div>
 
     <!-- Mode Tabs -->
     <div class="flex gap-2 mb-6">
-      <button id="tab-mode1" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all">
+      <button id="tab-mode1" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all">
         <span data-bn="দাম + ছাড়% → চূড়ান্ত দাম" data-en="Price + Discount% → Final Price">দাম + ছাড়% → চূড়ান্ত দাম</span>
       </button>
       <button id="tab-mode2" class="flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all">
@@ -109,15 +109,15 @@ const pageSchema = {
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="m1-price">
             <span data-bn="মূল দাম" data-en="Original Price">মূল দাম</span>
-            <span id="m1-currency-label" class="text-teal-600 ml-1">₹</span>
+            <span id="m1-currency-label" class="text-saffron-600 ml-1">₹</span>
           </label>
-          <input type="number" id="m1-price" placeholder="যেমন: 1000" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="m1-price" placeholder="যেমন: 1000" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="m1-discount">
             <span data-bn="ছাড়ের হার (%)" data-en="Discount Rate (%)">ছাড়ের হার (%)</span>
           </label>
-          <input type="number" id="m1-discount" placeholder="যেমন: 20" min="0" max="100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="m1-discount" placeholder="যেমন: 20" min="0" max="100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
       <div id="m1-result" class="hidden">
@@ -126,7 +126,7 @@ const pageSchema = {
             <span class="text-gray-500 line-through text-lg" id="m1-original-display"></span>
             <span class="bg-red-100 text-red-700 text-sm font-bold px-3 py-1 rounded-full" id="m1-pct-badge"></span>
           </div>
-          <p class="text-4xl font-bold text-teal-700 mb-3" id="m1-final-price"></p>
+          <p class="text-4xl font-bold text-saffron-700 mb-3" id="m1-final-price"></p>
           <div class="grid grid-cols-2 gap-3 text-sm">
             <div class="bg-red-50 rounded-lg p-3 text-center">
               <p class="text-gray-500 mb-1"><span data-bn="ছাড়ের পরিমাণ" data-en="Discount Amount">ছাড়ের পরিমাণ</span></p>
@@ -147,30 +147,30 @@ const pageSchema = {
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="m2-original">
             <span data-bn="মূল দাম" data-en="Original Price">মূল দাম</span>
-            <span id="m2-currency-label" class="text-teal-600 ml-1">₹</span>
+            <span id="m2-currency-label" class="text-saffron-600 ml-1">₹</span>
           </label>
-          <input type="number" id="m2-original" placeholder="যেমন: 1200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="m2-original" placeholder="যেমন: 1200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="m2-sale">
             <span data-bn="বিক্রয় দাম" data-en="Sale Price">বিক্রয় দাম</span>
-            <span id="m2-currency-label2" class="text-teal-600 ml-1">₹</span>
+            <span id="m2-currency-label2" class="text-saffron-600 ml-1">₹</span>
           </label>
-          <input type="number" id="m2-sale" placeholder="যেমন: 900" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="m2-sale" placeholder="যেমন: 900" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
       <div id="m2-result" class="hidden">
         <div class="bg-white rounded-xl p-5 border border-gray-200 text-center">
           <p class="text-sm text-gray-500 mb-1"><span data-bn="ছাড়ের হার" data-en="Discount Percentage">ছাড়ের হার</span></p>
-          <p class="text-5xl font-bold text-teal-700 mb-3" id="m2-pct"></p>
+          <p class="text-5xl font-bold text-saffron-700 mb-3" id="m2-pct"></p>
           <div class="grid grid-cols-2 gap-3 text-sm mt-2">
             <div class="bg-red-50 rounded-lg p-3 text-center">
               <p class="text-gray-500 mb-1"><span data-bn="সাশ্রয়" data-en="You Save">সাশ্রয়</span></p>
               <p class="font-bold text-red-600 text-xl" id="m2-saved"></p>
             </div>
-            <div class="bg-teal-50 rounded-lg p-3 text-center">
+            <div class="bg-saffron-50 rounded-lg p-3 text-center">
               <p class="text-gray-500 mb-1"><span data-bn="চূড়ান্ত দাম" data-en="Final Price">চূড়ান্ত দাম</span></p>
-              <p class="font-bold text-teal-600 text-xl" id="m2-final"></p>
+              <p class="font-bold text-saffron-600 text-xl" id="m2-final"></p>
             </div>
           </div>
         </div>
@@ -191,15 +191,15 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="মুদ্রা বেছে নিন — ₹ ভারতীয় রুপি বা ৳ বাংলাদেশি টাকা" data-en="Choose currency — ₹ Indian Rupee or ৳ Bangladeshi Taka">মুদ্রা বেছে নিন — ₹ ভারতীয় রুপি বা ৳ বাংলাদেশি টাকা</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="মোড বেছে নিন: দাম ও ছাড়% দিলে চূড়ান্ত দাম বের হবে, অথবা দুটো দাম দিলে ছাড়% বের হবে" data-en="Choose mode: enter price and discount% to get final price, or enter two prices to find discount%">মোড বেছে নিন: দাম ও ছাড়% দিলে চূড়ান্ত দাম বের হবে, অথবা দুটো দাম দিলে ছাড়% বের হবে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="সংখ্যা দিন — ফলাফল সঙ্গে সঙ্গে দেখাবে" data-en="Enter the numbers — result appears instantly">সংখ্যা দিন — ফলাফল সঙ্গে সঙ্গে দেখাবে</span>
       </li>
     </ol>
@@ -223,8 +223,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: জামার উপর ৩০% ছাড়" data-en="Example 1: 30% off a shirt">উদাহরণ ১: জামার উপর ৩০% ছাড়</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -234,8 +234,8 @@ const pageSchema = {
           <span data-bn="চূড়ান্ত দাম: ₹৫৬০ | সাশ্রয়: ₹২৪০" data-en="Final price: ₹560 | You save: ₹240">চূড়ান্ত দাম: ₹৫৬০ | সাশ্রয়: ₹২৪০</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: ফোনের উপর ছাড়%" data-en="Example 2: Finding discount% on a phone">উদাহরণ ২: ফোনের উপর ছাড়%</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -245,8 +245,8 @@ const pageSchema = {
           <span data-bn="ছাড়: ২৫% | সাশ্রয়: ₹৫,০০০" data-en="Discount: 25% | Saved: ₹5,000">ছাড়: ২৫% | সাশ্রয়: ₹৫,০০০</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: বিগ সেলে ৫০% ছাড়" data-en="Example 3: 50% off in a big sale">উদাহরণ ৩: বিগ সেলে ৫০% ছাড়</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -360,12 +360,12 @@ const pageSchema = {
   }
 
   btnInr.addEventListener('click', () => {
-    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all';
+    btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all';
     btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     setCurrency('₹');
   });
   btnBdt.addEventListener('click', () => {
-    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-teal-600 text-white transition-all';
+    btnBdt.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-saffron-600 text-white transition-all';
     btnInr.className = 'px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     setCurrency('৳');
   });
@@ -377,13 +377,13 @@ const pageSchema = {
   const mode2 = document.getElementById('mode2')!;
 
   tabMode1.addEventListener('click', () => {
-    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all';
+    tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all';
     tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     mode1.classList.remove('hidden');
     mode2.classList.add('hidden');
   });
   tabMode2.addEventListener('click', () => {
-    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all';
+    tabMode2.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all';
     tabMode1.className = 'flex-1 py-2 px-4 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all';
     mode2.classList.remove('hidden');
     mode1.classList.add('hidden');

@@ -89,7 +89,7 @@ const pageSchema = {
 
     <!-- Calculator 1: X is what % of Y -->
     <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
-      <h3 class="text-lg font-bold text-teal-700 mb-4">
+      <h3 class="text-lg font-bold text-saffron-700 mb-4">
         <span data-bn="X, Y-এর কত শতাংশ?" data-en="X is what % of Y?">X, Y-এর কত শতাংশ?</span>
       </h3>
       <div class="grid grid-cols-2 gap-4 mb-4">
@@ -97,27 +97,27 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c1-x">
             <span data-bn="X (মান)" data-en="X (value)">X (মান)</span>
           </label>
-          <input type="number" id="c1-x" placeholder="যেমন: 25" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c1-x" placeholder="যেমন: 25" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c1-y">
             <span data-bn="Y (মোট)" data-en="Y (total)">Y (মোট)</span>
           </label>
-          <input type="number" id="c1-y" placeholder="যেমন: 200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c1-y" placeholder="যেমন: 200" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
-      <div id="c1-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+      <div id="c1-result" class="hidden bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
         <p class="text-sm text-gray-500 mb-1">
           <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
         </p>
-        <p id="c1-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c1-answer" class="text-4xl font-bold text-saffron-700"></p>
         <p id="c1-formula" class="text-sm text-gray-500 mt-1"></p>
       </div>
     </div>
 
     <!-- Calculator 2: What is X% of Y -->
     <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
-      <h3 class="text-lg font-bold text-teal-700 mb-4">
+      <h3 class="text-lg font-bold text-saffron-700 mb-4">
         <span data-bn="Y-এর X% কত?" data-en="What is X% of Y?">Y-এর X% কত?</span>
       </h3>
       <div class="grid grid-cols-2 gap-4 mb-4">
@@ -125,27 +125,27 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c2-x">
             <span data-bn="X (শতাংশ %)" data-en="X (percentage %)">X (শতাংশ %)</span>
           </label>
-          <input type="number" id="c2-x" placeholder="যেমন: 15" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c2-x" placeholder="যেমন: 15" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c2-y">
             <span data-bn="Y (মোট মান)" data-en="Y (total value)">Y (মোট মান)</span>
           </label>
-          <input type="number" id="c2-y" placeholder="যেমন: 500" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c2-y" placeholder="যেমন: 500" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
-      <div id="c2-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+      <div id="c2-result" class="hidden bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
         <p class="text-sm text-gray-500 mb-1">
           <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
         </p>
-        <p id="c2-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c2-answer" class="text-4xl font-bold text-saffron-700"></p>
         <p id="c2-formula" class="text-sm text-gray-500 mt-1"></p>
       </div>
     </div>
 
     <!-- Calculator 3: Percentage Change -->
     <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
-      <h3 class="text-lg font-bold text-teal-700 mb-4">
+      <h3 class="text-lg font-bold text-saffron-700 mb-4">
         <span data-bn="X থেকে Y-এ কত % পরিবর্তন?" data-en="% change from X to Y?">X থেকে Y-এ কত % পরিবর্তন?</span>
       </h3>
       <div class="grid grid-cols-2 gap-4 mb-4">
@@ -153,20 +153,20 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c3-x">
             <span data-bn="X (আগের মান)" data-en="X (original value)">X (আগের মান)</span>
           </label>
-          <input type="number" id="c3-x" placeholder="যেমন: 100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c3-x" placeholder="যেমন: 100" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="c3-y">
             <span data-bn="Y (নতুন মান)" data-en="Y (new value)">Y (নতুন মান)</span>
           </label>
-          <input type="number" id="c3-y" placeholder="যেমন: 125" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="c3-y" placeholder="যেমন: 125" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
-      <div id="c3-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+      <div id="c3-result" class="hidden bg-saffron-50 border border-saffron-200 rounded-xl p-4 text-center">
         <p class="text-sm text-gray-500 mb-1">
           <span data-bn="ফলাফল" data-en="Result">ফলাফল</span>
         </p>
-        <p id="c3-answer" class="text-4xl font-bold text-teal-700"></p>
+        <p id="c3-answer" class="text-4xl font-bold text-saffron-700"></p>
         <p id="c3-label" class="text-sm font-semibold mt-1"></p>
         <p id="c3-formula" class="text-sm text-gray-500 mt-1"></p>
       </div>
@@ -181,19 +181,19 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="প্রথম ক্যালকুলেটর: X এবং Y দিন — X, Y-এর কত শতাংশ তা জানতে" data-en="First calculator: Enter X and Y to find what percentage X is of Y">প্রথম ক্যালকুলেটর: X এবং Y দিন — X, Y-এর কত শতাংশ তা জানতে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="দ্বিতীয় ক্যালকুলেটর: শতাংশ ও মোট মান দিন — ওই শতাংশ পরিমাণ বের করতে" data-en="Second calculator: Enter the percentage and total value to find the amount">দ্বিতীয় ক্যালকুলেটর: শতাংশ ও মোট মান দিন — ওই শতাংশ পরিমাণ বের করতে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="তৃতীয় ক্যালকুলেটর: আগের ও নতুন মান দিন — পার্থক্যের শতাংশ বের করতে" data-en="Third calculator: Enter old and new values to find the percentage change">তৃতীয় ক্যালকুলেটর: আগের ও নতুন মান দিন — পার্থক্যের শতাংশ বের করতে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৪.</span>
         <span data-bn="সব হিসাব রিয়েল-টাইমে আপডেট হয়, কোনো বাটন চাপতে হয় না" data-en="All calculations update in real time — no button press needed">সব হিসাব রিয়েল-টাইমে আপডেট হয়, কোনো বাটন চাপতে হয় না</span>
       </li>
     </ol>
@@ -217,8 +217,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: পরীক্ষার নম্বর" data-en="Example 1: Exam score percentage">উদাহরণ ১: পরীক্ষার নম্বর</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -228,8 +228,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: (৭৫ ÷ ১০০) × ১০০ = ৭৫%" data-en="Result: (75 ÷ 100) × 100 = 75%">ফলাফল: (৭৫ ÷ ১০০) × ১০০ = ৭৫%</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: দামের উপর ছাড়" data-en="Example 2: Discount on price">উদাহরণ ২: দামের উপর ছাড়</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -239,8 +239,8 @@ const pageSchema = {
           <span data-bn="ফলাফল: (২০ ÷ ১০০) × ৫০০ = ১০০ টাকা ছাড়" data-en="Result: (20 ÷ 100) × 500 = ₹100 discount">ফলাফল: (২০ ÷ ১০০) × ৫০০ = ১০০ টাকা ছাড়</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: দামের পরিবর্তন" data-en="Example 3: Price change">উদাহরণ ৩: দামের পরিবর্তন</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -405,7 +405,7 @@ const pageSchema = {
       } else {
         c3label.textContent = '— কোনো পরিবর্তন নেই / No change';
         c3label.className = 'text-sm font-semibold mt-1 text-gray-500';
-        c3answer.className = 'text-4xl font-bold text-teal-700';
+        c3answer.className = 'text-4xl font-bold text-saffron-700';
       }
       c3formula.textContent = `((${y} - ${x}) ÷ ${x}) × 100 = ${change.toFixed(2)}%`;
       c3result.classList.remove('hidden');

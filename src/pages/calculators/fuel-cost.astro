@@ -97,7 +97,7 @@ const pageSchema = {
           type="number"
           id="fc-distance"
           placeholder="যেমন: 180"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
 
@@ -111,7 +111,7 @@ const pageSchema = {
           id="fc-mileage"
           placeholder="যেমন: 15"
           value="15"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
       </div>
 
@@ -125,7 +125,7 @@ const pageSchema = {
           id="fc-price"
           placeholder="যেমন: 100"
           value="100"
-          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]"
+          class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]"
         />
         <p class="text-xs text-gray-400 mt-1">
           <span data-bn="কলকাতায় বর্তমান দাম প্রায় ₹১০৩/লিটার" data-en="Current Kolkata petrol price approx ₹103/litre">কলকাতায় বর্তমান দাম প্রায় ₹১০৩/লিটার</span>
@@ -139,16 +139,16 @@ const pageSchema = {
         <span data-bn="জনপ্রিয় যাত্রা বেছে নিন" data-en="Select a popular route">জনপ্রিয় যাত্রা বেছে নিন</span>
       </p>
       <div class="flex flex-wrap gap-2">
-        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="180">
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all" data-dist="180">
           <span data-bn="কলকাতা → দিঘা (১৮০ km)" data-en="Kolkata → Digha (180 km)">কলকাতা → দিঘা (১৮০ km)</span>
         </button>
-        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="570">
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all" data-dist="570">
           <span data-bn="কলকাতা → শিলিগুড়ি (৫৭০ km)" data-en="Kolkata → Siliguri (570 km)">কলকাতা → শিলিগুড়ি (৫৭০ km)</span>
         </button>
-        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="100">
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all" data-dist="100">
           <span data-bn="শহরে দৈনিক ১০০ km" data-en="City daily 100 km">শহরে দৈনিক ১০০ km</span>
         </button>
-        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700 transition-all" data-dist="1500">
+        <button class="preset-btn px-3 py-2 rounded-lg text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:border-saffron-500 hover:text-saffron-700 transition-all" data-dist="1500">
           <span data-bn="কলকাতা → দিল্লি (১৫০০ km)" data-en="Kolkata → Delhi (1500 km)">কলকাতা → দিল্লি (১৫০০ km)</span>
         </button>
       </div>
@@ -157,17 +157,17 @@ const pageSchema = {
     <!-- Result -->
     <div id="fc-result" class="hidden">
       <div class="grid grid-cols-2 gap-4">
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-5 text-center">
           <p class="text-sm text-gray-500 mb-1">
             <span data-bn="মোট জ্বালানি খরচ" data-en="Total Fuel Cost">মোট জ্বালানি খরচ</span>
           </p>
-          <p id="fc-total-cost" class="text-4xl font-bold text-teal-700"></p>
+          <p id="fc-total-cost" class="text-4xl font-bold text-saffron-700"></p>
         </div>
-        <div class="bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+        <div class="bg-saffron-50 border border-saffron-200 rounded-xl p-5 text-center">
           <p class="text-sm text-gray-500 mb-1">
             <span data-bn="প্রয়োজনীয় জ্বালানি" data-en="Fuel Required">প্রয়োজনীয় জ্বালানি</span>
           </p>
-          <p id="fc-litres" class="text-4xl font-bold text-teal-700"></p>
+          <p id="fc-litres" class="text-4xl font-bold text-saffron-700"></p>
         </div>
       </div>
       <div class="mt-3 bg-white rounded-xl p-4 border border-gray-200 text-sm text-gray-600">
@@ -185,19 +185,19 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="যাত্রার দূরত্ব কিলোমিটারে দিন অথবা জনপ্রিয় রুট বোতাম ক্লিক করুন" data-en="Enter the distance in km or click a popular route button">যাত্রার দূরত্ব কিলোমিটারে দিন অথবা জনপ্রিয় রুট বোতাম ক্লিক করুন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="আপনার গাড়ির মাইলেজ (km/লিটার) দিন — গাড়ির ম্যানুয়ালে থাকে" data-en="Enter your vehicle's mileage (km/litre) — found in the owner's manual">আপনার গাড়ির মাইলেজ (km/লিটার) দিন — গাড়ির ম্যানুয়ালে থাকে</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="স্থানীয় পেট্রোলের দাম দিন (ডিফল্ট ₹১০০/লিটার)" data-en="Enter local fuel price (default ₹100/litre)">স্থানীয় পেট্রোলের দাম দিন (ডিফল্ট ₹১০০/লিটার)</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৪.</span>
         <span data-bn="মোট খরচ ও প্রয়োজনীয় লিটার সঙ্গে সঙ্গে দেখাবে" data-en="Total cost and litres needed appear instantly">মোট খরচ ও প্রয়োজনীয় লিটার সঙ্গে সঙ্গে দেখাবে</span>
       </li>
     </ol>
@@ -221,8 +221,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: কলকাতা থেকে দিঘা" data-en="Example 1: Kolkata to Digha">উদাহরণ ১: কলকাতা থেকে দিঘা</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -232,8 +232,8 @@ const pageSchema = {
           <span data-bn="জ্বালানি: ১২ লিটার | মোট খরচ: ₹১,২০০" data-en="Fuel: 12 litres | Total cost: ₹1,200">জ্বালানি: ১২ লিটার | মোট খরচ: ₹১,২০০</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: কলকাতা থেকে শিলিগুড়ি" data-en="Example 2: Kolkata to Siliguri">উদাহরণ ২: কলকাতা থেকে শিলিগুড়ি</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -243,8 +243,8 @@ const pageSchema = {
           <span data-bn="জ্বালানি: ৩১.৭ লিটার | মোট খরচ: ₹৩,১৬৭" data-en="Fuel: 31.7 litres | Total cost: ₹3,167">জ্বালানি: ৩১.৭ লিটার | মোট খরচ: ₹৩,১৬৭</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: মাসে ২,০০০ km শহরে চলা" data-en="Example 3: 2,000 km monthly city driving">উদাহরণ ৩: মাসে ২,০০০ km শহরে চলা</span>
         </p>
         <p class="text-gray-700 mt-1">

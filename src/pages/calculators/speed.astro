@@ -89,7 +89,7 @@ const pageSchema = {
 
     <!-- Mode Selector -->
     <div class="grid grid-cols-3 gap-2 mb-6">
-      <button id="mode-speed" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all min-h-[44px]">
+      <button id="mode-speed" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all min-h-[44px]">
         <span data-bn="গতি বের করুন" data-en="Find Speed">গতি বের করুন</span>
       </button>
       <button id="mode-dist" class="mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]">
@@ -101,7 +101,7 @@ const pageSchema = {
     </div>
 
     <!-- Formula Display -->
-    <div id="formula-display" class="bg-teal-50 border border-teal-200 rounded-xl p-3 text-center text-sm font-mono text-teal-800 mb-5">
+    <div id="formula-display" class="bg-saffron-50 border border-saffron-200 rounded-xl p-3 text-center text-sm font-mono text-saffron-800 mb-5">
       গতি = দূরত্ব ÷ সময় / Speed = Distance ÷ Time
     </div>
 
@@ -110,7 +110,7 @@ const pageSchema = {
       <label class="block text-sm font-medium text-gray-700 mb-1">
         <span data-bn="গতির একক" data-en="Speed Unit">গতির একক</span>
       </label>
-      <select id="unit-select" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]">
+      <select id="unit-select" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]">
         <option value="kmh">km/h (কিলোমিটার/ঘণ্টা)</option>
         <option value="ms">m/s (মিটার/সেকেন্ড)</option>
         <option value="mph">mph (মাইল/ঘণ্টা)</option>
@@ -124,15 +124,15 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="sp-distance">
             <span data-bn="দূরত্ব (km)" data-en="Distance (km)">দূরত্ব (km)</span>
           </label>
-          <input type="number" id="sp-distance" placeholder="যেমন: 180" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="sp-distance" placeholder="যেমন: 180" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
             <span data-bn="সময় (ঘণ্টা ও মিনিট)" data-en="Time (hours and minutes)">সময় (ঘণ্টা ও মিনিট)</span>
           </label>
           <div class="grid grid-cols-2 gap-2">
-            <input type="number" id="sp-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
-            <input type="number" id="sp-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="sp-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="sp-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
           </div>
         </div>
       </div>
@@ -145,15 +145,15 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="dt-speed">
             <span data-bn="গতি" data-en="Speed">গতি</span>
           </label>
-          <input type="number" id="dt-speed" placeholder="যেমন: 60" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="dt-speed" placeholder="যেমন: 60" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
             <span data-bn="সময় (ঘণ্টা ও মিনিট)" data-en="Time (hours and minutes)">সময় (ঘণ্টা ও মিনিট)</span>
           </label>
           <div class="grid grid-cols-2 gap-2">
-            <input type="number" id="dt-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
-            <input type="number" id="dt-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="dt-hours" placeholder="ঘণ্টা" min="0" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
+            <input type="number" id="dt-minutes" placeholder="মিনিট" min="0" max="59" class="w-full px-3 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
           </div>
         </div>
       </div>
@@ -166,21 +166,21 @@ const pageSchema = {
           <label class="block text-sm font-medium text-gray-700 mb-1" for="tm-distance">
             <span data-bn="দূরত্ব (km)" data-en="Distance (km)">দূরত্ব (km)</span>
           </label>
-          <input type="number" id="tm-distance" placeholder="যেমন: 570" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="tm-distance" placeholder="যেমন: 570" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1" for="tm-speed">
             <span data-bn="গতি" data-en="Speed">গতি</span>
           </label>
-          <input type="number" id="tm-speed" placeholder="যেমন: 80" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-teal-500 focus:outline-none min-h-[44px]" />
+          <input type="number" id="tm-speed" placeholder="যেমন: 80" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl text-lg focus:border-saffron-500 focus:outline-none min-h-[44px]" />
         </div>
       </div>
     </div>
 
     <!-- Result -->
-    <div id="speed-result" class="hidden bg-teal-50 border border-teal-200 rounded-xl p-5 text-center">
+    <div id="speed-result" class="hidden bg-saffron-50 border border-saffron-200 rounded-xl p-5 text-center">
       <p class="text-sm text-gray-500 mb-1" id="result-label-text">ফলাফল / Result</p>
-      <p id="speed-answer" class="text-4xl font-bold text-teal-700 mb-2"></p>
+      <p id="speed-answer" class="text-4xl font-bold text-saffron-700 mb-2"></p>
       <p id="speed-formula-text" class="text-sm text-gray-500"></p>
       <p id="speed-conversions" class="text-xs text-gray-400 mt-2"></p>
     </div>
@@ -194,19 +194,19 @@ const pageSchema = {
     </h2>
     <ol class="space-y-3 text-gray-700">
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">১.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">১.</span>
         <span data-bn="কী বের করতে চান তা বেছে নিন — গতি, দূরত্ব বা সময়" data-en="Select what you want to find — speed, distance or time">কী বের করতে চান তা বেছে নিন — গতি, দূরত্ব বা সময়</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">২.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">২.</span>
         <span data-bn="একক বেছে নিন — km/h, m/s বা mph" data-en="Select the unit — km/h, m/s or mph">একক বেছে নিন — km/h, m/s বা mph</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৩.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৩.</span>
         <span data-bn="পরিচিত দুটি মান দিন — ঘণ্টা ও মিনিট আলাদা ঘরে দিতে পারবেন" data-en="Enter the two known values — hours and minutes can be entered separately">পরিচিত দুটি মান দিন — ঘণ্টা ও মিনিট আলাদা ঘরে দিতে পারবেন</span>
       </li>
       <li class="flex gap-3">
-        <span class="font-bold text-teal-700 min-w-[24px]">৪.</span>
+        <span class="font-bold text-saffron-700 min-w-[24px]">৪.</span>
         <span data-bn="ফলাফল ও রূপান্তর মান সঙ্গে সঙ্গে দেখাবে" data-en="Result and unit conversions appear instantly">ফলাফল ও রূপান্তর মান সঙ্গে সঙ্গে দেখাবে</span>
       </li>
     </ol>
@@ -230,8 +230,8 @@ const pageSchema = {
       <span data-bn="উদাহরণ" data-en="Examples">উদাহরণ</span>
     </h2>
     <div class="space-y-4">
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ১: সকালের হাঁটা" data-en="Example 1: Morning walk">উদাহরণ ১: সকালের হাঁটা</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -241,8 +241,8 @@ const pageSchema = {
           <span data-bn="গতি: ৪ km/h" data-en="Speed: 4 km/h">গতি: ৪ km/h</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ২: কলকাতা থেকে দিঘা হাইওয়ে ড্রাইভ" data-en="Example 2: Kolkata to Digha highway drive">উদাহরণ ২: কলকাতা থেকে দিঘা হাইওয়ে ড্রাইভ</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -252,8 +252,8 @@ const pageSchema = {
           <span data-bn="সময়: ৩ ঘণ্টা" data-en="Time: 3 hours">সময়: ৩ ঘণ্টা</span>
         </p>
       </div>
-      <div class="bg-teal-50 rounded-xl p-4 border border-teal-200">
-        <p class="font-semibold text-teal-800">
+      <div class="bg-saffron-50 rounded-xl p-4 border border-saffron-200">
+        <p class="font-semibold text-saffron-800">
           <span data-bn="উদাহরণ ৩: কলকাতা থেকে শিলিগুড়ি" data-en="Example 3: Kolkata to Siliguri">উদাহরণ ৩: কলকাতা থেকে শিলিগুড়ি</span>
         </p>
         <p class="text-gray-700 mt-1">
@@ -375,7 +375,7 @@ const pageSchema = {
     modeBtns.forEach(btn => {
       const btnMode = btn.id.replace('mode-', '');
       if (btnMode === mode) {
-        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-teal-600 text-white transition-all min-h-[44px]';
+        btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-saffron-600 text-white transition-all min-h-[44px]';
       } else {
         btn.className = 'mode-btn py-2 px-3 rounded-xl text-sm font-semibold bg-gray-200 text-gray-700 transition-all min-h-[44px]';
       }
