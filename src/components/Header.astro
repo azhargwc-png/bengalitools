@@ -91,6 +91,7 @@
         class="w-full px-3 py-2 rounded-lg text-gray-900 text-base bg-white border-0 focus:outline-none"
         autocomplete="off"
       />
+      <div id="mobile-search-results" class="hidden absolute top-full left-0 w-full bg-white rounded-lg shadow-xl mt-1 max-h-72 overflow-y-auto z-50 text-gray-900"></div>
     </div>
     <nav class="grid grid-cols-2 gap-2 text-base">
       <a href="/converters/kg-to-lbs/" class="px-3 py-2.5 bg-saffron-700 rounded hover:bg-saffron-600 transition-colors">
@@ -153,7 +154,7 @@ var allTools = [
   { name: 'রেসিপি ক্যালরি', en: 'recipe calorie calculator', url: '/food/recipe-calculator/' },
   { name: 'বাংলা খাবার চার্ট', en: 'Bengali food calorie chart', url: '/food/bengali-food-chart/' },
   { name: 'জিএসটি ক্যালকুলেটর', en: 'GST calculator India', url: '/india/gst-calculator/' },
-  { name: 'বাংলা তারিখ কনভার্টার', en: 'Bengali calendar date converter', url: '/india/bengali-calendar/' },
+  { name: 'আজকের বাংলা তারিখ ও ক্যালেন্ডার', en: 'today Bengali date calendar converter', url: '/india/bengali-calendar/' },
   { name: 'বাংলা বছরের ক্যালেন্ডার', en: 'Bengali year calendar full year 12 months', url: '/india/bengali-year-calendar/' },
   { name: 'সংখ্যা বাংলায়', en: 'number to Bengali words', url: '/india/number-to-bengali/' },
   { name: 'বেতন ক্যালকুলেটর', en: 'salary hourly calculator', url: '/india/salary-to-hourly/' },
@@ -177,14 +178,18 @@ function doSearch(q, resultsEl) {
   resultsEl.classList.remove('hidden');
 }
 
+function wireSearch(inputId, resultsId) {
+  var input = document.getElementById(inputId);
+  var results = document.getElementById(resultsId);
+  if (!input || !results) return;
+  input.addEventListener('input', function() { doSearch(this.value, results); });
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.classList.add('hidden');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  var hsearch = document.getElementById('header-search');
-  var hresults = document.getElementById('search-results');
-  if (hsearch && hresults) {
-    hsearch.addEventListener('input', function() { doSearch(this.value, hresults); });
-    document.addEventListener('click', function(e) {
-      if (!hsearch.contains(e.target) && !hresults.contains(e.target)) hresults.classList.add('hidden');
-    });
-  }
+  wireSearch('header-search', 'search-results');
+  wireSearch('mobile-search', 'mobile-search-results');
 });
 </script>
