@@ -1,6 +1,74 @@
 ﻿---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import { toBengaliDigits } from '../../utils/bengaliCalendar.js';
+
+// Chicken biryani per 250g plate. The table row and the 500g FAQ both derive
+// from this so the two figures can't disagree.
+const chicken250 = { min: 450, max: 500 };
+const chicken500 = { min: chicken250.min * 2, max: chicken250.max * 2 };
+const range = (r) => `${toBengaliDigits(r.min)}–${toBengaliDigits(r.max)}`;
+const rangeEn = (r) => `${r.min}–${r.max}`;
+
+// One FAQ source feeding both the FAQPage schema and the rendered <details>.
+const faqs = [
+  {
+    q: { bn: 'ওজন কমানোর সময় কি বিরিয়ানি খাওয়া যাবে?', en: 'Can I eat biryani while trying to lose weight?' },
+    a: {
+      bn: 'হ্যাঁ, মাঝেমাঝে অল্প পরিমাণে খাওয়া যায়। আধা প্লেট বিরিয়ানি (২৩০–২৫০ ক্যালরি) রাখুন এবং সেদিনের মোট ক্যালরি ঘাটতি নিশ্চিত করুন।',
+      en: 'Yes, occasionally in smaller portions. Keep it to half a plate (230–250 cal) and ensure you maintain an overall calorie deficit for the day.',
+    },
+  },
+  {
+    q: { bn: 'কাচ্চি বিরিয়ানিতে কত ক্যালরি?', en: 'How many calories in kacchi biryani?' },
+    a: {
+      bn: 'কাচ্চি বিরিয়ানি (মাটন) প্রতি ২৫০ গ্রামে ৫৫০–৬৫০ ক্যালরি। রান্নায় বেশি তেল ও চর্বিযুক্ত মাংস ব্যবহার হওয়ায় এটি সবচেয়ে বেশি ক্যালরির বিরিয়ানি।',
+      en: 'Kacchi biryani (mutton) contains 550–650 calories per 250g serving. It is the highest-calorie biryani due to the use of more oil and fatty cuts of meat.',
+    },
+  },
+  {
+    q: { bn: 'বিরিয়ানিতে কি প্রোটিন ভালো পরিমাণে আছে?', en: 'Does biryani have good protein content?' },
+    a: {
+      bn: 'হ্যাঁ, চিকেন বিরিয়ানিতে প্রতি প্লেটে ২২–২৮ গ্রাম প্রোটিন থাকে, যা দৈনিক চাহিদার প্রায় ৪৪–৫৬%। তবে ফ্যাট ও ক্যালরিও বেশি থাকে।',
+      en: 'Yes, chicken biryani has 22–28g of protein per plate, about 44–56% of daily needs. However, the fat and total calorie count is also high.',
+    },
+  },
+  {
+    q: { bn: 'রেস্তোরাঁর বিরিয়ানি কি বাড়ির চেয়ে বেশি ক্যালরির?', en: 'Is restaurant biryani higher in calories than homemade?' },
+    a: {
+      bn: 'সাধারণত হ্যাঁ। রেস্তোরাঁ বেশি তেল, ঘি ও বেরেস্তা ব্যবহার করে স্বাদ বাড়াতে। ঘরে রান্না করলে তেলের পরিমাণ নিয়ন্ত্রণ করে ক্যালরি ১৫–২৫% কমানো সম্ভব।',
+      en: 'Usually yes. Restaurants use more oil, ghee, and fried onions for flavour. Home cooking lets you control oil quantity, reducing calories by 15–25%.',
+    },
+  },
+  {
+    q: { bn: 'বিরিয়ানির সাথে রায়তা খেলে কি ক্যালরি বাড়ে?', en: 'Does eating raita with biryani add a lot of calories?' },
+    a: {
+      bn: 'সামান্য। সাদা দইয়ের রায়তা (১০০ গ্রাম) মাত্র ৬০–৮০ ক্যালরি যোগ করে, কিন্তু পেট ভরিয়ে খাওয়া কমাতে সাহায্য করে — তাই রায়তা খাওয়া ডায়েটে সহায়ক।',
+      en: 'Minimally. Plain yoghurt raita (100g) adds only 60–80 calories but helps you feel full and eat less biryani overall — making it a smart addition for dieters.',
+    },
+  },
+  {
+    q: { bn: '৫০০ গ্রাম চিকেন বিরিয়ানিতে কত ক্যালরি?', en: 'How many calories in 500g of chicken biryani?' },
+    a: {
+      bn: `৫০০ গ্রাম চিকেন বিরিয়ানিতে প্রায় ${range(chicken500)} ক্যালরি — অর্থাৎ ২৫০ গ্রামের এক প্লেটের (${range(chicken250)} ক্যালরি) দ্বিগুণ।`,
+      en: `500g of chicken biryani has about ${rangeEn(chicken500)} calories — double a 250g plate (${rangeEn(chicken250)} calories).`,
+    },
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q.bn,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a.bn }
+      }))
+    }
+  ]
+};
 ---
 
 <BlogLayout
@@ -8,6 +76,8 @@ import AdSlot from '../../components/AdSlot.astro';
   description="১ প্লেট চিকেন বিরিয়ানিতে প্রায় ৪৫০–৫০০ ক্যালরি। মাটন, ভেজ ও কাচ্চি বিরিয়ানির পুষ্টি তথ্য, ক্যালরি তুলনা ও ডায়েট টিপস।"
   datePublished="2026-04-25"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
+
   <div class="text-sm text-gray-500 mb-4">
     <a href="/blog/" class="hover:text-saffron-700">ব্লগ</a> → বিরিয়ানিতে কত ক্যালরি
   </div>
@@ -34,7 +104,7 @@ import AdSlot from '../../components/AdSlot.astro';
         <table class="w-full border-collapse text-sm">
           <thead><tr class="bg-saffron-700 text-white"><th class="p-3 text-left">বিরিয়ানির ধরন</th><th class="p-3">১ প্লেট (২৫০গ্রাম)</th><th class="p-3">ছোট পরিবেশন (১৫০গ্রাম)</th></tr></thead>
           <tbody>
-            <tr class="bg-white border-b"><td class="p-3 font-medium">চিকেন বিরিয়ানি</td><td class="p-3 text-center font-bold text-orange-600">৪৫০–৫০০</td><td class="p-3 text-center">২৭০–৩০০</td></tr>
+            <tr class="bg-white border-b"><td class="p-3 font-medium">চিকেন বিরিয়ানি</td><td class="p-3 text-center font-bold text-orange-600">{range(chicken250)}</td><td class="p-3 text-center">২৭০–৩০০</td></tr>
             <tr class="bg-gray-50 border-b"><td class="p-3 font-medium">মাটন বিরিয়ানি</td><td class="p-3 text-center font-bold text-red-600">৫২০–৬০০</td><td class="p-3 text-center">৩১০–৩৬০</td></tr>
             <tr class="bg-white border-b"><td class="p-3 font-medium">কাচ্চি বিরিয়ানি (মাটন)</td><td class="p-3 text-center font-bold text-red-600">৫৫০–৬৫০</td><td class="p-3 text-center">৩৩০–৩৯০</td></tr>
             <tr class="bg-gray-50 border-b"><td class="p-3 font-medium">ভেজ বিরিয়ানি</td><td class="p-3 text-center font-bold text-green-600">৩২০–৩৮০</td><td class="p-3 text-center">১৯০–২৩০</td></tr>
@@ -48,7 +118,7 @@ import AdSlot from '../../components/AdSlot.astro';
         <table class="w-full border-collapse text-sm">
           <thead><tr class="bg-saffron-700 text-white"><th class="p-3">পুষ্টি উপাদান</th><th class="p-3">পরিমাণ</th><th class="p-3">দৈনিক চাহিদার %</th></tr></thead>
           <tbody>
-            <tr class="bg-white border-b"><td class="p-3">ক্যালরি</td><td class="p-3 text-center font-bold">৪৭০</td><td class="p-3 text-center">২৪%</td></tr>
+            <tr class="bg-white border-b"><td class="p-3">গড় ক্যালরি</td><td class="p-3 text-center font-bold">৪৭০</td><td class="p-3 text-center">২৪%</td></tr>
             <tr class="bg-gray-50 border-b"><td class="p-3">কার্বোহাইড্রেট</td><td class="p-3 text-center">৫৫–৬৫ গ্রাম</td><td class="p-3 text-center">২০–২২%</td></tr>
             <tr class="bg-white border-b"><td class="p-3">প্রোটিন</td><td class="p-3 text-center">২২–২৮ গ্রাম</td><td class="p-3 text-center">৪৪–৫৬%</td></tr>
             <tr class="bg-gray-50 border-b"><td class="p-3">ফ্যাট</td><td class="p-3 text-center">১৪–১৮ গ্রাম</td><td class="p-3 text-center">২১–২৭%</td></tr>
@@ -111,26 +181,12 @@ import AdSlot from '../../components/AdSlot.astro';
       <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
     </h2>
     <div class="space-y-3">
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="ওজন কমানোর সময় কি বিরিয়ানি খাওয়া যাবে?" data-en="Can I eat biryani while trying to lose weight?">ওজন কমানোর সময় কি বিরিয়ানি খাওয়া যাবে?</span></summary>
-        <p class="mt-3 text-gray-700 text-sm"><span data-bn="হ্যাঁ, মাঝেমাঝে অল্প পরিমাণে খাওয়া যায়। আধা প্লেট বিরিয়ানি (২৩০–২৫০ ক্যালরি) রাখুন এবং সেদিনের মোট ক্যালরি ঘাটতি নিশ্চিত করুন।" data-en="Yes, occasionally in smaller portions. Keep it to half a plate (230–250 cal) and ensure you maintain an overall calorie deficit for the day.">হ্যাঁ, মাঝেমাঝে অল্প পরিমাণে খাওয়া যায়। আধা প্লেট বিরিয়ানি (২৩০–২৫০ ক্যালরি) রাখুন এবং সেদিনের মোট ক্যালরি ঘাটতি নিশ্চিত করুন।</span></p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="কাচ্চি বিরিয়ানিতে কত ক্যালরি?" data-en="How many calories in kacchi biryani?">কাচ্চি বিরিয়ানিতে কত ক্যালরি?</span></summary>
-        <p class="mt-3 text-gray-700 text-sm"><span data-bn="কাচ্চি বিরিয়ানি (মাটন) প্রতি ২৫০ গ্রামে ৫৫০–৬৫০ ক্যালরি। রান্নায় বেশি তেল ও চর্বিযুক্ত মাংস ব্যবহার হওয়ায় এটি সবচেয়ে বেশি ক্যালরির বিরিয়ানি।" data-en="Kacchi biryani (mutton) contains 550–650 calories per 250g serving. It is the highest-calorie biryani due to the use of more oil and fatty cuts of meat.">কাচ্চি বিরিয়ানি (মাটন) প্রতি ২৫০ গ্রামে ৫৫০–৬৫০ ক্যালরি। রান্নায় বেশি তেল ও চর্বিযুক্ত মাংস ব্যবহার হওয়ায় এটি সবচেয়ে বেশি ক্যালরির বিরিয়ানি।</span></p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="বিরিয়ানিতে কি প্রোটিন ভালো পরিমাণে আছে?" data-en="Does biryani have good protein content?">বিরিয়ানিতে কি প্রোটিন ভালো পরিমাণে আছে?</span></summary>
-        <p class="mt-3 text-gray-700 text-sm"><span data-bn="হ্যাঁ, চিকেন বিরিয়ানিতে প্রতি প্লেটে ২২–২৮ গ্রাম প্রোটিন থাকে, যা দৈনিক চাহিদার প্রায় ৪৪–৫৬%। তবে ফ্যাট ও ক্যালরিও বেশি থাকে।" data-en="Yes, chicken biryani has 22–28g of protein per plate, about 44–56% of daily needs. However, the fat and total calorie count is also high.">হ্যাঁ, চিকেন বিরিয়ানিতে প্রতি প্লেটে ২২–২৮ গ্রাম প্রোটিন থাকে, যা দৈনিক চাহিদার প্রায় ৪৪–৫৬%। তবে ফ্যাট ও ক্যালরিও বেশি থাকে।</span></p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="রেস্তোরাঁর বিরিয়ানি কি বাড়ির চেয়ে বেশি ক্যালরির?" data-en="Is restaurant biryani higher in calories than homemade?">রেস্তোরাঁর বিরিয়ানি কি বাড়ির চেয়ে বেশি ক্যালরির?</span></summary>
-        <p class="mt-3 text-gray-700 text-sm"><span data-bn="সাধারণত হ্যাঁ। রেস্তোরাঁ বেশি তেল, ঘি ও বেরেস্তা ব্যবহার করে স্বাদ বাড়াতে। ঘরে রান্না করলে তেলের পরিমাণ নিয়ন্ত্রণ করে ক্যালরি ১৫–২৫% কমানো সম্ভব।" data-en="Usually yes. Restaurants use more oil, ghee, and fried onions for flavour. Home cooking lets you control oil quantity, reducing calories by 15–25%.">সাধারণত হ্যাঁ। রেস্তোরাঁ বেশি তেল, ঘি ও বেরেস্তা ব্যবহার করে স্বাদ বাড়াতে। ঘরে রান্না করলে তেলের পরিমাণ নিয়ন্ত্রণ করে ক্যালরি ১৫–২৫% কমানো সম্ভব।</span></p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn="বিরিয়ানির সাথে রায়তা খেলে কি ক্যালরি বাড়ে?" data-en="Does eating raita with biryani add a lot of calories?">বিরিয়ানির সাথে রায়তা খেলে কি ক্যালরি বাড়ে?</span></summary>
-        <p class="mt-3 text-gray-700 text-sm"><span data-bn="সামান্য। সাদা দইয়ের রায়তা (১০০ গ্রাম) মাত্র ৬০–৮০ ক্যালরি যোগ করে, কিন্তু পেট ভরিয়ে খাওয়া কমাতে সাহায্য করে — তাই রায়তা খাওয়া ডায়েটে সহায়ক।" data-en="Minimally. Plain yoghurt raita (100g) adds only 60–80 calories but helps you feel full and eat less biryani overall — making it a smart addition for dieters.">সামান্য। সাদা দইয়ের রায়তা (১০০ গ্রাম) মাত্র ৬০–৮০ ক্যালরি যোগ করে, কিন্তু পেট ভরিয়ে খাওয়া কমাতে সাহায্য করে — তাই রায়তা খাওয়া ডায়েটে সহায়ক।</span></p>
-      </details>
+      {faqs.map((f) => (
+        <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <summary class="font-semibold text-gray-900 cursor-pointer"><span data-bn={f.q.bn} data-en={f.q.en}>{f.q.bn}</span></summary>
+          <p class="mt-3 text-gray-700 text-sm"><span data-bn={f.a.bn} data-en={f.a.en}>{f.a.bn}</span></p>
+        </details>
+      ))}
     </div>
   </section>
 
