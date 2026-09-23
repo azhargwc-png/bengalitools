@@ -52,13 +52,26 @@
     </div>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-1 pb-2 text-base overflow-x-auto">
+    <nav class="hidden md:flex flex-wrap items-center gap-1 pb-2 text-base">
       <a href="/converters/kg-to-lbs/" class="nav-link whitespace-nowrap px-3 py-2.5 rounded hover:bg-saffron-600 transition-colors">
         <span data-bn="কনভার্টার" data-en="Converters">কনভার্টার</span>
       </a>
-      <a href="/india/bengali-calendar/" class="nav-link whitespace-nowrap px-3 py-2.5 rounded hover:bg-saffron-600 transition-colors">
-        <span data-bn="ক্যালেন্ডার" data-en="Calendar">ক্যালেন্ডার</span>
-      </a>
+      <div class="nav-dropdown relative">
+        <button type="button" class="nav-link whitespace-nowrap px-3 py-2.5 rounded hover:bg-saffron-600 transition-colors inline-flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          <span data-bn="ক্যালেন্ডার" data-en="Calendar">ক্যালেন্ডার</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        <div class="nav-dropdown-menu hidden absolute left-0 top-full pt-1 z-50">
+          <div class="bg-white text-gray-900 rounded-lg shadow-xl py-1 min-w-[14rem]">
+            <a href="/india/bengali-calendar/" class="block px-4 py-2.5 whitespace-nowrap hover:bg-saffron-50">
+              <span data-bn="আজকের বাংলা তারিখ" data-en="Today's Bengali Date">আজকের বাংলা তারিখ</span>
+            </a>
+            <a href="/india/bengali-year-calendar/" class="block px-4 py-2.5 whitespace-nowrap hover:bg-saffron-50">
+              <span data-bn="বাংলা বছরের ক্যালেন্ডার" data-en="Bengali Year Calendar">বাংলা বছরের ক্যালেন্ডার</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <a href="/currency/usd-to-inr/" class="nav-link whitespace-nowrap px-3 py-2.5 rounded hover:bg-saffron-600 transition-colors">
         <span data-bn="মুদ্রা" data-en="Currency">মুদ্রা</span>
       </a>
@@ -98,7 +111,10 @@
         <span data-bn="ইউনিট কনভার্টার" data-en="Unit Converters">ইউনিট কনভার্টার</span>
       </a>
       <a href="/india/bengali-calendar/" class="px-3 py-2.5 bg-saffron-700 rounded hover:bg-saffron-600 transition-colors">
-        <span data-bn="ক্যালেন্ডার" data-en="Calendar">ক্যালেন্ডার</span>
+        <span data-bn="আজকের বাংলা তারিখ" data-en="Today's Bengali Date">আজকের বাংলা তারিখ</span>
+      </a>
+      <a href="/india/bengali-year-calendar/" class="px-3 py-2.5 bg-saffron-700 rounded hover:bg-saffron-600 transition-colors">
+        <span data-bn="বাংলা বছরের ক্যালেন্ডার" data-en="Bengali Year Calendar">বাংলা বছরের ক্যালেন্ডার</span>
       </a>
       <a href="/currency/usd-to-inr/" class="px-3 py-2.5 bg-saffron-700 rounded hover:bg-saffron-600 transition-colors">
         <span data-bn="মুদ্রা বিনিময়" data-en="Currency">মুদ্রা বিনিময়</span>
@@ -125,7 +141,29 @@
   </div>
 </header>
 
+<style>
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.open .nav-dropdown-menu { display: block; }
+</style>
+
 <script is:inline>
+// Nav dropdowns: hover/focus via CSS; click toggles for touch devices
+document.querySelectorAll('.nav-dropdown > button').forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var dd = btn.parentElement;
+    var open = dd.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+document.addEventListener('click', function () {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function (dd) {
+    dd.classList.remove('open');
+    dd.querySelector('button').setAttribute('aria-expanded', 'false');
+  });
+});
+
 // Search data
 var allTools = [
   { name: 'কেজি থেকে পাউন্ড', en: 'kg to lbs', url: '/converters/kg-to-lbs/' },
