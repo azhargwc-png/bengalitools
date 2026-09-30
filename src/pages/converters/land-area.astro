@@ -3,12 +3,58 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import AdSlot from '../../components/AdSlot.astro';
 
+// One FAQ source feeding both the FAQPage schema and the rendered <details>.
+const faqs = [
+  {
+    q: { bn: '১ বিঘা সমান কত কাঠা?', en: 'How many Katha is 1 Bigha?' },
+    a: {
+      bn: 'পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।',
+      en: 'By West Bengal and Bangladesh standard: 1 Bigha = 20 Katha = 14,400 sqft.'
+    }
+  },
+  {
+    q: { bn: '১ কাঠা সমান কত বর্গফুট?', en: 'How many sqft is 1 Katha?' },
+    a: {
+      bn: '১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক। পশ্চিমবঙ্গ ও বাংলাদেশ উভয় জায়গায় এই মান প্রচলিত।',
+      en: '1 Katha = 720 sqft = 16 Chhatak. This is the standard used in both West Bengal and Bangladesh.'
+    }
+  },
+  {
+    q: { bn: 'ডেসিমেল ও শতাংশ কি একই?', en: 'Are Decimal and Shotangso the same?' },
+    a: {
+      bn: 'হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর। সরকারি কাগজে সাধারণত শতাংশ বা ডিসমিল লেখা হয়।',
+      en: 'Yes, Decimal and Shotangso (Dismil) are the same unit. 1 Decimal = 435.6 sqft = 1/100 Acre. Government documents usually use Shotangso or Dismil.'
+    }
+  },
+  {
+    q: { bn: '১ একর সমান কত বিঘা?', en: 'How many Bigha is 1 Acre?' },
+    a: {
+      bn: '১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।',
+      en: '1 Acre = 3.025 Bigha = 60.5 Katha = 100 Decimal = 43,560 sqft.'
+    }
+  },
+  {
+    q: { bn: 'পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?', en: 'Is Bigha different in West Bengal and Bangladesh?' },
+    a: {
+      bn: 'না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। তবে ভারতের অন্যান্য রাজ্যে (যেমন রাজস্থান, উত্তরপ্রদেশ) বিঘার মাপ আলাদা হতে পারে।',
+      en: 'No, both use 1 Bigha = 20 Katha = 14,400 sqft. However, other Indian states (e.g. Rajasthan, UP) use different Bigha sizes.'
+    }
+  },
+  {
+    q: { bn: '১ একর সমান কত কাঠা?', en: 'How many Katha is 1 Acre?' },
+    a: {
+      bn: '১ একর = ৬০.৫ কাঠা।',
+      en: '1 Acre = 60.5 Katha.'
+    }
+  }
+];
+
 const pageSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "জমি পরিমাপ কনভার্টার",
+      "name": "কাঠা থেকে বর্গফুট কনভার্টার — জমির পরিমাণ কনভার্টার",
       "url": "https://www.bengalitools.com/converters/land-area/",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web Browser",
@@ -21,62 +67,25 @@ const pageSchema = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "১ বিঘা সমান কত কাঠা?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "১ কাঠা সমান কত বর্গফুট?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ডেসিমেল ও শতাংশ কি একই?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "১ একর সমান কত বিঘা?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।"
-          }
-        }
-      ]
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q.bn,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a.bn }
+      }))
     }
   ]
 };
 ---
 
 <ToolLayout
-  title="Land Area Converter — Bigha, Katha, Decimal, Acre | BanglaTools"
-  titleBn="জমির পরিমাণ কনভার্টার — বিঘা, কাঠা, ডেসিমেল, একর | BanglaTools"
-  description="Convert land area between bigha, katha, decimal, acre and sq ft. West Bengal and Bangladesh standards. জমির পরিমাণ রূপান্তর করুন।"
-  descriptionBn="বিঘা, কাঠা, ছটাক, ডেসিমেল, একর, বর্গফুট, বর্গমিটার — যেকোনো জমির মাপ রূপান্তর করুন।"
+  title="Katha to Square Feet Converter — Bigha, Acre, Decimal | BanglaTools"
+  titleBn="কাঠা থেকে বর্গফুট কনভার্টার — বিঘা, একর, ডেসিমেল | BanglaTools"
+  description="Free katha to square feet converter (1 katha = 720 sq ft) and acre to katha calculator (1 acre = 60.5 katha). Also converts bigha, decimal, chhatak, sqm and hectare — West Bengal and Bangladesh standards."
+  descriptionBn="কাঠা থেকে বর্গফুট (১ কাঠা = ৭২০ বর্গফুট) ও একর থেকে কাঠা (১ একর = ৬০.৫ কাঠা) রূপান্তর করুন। বিঘা, ছটাক, ডেসিমেল, বর্গমিটার ও হেক্টরও — পশ্চিমবঙ্গ ও বাংলাদেশের মান অনুযায়ী।"
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)}></script>
   <h1 class="text-3xl font-bold text-gray-900 mb-2">
-    <span data-bn="জমির পরিমাণ কনভার্টার" data-en="Land Area Converter">জমির পরিমাণ কনভার্টার</span>
+    <span data-bn="কাঠা থেকে বর্গফুট, একর থেকে কাঠা — জমির পরিমাণ কনভার্টার" data-en="Katha to Square Feet, Acre to Katha — Land Area Converter">কাঠা থেকে বর্গফুট, একর থেকে কাঠা — জমির পরিমাণ কনভার্টার</span>
   </h1>
   <p class="text-gray-600 mb-6 text-lg">
     <span data-bn="বিঘা, কাঠা, ডেসিমেল, একর — যেকোনো এককে লিখুন, সব এককে রূপান্তর দেখুন" data-en="Type in any unit — Bigha, Katha, Decimal, Acre — and see all conversions instantly">বিঘা, কাঠা, ডেসিমেল, একর — যেকোনো এককে লিখুন, সব এককে রূপান্তর দেখুন</span>
@@ -276,46 +285,16 @@ const pageSchema = {
       <span data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</span>
     </h2>
     <div class="space-y-4">
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="১ বিঘা সমান কত কাঠা?" data-en="How many Katha is 1 Bigha?">১ বিঘা সমান কত কাঠা?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।" data-en="By West Bengal and Bangladesh standard: 1 Bigha = 20 Katha = 14,400 sqft.">পশ্চিমবঙ্গ ও বাংলাদেশের মানদণ্ড অনুযায়ী ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="১ কাঠা সমান কত বর্গফুট?" data-en="How many sqft is 1 Katha?">১ কাঠা সমান কত বর্গফুট?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক। পশ্চিমবঙ্গ ও বাংলাদেশ উভয় জায়গায় এই মান প্রচলিত।" data-en="1 Katha = 720 sqft = 16 Chhatak. This is the standard used in both West Bengal and Bangladesh.">১ কাঠা = ৭২০ বর্গফুট = ১৬ ছটাক। পশ্চিমবঙ্গ ও বাংলাদেশ উভয় জায়গায় এই মান প্রচলিত।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="ডেসিমেল ও শতাংশ কি একই?" data-en="Are Decimal and Shotangso the same?">ডেসিমেল ও শতাংশ কি একই?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর। সরকারি কাগজে সাধারণত শতাংশ বা ডিসমিল লেখা হয়।" data-en="Yes, Decimal and Shotangso (Dismil) are the same unit. 1 Decimal = 435.6 sqft = 1/100 Acre. Government documents usually use Shotangso or Dismil.">হ্যাঁ, ডেসিমেল ও শতাংশ (ডিসমিল) একই একক। ১ ডেসিমেল = ৪৩৫.৬ বর্গফুট = ১/১০০ একর। সরকারি কাগজে সাধারণত শতাংশ বা ডিসমিল লেখা হয়।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="১ একর সমান কত বিঘা?" data-en="How many Bigha is 1 Acre?">১ একর সমান কত বিঘা?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।" data-en="1 Acre = 3.025 Bigha = 60.5 Katha = 100 Decimal = 43,560 sqft.">১ একর = ৩.০২৫ বিঘা = ৬০.৫ কাঠা = ১০০ ডেসিমেল = ৪৩,৫৬০ বর্গফুট।</span>
-        </p>
-      </details>
-      <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
-        <summary class="font-semibold text-gray-900 cursor-pointer">
-          <span data-bn="পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?" data-en="Is Bigha different in West Bengal and Bangladesh?">পশ্চিমবঙ্গ ও বাংলাদেশে বিঘার মাপ কি আলাদা?</span>
-        </summary>
-        <p class="mt-3 text-gray-700">
-          <span data-bn="না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। তবে ভারতের অন্যান্য রাজ্যে (যেমন রাজস্থান, উত্তরপ্রদেশ) বিঘার মাপ আলাদা হতে পারে।" data-en="No, both use 1 Bigha = 20 Katha = 14,400 sqft. However, other Indian states (e.g. Rajasthan, UP) use different Bigha sizes.">না, উভয় জায়গায় ১ বিঘা = ২০ কাঠা = ১৪,৪০০ বর্গফুট। তবে ভারতের অন্যান্য রাজ্যে (যেমন রাজস্থান, উত্তরপ্রদেশ) বিঘার মাপ আলাদা হতে পারে।</span>
-        </p>
-      </details>
+      {faqs.map((f) => (
+        <details class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <summary class="font-semibold text-gray-900 cursor-pointer">
+            <span data-bn={f.q.bn} data-en={f.q.en}>{f.q.bn}</span>
+          </summary>
+          <p class="mt-3 text-gray-700">
+            <span data-bn={f.a.bn} data-en={f.a.en}>{f.a.bn}</span>
+          </p>
+        </details>
+      ))}
     </div>
   </section>
 
